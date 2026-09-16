@@ -1,0 +1,201 @@
+/* ============================================================================
+   snb-web-live.css v1 -- THE central SNB web design system (hosted)
+   One place for tokens, type, spacing, and shared components. Loaded by every
+   migrated page via <link>; change a value here + deploy = every page updates.
+   Scoped under .snb-live (added to each migrated page's root class) so it can
+   never touch Circle's own chrome.
+
+   Sources of truth encoded here: 00-DESIGN-MEMORY (tokens, prefs, AA),
+   04 (palette, type DNA), 05 (frame 880, flat, pill buttons, underline policy),
+   06 (8px scale, spacing roles, 4-grid line-heights), 07 (eyebrow reserve),
+   WEB-FORMAT (paint-own-paper, AA accent values). Canonical type values taken
+   from the 06-verified Books/Three-Stuck-States implementations.
+
+   Page-specific CSS stays in each page and may override intentionally (page
+   <style> comes after this link in source order). But sizing, rhythm, and
+   palette live HERE -- do not redefine them per page.
+============================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* ---- tokens: ink + paper + accents + state palette (04/WEB-FORMAT, AA) ---- */
+.snb-live{
+  --bone:#FAF9F5; --bone-deep:#F0EEE7; --hairline:#D8D2C2;
+  --separator:var(--hairline);   /* alias: one hairline token. Pages may still override --separator locally (legacy) */
+  --ink:#1A1F2A; --ink-80:#3A3F4A; --muted:#5E5A4E; --link:#0645AD;
+  --sky:#5891C5;      /* graphics only (3.18:1) -- arrows, dots, strokes */
+  --sky-ink:#3F6FA3;  /* sky TEXT (4.97:1) -- eyebrows, labels */
+  --leaf:#3F7C55; --amber:#8F6417;   /* AA text+graphics values on bone */
+  --leaf-deep:#39734E;               /* leaf on --bone-deep: #3F7C55 is 4.28:1 there, this is 4.84 (07 Bands) */
+  --s-safety:#F4D58D; --s-fight:#E89B9B; --s-shutdown:#A3C0DD;
+  --s-play:#E8A871; --s-still:#9FC498; --s-freeze:#B89AC4; --s-unlit:#D8D2C2;
+
+  /* ---- spacing scale + roles (06) ---- */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px;
+  --sp-6:32px; --sp-7:48px; --sp-8:64px; --sp-9:96px; --sp-10:128px;
+  --space-bound:var(--sp-2); --space-snug:var(--sp-3); --space-stack:var(--sp-4);
+  --space-group:var(--sp-5); --space-block:var(--sp-6); --space-sub:var(--sp-7);
+  --section:clamp(64px,9vw,112px); --space-section:var(--section);
+
+  /* ---- frame (05: ONE width sitewide; Justin 2026-07-16: 1080, superseding 880) ----
+     Inside the frame: a 12-column composition grid (.snb-grid below). Page types
+     allocate columns differently (home can use all 12; a pillar page can run
+     9 reading + 3 nav rail). Prose measure stays 66ch regardless -- the frame
+     is composition room, never line length. One left edge everywhere. */
+  --page:1080px; --pad-x:clamp(20px,5vw,40px); --gap:clamp(20px,4vw,32px);
+  --measure:66ch;
+  --ease:cubic-bezier(.2,.6,.2,1); --dur:200ms;
+  color-scheme:light dark;
+
+  /* paint-own-paper (05 Surface): background+text always flip together */
+  background:var(--bone); color:var(--ink);
+  font:400 17px/28px Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  scroll-behavior:smooth;
+}
+@media (prefers-color-scheme:dark){.snb-live:not([data-theme="light"]){
+  --bone:#14171E; --bone-deep:#1B1F28; --hairline:#2C313C;
+  --ink:#ECE9E0; --ink-80:#C7C4BB; --muted:#9A968C; --link:#8FB6FF;
+  --sky:#8FB6E4; --sky-ink:#8FB6E4; --leaf:#84C79A; --amber:#E3B778;
+  --leaf-deep:#84C79A;               /* dark: leaf already clears on --bone-deep, so no darkened variant */
+}}
+.snb-live[data-theme="dark"]{
+  --bone:#14171E; --bone-deep:#1B1F28; --hairline:#2C313C;
+  --ink:#ECE9E0; --ink-80:#C7C4BB; --muted:#9A968C; --link:#8FB6FF;
+  --sky:#8FB6E4; --sky-ink:#8FB6E4; --leaf:#84C79A; --amber:#E3B778;
+  --leaf-deep:#84C79A;               /* dark: leaf already clears on --bone-deep, so no darkened variant */
+}
+@media (prefers-contrast:more){.snb-live{
+  --ink-80:var(--ink); --muted:#3A3F4A; --separator:var(--muted);   /* high-contrast hairline, estate-wide (replaces per-page --separator:var(--muted) overrides) */
+}}
+@media (prefers-reduced-motion:reduce){.snb-live{scroll-behavior:auto}}
+
+/* ---- reset + frame ---- */
+.snb-live *,.snb-live *::before,.snb-live *::after{box-sizing:border-box}
+.snb-live *{margin:0;padding:0}
+.snb-live img,.snb-live svg{max-width:100%}
+.snb-live .snb-page{max-width:var(--page);margin:0 auto;padding:0 var(--pad-x)}
+.snb-live section{padding:var(--section) 0 0;scroll-margin-top:5rem}
+.snb-live [id]{scroll-margin-top:5rem}
+
+/* ---- the band: a section on the second paper (07 Bands, 2026-08-27) ----
+   MEANING: a band marks the moment the page stops teaching and starts offering
+   -- the ask, the invitation, the pricing. Bone = reading; bone-deep = something
+   is being offered. Scarce by construction: 1-2 per page, never the first
+   section, never two touching, never a band AND a frame marking the same group.
+   FLAT: no border, no shadow, no radius -- it is a change of paper, not an
+   object lifted off it (05 "flat as paper" prohibits elevation, not ground).
+   SPACING (06): interior 48/64 sits INSIDE the tint; the one --section stays
+   OUTSIDE it, so the tint edge is never what separates two sections and the
+   band cannot read as a false floor (NN/g Illusion of Completeness).
+   CONTRAST: #F0EEE7 is the DEEPEST this tint can go -- amber clears AA on it by
+   0.02 and sky-ink by 0.01. Do not darken it. Two tokens need help on the band
+   and are re-pointed here; everything else clears comfortably. */
+.snb-live section.snb-band{
+  background:var(--bone-deep);
+  padding:var(--space-sub) 0;      /* 48 inside < 64 outside (mobile) */
+  margin-top:var(--section);       /* the rhythm stays outside the tint */
+  --sky:var(--sky-ink);            /* --sky as a graphic is 2.88:1 on the band (3:1 bar) */
+  --leaf:var(--leaf-deep);         /* --leaf is 4.28:1 on the band (4.5 bar) */
+  --panel:var(--bone);             /* a panel tinted --bone-deep would vanish on the band */
+}
+@media (min-width:860px){
+  .snb-live section.snb-band{padding:var(--sp-8) 0}   /* 64 inside < 112 outside (desktop) */
+}
+
+/* ---- type scale: fixed px line-heights on the 4-grid (06) ----
+   EXCEPT the fluid display h1/h2 (wide clamp): unitless LH ~1.08 so leading scales
+   with the font and never blows out at the mobile clamp floor (06 §90 exemption). */
+.snb-live h1{font-size:clamp(34px,5.2vw,46px);font-weight:600;line-height:1.08;
+  letter-spacing:-.02em;text-wrap:pretty;color:var(--ink);margin-bottom:var(--space-group)}
+  /* standard hero title->lede gap, all article pages. Product/blog heros override via their own h1. */
+.snb-live h2{font-size:clamp(26px,4vw,34px);font-weight:600;line-height:1.08;
+  letter-spacing:-.015em;text-wrap:pretty;margin-bottom:var(--space-snug);color:var(--ink)}
+.snb-live h3{font-size:20px;font-weight:500;line-height:28px;
+  margin-bottom:var(--space-bound);color:var(--ink)}
+.snb-live p{margin-bottom:var(--space-stack);max-width:var(--measure)}
+.snb-live .snb-lede{font-size:20px;line-height:28px;color:var(--ink-80);max-width:var(--measure)}
+.snb-live .snb-fine{font-size:14px;line-height:20px;color:var(--muted)}
+.snb-live .snb-rule{border:0;border-top:1px solid var(--hairline)}
+
+/* ---- eyebrow: the RESERVED section-kicker recipe (07) ---- */
+.snb-live .snb-eyebrow{font-size:12px;font-weight:500;line-height:16px;
+  text-transform:uppercase;letter-spacing:.15em;color:var(--muted);
+  margin-bottom:var(--space-snug)}
+.snb-live .snb-eyebrow.sky{color:var(--sky-ink)}
+.snb-live .snb-eyebrow.leaf{color:var(--leaf)}
+.snb-live .snb-eyebrow.amber{color:var(--amber)}
+
+/* ---- links: prose links underlined, component links not (05/07) ---- */
+.snb-live a{color:var(--link);text-decoration:none}
+.snb-live a:hover{text-decoration:underline}
+.snb-live p a:not([class]){text-decoration:underline;text-underline-offset:2px}
+
+/* ---- the canonical button: ink pill, drain-to-outline hover (05) ----
+   qualified a.snb-btn so page-level `.xx-root a` rules can't win (WEB-FORMAT) */
+/* 2026-08-09 (DQA W5): the pill used to be white-space:nowrap, so a long label
+   ("Explore the Unstucking Academy") pushed 20.8px past a 320 viewport. It now
+   wraps instead: line-height goes 1 -> 20px and max-width caps it at the frame.
+   Single-line pills are unchanged -- min-height 50 + align-items:center still
+   centre a 20px line box exactly where a line-height:1 one sat. The ::after
+   arrow is its own flex item, so it stays beside the wrapped label, not under it. */
+.snb-live a.snb-btn{display:inline-flex;align-items:center;gap:var(--sp-2);
+  min-height:50px;padding:10px 26px;border-radius:999px;max-width:100%;
+  border:1px solid var(--ink);background:var(--ink);color:var(--bone);
+  font:500 15.5px/20px Inter,system-ui,sans-serif;text-decoration:none;
+  white-space:normal;text-wrap:balance;
+  -webkit-tap-highlight-color:transparent;
+  transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
+.snb-live a.snb-btn:hover{background:transparent;color:var(--ink);text-decoration:none}
+.snb-live a.snb-btn:active{transform:scale(.985)}
+.snb-live a.snb-btn::after{content:"\2192";transition:transform var(--dur) var(--ease)}
+.snb-live a.snb-btn:hover::after{transform:translateX(3px)}
+
+/* ---- the canonical door: the "choose a path" card pair (07) ----
+   Promoted 2026-07-18 from the per-page copies (.hh/.bk/.sk/.hm-door). The WHOLE
+   card is one <a> (no nested links); the label is a <div> (.snb-door-t), NOT a
+   heading, so it never breaks the h1->h2 outline. Flat: hairline border, 16px
+   radius, no shadow; hover = border drains to ink. Container = .snb-doors (a 1fr
+   1fr pair) OR place cards directly on the .snb-grid (e.g. c6+c6).
+   Arrow is SEMANTIC: default RIGHT (navigates to another page). Add .snb-door--jump
+   for a same-page anchor jump: arrow points DOWN and sits at the card's right edge. */
+.snb-live .snb-doors{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--space-sub)}
+@media (max-width:720px){.snb-live .snb-doors{grid-template-columns:1fr}}
+.snb-live .snb-door{display:block;border:1px solid var(--separator);border-radius:16px;
+  padding:var(--space-group);color:var(--ink);text-decoration:none;
+  transition:border-color var(--dur) var(--ease)}
+.snb-live .snb-door:hover{border-color:var(--ink);text-decoration:none}
+.snb-live .snb-door-t{display:flex;align-items:baseline;justify-content:flex-start;gap:var(--space-snug);
+  font-size:18px;font-weight:500;line-height:24px;color:var(--ink)}
+.snb-live .snb-door-t::after{content:"\2192";color:var(--ink-80);font-weight:400;
+  transition:transform var(--dur) var(--ease)}   /* right = go to another page; ink, never sky/link */
+.snb-live .snb-door:hover .snb-door-t::after{transform:translateX(3px)}
+.snb-live .snb-door p{font-size:15px;line-height:24px;color:var(--ink-80);margin:var(--space-bound) 0 0;max-width:none}
+/* jump variant: same-page anchor -> down-arrow, anchored at the card's right edge */
+.snb-live .snb-door--jump .snb-door-t{justify-content:space-between}
+.snb-live .snb-door--jump .snb-door-t::after{content:"\2193"}   /* down = jumps down THIS page */
+.snb-live .snb-door--jump:hover .snb-door-t::after{transform:translateY(3px)}
+
+/* ---- the 12-column composition grid (Justin 2026-07-16) ----
+   Sections compose within the 1080 frame by spanning columns. Equal-column
+   layouts land exactly on the overlay's 12 reference lines when N divides 12
+   (05, verified with the grid overlay). Spans collapse to full width at the
+   720px breakpoint (06: only two breakpoints). */
+.snb-live .snb-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+.snb-live .snb-c3{grid-column:span 3}
+.snb-live .snb-c4{grid-column:span 4}
+.snb-live .snb-c6{grid-column:span 6}
+.snb-live .snb-c8{grid-column:span 8}
+.snb-live .snb-c9{grid-column:span 9}
+.snb-live .snb-c12{grid-column:span 12}
+@media (max-width:720px){
+  .snb-live .snb-c3,.snb-live .snb-c4,.snb-live .snb-c6,
+  .snb-live .snb-c8,.snb-live .snb-c9{grid-column:span 12}
+}
+
+/* ---- focus + motion prefs (00) ---- */
+.snb-live :focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:3px}
+@media (prefers-reduced-motion:reduce){
+  .snb-live a.snb-btn,.snb-live a.snb-btn::after{transition:none}
+  .snb-live a.snb-btn:active{transform:none}
+  .snb-live .snb-door,.snb-live .snb-door-t::after{transition:none}
+}

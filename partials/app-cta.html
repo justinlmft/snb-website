@@ -1,0 +1,106 @@
+<!-- ============================================================================
+  APP CTA v1 -- the canonical end-of-page app pill (SNB-Web-Live shared partial)
+  Injected by snb-loader.js into <div data-snb-include="app-cta" ...> slots.
+
+  Placeholders (double-brace key|default syntax) fill from data-snb-* attributes:
+    data-snb-src      -> ?src= tag on the app link (per page, e.g. "polyvagal-current")
+    data-snb-cta      -> data-cta analytics tag (usually the same value as src)
+    data-snb-heading  -> optional heading override (copy lane owns wording)
+    data-snb-lede     -> optional lede override
+    data-snb-button / data-snb-fine -> rarely overridden
+  Edit a DEFAULT here + deploy = every page without an override updates.
+
+  Rules kept (00/04/05/07/WEB-FORMAT): app CTA pill is ALWAYS ink, never an accent;
+  copy pulled from SNB-App.html, never authored; lowercase heading; "No account.
+  No card."; flat (no shadows); hover = ink drains to outline; >=44px target;
+  reduced-motion honored; self-contained tokens + dark mode (paint-own-ink, the
+  host page paints the paper); zero em dashes; ASCII-clean (entities).
+  Button selector is qualified (a.snb-appcta-btn) so page-level `.xx-root a` link
+  rules can never win the specificity fight (WEB-FORMAT 2026-07-14 warning).
+============================================================================= -->
+<style>
+  .snb-appcta{
+    --snb-ink:#1A1F2A; --snb-ink-80:#3A3F4A; --snb-muted:#5E5A4E; --snb-bone:#FAF9F5;
+    --snb-ease:cubic-bezier(.2,.6,.2,1); --snb-dur:200ms;
+    color:var(--snb-ink);
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){.snb-appcta:not([data-theme="light"]){
+    --snb-ink:#ECE9E0; --snb-ink-80:#C7C4BB; --snb-muted:#9A968C; --snb-bone:#14171E;
+  }}
+  .snb-appcta[data-theme="dark"]{
+    --snb-ink:#ECE9E0; --snb-ink-80:#C7C4BB; --snb-muted:#9A968C; --snb-bone:#14171E;
+  }
+  /* line-heights fixed px on the 4-grid (06: unitless banned on text); gaps on the
+     --sp ladder: heading->lede 8 (bound), lede->button 24 (group), button->fine 16 (stack) */
+  .snb-appcta.snb-appcta h3{font-size:24px;font-weight:500;line-height:32px;
+    letter-spacing:-.015em;margin:0 0 8px;color:var(--snb-ink)}
+  .snb-appcta.snb-appcta p{font-size:18px;line-height:28px;color:var(--snb-ink-80);
+    max-width:66ch;margin:0}
+  .snb-appcta a.snb-appcta-btn{display:inline-flex;align-items:center;gap:8px;
+    min-height:50px;padding:0 26px;margin-top:24px;border-radius:999px;
+    border:1px solid var(--snb-ink);background:var(--snb-ink);color:var(--snb-bone);
+    font:500 15.5px/1 Inter,system-ui,sans-serif;text-decoration:none;white-space:nowrap;
+    -webkit-tap-highlight-color:transparent;
+    transition:background var(--snb-dur) var(--snb-ease),color var(--snb-dur) var(--snb-ease)}
+  .snb-appcta a.snb-appcta-btn:hover{background:transparent;color:var(--snb-ink);text-decoration:none}
+  .snb-appcta a.snb-appcta-btn:active{transform:scale(.985)}
+  .snb-appcta a.snb-appcta-btn::after{content:"\2192";transition:transform var(--snb-dur) var(--snb-ease)}
+  .snb-appcta a.snb-appcta-btn:hover::after{transform:translateX(3px)}
+  .snb-appcta a.snb-appcta-btn:focus-visible{outline:2px solid var(--snb-ink);outline-offset:2px}
+  .snb-appcta.snb-appcta .snb-appcta-fine{font-size:14px;line-height:20px;color:var(--snb-muted);margin:16px 0 0}
+  @media (prefers-reduced-motion:reduce){
+    .snb-appcta a.snb-appcta-btn,.snb-appcta a.snb-appcta-btn::after{transition:none}
+    .snb-appcta a.snb-appcta-btn:active{transform:none}
+  }
+  @media (prefers-contrast:more){
+    .snb-appcta{--snb-muted:var(--snb-ink-80);--snb-ink-80:var(--snb-ink)}
+  }
+  /* app screenshots: content-carrying product UI (07 imagery rule; Home's approved
+     .shots pattern canonicalized). Flat, hairline, rounded; the pair reads as one
+     figure block. Hosted on the shared CDN, lazy, sized to prevent layout shift. */
+  .snb-appcta{--snb-hairline:#D8D2C2}
+  @media (prefers-color-scheme:dark){.snb-appcta:not([data-theme="light"]){--snb-hairline:#2C313C}}
+  .snb-appcta[data-theme="dark"]{--snb-hairline:#2C313C}
+  /* 3-up (Justin 2026-07-16: a pair reads too dominant/tall; three spreads the
+     weight and lowers the block). Full measure width; on narrow screens the
+     column stacks but each phone stays a modest 260px, never full-bleed tall. */
+  .snb-appcta .snb-appcta-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+    margin-top:32px;max-width:66ch}
+  .snb-appcta .snb-appcta-shots figure{margin:0}
+  .snb-appcta .snb-appcta-shots img{width:100%;height:auto;display:block;
+    border-radius:14px;border:1px solid var(--snb-hairline)}
+  .snb-appcta .snb-appcta-shots figcaption{font-size:13px;line-height:20px;
+    color:var(--snb-muted);margin-top:8px}
+  .snb-appcta .snb-hide{display:none}
+  @media (max-width:640px){
+    .snb-appcta .snb-appcta-shots{grid-template-columns:1fr}
+    .snb-appcta .snb-appcta-shots figure{max-width:260px}
+  }
+</style>
+<div class="snb-appcta">
+  <h3>{{heading|A self-regulation practice built for you.}}</h3>
+  <p>{{lede|Want to add safety to your system, not just read about it? The Stuck Not Broken app meets you where you are: you tell it how you&#8217;re doing, and it builds a custom meditation for the state you&#8217;re actually in. Every check-in and every practice changes what it gives you next, so it adapts as you do. Free to use.}}</p>
+  <a class="snb-appcta-btn" href="https://app.stucknotbroken.com/?start=practice&amp;src={{src|web}}" data-cta="{{cta|web}}">{{button|Do a practice now}}</a>
+  <p class="snb-appcta-fine">{{fine|No account. No card.}}</p>
+  <div class="snb-appcta-shots {{shots|}}">
+    <figure>
+      <img src="https://justinlmft.github.io/snb-website/img/app-shot-1.webp" width="600" height="1300"
+        loading="lazy" decoding="async"
+        alt="An afternoon check-in in the app: three sliders and a one-sentence read-back of what you reported.">
+      <figcaption>You check in.</figcaption>
+    </figure>
+    <figure>
+      <img src="https://justinlmft.github.io/snb-website/img/app-shot-2.webp" width="600" height="1300"
+        loading="lazy" decoding="async"
+        alt="A custom practice built from that check-in: why it was chosen, what to expect, and how it was tuned for you.">
+      <figcaption>It builds a practice for the state you&#8217;re in.</figcaption>
+    </figure>
+    <figure>
+      <img src="https://justinlmft.github.io/snb-website/img/app-shot-3.webp" width="620" height="1344"
+        loading="lazy" decoding="async"
+        alt="The practice player: a breathing circle, about nine minutes left, a silence control, and a begin-ease-out button.">
+      <figcaption>You practice.</figcaption>
+    </figure>
+  </div>
+</div>

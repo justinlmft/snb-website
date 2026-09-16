@@ -1,0 +1,1204 @@
+<!-- GENERATED from ../SNB-Web-How-To-Read-embed.html by generate.py; DO NOT EDIT HERE -->
+<link rel="stylesheet" href="https://justinlmft.github.io/snb-website/snb-web-live.css">
+<!-- ============================================================================
+  /HOW-TO-READ-YOUR-NERVOUS-SYSTEM: Circle custom-HTML embed fragment.
+  Second page in the Polyvagal Current series, on the SNB design system.
+  - Paste this whole file into ONE Custom HTML element in a Circle CUSTOM PAGE.
+  - No <html>/<head>/<body>: Circle supplies those. SNB standard footer included
+    (matched to the 880px reading column).
+  - All page CSS scoped under .nr-root; footer under .snb-footer. The interactive
+    figure is the general Polyvagal Current with the four-column word bank
+    (.pv-flow, #pv-*), left-aligned to the reading column.
+  - ONE inline script (the figure) -> MUST live in a Circle CUSTOM PAGE, never a
+    blog post (Tiptap strips JS). Pure-ASCII / entity-encoded.
+  - Accent = sky (theory surface): graphics #5891C5, text #3F6FA3 (AA). Matches siblings.
+  - Brought onto the current DS 2026-07-15 (Web Designer): PAINTS OWN PAPER + dark
+    mode (tokens flip); 600 h1/h2; figure chrome re-themed off tokens + de-shadowed
+    (state palette yellow/red/blue UNTOUCHED, figure JS untouched); canonical footer
+    (dark mode + app link). Removed the retired Self-Regulation Coach (Studio) mention;
+    added the new Stuck Not Broken app CTA (copy from SNB-App.html).
+    Page Title + Meta live in Circle page settings:
+      Title: How to read your own nervous system: A Daily Check-In | Unstucking Academy
+      Meta:  A daily nervous-system literacy practice: read your state through four
+             columns (cognitions, emotions, sensations, impulses) using the Polyvagal Current.
+  - Companion standalone preview: how-to-read-your-nervous-system-page.html (wording source of truth).
+============================================================================= -->
+<style>
+  /* Migrated onto snb-web-live.css 2026-07-16 (Phase 1). The shared sheet (.snb-live,
+     added to .nr-root below) now owns tokens, dark/contrast flips, reset, frame (1080),
+     base type (h1/h2/p), links, focus, eyebrow, lede, rule, and smooth scroll. Kept here:
+     --measure-narrow + all .nr-* components. This page was a DRIFTER (like the /polyvagal-current
+     pilot): its own token block carried unitless line-heights, 74px double-sided sections,
+     fixed 32px gutters, and an off-palette dark sky (#86AFDD -> the docs' #8FB6E4, now
+     inherited from the shared sheet). Drifted token NAMES canonicalized: --ink80 -> --ink-80,
+     --hair -> --hairline. Off-scale values snapped on every rule kept (06: 4-grid line-heights,
+     8px scale). Footer override holds at 1080 until the finale. */
+  .nr-root{
+    --measure-narrow:880px;   /* reading/figure cap inside the 1080 frame (Phase 2 adds the nav rail) */
+  }
+  /* frame is 1080 (2026-07-16); align the swapped footer until STANDARD-FOOTER's
+     default flips at full migration. Qualified to out-rank the partial's own rule. */
+  
+  /* page keeps its top-margin on h3 sub-blocks; size unified to the shared 20/28 (was 21px) */
+  .nr-root h3{font-size:20px;font-weight:500;line-height:28px;margin:var(--space-block) 0 var(--space-bound);color:var(--ink)}
+  .nr-root h3:first-of-type{margin-top:var(--space-group)}
+  .nr-root h3 .snb-badge{margin-left:var(--space-bound)}
+  .nr-root a:not([class]){text-decoration:underline;text-underline-offset:2px}   /* underline ALL unclassed links (broader than shared p a) */
+  .nr-root b{font-weight:500;color:var(--ink)}
+  .nr-root .nr-author{display:flex;align-items:center;gap:var(--space-snug);margin-top:var(--space-group)}
+  .nr-root .nr-author img{flex:none;width:56px;height:56px;border-radius:50%;object-fit:cover;display:block}
+  .nr-root .nr-byline{color:var(--muted);font-size:15px;line-height:20px}
+  .nr-root .nr-byline b{font-weight:500;color:var(--ink-80)}
+  /* on-this-page jump nav: quiet vertical outline, no box (twin of the /polyvagal-current TOC) */
+  .nr-root .nr-toc{margin-top:var(--space-sub)}
+  .nr-root .nr-toc-label{font-size:18px;font-weight:500;color:var(--ink);display:block;max-width:420px;margin-bottom:var(--space-stack);padding-bottom:12px;border-bottom:1px solid var(--hairline)}
+  .nr-root .nr-toc ul{list-style:none;display:flex;flex-direction:column;max-width:420px;padding-left:8px}
+  .nr-root .nr-toc li{margin:0}
+  .nr-root .nr-toc a{display:inline-flex;align-items:center;gap:var(--space-bound);min-height:44px;padding:4px 0;font-size:16px;line-height:20px;color:var(--link);text-decoration:none}
+  .nr-root .nr-toc a:hover{text-decoration:none}   /* 07: TOC never underlines */
+  .nr-root .nr-toc a::before{content:"\2193";color:var(--link);font-weight:400;flex:none}   /* jump-down signifier, link-blue (07), NOT sky */
+  .nr-root .nr-stagelede{font-size:18px;line-height:28px;color:var(--ink-80);max-width:var(--measure);margin-bottom:var(--space-bound)}
+  /* the four observable columns: a label-and-value ROW LIST, not prose with an inline kicker.
+     Mirrors the .ss-cols/.ss-crow standard shipped on /the-three-stuck-states (Justin 2026-07-16:
+     "that is the standard for those") -- the four domains get their own column, the copy sits to
+     the right. Same v3 fix as 3SS: the old .nr-coln was uppercase + tracked + SKY == the
+     section-eyebrow recipe, so "SENSATIONS" read as a section kicker mid-prose and sky stopped
+     meaning "eyebrow." Sky is reserved for eyebrows; these labels are muted, in their own column.
+     06: label to value = a row; hairlines earned (07: row lists); list ends in blank space. */
+  .nr-root .nr-cols{margin:var(--space-block) 0 var(--space-stack);max-width:var(--measure);border-top:1px solid var(--separator)}
+  .nr-root .nr-crow{display:grid;grid-template-columns:minmax(104px,13ch) minmax(0,1fr);gap:var(--space-bound) var(--space-group);align-items:baseline;padding:var(--space-stack) 0;border-bottom:1px solid var(--separator)}
+  .nr-root .nr-crow:last-child{border-bottom:0}
+  .nr-root .nr-crow dt{font-size:11px;font-weight:500;line-height:16px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .nr-root .nr-crow dd{font-size:17px;line-height:28px;color:var(--ink-80);margin:0}
+  @media (max-width:600px){
+    .nr-root .nr-crow{grid-template-columns:1fr;gap:var(--space-bound)}
+  }
+  /* bulleted list */
+  .nr-root .nr-traits{list-style:none;margin:var(--space-bound) 0 var(--space-stack);max-width:var(--measure)}
+  .nr-root .nr-traits li{position:relative;padding:var(--sp-1) 0 var(--sp-1) var(--sp-5);color:var(--ink-80);font-size:17px;line-height:24px}
+  .nr-root .nr-traits li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--sky)}   /* accent GRAPHIC -> base --sky */
+  /* app CTA: plain heading + lede + canonical ink pill. No box (07). App CTA is ALWAYS ink, never sky. */
+  .nr-root .nr-cta h3{font-size:24px;font-weight:500;line-height:32px;margin:0 0 var(--space-bound);color:var(--ink)}
+  .nr-root .nr-cta p{font-size:18px;line-height:28px;color:var(--ink-80);max-width:var(--measure);margin-bottom:0}
+  .nr-root .nr-cta .nr-fine{font-size:14px;line-height:20px;color:var(--muted);margin-top:var(--space-stack)}
+  .nr-root .nr-btn{display:inline-flex;align-items:center;gap:var(--space-bound);min-height:50px;padding:0 26px;margin-top:var(--space-group);border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--bone);font:500 15.5px/1 Inter,system-ui,sans-serif;text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent;transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
+  .nr-root .nr-btn:hover{background:transparent;color:var(--ink);text-decoration:none}
+  .nr-root .nr-btn::after{content:"\2192";transition:transform var(--dur) var(--ease)}   /* button arrow matches text, NOT sky */
+  .nr-root .nr-btn:hover::after{transform:translateX(3px)}
+  @media (prefers-reduced-motion:reduce){.nr-root .nr-btn,.nr-root .nr-btn::after{transition:none}}
+  /* faq */
+  .nr-root .nr-faq{margin-top:var(--space-bound);border-top:1px solid var(--separator)}
+  .nr-root .nr-faq .nr-q{border-bottom:1px solid var(--separator)}
+  .nr-root .nr-faq .nr-q summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--sp-5);align-items:baseline;padding:var(--sp-5) 0;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+  .nr-root .nr-faq .nr-q summary::-webkit-details-marker{display:none}
+  .nr-root .nr-faq .nr-q summary::after{content:"+";font-size:22px;font-weight:400;color:var(--ink);line-height:1;transition:transform var(--dur) var(--ease)}
+  .nr-root .nr-faq .nr-q[open] summary::after{transform:rotate(45deg)}
+  .nr-root .nr-faq h3{font-size:19px;line-height:24px;margin:0}
+  .nr-root .nr-faq .nr-a{padding:0 0 var(--sp-5);overflow:hidden}
+  .nr-root .nr-faq .nr-a p{color:var(--ink-80);margin:0}
+  @media (prefers-reduced-motion:reduce){
+    .nr-root .nr-faq .nr-q summary::after{transition:none}
+    .nr-root .nr-faq .nr-q[open] summary::after{transform:none;content:"\2212"}
+  }
+  /* author bio */
+  .nr-root .nr-bio{display:flex;gap:var(--space-stack);align-items:flex-start;margin-top:var(--space-bound)}
+  .nr-root .nr-bio img{flex:none;width:64px;height:64px;border-radius:50%;object-fit:cover;display:block}
+  .nr-root .nr-bio p{font-size:16px;line-height:24px;color:var(--ink-80);margin-bottom:0}
+  /* widget fit: left-align the interactive figure with the headings/body, Inter.
+     Capped at the reading measure so it doesn't balloon in the 1080 frame (matches 3SS). */
+  .nr-root .pv-flow{width:100%;max-width:var(--measure-narrow);margin:var(--space-block) 0 var(--space-bound);align-items:flex-start;font-family:Inter,system-ui,-apple-system,sans-serif}
+  .nr-root .pv-flow .controls,.nr-root .pv-flow .word-bank{width:100%;max-width:100%}
+  .nr-root .pv-flow .credit{text-align:left}
+</style>
+<!-- ============================================================
+  SNB STATE ICONS - reusable component (paste once per page).
+  Stuck Not Broken logo (heart = safety, bolt = flight/fight,
+  X = shutdown), color-coded to the Polyvagal Current palette.
+  Used here on the three regulated-state headings:
+  ventral = is-safety, play = is-play, stillness = is-stillness.
+============================================================ -->
+<style>
+  .snb-badge{display:inline-block;height:var(--snb-size,28px);line-height:0;vertical-align:middle}
+  .snb-badge svg{height:100%;width:auto;display:block}
+  .snb-badge{--c-heart:#D8D2C2;--c-bolt:#D8D2C2;--c-x:#D8D2C2}
+  .snb-i-heart{fill:var(--c-heart)}
+  .snb-i-bolt{fill:var(--c-bolt)}
+  .snb-i-x{fill:var(--c-x)}
+  .snb-badge.is-safety{--c-heart:#F4D58D}
+  .snb-badge.is-fight{--c-bolt:#E89B9B}
+  .snb-badge.is-shutdown{--c-x:#A3C0DD}
+  .snb-badge.is-play{--c-heart:#E8A871;--c-bolt:#E8A871}
+  .snb-badge.is-stillness{--c-heart:#9FC498;--c-x:#9FC498}
+  .snb-badge.is-freeze{--c-bolt:#B89AC4;--c-x:#B89AC4}
+</style>
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <g id="snb-logo">
+      <path class="snb-i-heart" d="M 228.6626430999995,414.99967965948633 C 193.0931878499996,414.99967965948633 159.69623824999962,401.15528090948635 134.56332974999987,376.0223724094866 L 42.977307250000194,284.43634990948647 C 17.844398749999527,259.30344140948625 4.0,225.86389365948654 4.0,190.3370365594864 C 4.0,154.76758130948647 17.844398750000437,121.3706317094865 42.977307250000194,96.23772320948629 C 68.11021574999995,71.10481470948653 101.54976350000015,57.26041595948655 137.07662059999984,57.260415959486096 C 171.45332764999966,57.260415959486096 203.82792165000046,70.21025355948623 228.6626430999995,93.76703050948609 C 280.7175823999996,44.35317650948619 363.2727970999995,45.20513950948626 414.34797894999974,96.23772320948629 C 466.23252564999984,148.1222699094864 466.23252564999984,232.5518032094864 414.34797894999974,284.47894805948624 L 322.76195644999916,376.06497055948637 C 297.6290479499994,401.1978790594861 264.1895001999992,415.0422778094861 228.6626430999995,415.0422778094861 L 228.6626430999995,414.99967965948633 M 137.11921875000007,109.86913120948648 C 115.60715299999993,109.86913120948648 95.41562990000057,118.21836860948625 80.20809035000002,133.42590815948634 C 48.813253799999075,164.82074470948638 48.813253799999075,215.8533284094864 80.20809035000002,247.24816495948645 L 171.7941128499997,338.83418745948654 C 187.00165239999933,354.0417270094862 207.1931754999996,362.3909644094864 228.70524124999974,362.3909644094864 C 250.2173069999999,362.3909644094864 270.40883009999925,354.0417270094862 285.6163696499989,338.83418745948654 L 377.20239214999947,247.24816495948645 C 408.5546305500002,215.89592655948618 408.5546305500002,164.82074470948638 377.20239214999947,133.42590815948634 C 345.80755560000034,102.0310716094863 294.7749719000003,102.0310716094863 263.3801353500003,133.42590815948634 L 228.70524124999974,168.10080225948641 L 194.03034714999922,133.42590815948634 C 178.82280759999958,118.21836860948625 158.6312844999993,109.86913120948648 137.11921875000007,109.86913120948648"/>
+      <path class="snb-i-bolt" d="M 673.9837031999996,442.30509380948604 C 665.0806898499995,442.30509380948604 656.092480199999,440.5585696594861 647.4876538999997,437.02292320948607 C 621.5879787000003,426.2881894094861 604.8469057499997,401.24047720948636 604.8469057499997,373.2108945094859 L 604.8469057499997,282.43423685948653 L 544.8687105499994,282.43423685948653 C 516.8391278499994,282.43423685948653 491.7914156499992,265.6931639094863 481.05668185000013,239.79348870948652 C 470.3219480500002,213.89381350948625 476.2004927499993,184.3306974094866 496.0512306499995,164.4799595094859 L 636.2417422999997,24.28944785948616 C 656.092480199999,4.438709959486374 685.6129981499989,-1.439834740514101 711.5552714999994,9.294899059486312 C 737.4549466999997,20.02963285948627 754.1960196499995,45.07734505948602 754.1960196499995,73.10692775948601 L 754.1960196499995,163.8835854094863 L 814.1742148499998,163.8835854094863 C 842.2037975499998,163.8835854094863 867.25150975,180.62465835948652 877.9862435499999,206.52433355948634 C 888.7209773499999,232.4240087594866 882.842432649999,261.98712485948624 862.9916947499996,281.8378627594865 L 722.8011830999994,422.0283744094862 C 709.5531584499995,435.27639905948615 691.9601224999997,442.30509380948604 674.0263013499998,442.30509380948604 L 673.9837031999996,442.30509380948604 M 684.6758388499993,56.57884555948604 C 681.2679868499999,56.57884555948604 677.1785644499996,57.68639745948613 673.3873291,61.47763280948621 L 533.1968174499998,201.6681444594864 C 526.168122699999,208.69683920948628 528.3832264999992,216.53489880948646 529.6185728500004,219.60196560948626 C 530.8965173500001,222.6690324094865 534.9007434500008,229.7829234594864 544.8261124,229.7829234594864 L 657.4556210000001,229.7829234594864 L 657.4556210000001,373.16829635948613 C 657.4556210000001,383.09366530948625 664.5695120499995,387.0978914094861 667.6365788499998,388.3758359094862 C 670.70364565,389.6537804094859 678.5417052499997,391.8262860594858 685.5703999999996,384.7975913094864 L 825.7609116499998,244.60707965948623 C 832.7896063999988,237.57838490948635 830.5745025999995,229.74032530948617 829.3391562500001,226.67325850948637 C 828.0612117500004,223.60619170948613 824.0569856499997,216.49230065948623 814.1316166999995,216.49230065948623 L 701.5021080999995,216.49230065948623 L 701.5021080999995,73.10692775948601 C 701.5021080999995,63.18155880948589 694.3882170499992,59.17733270948602 691.3211502499989,57.899388209486375 C 689.9154112999995,57.30301410948633 687.5299148999993,56.536247409486265 684.6758388499993,56.536247409486265 L 684.6758388499993,56.57884555948604"/>
+      <path class="snb-i-x" d="M 988.3580501999995,417.42777420948585 C 963.5233287499996,417.42777420948585 940.1795425499995,407.75799415948575 922.6291047499999,390.20755635948615 C 905.0786669499994,372.6571185594861 895.4088868999997,349.313332359486 895.4088868999997,324.4786109094865 C 895.4088868999997,299.64388945948656 905.0786669499994,276.3001032594865 922.6291047499999,258.749665459486 L 958.2837562999994,223.09501390948608 L 922.6291047499999,187.44036235948616 C 905.0786669499994,169.8899245594861 895.4088868999997,146.5461383594865 895.4088868999997,121.71141690948608 C 895.4088868999997,96.87669545948611 905.0786669499994,73.53290925948605 922.6291047499999,55.98247145948645 C 940.1795425499995,38.43203365948639 963.5233287499996,28.762253609486294 988.3580501999995,28.762253609486294 C 1013.1927716500004,28.762253609486294 1036.5365578500005,38.43203365948639 1054.0869956499992,55.98247145948645 L 1089.7416472000004,91.63712300948637 L 1125.39629875,55.98247145948645 C 1161.6473244,19.731445809486473 1220.6031639999992,19.731445809486473 1256.811591499999,55.98247145948645 C 1293.062617149999,92.23349710948642 1293.062617149999,151.18933670948664 1256.811591499999,187.39776420948593 L 1221.1569399499995,223.0524157594863 L 1256.811591499999,258.7070673094862 C 1293.062617149999,294.9580929594862 1293.062617149999,353.9139325594864 1256.811591499999,390.12236005948614 C 1220.560565849999,426.3733857094861 1161.6047262499997,426.3733857094861 1125.39629875,390.12236005948614 L 1089.7416472000004,354.4677085094862 L 1054.0869956499992,390.12236005948614 C 1036.5365578499996,407.6727978594862 1013.1927716499995,417.3425779094863 988.3580501999995,417.3425779094863 L 988.3580501999995,417.4277742094863 M 988.3580501999995,81.49876330948646 C 977.5807182499993,81.49876330948646 967.4849567000001,85.67338200948635 959.8598878499997,93.29845085948628 C 952.2348189999993,100.92351970948621 948.0602002999985,111.01928125948635 948.0602002999995,121.79661320948608 C 948.0602002999995,132.57394515948582 952.2348189999993,142.66970670948595 959.8598878499997,150.29477555948634 L 1032.7027243499997,223.13761205948586 L 959.8598878499997,295.98044855948626 C 952.2348189999993,303.60551740948665 948.0602002999985,313.7012789594868 948.0602002999995,324.4786109094865 C 948.0602002999995,335.25594285948625 952.2348189999993,345.3517044094864 959.8598878499997,352.97677325948587 C 967.4849566999992,360.60184210948626 977.5807182499993,364.7764608094857 988.3580501999995,364.77646080948614 C 999.1353821499997,364.77646080948614 1009.2311436999998,360.6018421094867 1016.8562125499993,352.97677325948587 L 1089.6990490499993,280.13393675948635 L 1162.5418855500002,352.97677325948587 C 1178.2606029000008,368.695490609486 1203.8194929000001,368.695490609486 1219.5382102499989,352.97677325948587 C 1235.2569275999995,337.2580559094862 1235.2569275999995,311.69916590948594 1219.5382102499989,295.98044855948626 L 1146.6953737499998,223.13761205948586 L 1219.5382102499989,150.29477555948634 C 1235.2569275999995,134.5760582094862 1235.2569275999995,109.01716820948596 1219.5382102499989,93.29845085948628 C 1203.8194928999992,77.57973350948615 1178.2606028999999,77.57973350948615 1162.5418855500002,93.29845085948628 L 1089.6990490499993,166.14128735948626 L 1016.8562125499993,93.29845085948628 C 1009.2311436999998,85.67338200948635 999.1353821499988,81.49876330948646 988.3580501999995,81.49876330948646"/>
+    </g>
+  </defs>
+</svg>
+<div class="nr-root snb-live">
+<!-- HERO + INTERACTIVE FIGURE -->
+<section style="padding-top:64px;padding-bottom:44px">
+  <div class="nr-page snb-page">
+    <h1>How to read your own nervous system</h1>
+    <p class="snb-lede" style="margin-top:var(--space-group)">Your nervous system is always talking. Here's how to listen.</p>
+    <div class="nr-author">
+      <img src="https://assets-v2.circle.so/5pf91sby1jgi4n17bbm09vc23ses" alt="Justin Sunseri, LMFT" width="56" height="56" loading="lazy">
+      <p class="nr-byline"><b>Justin Sunseri</b> &#183; therapist, Polyvagal Institute Editorial Board member</p>
+    </div>
+    <style>
+  .pv-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: min(92vw, 1000px);
+    margin: 24px auto;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--ink-80);
+  }
+  .pv-flow svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .pv-flow .baseflow {
+    transition: filter 0.5s ease;
+  }
+  .pv-flow .baseflow path {
+    stroke-dasharray: 14 18;
+    transition: stroke-opacity 0.35s ease, stroke-width 0.35s ease, stroke 0.35s ease, filter 0.35s ease;
+  }
+  .pv-flow .baseflow .x-yr, .pv-flow .baseflow .x-rb {
+    stroke-width: 4;
+  }
+  .pv-flow .label {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    fill: var(--muted);
+  }
+  .pv-flow .controls {
+    width: min(80vw, 640px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pv-flow .controls .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pv-flow .watch {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 8px 4px;
+    margin-bottom: 4px;
+    border: 0;
+    background: transparent;
+    color: var(--link);
+    font: 400 14px/1 Inter, system-ui, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .pv-flow .watch:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .pv-flow .watch:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 4px; }
+  .pv-flow .watch-tri { font-size: 8px; line-height: 1; }
+  .pv-flow input[type="range"] {
+    width: 120px;
+    height: 24px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    transform: rotate(-90deg);
+  }
+  .pv-flow input[type="range"]::-webkit-slider-runnable-track {
+    height: 4px;
+    background: linear-gradient(
+      to right,
+      #A3C0DD 0%,
+      #B89AC4 20%,
+      #E89B9B 40%,
+      #E8A871 60%,
+      #F4D58D 80%,
+      #9FC498 100%
+    );
+    border-radius: 2px;
+  }
+  .pv-flow input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bone);
+    border: 2px solid var(--ink);
+    margin-top: -10px;
+  }
+  .pv-flow input[type="range"]::-moz-range-track {
+    height: 4px;
+    background: linear-gradient(
+      to right,
+      #A3C0DD 0%,
+      #B89AC4 20%,
+      #E89B9B 40%,
+      #E8A871 60%,
+      #F4D58D 80%,
+      #9FC498 100%
+    );
+    border-radius: 2px;
+  }
+  .pv-flow input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bone);
+    border: 2px solid var(--ink);
+  }
+  @media (pointer: coarse) {
+    .pv-flow input[type="range"] { height: 32px; }
+    .pv-flow input[type="range"]::-webkit-slider-thumb { width: 30px; height: 30px; margin-top: -13px; }
+    .pv-flow input[type="range"]::-moz-range-thumb { width: 30px; height: 30px; }
+  }
+  .pv-flow .ticks {
+    position: relative;
+    height: 28px;
+    margin-top: 4px;
+  }
+  .pv-flow .tick {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+  }
+  .pv-flow .tick::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 6px;
+    background: var(--hairline);
+    transition: background 0.2s ease;
+  }
+  .pv-flow .tick:hover {
+    color: var(--ink);
+  }
+  .pv-flow .tick:hover::before {
+    background: var(--ink);
+  }
+  /* Edge ticks: pin labels inside the track so they don't overflow on mobile. */
+  .pv-flow .tick[data-s="0"] {
+    transform: none;
+    align-items: flex-start;
+  }
+  .pv-flow .tick[data-s="100"] {
+    transform: translateX(-100%);
+    align-items: flex-end;
+  }
+  /* live state label: hidden while all six tick labels fit, revealed when they collapse to marks */
+  .pv-flow .live {
+    position: absolute;
+    top: 13px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    white-space: nowrap;
+    display: none;
+  }
+  .pv-flow .hint {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .pv-flow .word-bank {
+    width: min(92vw, 1000px);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px;
+    margin-top: 8px;
+  }
+  .pv-flow .word-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pv-flow .word-header {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 8px;
+  }
+  .pv-flow .word-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--ink-80);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 600px) {
+    .pv-flow .word-bank {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 24px;
+    }
+    .pv-flow .ticks { height: 26px; }
+    .pv-flow .tick { font-size: 0; line-height: 0; gap: 0; }
+    .pv-flow .tick::before { height: 8px; }
+    .pv-flow .live { display: block; }
+  }
+  .pv-flow .credit {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-top: 16px;
+    text-align: center;
+    align-self: stretch;
+  }
+  .pv-flow .credit a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--hairline);
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+  }
+  .pv-flow .credit a:hover {
+    color: var(--ink-80);
+    border-bottom-color: var(--muted);
+  }
+  /* the state name used to sit INSIDE the svg, centred, below the circles - which
+     pushed the per-branch sliders a whole text row away from the circles they
+     drive. Now an HTML heading above the figure, left-aligned with the rest of the
+     page, and the viewBox lost the row it occupied. */
+  /* The state name was a <text> inside the svg, centred below the branch labels -
+     a whole text row of dead space between the circles and the control that
+     drives them. It is now plain text ABOVE the figure, top-left.
+     Deliberately UNDERSTATED - ink, no chip, no state colour (Justin
+     2026-08-11: "the focus should remain on the current, not the state word").
+     Two earlier attempts are recorded in PAGES.md so nobody re-tries them:
+     coloured text fails because safety (43deg) and play (27deg) both go brown
+     once darkened enough to read on bone, and a filled chip - pastel+ink or
+     deep+bone - out-shouts the figure it labels. The circles and the sliders
+     still carry the state colour; the word does not need to. */
+  .pv-flow .pv-state { align-self: flex-start;
+    font-size: 28px; font-weight: 500; line-height: 1.25;
+    margin: 0 0 4px; color: var(--ink); }
+  /* .pvc-model still wraps the svg. Its width:100% was removed with the axis rail
+     rules by mistake, which collapsed the figure and made the columns' percentage
+     offsets resolve against zero - all three stacked at left:0 on the live page. */
+  .pv-flow .pvc-model { width: 100%; }
+  .pv-flow .pv-fig { width: 100%; height: auto; display: block; }
+  .pv-flow .pv-cols { position: relative; width: 100%; height: 172px; margin-top: 4px; }
+  .pv-flow .pv-col { position: absolute; top: 0; transform: translateX(-50%); width: 110px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .pv-flow .pv-end { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .pv-flow .pv-track { height: 104px; display: flex; align-items: center; justify-content: center; }
+  .pv-flow .pv-cols input[type="range"] { width: 104px; height: 24px; -webkit-appearance: none; appearance: none; background: transparent; cursor: pointer; margin: 0; transform: rotate(-90deg); }
+  .pv-flow .pv-cols input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; }
+  .pv-flow .pv-cols input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--bone); border: 2px solid var(--ink); margin-top: -9px; }
+  .pv-flow .pv-cols input[type="range"]::-moz-range-track { height: 4px; border-radius: 2px; }
+  .pv-flow .pv-cols input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--bone); border: 2px solid var(--ink); }
+  .pv-flow .pv-cols input[type="range"]:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  /* Each branch's track is its OWN colour, low -> high. NOT the axis rainbow:
+     that one runs through all six states because the axis IS the six states, and
+     it means nothing on a per-branch control. The generic rainbow rule above is
+     `.pv-flow input[type="range"]::...` (0,2,1) and out-specified the first
+     attempt at this (`.pv-flow .pv-u-yellow`, 0,2,0), so it needs the element
+     selector in it too.
+     Each track also follows its circle's LIVE colour (--u-*, set in update()), so a
+     yellow+red board that reads as play turns both those tracks orange, exactly as
+     it turns both circles orange. The literals are the fallback before first paint. */
+  .pv-flow input[type="range"].pv-u-yellow::-webkit-slider-runnable-track { background: linear-gradient(to right, var(--u-yellow-lo, rgba(244,213,141,.22)), var(--u-yellow, #F4D58D)); }
+  .pv-flow input[type="range"].pv-u-red::-webkit-slider-runnable-track    { background: linear-gradient(to right, var(--u-red-lo,    rgba(232,155,155,.22)), var(--u-red,    #E89B9B)); }
+  .pv-flow input[type="range"].pv-u-blue::-webkit-slider-runnable-track   { background: linear-gradient(to right, var(--u-blue-lo,   rgba(163,192,221,.22)), var(--u-blue,   #A3C0DD)); }
+  .pv-flow input[type="range"].pv-u-yellow::-moz-range-track { background: linear-gradient(to right, var(--u-yellow-lo, rgba(244,213,141,.22)), var(--u-yellow, #F4D58D)); }
+  .pv-flow input[type="range"].pv-u-red::-moz-range-track    { background: linear-gradient(to right, var(--u-red-lo,    rgba(232,155,155,.22)), var(--u-red,    #E89B9B)); }
+  .pv-flow input[type="range"].pv-u-blue::-moz-range-track   { background: linear-gradient(to right, var(--u-blue-lo,   rgba(163,192,221,.22)), var(--u-blue,   #A3C0DD)); }
+  .pv-flow .pv-val { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ink-80); }
+  @media (pointer: coarse) {
+    .pv-flow .pv-cols input[type="range"]::-webkit-slider-thumb { width: 28px; height: 28px; margin-top: -12px; }
+    .pv-flow .pv-cols input[type="range"]::-moz-range-thumb { width: 28px; height: 28px; }
+  }
+  @media (max-width: 560px) { .pv-flow .pv-col { width: 88px; } .pv-flow .pv-cols input[type="range"] { width: 88px; } .pv-flow .pv-cols { height: 160px; } }
+</style>
+<div class="pv-flow">
+  <p class="pv-state">Safety</p>
+  <div class="pvc-model">
+    <svg class="pv-fig" viewBox="60 55 780 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Polyvagal Current: ventral, sympathetic, and dorsal circuits whose dominance shifts as you add safety.">
+    <defs>
+      <linearGradient id="pv-grad-yr" gradientUnits="userSpaceOnUse" x1="150" y1="150" x2="450" y2="150">
+        <stop offset="0%"   stop-color="#F4D58D" stop-opacity="0"/>
+        <stop offset="10%"  stop-color="#F4D58D" stop-opacity="1"/>
+        <stop offset="90%"  stop-color="#E89B9B" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#E89B9B" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="pv-grad-rb" gradientUnits="userSpaceOnUse" x1="450" y1="150" x2="750" y2="150">
+        <stop offset="0%"   stop-color="#E89B9B" stop-opacity="0"/>
+        <stop offset="10%"  stop-color="#E89B9B" stop-opacity="1"/>
+        <stop offset="90%"  stop-color="#A3C0DD" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#A3C0DD" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g class="baseflow" fill="none" stroke-width="6" stroke-linecap="round">
+      <path class="x-yr" d="M 150,70  C 250,70  350,230 450,230" stroke="url(#pv-grad-yr)"/>
+      <path class="x-yr" d="M 450,70  C 350,70  250,230 150,230" stroke="url(#pv-grad-yr)"/>
+      <path class="x-rb" d="M 750,230 C 650,230 550,70  450,70"  stroke="url(#pv-grad-rb)"/>
+      <path class="x-rb" d="M 450,230 C 550,230 650,70  750,70"  stroke="url(#pv-grad-rb)"/>
+      <path class="pv-circle-yellow" d="M 150,70 A 80 80 0 0 1 150,230 A 80 80 0 0 1 150,70" stroke="#F4D58D"/>
+      <path class="pv-circle-red"    d="M 450,70 A 80 80 0 0 0 450,230 A 80 80 0 0 0 450,70" stroke="#E89B9B"/>
+      <path class="pv-circle-blue"   d="M 750,70 A 80 80 0 0 1 750,230 A 80 80 0 0 1 750,70" stroke="#A3C0DD"/>
+    </g>
+    <g class="label" text-anchor="middle">
+      <text x="150" y="285">Ventral</text>
+      <text x="450" y="285">Sympathetic</text>
+      <text x="750" y="285">Dorsal</text>
+    </g>
+  </svg>
+  </div>
+  <div class="pv-cols">
+    <div class="pv-col" style="left:11.54%">
+      <span class="pv-track"><input class="pv-u pv-u-yellow" type="range" min="0" max="100" value="80" step="any" aria-label="Ventral: the safety branch" aria-orientation="vertical"/></span>
+      <span class="pv-val" data-val="yellow">80%</span>
+    </div>
+    <div class="pv-col" style="left:50%">
+      <span class="pv-track"><input class="pv-u pv-u-red" type="range" min="0" max="100" value="30" step="any" aria-label="Sympathetic: the flight or fight branch" aria-orientation="vertical"/></span>
+      <span class="pv-val" data-val="red">30%</span>
+    </div>
+    <div class="pv-col" style="left:88.46%">
+      <span class="pv-track"><input class="pv-u pv-u-blue" type="range" min="0" max="100" value="15" step="any" aria-label="Dorsal: the shutdown branch" aria-orientation="vertical"/></span>
+      <span class="pv-val" data-val="blue">15%</span>
+    </div>
+  </div>
+  <div class="word-bank">
+    <div class="word-column">
+      <div class="word-header">Cognitions</div>
+      <ul class="word-list" data-track="cognitions"></ul>
+    </div>
+    <div class="word-column">
+      <div class="word-header">Emotions</div>
+      <ul class="word-list" data-track="emotions"></ul>
+    </div>
+    <div class="word-column">
+      <div class="word-header">Sensations</div>
+      <ul class="word-list" data-track="sensations"></ul>
+    </div>
+    <div class="word-column">
+      <div class="word-header">Impulses</div>
+      <ul class="word-list" data-track="impulses"></ul>
+    </div>
+  </div>
+  <div class="credit">
+    Polyvagal Current created by Justin Sunseri &#183; <a href="https://stucknotbroken.com" target="_blank" rel="noopener">stucknotbroken.com</a>
+  </div>
+</div>
+<script>
+  (function () {
+    function init() {
+      const stage = document.querySelector('.pv-flow');
+      if (!stage) return;
+      const S = { yellow: stage.querySelector('.pv-u-yellow'),
+                  red:    stage.querySelector('.pv-u-red'),
+                  blue:   stage.querySelector('.pv-u-blue') };
+      if (!S.yellow || !S.red || !S.blue) return;
+      const valEls = { yellow: stage.querySelector('[data-val="yellow"]'),
+                       red:    stage.querySelector('[data-val="red"]'),
+                       blue:   stage.querySelector('[data-val="blue"]') };
+    const baseflowEl = stage.querySelector('.baseflow');
+    const stateEl    = stage.querySelector('.pv-state');
+    const svgEl      = stage.querySelector('.pv-fig');
+    const STATE_WORD = { shutdown:'Shutdown', freeze:'Freeze', ff:'Fight / flight', play:'Play / motivation', safety:'Safety', stillness:'Stillness / intimacy' };
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // the axis rail used to be sized to the figure height; the per-branch columns
+    // are a fixed size, so there is nothing left to measure
+    function layout(){}
+    if(window.ResizeObserver && svgEl){ new ResizeObserver(layout).observe(svgEl); }
+    window.addEventListener('resize', layout);
+    window.addEventListener('load', layout);
+    var _lc=0,_lt=setInterval(function(){ layout(); if(++_lc>=40) clearInterval(_lt); },100);
+    const xYR        = stage.querySelectorAll('.x-yr');
+    const xRB        = stage.querySelectorAll('.x-rb');
+    // Each gradient has 4 stops (transparent -> opaque -> opaque -> transparent)
+    // so the X arcs fade at the ends where they meet the circles.
+    const gradYrStops = stage.querySelectorAll('#pv-grad-yr stop');
+    const gradRbStops = stage.querySelectorAll('#pv-grad-rb stop');
+    function setGradStops(stops, leftColor, rightColor) {
+      stops[0].setAttribute('stop-color', leftColor);
+      stops[1].setAttribute('stop-color', leftColor);
+      stops[2].setAttribute('stop-color', rightColor);
+      stops[3].setAttribute('stop-color', rightColor);
+    }
+    const BASE = { yellow: '#F4D58D', red: '#E89B9B', blue: '#A3C0DD' };
+    const MIX  = { play: '#E8A871', stillness: '#9FC498', freeze: '#B89AC4' };
+    const circles = {
+      yellow: { el: stage.querySelector('.pv-circle-yellow'), color: BASE.yellow, glow: 42, peakWidth: 9.5 },
+      red:    { el: stage.querySelector('.pv-circle-red'),    color: BASE.red,    glow: 16, peakWidth: 8.5 },
+      blue:   { el: stage.querySelector('.pv-circle-blue'),   color: BASE.blue,   glow: 26, peakWidth: 9.5 },
+    };
+    function intensity(s, anchor) { return Math.max(0, 1 - Math.abs(s - anchor) / 0.2); }
+    function hexToRgb(hex) {
+      const n = parseInt(hex.slice(1), 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    }
+    function rgbToHex([r, g, b]) {
+      return '#' + [r, g, b].map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
+    }
+    function lerpColor(c1, c2, t) {
+      if (t <= 0) return c1;
+      if (t >= 1) return c2;
+      const a = hexToRgb(c1), b = hexToRgb(c2);
+      return rgbToHex([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]);
+    }
+    const BASE_DURATION = 1600;
+    const KEYFRAMES = [{ strokeDashoffset: 0 }, { strokeDashoffset: -32 }];
+    const ANIM_OPTS = { duration: BASE_DURATION, iterations: Infinity, easing: 'linear' };
+    const CIRCUIT_DUR = { yellow: 1600, red: 550, blue: 3600 };
+    const X_YR_DUR = (CIRCUIT_DUR.yellow + CIRCUIT_DUR.red)  / 2;
+    const X_RB_DUR = (CIRCUIT_DUR.red    + CIRCUIT_DUR.blue) / 2;
+    const animations = {
+      yellow: circles.yellow.el.animate(KEYFRAMES, ANIM_OPTS),
+      red:    circles.red.el.animate(KEYFRAMES, ANIM_OPTS),
+      blue:   circles.blue.el.animate(KEYFRAMES, ANIM_OPTS),
+      xYR:    Array.from(xYR).map(p => p.animate(KEYFRAMES, ANIM_OPTS)),
+      xRB:    Array.from(xRB).map(p => p.animate(KEYFRAMES, ANIM_OPTS)),
+    };
+    animations.yellow.updatePlaybackRate(BASE_DURATION / CIRCUIT_DUR.yellow);
+    animations.red.updatePlaybackRate(BASE_DURATION / CIRCUIT_DUR.red);
+    animations.blue.updatePlaybackRate(BASE_DURATION / CIRCUIT_DUR.blue);
+    animations.xYR.forEach(a => a.updatePlaybackRate(BASE_DURATION / X_YR_DUR));
+    animations.xRB.forEach(a => a.updatePlaybackRate(BASE_DURATION / X_RB_DUR));
+    const lerp = (a, b, t) => a + (b - a) * t;
+    function applyPresence({ el, color, glow, peakWidth }, p) {
+      el.style.strokeOpacity = lerp(0.35, 1.0, p);
+      el.style.strokeWidth = lerp(6, peakWidth, p);
+    }
+    const NAMED_PAIR = {
+      play:      ['yellow','red',  MIX.play],
+      stillness: ['yellow','blue', MIX.stillness],
+      freeze:    ['red','blue',    MIX.freeze],
+    };
+    // the state key and the colour come from ONE decision. Painting from raw mix
+    // maths let a third branch wash both mixes back to the base colours, so the
+    // figure could name a blend it was not showing.
+    function stateKeyFrom(py, pr, pb, m) {
+      const blends = [['play', m.play], ['stillness', m.still], ['freeze', m.freeze]]
+        .sort((a, b) => b[1] - a[1]);
+      if (blends[0][1] >= 0.5) return blends[0][0];
+      return [['safety', py], ['ff', pr], ['shutdown', pb]]
+        .sort((a, b) => b[1] - a[1])[0][0];
+    }
+    let CUR_KEY = 'safety';
+    function update() {
+      const py = Math.max(0, Math.min(1, S.yellow.value / 100));
+      const pr = Math.max(0, Math.min(1, S.red.value    / 100));
+      const pb = Math.max(0, Math.min(1, S.blue.value   / 100));
+      ['yellow','red','blue'].forEach(k => {
+        if (valEls[k]) valEls[k].textContent = Math.round(+S[k].value) + '%';
+      });
+      const MIX_AMP = 1.6;
+      const m = { play:   Math.min(1, Math.min(py, pr) * MIX_AMP),
+                  still:  Math.min(1, Math.min(py, pb) * MIX_AMP),
+                  freeze: Math.min(1, Math.min(pr, pb) * MIX_AMP) };
+      CUR_KEY = stateKeyFrom(py, pr, pb, m);
+      const pair = NAMED_PAIR[CUR_KEY] || null;
+      const lvl = { yellow: py, red: pr, blue: pb };
+      const paint = { yellow: BASE.yellow, red: BASE.red, blue: BASE.blue };
+      if (pair) {
+        const amt = Math.max(0, Math.min(1, Math.min(lvl[pair[0]], lvl[pair[1]]) * 1.35));
+        paint[pair[0]] = lerpColor(BASE[pair[0]], pair[2], amt);
+        paint[pair[1]] = lerpColor(BASE[pair[1]], pair[2], amt);
+      }
+      const yellowC = paint.yellow, redC = paint.red, blueC = paint.blue;
+      circles.yellow.color = yellowC;
+      circles.red.color    = redC;
+      circles.blue.color   = blueC;
+      circles.yellow.el.style.stroke = yellowC;
+      circles.red.el.style.stroke    = redC;
+      circles.blue.el.style.stroke   = blueC;
+      setGradStops(gradYrStops, yellowC, redC);
+      setGradStops(gradRbStops, redC, blueC);
+      // each slider's track follows the circle it drives, blend and all - so when
+      // yellow+red reads as play, the yellow and red tracks go orange with them.
+      [['yellow', yellowC], ['red', redC], ['blue', blueC]].forEach(([k, c]) => {
+        const [r, g, b] = hexToRgb(c);
+        stage.style.setProperty('--u-' + k, c);
+        stage.style.setProperty('--u-' + k + '-lo', 'rgba(' + r + ',' + g + ',' + b + ',.22)');
+      });
+      applyPresence(circles.yellow, py);
+      applyPresence(circles.red, pr);
+      applyPresence(circles.blue, pb);
+      const yrOp = lerp(0.35, 1.0, Math.max(py, pr));
+      const rbOp = lerp(0.35, 1.0, Math.max(pr, pb));
+      xYR.forEach(el => el.style.strokeOpacity = yrOp);
+      xRB.forEach(el => el.style.strokeOpacity = rbOp);
+      // Dorsal pull: as shutdown intensifies, the ventral and sympathetic
+      // circuits slow - a subtle drag on the system as it approaches shutdown.
+      // stuckness: DEFENSIVE dorsal, not dorsal as such. Dorsal WITH ventral is
+      // stillness and must not sludge. Same expression as the other two figures.
+      const defensiveDorsal = pb * (1 - py);
+      const shutdownDrag = 1 + defensiveDorsal * 0.5;
+      animations.yellow.updatePlaybackRate(BASE_DURATION / (CIRCUIT_DUR.yellow * shutdownDrag));
+      animations.red.updatePlaybackRate(BASE_DURATION / (CIRCUIT_DUR.red * shutdownDrag));
+      baseflowEl.style.filter = `saturate(${lerp(1, 0.85, defensiveDorsal)})`;
+    }
+    // --- Word bank (SSIEC) -----------------------------------------
+    // Snap-to-nearest-state word lists shown below the slider.
+    // Thresholds are midpoints between adjacent anchors:
+    //   [0.00, 0.10) shutdown   [0.10, 0.30) freeze    [0.30, 0.50) ff
+    //   [0.50, 0.70) play       [0.70, 0.90) safety    [0.90, 1.00] stillness
+    const WORDS = {
+      shutdown: {
+        cognitions: ['hopeless', 'discouraged', 'pessimistic', 'slow'],
+        emotions:   ['numb', 'helpless', 'alone', 'sad'],
+        sensations: ['cold', 'heavy', 'empty', 'numb'],
+        impulses:   ['death feign', 'immobilize', 'isolate', 'disconnect'],
+      },
+      freeze: {
+        cognitions: ['scattered', 'all-or-nothing', 'ruminating', 'obsessive'],
+        emotions:   ['panic', 'fear', 'rage', 'overwhelm'],
+        sensations: ['tense', 'tight', 'clenched', 'pressure'],
+        impulses:   ['be invisible', 'endure', 'release', 'brace'],
+      },
+      ff: {
+        cognitions: ['blame', 'judge', 'polarize', 'catastrophize'],
+        emotions:   ['anxiety', 'anger', 'nervous', 'irritable'],
+        sensations: ['hot', 'sharp', 'jittery', 'jagged'],
+        impulses:   ['run', 'escape', 'fight', 'aggress'],
+      },
+      play: {
+        cognitions: ['imaginative', 'creative', 'collaborative', 'curious'],
+        emotions:   ['fun', 'excitement', 'joy', 'belonging'],
+        sensations: ['rhythmic', 'open', 'connected', 'energized'],
+        impulses:   ['imagine', 'create', 'produce', 'share'],
+      },
+      safety: {
+        cognitions: ['optimistic', 'understanding', 'logical', 'balanced'],
+        emotions:   ['caring', 'playful', 'calm', 'still'],
+        sensations: ['warm', 'tender', 'whole', 'connected'],
+        impulses:   ['co-regulate', 'connect', 'socialize', 'mindfulness'],
+      },
+      stillness: {
+        cognitions: ['reflective', 'scope & scale', 'wondering', 'noticing'],
+        emotions:   ['calm', 'peaceful', 'relaxed', 'awe'],
+        sensations: ['settled', 'quiet', 'whole', 'soft'],
+        impulses:   ['reflect', 'breathe', 'take in', 'mindfulness'],
+      },
+    };
+    const wordLists = {
+      cognitions: stage.querySelector('.word-list[data-track="cognitions"]'),
+      emotions:   stage.querySelector('.word-list[data-track="emotions"]'),
+      sensations: stage.querySelector('.word-list[data-track="sensations"]'),
+      impulses:   stage.querySelector('.word-list[data-track="impulses"]'),
+    };
+    let lastWordKey = null;
+    function refreshWords() {
+      const key = CUR_KEY;
+      if (key === lastWordKey) return;
+      lastWordKey = key;
+      if (stateEl) { stateEl.textContent = STATE_WORD[key]; stateEl.dataset.state = key; }
+      const data = WORDS[key];
+      for (const track of Object.keys(wordLists)) {
+        wordLists[track].innerHTML =
+          data[track].map(w => `<li>${w}</li>`).join('');
+      }
+    }
+    // ---------------------------------------------------------------
+    ['yellow','red','blue'].forEach(k => S[k].addEventListener('input', () => { update(); refreshWords(); }));
+    layout(); update();
+    refreshWords();
+    requestAnimationFrame(layout); setTimeout(layout, 120); setTimeout(layout, 400);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+    <nav class="nr-toc" aria-label="On this page">
+      <span class="nr-toc-label">On this page</span>
+      <ul>
+        <li><a href="#nr-reading">Reading your nervous system</a></li>
+        <li><a href="#nr-which">What state am I in?</a></li>
+        <li><a href="#nr-columns">The four columns</a></li>
+        <li><a href="#nr-start">Start where you can</a></li>
+        <li><a href="#nr-checkins">Daily check-ins</a></li>
+        <li><a href="#nr-regulated">Recognizing the regulated states</a></li>
+        <li><a href="#nr-tracking">Tracking your patterns</a></li>
+        <li><a href="#nr-cant">When you can't read</a></li>
+        <li><a href="#nr-clinicians">For clinicians</a></li>
+        <li><a href="#nr-next">What's next</a></li>
+        <li><a href="#nr-faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+<!-- READING YOUR NERVOUS SYSTEM -->
+<section id="nr-reading">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">Start here</div>
+    <h2>Reading your nervous system</h2>
+    <p class="nr-stagelede">Your nervous system is always running your life and typically you're completely unaware of it.</p>
+    <p>You wake up feeling drained or maybe panicky. You're snapping at people for no reason. You're working hard and accomplishing nothing. You're tired but can't sleep. You're numb and you don't know why.</p>
+    <p>These aren't personality traits. They aren't moods. They're conscious experiences of nervous system states. The difference between being at the mercy of them and being able to work with them is whether you can read them. To understand them.</p>
+    <p>This is the page where you learn to read.</p>
+    <p>Not how you should read. Not what your states ought to be. Just how to recognize, in your own body, in real time, what's actually happening. You connect with what's actually happening so you can stop fighting yourself and start working with what's actually there.</p>
+    <p>This page is the second in a three-page series. The first, <a href="https://www.stucknotbroken.com/polyvagal-current">The Polyvagal Current</a>, introduces the model: three circles representing your primary autonomic states (ventral, sympathetic, dorsal) flowing in a continuous current, plus a Safety Influence slider that determines whether each state shows up regulated (Safety, Play, Stillness) or dysregulated (Shutdown, Freeze, Fight-or-Flight). If you haven't read that one, start there. This page assumes you have.</p>
+    <p>What you'll get here: a daily nervous system literacy practice. The four columns of the Current in the model above (Cognitions, Emotions, Sensations, Impulses) and how to use them as observation doors into your own state. How to recognize where you are on the slider in real time. How to notice when the current is shifting. The regulated states most people have never been taught to recognize. What to do when your usual reading columns are blocked. And the longer arc: how nervous system literacy deepens over months and years.</p>
+    <p>This isn't a hack. It's a practice. Slow at first, fluent over time. Nothing about it requires special training, expensive equipment, or anyone's permission. You're learning to pay attention to a system that's been talking to you your whole life. The only new piece is the vocabulary.</p>
+  </div>
+</section>
+<!-- WHAT STATE AM I IN -->
+<section id="nr-which">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">Quick orientation</div>
+    <h2>What state is my nervous system in?</h2>
+    <p class="nr-stagelede">The short answer: one of three.</p>
+    <p>You have three primary autonomic states: ventral (engaged, connected), sympathetic (mobilized), and dorsal (immobilized). One of them is dominant right now. Which one depends on what's happening in your body and how much safety is in your system. The Safety Influence slider on the Polyvagal Current determines whether the dominant state shows up in its regulated form (Safety, Play, Stillness) or its stuck form (Shutdown, Freeze, Fight-or-Flight).</p>
+    <p>To tell which state you're in, you read four observable signals: your thoughts, your emotions, your body's sensations, and your action impulses. Those are the four columns shown on this page's version of the Current.</p>
+    <p>Whichever one is loudest in this moment is your door in. A quick scan of all four takes about thirty seconds and gives you a working read of the dominant state.</p>
+    <p>The rest of this page is how to make that read fast, accurate, and habitual.</p>
+  </div>
+</section>
+<!-- THE FOUR COLUMNS -->
+<section id="nr-columns">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">The doorways</div>
+    <h2>The four columns as observational doorways</h2>
+    <p>The version of the Polyvagal Current shown on this page includes four columns underneath the model: Cognitions, Emotions, Sensations, Impulses. They're the literacy layer; what you actually use to read which circle is dominant and where the Safety Influence slider is sitting right now. Anything you experience that tells you what state you're in shows up in one of these four columns.</p>
+    <p>Think of them as four doors into the same room. If you can't get in through the cognitive door, maybe the sensation door is unlocked. If you can't name the emotion, maybe you can name the impulse. The same state can be read through any of the four and different people read themselves through different primary columns.</p>
+    <p>Typically, I teach <a href="https://www.stucknotbroken.com/services">clients</a> and <a href="https://www.stucknotbroken.com/unstuckingacademy">Unstucking Academy</a> students how to use their Emotions as the doorway to their inner world. <a href="https://www.stucknotbroken.com/books">Stuck Not Broken: Book 3</a> also details this process.</p>
+    <dl class="nr-cols">
+      <div class="nr-crow"><dt>Cognitions</dt><dd>The thoughts themselves. Not the content so much as the pattern and flavor. Are your thoughts racing or slow? Narrow or broad? Catastrophic or balanced? Fixated on one thing or able to hold several? If your thoughts just got more urgent and tunnel-visioned, that's sympathetic data, the slider sliding down. If they just got foggy and slow, that's dorsal data without much safety. If they got curious and balanced, that's ventral coming online.</dd></div>
+      <div class="nr-crow"><dt>Emotions</dt><dd>The conscious, named feeling experience. The things you'd report if someone asked. Anxious? Numb? Connected? Irritated? Calm? Playful? Each named emotion is the surface of a state. Anxiety, urgency, anger &#8594; sympathetic without enough safety. Sad, numb, hopelessness &#8594; dorsal without enough safety. Caring, playfulness, curiosity &#8594; safety is in the system and the branches are sorting into their regulated forms.</dd></div>
+      <div class="nr-crow"><dt>Sensations</dt><dd>The felt, somatic experience of emotions. Warmth or cold. Tightness or openness. Speed (heart, breath) or slowness. Weight (heavy, leaden) or lightness. Buzzing, tingling, pressure, relaxation. Sensations are a doorway most have lost access to. The sensation door can be reopened with practice.</dd></div>
+      <div class="nr-crow"><dt>Impulses</dt><dd>What your body wants to do. The action urges. Want to leave? Want to hide? Want to connect? Want to fix? Want to fight? Want to disappear? Impulses are typically the most difficult to access and only surface when deeply connected to the body and listening with patience and compassion. Day-to-day reflexive impulses are useful information as well, like the urge to leave a difficult conversation.</dd></div>
+    </dl>
+    <p><b>How to use them:</b> you don't need all four. You need one you can get in through. Start with whichever feels most accessible.</p>
+    <p>A practical pattern: scan briefly across the four columns. Which one is loudest? Saying, "Hey, check me out"? That's your door in. Use it to read which circle of the Current is dominant right now, and roughly where the safety slider sits. Then check the other three. The more columns align, the more confident your read.</p>
+    <p>This isn't an interrogation. Not a test. It's a curious focus of attention. Spend a few seconds. The columns aren't a worksheet. They're a habit of noticing.</p>
+  </div>
+</section>
+<!-- START WHERE YOU CAN -->
+<section id="nr-start">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">Find your door</div>
+    <h2>Start where you can. Which column is easiest?</h2>
+    <p>Most people have one column they can read clearly (usually cognitions), two they can read partially (usually emotions and impulses), and one that's mostly closed off (usually sensations). That's normal. Different histories build different access.</p>
+    <p>A few common patterns:</p>
+    <p><b>If you're highly analytical,</b> cognitions are usually your easiest column. You can tell what your thoughts are doing before you can name your emotions. Start there. Read your thought patterns, like racing, narrow, fixated, foggy, or balanced. Then use that read to make educated guesses about the other columns until they become more obvious.</p>
+    <p><b>If you're emotionally fluent,</b> emotions are usually the easiest door. You can name what you're feeling before you can read your body's more subtle internal signals. Start there. Name the emotion, then trace it to a state, then check the other columns.</p>
+    <p><b>If you grew up in a body-aware family or have done somatic work,</b> sensations are usually your strongest door. You can feel your heart speeding up, subtle tingles of your state shifting, a clenched jaw, or expansion in your chest.</p>
+    <p><b>If you know your body chronically wants to do something,</b> start with impulses. "I always want to leave!" "I feel like collapsing all the time." Find the impulse, name the state, then check the other domains.</p>
+    <p>A few practical tips for opening closed experiential doors over time:</p>
+    <p><b>Borrow from one column to find another.</b> If you've named an emotion, ask: where in my body do I feel this? Even a vague answer ("my chest is tight, maybe?") is progress. Doors open by being used.</p>
+    <p><b>Lower the bar.</b> You don't need to know. It's okay to make your best guess. For now, practice. Over time, you'll get more precise and it'll feel more natural.</p>
+    <p><b>Track in writing, briefly.</b> Not deep insight journaling. One or two short notes a day. "Foggy this morning, didn't want to talk, head felt heavy." Over weeks, patterns emerge that you couldn't see in real time.</p>
+    <p><b>Use the visual.</b> Pull up <a href="https://www.stucknotbroken.com/polyvagal-current">The Polyvagal Current</a>, watch the three circles, look at where the safety slider sits. Compare to your own experience right now. Repetition over time strengthens the link between the model and your felt sense.</p>
+    <p>The point isn't perfect access.</p>
+    <p>The point is some access, getting deeper over time. Start with one column. The others come online as the literacy builds.</p>
+  </div>
+</section>
+<!-- DAILY CHECK-INS -->
+<section id="nr-checkins">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">The practice</div>
+    <h2>Daily check-ins: how to actually read your nervous system</h2>
+    <p>The practice itself is simple. The trick is making it sustainable, not looking for a hack or performative self-exploration.</p>
+    <p><b>Morning check-in (30 seconds).</b> Before you start a busy day, take half a minute. What state did I wake up in? Which column is the most obvious? You don't have to act on it. You're just noticing. If you wake up in dorsal, knowing that changes how you'd approach the morning. If you wake up sympathetic, knowing that changes how much you'll trust the urgent thoughts.</p>
+    <p><b>Mid-day check-in (30 seconds).</b> Sometime in the middle of the day, ideally before a transition (lunch, end of a meeting, between tasks), check again. Where am I now? Has the current shifted since this morning? Which direction is the safety slider moving? Attaching this to a mid-day ritual might be ideal.</p>
+    <p><b>Evening check-in (30 seconds).</b> End of the day. Where am I now? What state did I spend most of the day in? What shifted it? How can I tell using the Current's four columns?</p>
+    <p>That's a realistic practice. Ninety seconds across the day. The point isn't depth, the point is frequency. Brief, repeated attention beats occasional deep dives. Even one 30 second ritual with your coffee every morning is better than nothing and can have real benefits to emotional regulation.</p>
+    <p>A few principles to keep in mind:</p>
+    <p><b>Don't fix what you find.</b> When you check in, you might notice something uncomfortable. Don't immediately try to "regulate" it. First, just name it. Reading and regulating are two different practices. This page is the reading. Regulation comes later, and often the naming alone can subtly shift things.</p>
+    <p><b>Don't grade yourself.</b> There's no good or bad state to find. Shutdown or flight/fight aren't failures. For now, they're information. Something you can continue to build on.</p>
+    <p><b>Notice changes, not just states.</b> State changes are often more informative than absolute states. I just got narrower. I just got heavier. My breathing relaxed into my belly. Those shifts tell you what just happened and that can give you hints about you might be reacting to, whether an external cue or simply from noticing your internal world with curiosity. The Polyvagal Current is, by definition, always moving. You're reading the movement.</p>
+    <p><b>Use the language out loud.</b> "I'm in stuck fight-or-flight right now." "I'm sliding toward dorsal." Saying it to yourself or to a co-regulative someone tends to make things a bit more real versus keeping it quietly in your own mind. It helps shift things from permanent brokenness into temporary stuckness.</p>
+    <p><b>Pair it with something existing.</b> If you already drink coffee in the morning, your morning check-in goes with the coffee. If you already brush your teeth at night, your evening check-in goes with the toothbrush. Don't add a new ritual; piggyback on a current one.</p>
+    <p>Ninety seconds, three times a day, paired with existing habits. (Or less.) That's a practice you can realistically implement. No extra time. No extra demands. Just a touch more presence and curiosity.</p>
+  </div>
+</section>
+<!-- RECOGNIZING THE REGULATED STATES -->
+<section id="nr-regulated">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">The other half</div>
+    <h2>Recognizing the regulated states</h2>
+    <p>Most people have been taught what stress feels like. They've been taught what burnout feels like. They have a better vocabulary for dysregulation and an almost empty vocabulary for regulation. Nervous system literacy means closing that gap.</p>
+    <p>In the Polyvagal Current, every autonomic state has a regulated expression. This is the version that shows up when there's enough safety in the system. Here's what each looks like in detail. Learn to recognize these in yourself, and you'll know when you're regulated. When you recognize regulation, you can make a conscious choice to mindfully experience it, thereby deepening it.</p>
+    <h3>Ventral vagal safety<span class="snb-badge is-safety" role="img" aria-label="Ventral: the safety branch" style="--snb-size:24px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span></h3>
+    <p>The ventral vagal safety state is the one that most people think of when they want to have more happiness and calm in their life. With enough safety in the system, it repurposes the defensive states into something else, leading to these general experiential shifts:</p>
+    <ul class="nr-traits">
+      <li>Cognitions: more balanced, open, curious, spontaneous</li>
+      <li>Emotions: more connected, caring, empathetic, compassionate</li>
+      <li>Sensations: more warmth, spaciousness, ease</li>
+      <li>Impulses: more connection to self, others, and environment; co-regulation</li>
+    </ul>
+    <p>You won't and can't permanently live in safety. That's not the goal. Your system is supposed to flow amongst all of your Polyvagal states. But you can use the markers above to notice when you're in safety and then bring your mindful awareness to the felt experience of it.</p>
+    <p>Safety typically shows up as one of the mixed state, regulated forms below. It's either more mobile or immobile.</p>
+    <h3>Sympathetic + safety = play<span class="snb-badge is-play" role="img" aria-label="Play: sympathetic with safety" style="--snb-size:24px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span></h3>
+    <p>Sympathetic isn't only fight-or-flight. With enough safety in the system, the same activation shows up as play.</p>
+    <dl class="nr-cols">
+      <div class="nr-crow"><dt>Cognitions</dt><dd>Quick, curious, generative, spontaneous, imaginative, creating, humorous. Ideas flow easily and without judgment.</dd></div>
+      <div class="nr-crow"><dt>Emotions</dt><dd>Excited, joyful, fun, energized, engaged. The warm version of activation.</dd></div>
+      <div class="nr-crow"><dt>Sensations</dt><dd>Faster heart, mobilized energy, alert, flow, bouncy, rhythmic. But with warmth and openness, not tightness or pressure.</dd></div>
+      <div class="nr-crow"><dt>Impulses</dt><dd>To produce, create, move, smile, laugh, engage with others. The energy wants to go out into something fun and with safe others.</dd></div>
+    </dl>
+    <p>Play looks like laughing hard with a friend, losing yourself in a creative project, dancing, the energy of exercise that feels good rather than punishing. Flow states. Productive intensity. Even healthy conflict, the kind where two people work through something charged and come out closer.</p>
+    <p>Adults are starved for play, though they may not frame it that way. But mobilized connection with others? Yes.</p>
+    <p>Play involves another. But if we remove the other, one can still exist in a state of sympathetic + safety. But if alone, I'd call this motivation.</p>
+    <p>The same autonomic state that powers anxiety also powers joy. It just needs a sprinkling of safety in the mix.</p>
+    <h3>Dorsal + safety = stillness<span class="snb-badge is-stillness" role="img" aria-label="Stillness: dorsal with safety" style="--snb-size:24px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span></h3>
+    <p>Stillness is dorsal in its regulated form. Dorsal is the same autonomic branch that produces shutdown, just with enough safety in the system to show up warm instead of cold. Connected instead of disconnected. Full instead of empty.</p>
+    <dl class="nr-cols">
+      <div class="nr-crow"><dt>Cognitions</dt><dd>Connected to the present, aware of sensory input and internal experiences, contemplative, spacious, quiet. The mental chatter eases.</dd></div>
+      <div class="nr-crow"><dt>Emotions</dt><dd>Calm, relaxed, present, curious, content, appreciative.</dd></div>
+      <div class="nr-crow"><dt>Sensations</dt><dd>Warmth, internal ease and quiet, settled, soft.</dd></div>
+      <div class="nr-crow"><dt>Impulses</dt><dd>To rest, to be held, to drop deeper, to be immobile, use senses mindfully, connect with inner world.</dd></div>
+    </dl>
+    <p>Stillness looks like curling up with a book, blanket, and tea. The drift of falling asleep in a safe place. The quiet, spacious state you sometimes find in meditation. Sitting by water, watching a fire, lying in grass.</p>
+    <p>You're allowed to be in stillness. Stillness does not equal non-productivity. Instead, it's the necessary mindful collapse before and after work. Give yourself permission to rest in this regulated form of dorsal and to recognize the difference between stillness (warm, settled, present) and shutdown (cold, distant, absent).</p>
+    <p>Stillness is alone. But stillness with a co-regulative other is called intimacy.</p>
+  </div>
+</section>
+<!-- TRACKING PATTERNS -->
+<section id="nr-tracking">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">The long arc</div>
+    <h2>Tracking your nervous system patterns</h2>
+    <p>Daily check-ins build a short-term feedback loop. Over weeks and months, a longer arc emerges; patterns you can't see in any single check-in.</p>
+    <p>A few things worth tracking, even informally:</p>
+    <p><b>Time-of-day patterns.</b> Your state pattern may map to the clock. Mornings might tilt dorsal. Afternoons might tilt sympathetic. Evenings might shift again. Knowing your daily curve means you can stop interpreting normal fluctuation as proof something is wrong. And perhaps instead embrace your body's potential for these predictable times.</p>
+    <p><b>Situational triggers.</b> Certain situations reliably move you toward certain states. Particular meetings. Particular phone calls. Particular times of the year. Particular people. Tracking which situations push you which direction gives you the potential to intentionally prepare your system proactively.</p>
+    <p><b>Relational patterns.</b> Some people regulate you. Some people dysregulate you. Once you can see it, you can make different choices about exposure and recovery. You can set up proactive preparation and intentional recovery.</p>
+    <p><b>Recovery time.</b> When you do drop into a stuck state, how long does it take to come back? Months ago it might have been days. With practice, it may become hours. Tracking this gives you evidence that the practice is working.</p>
+    <p><b>The early signals you used to miss.</b> Most stuck states have a "ramp-up" phase that's easy to miss when you're not paying attention. Mild irritation that's about to become full sympathetic activation. Mild fog that's about to become full dorsal drop. Learning your own early signals means you can intervene with safety inputs while there's still ramp left to interrupt.</p>
+    <p>None of this requires a tracking app or a journal. It just requires the daily check-ins, plus a willingness to notice patterns when they appear. The patterns will appear on their own.</p>
+  </div>
+</section>
+<!-- WHEN YOU CAN'T READ -->
+<section id="nr-cant">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">When it's blocked</div>
+    <h2>When you can't read your nervous system</h2>
+    <p>There will be times when you check in and find nothing. You're numb. You're foggy. You're so activated that the columns are all maxed out and you can't pick one signal out from the noise. The doors are all closed.</p>
+    <p>This is useful information, too.</p>
+    <p>When you can't read yourself, you're likely in an overwhelmed state of freeze. At this point, everything is too much, so using the columns may not be accessible.</p>
+    <p>What to do in those moments:</p>
+    <p><b>Don't force the read.</b> Trying harder to understand or feel things you can't currently access can deepen the overwhelm and frustration. The attempt becomes another demand on a system that's already overloaded.</p>
+    <p><b>Reach for co-regulation.</b> A safe person or a pet. Borrowing someone else's nervous system is faster than trying to self-regulate when your own dashboard is offline. It might be enough to share a hug or just be in the same space with that safe other.</p>
+    <p><b>Use movement.</b> When the system is too dysregulated in freeze or flight/fight, intentional and mindful movement might be best. There is no prescriptive movement. Just move in a way that feels good enough. Maybe it's a walk. Maybe it's squeezing and releasing your fists. But be as mindful as possible. Actually pay attention to and feel the experience of movement.</p>
+    <p><b>Wait for the columns to come back.</b> They will. Stuck states release with time and safety. When the columns reopen, the read becomes possible again. You may benefit more from reflective nervous system reading after you have returned to your baseline.</p>
+    <p>The companion pillar, <a href="https://www.stucknotbroken.com/the-three-stuck-states">The three stuck states</a>, goes deep on what each stuck state looks like and what coming out of each one actually involves.</p>
+  </div>
+</section>
+<!-- FOR CLINICIANS -->
+<section id="nr-clinicians">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">For helpers</div>
+    <h2>For clinicians and helpers</h2>
+    <p>If you're a therapist, coach, somatic practitioner, or other helper, this page is built to be teachable.</p>
+    <p>A few things to note:</p>
+    <p><b>It's structured as a daily practice, not a single-session intervention.</b> Nervous system literacy compounds. Clients who do brief daily check-ins for a month build observational fluency that's hard to develop in 50-minute sessions alone. Small, sustainable homework.</p>
+    <p><b>The four-column structure is ideal for baseline reflection.</b> Sure, a client can try and use it during mild dysregulation. Maybe even moderate. But the most benefit comes from intentional reflection when at a baseline.</p>
+    <p><b>It pairs with the Current model.</b> For clients new to polyvagal concepts, route them through <a href="https://www.stucknotbroken.com/polyvagal-current">The Polyvagal Current</a> first. For clients in active stuckness, <a href="https://www.stucknotbroken.com/the-three-stuck-states">The three stuck states</a> is a more useful entry. But they need the basic Polyvagal Theory knowledge first.</p>
+    <p>The page is freely linkable. Use it however serves your clients. Attribution appreciated.</p>
+  </div>
+</section>
+<!-- APP CTA - the practice companion to this reading practice. Ink pill (app CTA is ALWAYS ink, never sky).
+     Copy pulled from the app page (SNB-App.html). Guardrail 04 SS8: practice-first, "no account, no card". -->
+<section class="snb-band" id="nr-app">
+  <div class="nr-page snb-page">
+    <div data-snb-include="app-cta" data-snb-src="how-to-read" data-snb-cta="how-to-read" data-snb-heading="Want this daily practice guided?" data-snb-lede="The Stuck Not Broken app turns a check-in into a practice. You tell it how you're doing, and it builds a custom meditation for the state you're actually in. Every check-in and every practice changes what it gives you next, so it adapts as you do. Free to use.">
+<div class="nr-cta">
+      <h3>Want this daily practice guided?</h3>
+      <p>The Stuck Not Broken app turns a check-in into a practice. You tell it how you're doing, and it builds a custom meditation for the state you're actually in. Every check-in and every practice changes what it gives you next, so it adapts as you do. Free to use.</p>
+      <a class="nr-btn" href="https://app.stucknotbroken.com/?start=practice&amp;src=how-to-read" data-cta="how-to-read">Do a practice now</a>
+      <p class="nr-fine">No account. No card.</p>
+    </div>
+</div>
+  </div>
+</section>
+<!-- WHAT'S NEXT -->
+<section id="nr-next">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">The series</div>
+    <h2>What's next</h2>
+    <p class="nr-stagelede">Reading your nervous system is the literacy. Working with what you read is the practice that follows.</p>
+    <p><a href="https://www.stucknotbroken.com/the-three-stuck-states">The three stuck states</a> is the next page in the series. It takes each autonomic state and shows what stuckness looks like in detail: shutdown, freeze, and flight/fight, and what coming out of each actually involves. Most relevant when reading yourself reveals a stuck state and you want to understand what's happening and what to do.</p>
+    <p>Beyond the Polyvagal Current series:</p>
+    <ul class="nr-traits">
+      <li>The model itself: <a href="https://www.stucknotbroken.com/polyvagal-current">The Polyvagal Current</a>.</li>
+      <li>Broader polyvagal foundation: <a href="https://www.stucknotbroken.com/polyvagal-theory-introduction">Polyvagal Theory Introduction</a>.</li>
+      <li>The podcast: <a href="https://stuck-not-broken.captivate.fm/" target="_blank" rel="noopener">Stuck Not Broken</a>, where I work through these concepts with real-world applications.</li>
+    </ul>
+  </div>
+</section>
+<!-- FAQ -->
+<section id="nr-faq">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">Quick answers</div>
+    <h2>FAQ</h2>
+    <div class="nr-faq">
+      <details class="nr-q" open>
+        <summary><h3>How long does it take to learn to read your own nervous system?</h3></summary>
+        <div class="nr-a"><p>The first reads start working within days. Real fluency builds over months and years. Like any literacy, the first words are slow and the reading deepens over time.</p></div>
+      </details>
+      <details class="nr-q">
+        <summary><h3>What if I can never feel my body?</h3></summary>
+        <div class="nr-a"><p>Body access can be built, but it isn't required for nervous system literacy. Many people who've been dissociated from their bodies for years read themselves through cognitions and emotions. Use whichever column is open; the others come online as the practice builds.</p></div>
+      </details>
+      <details class="nr-q">
+        <summary><h3>Is this the same as mindfulness?</h3></summary>
+        <div class="nr-a"><p>Related, but different. Mindfulness teaches present-moment awareness in general. This practice is more specific: it teaches you to read four columns (cognitions, emotions, sensations, impulses) and map what you find to the states of the Polyvagal Current. The two practices reinforce each other.</p></div>
+      </details>
+      <details class="nr-q">
+        <summary><h3>What if my check-ins are inaccurate?</h3></summary>
+        <div class="nr-a"><p>They will be at first. That's fine. Reading your own nervous system is a probability skill, not a precision one. Over time, the reads get more accurate. Wrong reads are still information and still practice.</p></div>
+      </details>
+      <details class="nr-q">
+        <summary><h3>Can I do this without a therapist?</h3></summary>
+        <div class="nr-a"><p>Yes. Nervous system literacy is a self-knowledge practice. A therapist can deepen it, especially if you have trauma history or significant dissociation, but the basic practice is something you can do on your own.</p></div>
+      </details>
+      <details class="nr-q">
+        <summary><h3>Do I need to do this forever?</h3></summary>
+        <div class="nr-a"><p>No. The literacy becomes automatic over time. What starts as a deliberate check-in becomes background awareness. You'll still benefit from occasional deliberate check-ins, but the practice eventually integrates.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+<!-- AUTHOR BIO -->
+<section id="nr-bio" style="padding-top:54px;padding-bottom:64px">
+  <div class="nr-page snb-page">
+    <div class="snb-eyebrow sky">About the author</div>
+    <div class="nr-bio">
+      <img src="https://assets-v2.circle.so/5pf91sby1jgi4n17bbm09vc23ses" alt="Justin Sunseri, LMFT" width="64" height="64" loading="lazy">
+      <p>Justin Sunseri is a licensed Marriage and Family Therapist and Coach specializing in trauma and nervous system self-regulation. He is the host of the <a href="https://stuck-not-broken.captivate.fm/" target="_blank" rel="noopener">Stuck Not Broken</a> podcast and author of the <a href="https://www.stucknotbroken.com/books">Stuck Not Broken Book series</a>.</p>
+    </div>
+  </div>
+</section>
+</div>
+<!-- /.nr-root -->
+<div data-snb-include="footer">
+<!-- ============================================================================
+  STANDARD FOOTER v2 -- SOURCE OF TRUTH (owned by Web Designer)
+  Moved here 2026-07-09 from the Get More Sales folder: this workstream owns the
+  footer's design. Edit HERE first, then re-propagate into every page/embed
+  (SNB-Web-*-embed.html, SNB-App-embed.html, etc.). Keep them in sync.
+
+  Namespaced under .snb-footer so it drops into any Circle custom-HTML embed as-is
+  (no <html>/<head>/<body>; the host page supplies those).
+
+  v2 design standard (files 04/05, 2026-07-09):
+  - Background TRANSPARENT (inherits the host surface) + STANDARD DARK MODE via
+    prefers-color-scheme, with a [data-theme] escape hatch. Tokens flip.
+  - SWISS GRID: content shares one page frame (max-width 1120, --pad-x gutter) and
+    the crisis band uses the SAME 3-column track as the nav columns, so every column
+    lines up top-to-bottom. Drops to 2 cols at 820px, 1 col at 480px (nav + crisis
+    stay locked together at each breakpoint).
+  - Flat: no shadows. Hairlines are the only separators.
+  - TARGETS (2026-08-09, DQA W1b): every footer link is a 44px-tall hit box.
+    Padding sits on the <a> (never the <li>) so the padded box is the real
+    target; li/h4 margins were folded into that padding, so spacing is unchanged.
+
+  Canonical facts (keep correct): links are stucknotbroken.com (never justinlmft.com);
+  contact justin@stucknotbroken.com; crisis band verbatim, 988 first; Triad PNG (Wix
+  asset). Watch: verify the Triad PNG reads on a dark host.
+============================================================================= -->
+<style>
+  .snb-footer{
+    --snb-ink:#1A1F2A; --snb-ink-80:#3A3F4A; --snb-muted:#5E5A4E;
+    --snb-hairline:#D8D2C2; --snb-link:#0645AD; --snb-bone:#FAF9F5;
+    /* paints its own paper -- see the root note (the Circle wrapper never goes dark) */
+    background:var(--snb-bone); color:var(--snb-muted);
+    font:400 14px/20px Inter,system-ui,sans-serif;
+    padding:48px 0 64px;
+  }
+  @media (prefers-color-scheme:dark){.snb-footer:not([data-theme="light"]){
+    --snb-ink:#ECE9E0; --snb-ink-80:#C7C4BB; --snb-muted:#9A968C;
+    --snb-hairline:#2C313C; --snb-link:#8FB6FF; --snb-bone:#14171E;
+  }}
+  .snb-footer[data-theme="dark"]{
+    --snb-ink:#ECE9E0; --snb-ink-80:#C7C4BB; --snb-muted:#9A968C;
+    --snb-hairline:#2C313C; --snb-link:#8FB6FF; --snb-bone:#14171E;
+  }
+  /* Triad PNG is a dark monochrome mark (no light asset yet) -- it vanishes on the dark footer.
+     brightness(0) invert(1) forces it to solid white in dark mode. Swap the src + drop this if a
+     real light asset lands. (Resolves the "verify the Triad PNG reads on a dark host" watch note.) */
+  @media (prefers-color-scheme:dark){.snb-footer:not([data-theme="light"]) .snb-brand img{filter:brightness(0) invert(1)}}
+  .snb-footer[data-theme="dark"] .snb-brand img{filter:brightness(0) invert(1)}
+  .snb-footer *,.snb-footer *::before,.snb-footer *::after{box-sizing:border-box}
+  .snb-footer .snb-page{box-sizing:border-box;max-width:var(--snb-footer-width,1080px);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .snb-footer hr{border:0;border-top:1px solid var(--snb-hairline);margin:0 0 32px}
+  .snb-footer a{color:var(--snb-link);text-decoration:none}
+  .snb-footer a:hover{text-decoration:underline}
+  .snb-brand{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+  .snb-brand img{flex:none;height:40px;width:auto;display:block}
+  .snb-wordmark{font-size:16px;font-weight:500;color:var(--snb-ink);line-height:24px}
+  .snb-byline{font-size:13px;color:var(--snb-muted);margin-top:4px}
+  /* one 3-column track shared by the nav cols AND the crisis band */
+  .snb-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px clamp(20px,4vw,32px)}
+  .snb-col h4{font-size:12px;font-weight:500;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--snb-ink);margin:0}
+  .snb-col ul{list-style:none;margin:0;padding:0}
+  .snb-col li{margin:0}
+  /* WCAG 2.5.8 / HIG 44: padding lives on the <a>, so the padded box IS the hit
+     area (padding on the <li> would only pad around an unchanged target).
+     line-height 20 + 12/12 = 44px tall; the 12px top pad also reproduces the
+     old 12px heading-to-first-link gap, so the Swiss grid rhythm is unchanged. */
+  .snb-col li a{display:inline-block;line-height:20px;padding:12px 0;min-width:44px}
+  .snb-crisis{margin-top:48px;padding-top:24px;border-top:1px solid var(--snb-hairline)}
+  .snb-crisis h4{font-size:12px;font-weight:500;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--snb-ink);margin:0 0 16px}
+  .snb-crisis ul{list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px clamp(20px,4vw,32px)}
+  .snb-crisis li{font-size:13px;line-height:20px;color:var(--snb-muted)}
+  .snb-crisis li b{font-weight:500;color:var(--snb-ink-80);display:block}
+  .snb-crisis .snb-911{margin-top:16px;font-size:13px;color:var(--snb-ink-80)}
+  .snb-bottom{display:flex;flex-wrap:wrap;align-items:center;
+    justify-content:space-between;gap:8px;
+    margin-top:32px;padding-top:12px;border-top:1px solid var(--snb-hairline);
+    font-size:12.5px;color:var(--snb-muted)}
+  .snb-bottom a{color:var(--snb-muted)}
+  /* same 2.5.8 treatment as the nav links; padding-top above is 12 (not 24)
+     because the legal links' own 12px top pad restores the 24px hairline gap. */
+  .snb-bottom .snb-legal a{display:inline-block;line-height:20px;padding:12px 0;
+    min-width:44px;margin-left:16px}
+  @media (prefers-contrast:more){
+    .snb-footer{--snb-muted:var(--snb-ink-80);--snb-hairline:var(--snb-muted)}
+  }
+  @media (max-width:820px){
+    .snb-footer{padding:32px 0 48px}
+    .snb-cols{grid-template-columns:1fr 1fr;gap:24px clamp(20px,4vw,32px)}
+    .snb-crisis ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:480px){
+    .snb-cols,.snb-crisis ul{grid-template-columns:1fr}
+  }
+</style>
+<footer class="snb-footer">
+  <div class="snb-page">
+    <hr>
+    <div class="snb-brand">
+      <img src="https://static.wixstatic.com/media/2d354d_44e5aa0ee94c4c44928b3994c1e63df7~mv2.png" alt="Stuck Not Broken">
+      <div>
+        <div class="snb-wordmark">Stuck Not Broken</div>
+        <div class="snb-byline">Justin Sunseri, LMFT</div>
+      </div>
+    </div>
+    <div class="snb-cols">
+      <div class="snb-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="https://www.stucknotbroken.com/polyvagal-theory-introduction">Polyvagal Intro</a></li>
+          <li><a href="https://www.stucknotbroken.com/c/blog">Blog</a></li>
+          <li><a href="https://stuck-not-broken.captivate.fm/">Podcast</a></li>
+          <li><a href="https://www.stucknotbroken.com/books">Books</a></li>
+        </ul>
+      </div>
+      <div class="snb-col">
+        <h4>Go further</h4>
+        <ul>
+          <li><a href="https://www.stucknotbroken.com/app">Stuck Not Broken app</a></li>
+          <li><a href="https://www.stucknotbroken.com/how-i-can-help-you">How I Can Help You</a></li>
+          <li><a href="https://www.stucknotbroken.com/unstuckingacademy">Unstucking Academy</a></li>
+          <li><a href="https://www.stucknotbroken.com/c/public_resources/">Free Resources</a></li>
+        </ul>
+      </div>
+      <div class="snb-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:justin@stucknotbroken.com">justin@stucknotbroken.com</a></li>
+          <li><a href="https://www.youtube.com/channel/UCduAkQrvmvWq2oy8aJSNcEQ">YouTube</a></li>
+          <li><a href="https://www.instagram.com/justinlmft">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/justinlmft/">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/JustinLMFT/">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="snb-crisis">
+      <h4>Crisis &amp; other resources</h4>
+      <ul>
+        <li><b>988 Suicide &amp; Crisis Lifeline</b>Call or text 988</li>
+        <li><b>National Domestic Violence Hotline</b>1 (800) 799-7233</li>
+        <li><b>LGBT Trevor Project Lifeline</b>1 (866) 488-7386</li>
+        <li><b>National Sexual Assault Hotline</b>1 (800) 656-4673</li>
+        <li><b>Crisis Text Line</b>Text &ldquo;HOME&rdquo; to 741741</li>
+      </ul>
+      <p class="snb-911">If you are experiencing an emergency, please call 911.</p>
+    </div>
+    <div class="snb-bottom">
+      <span>&copy; 2026 Stuck Not Broken &middot; Justin Sunseri, LMFT</span>
+      <span class="snb-legal">
+        <a href="https://www.stucknotbroken.com/terms">Terms</a>
+        <a href="https://www.stucknotbroken.com/privacy">Privacy</a>
+      </span>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script>
+/* nr faq: single-open accordion (estate standard -- INK toggle, one open by default, WAAPI motion,
+   reduced-motion / no-WAAPI safe). Mirrors the Books Q&A engine. */
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var items = Array.prototype.slice.call(document.querySelectorAll('.nr-root .nr-faq .nr-q'));
+  var DUR = 200, EASE = 'cubic-bezier(.2,.6,.2,1)';
+  function body(d){ return d.querySelector('.nr-a'); }
+  function expand(d){
+    if(d.open) return; d.open = true;
+    var b = body(d); if(!b || reduce || !b.animate) return;
+    var pb = getComputedStyle(b).paddingBottom;
+    var h = b.getBoundingClientRect().height; b.style.overflow = 'hidden'; b.style.height = h+'px';
+    var a = b.animate([{height:'0px',opacity:0,paddingBottom:'0px'},{height:h+'px',opacity:1,paddingBottom:pb}], {duration:DUR, easing:EASE});
+    a.onfinish = function(){ b.style.overflow=''; b.style.height=''; };
+  }
+  function collapse(d){
+    if(!d.open) return; var b = body(d);
+    if(!b || reduce || !b.animate){ d.open = false; return; }
+    var pb = getComputedStyle(b).paddingBottom;
+    var h = b.getBoundingClientRect().height; b.style.overflow = 'hidden';
+    var a = b.animate([{height:h+'px',opacity:1,paddingBottom:pb},{height:'0px',opacity:0,paddingBottom:'0px'}], {duration:DUR, easing:EASE, fill:'forwards'});
+    a.onfinish = function(){ d.open = false; a.cancel(); b.style.overflow=''; b.style.height=''; };
+  }
+  items.forEach(function(d){
+    var sum = d.querySelector('summary'); if(!sum) return;
+    sum.addEventListener('click', function(e){
+      e.preventDefault();
+      if(d.open){ collapse(d); return; }
+      items.forEach(function(x){ if(x!==d && x.open) collapse(x); });
+      expand(d);
+    });
+  });
+})();
+</script>

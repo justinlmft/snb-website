@@ -1,0 +1,1038 @@
+<!-- GENERATED from ../SNB-Web-Unstucking-Academy-embed.html by generate.py; DO NOT EDIT HERE -->
+<link rel="stylesheet" href="https://justinlmft.github.io/snb-website/snb-web-live.css">
+<!-- UNSTUCKING ACADEMY: Circle custom-HTML embed fragment (tightened v3, 2026-06-23)
+     Same design-system-correct styling as the "corrected" file, but restructured for an
+     overwhelmed reader seeking clarity. Changes vs. corrected:
+       - Hero gains a real next step: "See the membership" (jump to pricing) beside "Take a look inside".
+       - Reordered so understanding precedes self-diagnosis:
+           how it works -> what's inside -> what change looks like -> the data -> fit -> about -> voices -> join -> FAQ
+       - Self-recognition table and stats no longer stacked; per-state quotes trimmed 2 -> 1.
+       - Testimonials thinned to the 1-2 strongest per section; videos 4 -> 3.
+       - Pricing simplified to one headline number per tier (full terms at checkout); cards no longer
+         repeat the comparison table's feature list.
+       - FAQ trimmed 10 -> 7 (community-basics merged into one item).
+     All copy and assets are the author's; nothing was reworded beyond merges noted above.
+     Paste this whole file into the Custom HTML element in Circle's page builder.
+     - No <html>/<head>/<body>: Circle's page supplies those. CSS scoped under .ua-root.
+     - Event dates: live values come from site-data.json on GitHub; baked dates are static fallbacks. -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+  .ua-root{
+    --page:1080px;
+    --bone:#FAF9F5; --ink:#1A1F2A; --ink80:#3A3F4A; --hair:#D8D2C2;
+    --amber:#8F6417; --muted:#5E5A4E; --link:#0645AD;
+    --panel:#F0EEE7; --wash:rgba(26,31,42,.05); --washline:rgba(26,31,42,.08);
+    color-scheme:light dark;
+    /* paints its own paper -- Circle's wrapper never follows dark mode (05 Surface) */
+    background:var(--bone); color:var(--ink);
+    font:400 17px/1.65 Inter,system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){.ua-root:not([data-theme="light"]){
+    --bone:#14171E; --ink:#ECE9E0; --ink80:#C7C4BB; --hair:#2C313C;
+    --amber:#DBA35A; --muted:#9A968C; --link:#8FB6FF;
+    --panel:#1C2029; --wash:rgba(236,233,224,.06); --washline:rgba(236,233,224,.10);
+  }}
+  .ua-root[data-theme="dark"]{
+    --bone:#14171E; --ink:#ECE9E0; --ink80:#C7C4BB; --hair:#2C313C;
+    --amber:#DBA35A; --muted:#9A968C; --link:#8FB6FF;
+    --panel:#1C2029; --wash:rgba(236,233,224,.06); --washline:rgba(236,233,224,.10);
+  }
+  .ua-root *{box-sizing:border-box;margin:0;padding:0}
+  
+  .ua-root .ua-page{max-width:var(--page);margin:0 auto;padding:0 var(--pad-x)}
+  .ua-root section{padding:var(--space-section) 0 0}
+  .ua-root section .ua-page>:last-child{margin-bottom:0}
+  .ua-root .ua-cols{display:grid;grid-template-columns:3fr 2fr;gap:48px;align-items:start}
+  .ua-root .ua-decide{display:grid;grid-template-columns:1fr 2fr;gap:32px;align-items:start}
+  .ua-root .ua-decide p{margin-top:0;font-size:14px;line-height:1.6;color:var(--muted)}
+  .ua-root .ua-eyebrow{font-size:12px;font-weight:500;line-height:1;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+  .ua-root h1{font-size:clamp(34px,5.2vw,46px);font-weight:600;letter-spacing:-.01em;text-align:left;color:var(--ink)}
+  .ua-root h2{font-size:clamp(26px,4vw,34px);font-weight:600;margin-bottom:16px;text-align:left;color:var(--ink)}
+  .ua-root h3{font-size:20px;font-weight:500;margin-bottom:8px;color:var(--ink)}
+  .ua-root p{margin-bottom:16px;max-width:640px}
+  .ua-root a{color:var(--link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;text-decoration-color:color-mix(in srgb,var(--link) 45%,transparent)}
+  .ua-root a:hover{text-decoration-color:var(--link)}
+  .ua-root :focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:3px}
+  @media (prefers-reduced-motion:reduce){.ua-root .ua-btn,.ua-root .ua-btn2,.ua-root .ua-xc-head,.ua-root .ua-xc-chev::after,.ua-root .ua-xc-row{transition:none}}
+  @media (prefers-reduced-motion:reduce){
+    .ua-root summary::after{transition:none}
+    .ua-root details[open] summary::after{transform:none;content:"\2212"}
+  }
+  .ua-root .ua-lede{font-size:20px;line-height:1.5;color:var(--ink80)}
+  .ua-root .ua-ctarow{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px}
+  /* full-cost transparency in the first viewport (08 SS6 show-the-price; Justin 2026-08-28).
+     Quiet text, not a second ask: one prominent action per view stays the hero button's. */
+  .ua-root .ua-pricehint{font-size:14px;color:var(--muted);margin:12px 0 0}
+  .ua-root .ua-getline{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:32px;font-size:16px;color:var(--ink80)}
+  .ua-root .ua-getline span{display:inline-flex;align-items:baseline;gap:8px}
+  .ua-root .ua-getline span::before{content:"";width:12px;height:2px;background:var(--amber);transform:translateY(-5px)}
+  .ua-root .ua-quote{border-left:3px solid var(--amber);padding:4px 0 4px 24px;margin:24px 0;font-size:17px;line-height:1.6;color:var(--ink80);max-width:640px;font-style:normal}
+  .ua-root .ua-attr{display:block;margin-top:8px;font-size:13px;font-weight:400;color:var(--muted)}
+  /* folded member quotes (Justin 2026-08-28): the in-section quotes stay WHERE they are -- they prove
+     the section they sit in -- but read as one intriguing verbatim line until opened. The amber left
+     bar stays on the fold so the member-voice mark survives folding; the inner quote drops its own
+     bar so the mark never doubles. Hooks are verbatim substrings of the verified quote, never a reword. */
+  .ua-root details.ua-qfold{border-bottom:0;border-left:3px solid var(--amber);padding-left:24px;max-width:640px}
+  .ua-root .ua-qfold summary{font-weight:400;font-size:16px;color:var(--ink80);padding:4px 0}
+  .ua-root .ua-qfold .ua-qwho{color:var(--muted);font-size:13px;white-space:nowrap}
+  .ua-root .ua-qfold .ua-quote{border-left:0;padding-left:0;margin:8px 0 4px}
+  /* the disclosure + reads link-blue on the quote folds and the stats "More on this" toggles,
+     matching the compare rows' .ua-xc-chev (Justin 2026-08-28). FAQ rows keep the muted + . */
+  .ua-root .ua-qfold summary::after,.ua-root .ua-statmore summary::after{color:var(--link)}
+  .ua-root .ua-qnote{font-size:13px;color:var(--muted);max-width:640px}
+  /* canonical ink pill draining to its outline on hover (05); works in both light + dark via tokens */
+  .ua-root .ua-btn{display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 26px;background:var(--ink);color:var(--bone);border:1px solid var(--ink);border-radius:999px;font:500 16px/1 Inter,sans-serif;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .2s cubic-bezier(.2,.6,.2,1),color .2s cubic-bezier(.2,.6,.2,1)}
+  .ua-root .ua-btn:hover{background:transparent;color:var(--ink);text-decoration:none}
+  .ua-root .ua-btn2{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;background:transparent;border:1px solid var(--ink);border-radius:999px;color:var(--ink);font:500 15px/1 Inter,sans-serif;text-decoration:none;white-space:nowrap;transition:background .2s cubic-bezier(.2,.6,.2,1),color .2s cubic-bezier(.2,.6,.2,1)}
+  .ua-root .ua-btn2:hover{background:var(--ink);color:var(--bone);text-decoration:none}
+  .ua-root .ua-shot{background:var(--bone);border:1px dashed var(--hair);border-radius:16px;min-height:240px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;text-align:center;padding:16px}
+  .ua-root img.ua-shot{display:block;width:100%;height:auto;min-height:0;padding:0;border:1px solid var(--hair)}
+  .ua-root .ua-cap{font-size:12px;color:var(--muted);margin-top:8px}
+  .ua-root .ua-appshots{display:flex;gap:16px;max-width:520px;margin-top:4px}
+  .ua-root .ua-appshots img{flex:1;min-width:0;width:100%;height:auto;display:block;border:1px solid var(--hair);border-radius:16px}
+  /* "also included": three Co-Regulator perks that need to read as separate things (Justin 2026-08-27).
+     NOT cards -- 07 reserves a card for a "go somewhere" object whose whole body is one <a>, and the books
+     item carries its own inner link, which would nest. NOT the grounded-zone frame either -- 07 says earn
+     that once per view, and three frames is the over-boxing failure it warns about. NO dividing lines --
+     07 keeps hairlines for row lists, and Justin ruled them out. So: the soft --panel surface this page
+     already uses for .ua-next. Filled, rounded, flat, no border, no shadow, separation by surface + space.
+     App and books stay half/half; the Knowledge Bot takes the full width beneath them. */
+  .ua-root .ua-incl{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;margin-top:16px}
+  .ua-root .ua-incl-item{background:var(--panel);border-radius:18px;padding:24px;height:var(--incl-h);overflow:hidden}
+  .ua-root .ua-incl-item>*:first-child{margin-top:0}
+  .ua-root .ua-incl-h{font-size:19px;font-weight:500;margin:0}
+  .ua-root .ua-incl .ua-appshots,.ua-root .ua-incl .ua-books{max-width:none}
+  /* every panel is the same size and every image is anchored to the top of it, so whatever runs past the
+     bottom edge is simply cut (Justin 2026-08-27: a curiosity tease, not an accident). Nothing below an
+     image survives the clip, which is why the captions and the books link came out. */
+  .ua-root .ua-incl{--incl-h:420px}
+  @media (max-width:980px){.ua-root .ua-incl{grid-template-columns:1fr;--incl-h:auto}
+    .ua-root .ua-incl-item{overflow:visible}}
+  /* one aspect box for all three covers: the source files differ (1800x2700, 1600x2560, 1080x1620),
+     which is why the middle one used to stand taller than its neighbours */
+  .ua-root .ua-books{display:flex;gap:12px;max-width:520px;margin-top:16px}
+  .ua-root .ua-kb{width:100%;height:auto;display:block;margin-top:16px;border:1px solid var(--hair);border-radius:12px}
+  .ua-root .ua-books figure{flex:1;min-width:0;margin:0}
+  .ua-root .ua-books img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:center;display:block;border:1px solid var(--hair);border-radius:12px}
+  .ua-root .ua-books figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+  @media (max-width:520px){.ua-root .ua-books figcaption{font-size:12px}}
+  .ua-root .ua-fit{display:grid;grid-template-columns:1fr 1fr;margin-top:32px}
+  .ua-root .ua-fitcol{padding-right:48px}
+  .ua-root .ua-fitcol+.ua-fitcol{border-left:1px solid var(--hair);padding-right:0;padding-left:48px}
+  .ua-root .ua-fitcol ul{list-style:none}
+  .ua-root .ua-fitcol li{padding:8px 0 8px 24px;position:relative;font-size:16px}
+  .ua-root .ua-fitcol li::before{content:"";position:absolute;left:2px;top:16px;width:12px;height:2px;background:var(--amber)}
+  .ua-root .ua-stages{display:flex;align-items:baseline;gap:16px;margin:24px 0;font-size:17px;font-weight:500;flex-wrap:wrap}
+  .ua-root .ua-arrow{color:var(--link);font-weight:400;font-size:20px}
+  .ua-root .ua-pricing{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch;margin-top:48px}
+  .ua-root .ua-pcard{position:relative;display:flex;flex-direction:column;background:var(--bone);border:1px solid var(--hair);border-radius:18px;padding:24px}
+  .ua-root .ua-feat{border:1.5px solid var(--ink)}   /* featured = ink outline emphasis (matches /app), no colored bar */
+  .ua-root .ua-pcard h3{font-size:19px}
+  .ua-root .ua-tag{font-size:13px;color:var(--muted);margin:2px 0 12px}
+  .ua-root .ua-pcard .ua-pdesc{font-size:15px;flex:1}
+  .ua-root .ua-price{display:flex;align-items:baseline;gap:8px;margin:8px 0 2px}
+  .ua-root .ua-price .ua-big{font-size:clamp(30px,5vw,38px);font-weight:600;line-height:1;letter-spacing:-.015em;color:var(--ink)}
+  .ua-root .ua-price .ua-per{font-size:15px;color:var(--muted)}
+  .ua-root .ua-terms{font-size:13px;color:var(--muted);margin:0 0 16px}
+  .ua-root .ua-pcard .ua-btn,.ua-root .ua-pcard .ua-btn2{margin-top:auto;width:100%;justify-content:center}
+  .ua-root .ua-policy{font-size:13.5px;color:var(--muted);line-height:1.55;margin-top:12px}
+  .ua-root details{border-bottom:1px solid var(--hair);max-width:720px}
+  .ua-root summary{cursor:pointer;font-weight:500;font-size:17px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  .ua-root summary::-webkit-details-marker{display:none}
+  .ua-root summary::after{content:"+";color:var(--muted);font-weight:400;transition:transform var(--dur) var(--ease)}   /* rotates like Books rather than swapping glyph */
+  .ua-root details[open] summary::after{transform:rotate(45deg)}
+  .ua-root details p{font-size:16px;color:var(--ink80);padding-bottom:16px}
+  .ua-root .ua-cmp{width:100%;border-collapse:collapse;margin:8px 0 8px;font-size:15px}
+  .ua-root .ua-cmp th,.ua-root .ua-cmp td{padding:12px 8px;border-bottom:1px solid var(--hair);text-align:center;vertical-align:middle}
+  .ua-root .ua-cmp thead th{font-weight:500;font-size:14px;color:var(--ink)}
+  .ua-root .ua-cmp th:first-child,.ua-root .ua-cmp td:first-child{text-align:left;color:var(--ink80)}
+  .ua-root .ua-cmp tbody td{color:var(--ink80)}
+  .ua-root .ua-cmp .ua-y{color:var(--ink);font-weight:600}
+  .ua-root .ua-cmp .ua-n{color:var(--muted)}
+  .ua-root .ua-sched{width:100%;border-collapse:collapse;margin:16px 0 4px;font-size:15px}
+  .ua-root .ua-sched th,.ua-root .ua-sched td{text-align:left;padding:8px 16px 8px 0;border-bottom:1px solid var(--hair);vertical-align:top}
+  .ua-root .ua-sched td:last-child,.ua-root .ua-sched th:last-child{padding-right:0}
+  .ua-root .ua-sched thead th{font-weight:500;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .ua-root .ua-sched .ua-sname{font-weight:500;color:var(--ink)}
+  .ua-root .ua-sched .ua-ssub{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+  .ua-root .ua-sched td{color:var(--ink80)}
+  .ua-root .ua-next{margin:48px 0 4px;max-width:560px;background:var(--panel);border-radius:14px;padding:24px 24px}
+  /* composition pass (2026-08-28): the schedule table and the next-sessions panel run 2-up on the
+     12-col grid above 860px, so the live-practice block stops stacking one shape and the content
+     crosses the empty right rail the band research measured. Panel loses its stack margin in-grid. */
+  .ua-root .ua-live2{margin-top:8px}
+  @media (min-width:860px){
+    .ua-root .ua-live2{display:grid;grid-template-columns:3fr 2fr;gap:24px 48px;align-items:start}
+    .ua-root .ua-live2 .ua-next{margin:8px 0 0}
+  }
+  .ua-root .ua-next-h{display:block;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .ua-root .ua-next ul{list-style:none;margin:0;padding:0}
+  .ua-root .ua-next li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--washline);font-size:16px}
+  .ua-root .ua-next li:last-child{border-bottom:0}
+  .ua-root .ua-next .ua-nname{color:var(--ink)}
+  .ua-root .ua-next .ua-ndate{color:var(--ink80);text-align:right;white-space:nowrap}
+  /* stacked on narrow screens, so let a long date wrap instead of forcing the page wider (a 2:30 PM PT
+     Friday date overflowed 320px while nowrap still applied) */
+  @media (max-width:520px){.ua-root .ua-next li{flex-direction:column;gap:2px}.ua-root .ua-next .ua-ndate{text-align:left;white-space:normal}}
+  .ua-root .ua-bio{list-style:none;margin:8px 0 16px;max-width:640px}
+  .ua-root .ua-bio li{padding:8px 0 8px 24px;position:relative;font-size:16px;color:var(--ink80)}
+  .ua-root .ua-bio li::before{content:"";position:absolute;left:2px;top:17px;width:12px;height:2px;background:var(--amber)}
+  @media (max-width:820px){
+    .ua-root section{padding:var(--space-section) 0 0}
+    .ua-root .ua-cols,.ua-root .ua-decide{grid-template-columns:1fr;gap:24px}
+    .ua-root .ua-fit{grid-template-columns:1fr}
+    .ua-root .ua-fitcol{padding-right:0}
+    .ua-root .ua-fitcol+.ua-fitcol{border-left:0;border-top:1px solid var(--hair);padding-left:0;padding-top:24px}
+    .ua-root .ua-pricing{grid-template-columns:1fr}
+    .ua-root .ua-feat{order:-1}
+    .ua-root .ua-cmp{font-size:13.5px}
+    .ua-root .ua-cmp th,.ua-root .ua-cmp td{padding:12px 4px}
+    .ua-root .ua-sched{font-size:13.5px}
+    .ua-root .ua-sched th,.ua-root .ua-sched td{padding:8px 8px 8px 0}
+  }
+  /* interactive expectation table */
+  .ua-root .ua-xc{margin-top:48px;max-width:820px;border-top:1px solid var(--hair)}
+  .ua-root .ua-xc-headrow,.ua-root .ua-xc-head{display:grid;grid-template-columns:64px 1fr 22px;gap:16px;align-items:start}
+  .ua-root .ua-xc-head .snb-badge{margin-top:2px}
+  .ua-root .ua-xc-headrow{padding:16px 0;border-bottom:1px solid var(--hair)}
+  .ua-root .ua-xc-h{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .ua-root .ua-xc-pair{display:grid;grid-template-columns:1fr 28px 1fr;gap:16px;align-items:start;min-width:0}
+  .ua-root .ua-xc-arr{color:var(--link);font-size:20px;text-align:center;line-height:1.4}
+  .ua-root .ua-xc-row{border-bottom:1px solid var(--hair)}
+  .ua-root .ua-xc-head{width:calc(100% + 32px);margin:0 -16px;background:none;border:0;border-radius:10px;text-align:left;font:inherit;color:inherit;cursor:pointer;padding:16px 16px;transition:background .15s,box-shadow .15s}
+  .ua-root .ua-xc.ua-on .ua-xc-head:hover{background:var(--wash);box-shadow:inset 3px 0 0 var(--amber)}
+  .ua-root .ua-xc.ua-on .ua-xc-head:hover .ua-xc-now,.ua-root .ua-xc.ua-on .ua-xc-head:hover .ua-xc-to{color:var(--ink)}
+  .ua-root .ua-xc-now{color:var(--muted);font-size:16px}
+  .ua-root .ua-xc-to{color:var(--ink);font-size:16px}
+  .ua-root .ua-xc-chev{justify-self:end}
+  .ua-root .ua-xc-chev::after{content:"+";color:var(--link);font-weight:500;font-size:20px;transition:transform var(--dur) var(--ease)}   /* Books timing */
+  .ua-root .ua-xc.ua-on .ua-xc-head:hover .ua-xc-chev::after{transform:scale(1.35)}
+  .ua-root .ua-xc:not(.ua-on) .ua-xc-chev{display:none}
+  .ua-root .ua-xc-panel{padding:2px 0 24px 48px;max-width:680px}
+  .ua-root .ua-xc-reco{color:var(--ink80);margin:0 0 4px}
+  .ua-root .ua-xc-q{border-left:3px solid var(--hair);padding:2px 0 2px 16px;margin:16px 0 0;color:var(--ink80);font-style:italic;font-size:16px;line-height:1.55;max-width:none}
+  .ua-root .ua-xc-q .ua-a{display:block;font-style:normal;color:var(--muted);font-size:13px;margin-top:8px}
+  .ua-root .ua-xc.ua-on .ua-xc-panel{display:none}
+  .ua-root .ua-xc.ua-on .ua-xc-row.ua-open .ua-xc-panel{display:block}
+  .ua-root .ua-xc.ua-on .ua-xc-row.ua-open .ua-xc-chev::after{transform:rotate(45deg)}   /* rotates like Books rather than swapping glyph */
+  .ua-root .ua-xc.ua-on .ua-xc-row.ua-open .ua-xc-head:hover .ua-xc-chev::after{transform:rotate(45deg) scale(1.35)}
+  .ua-root .ua-xc.ua-on.ua-sel .ua-xc-row:not(.ua-open){opacity:.34;transition:opacity .2s}
+  @media (max-width:720px){
+    .ua-root .ua-xc-pair{grid-template-columns:1fr;gap:4px}.ua-root .ua-xc-arr{display:none}.ua-root .ua-xc-to{font-size:15px}
+    .ua-root .ua-xc-headrow{display:none}.ua-root .ua-xc-panel{padding-left:40px}
+    /* the headrow is gone and the arrow with it, so each row repeats the two column labels inline --
+       without them the before/after frame is lost exactly where the layout stacks (Justin 2026-08-28) */
+    .ua-root .ua-xc-now::before,.ua-root .ua-xc-to::before{display:block;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+    .ua-root .ua-xc-now::before{content:"Where you're at"}
+    .ua-root .ua-xc-to::before{content:"Where you're headed";margin-top:6px}
+  }
+  /* transparent data stats */
+  .ua-root .ua-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:32px 0 0}
+  .ua-root .ua-stat .ua-num{font-size:40px;font-weight:600;line-height:1;letter-spacing:-.01em;color:var(--ink)}
+  .ua-root .ua-stat h3{margin:12px 0 4px;font-size:18px}
+  .ua-root .ua-stat p{font-size:15px;color:var(--ink80);margin:0;max-width:none}
+  .ua-root .ua-statmore{border-bottom:0;max-width:none;margin-top:8px}
+  .ua-root .ua-statmore summary{font-size:13px;font-weight:400;color:var(--link);padding:8px 0}
+  .ua-root .ua-statmore summary::after{content:"+";font-size:13px}   /* [open] rotate inherited from the general rule above */
+  .ua-root .ua-statmore p{font-size:14px;color:var(--muted);padding-bottom:8px;max-width:none}
+  .ua-root .ua-varynote{font-size:15px;color:var(--muted);margin:32px 0 0;max-width:760px;border-top:1px solid var(--hair);padding-top:16px}
+  /* quiet mid-page repeat of the hero CTA (08 SS3: repeat the SAME goal down a long page; the join
+     section is ~10k px from the hero with no action in between). A text link, not a button -- one
+     prominent action per view stays the hero's; and not a band -- an inline link is not "the ask". */
+  .ua-root .ua-midcta{margin:48px 0 0;font-size:16px;max-width:none}
+  @media (max-width:720px){.ua-root .ua-stats{grid-template-columns:1fr;gap:24px}}
+  /* SNB state-icon badges */
+  .ua-root .snb-badge{display:inline-block;height:var(--snb-size,28px);line-height:0;vertical-align:middle}
+  .ua-root .snb-badge svg{height:100%;width:auto;display:block}
+  .ua-root .snb-badge{--c-heart:#D8D2C2;--c-bolt:#D8D2C2;--c-x:#D8D2C2}
+  .ua-root .snb-i-heart{fill:var(--c-heart)}.ua-root .snb-i-bolt{fill:var(--c-bolt)}.ua-root .snb-i-x{fill:var(--c-x)}
+  .ua-root .snb-badge.is-fight{--c-bolt:#E89B9B}
+  .ua-root .snb-badge.is-shutdown{--c-x:#A3C0DD}
+  .ua-root .snb-badge.is-freeze{--c-bolt:#B89AC4;--c-x:#B89AC4}
+</style>
+<div class="ua-root snb-live">
+  <!-- HERO: what it is + a clear next step -->
+  <section style="padding-top:96px">
+    <div class="ua-page">
+      <!-- eyebrow does wayfinding, not branding: the masthead already says Unstucking Academy twice,
+           and 00 says a page title is never the site name. "Membership" tells the reader what kind of
+           page this is; the join section's eyebrow moved to "Pricing" so the label stays unique. -->
+      <p class="ua-eyebrow">Membership</p>
+      <h1>From overwhelmed to regulated.</h1>
+      <p class="ua-lede" style="margin-top:26px">A membership that combines a step-by-step curriculum, live practice sessions, and a private community. The Unstucking Academy is designed for people who are maxed out on wellness and tired of dead ends.</p>
+      <div class="ua-getline">
+        <span>A step-by-step curriculum</span>
+        <span>Live practice sessions</span>
+        <span>A small, private community</span>
+      </div>
+      <div class="ua-ctarow">
+        <a href="#ua-join" class="ua-btn">See the membership</a>
+        <a href="#ua-inside" class="ua-btn2">Take a look inside &darr;</a>
+      </div>
+      <p class="ua-pricehint">Starting at $24, cancel anytime.</p>
+      <div style="margin-top:48px">
+        <!-- poster is a real frame from the video (calm regulated face, warm room) per 07's hero-imagery
+             rule; replaced the near-black "welcome." title card 2026-08-28 (Justin approved; he may
+             swap in a designed thumbnail later). Frame at ~40% (0:58); host: SNB-Web-Live public/img. -->
+        <video controls playsinline preload="none" poster="https://justinlmft.github.io/snb-website/img/academy-welcome-poster.jpg" style="width:100%;max-width:820px;border-radius:16px;display:block;background:#000">
+          <source src="https://video.wixstatic.com/video/2d354d_0b82ecd5231e431b844f072cb096e5c9/1080p/mp4/file.mp4" type="video/mp4">
+          Your browser can't play this welcome video: <a href="https://video.wixstatic.com/video/2d354d_0b82ecd5231e431b844f072cb096e5c9/1080p/mp4/file.mp4">open it here</a>.
+        </video>
+      </div>
+    </div>
+  </section>
+  <!-- HOW IT WORKS (calm, low-effort, before any self-diagnosis) -->
+  <section>
+    <div class="ua-page">
+      <p class="ua-eyebrow">The approach</p>
+      <h2>We build safety first, then turn toward defense</h2>
+      <p class="ua-lede">Other programs send you straight to the hard stuff. We do things differently: strengthen your safety state, then, intentionally and within your capacity, turn toward defense. This is how real, sustainable change happens.</p>
+      <!-- this slot and the community quote used to carry the same member with the same attribution
+           line; two identical anonymous attributions read as one recycled voice (08 SS4). This quote is
+           a DIFFERENT member (VERIFIED-QUOTES-MASTER: name withheld at his request), verbatim. -->
+      <details class="ua-qfold" style="margin-top:24px">
+        <summary><span>"&hellip;understanding what safety feels like for me" <span class="ua-qwho">&middot; an Academy member</span></span></summary>
+        <blockquote class="ua-quote">"It has been a gradual process learning to recognize which state my nervous system is in and understanding what safety feels like for me. The live sessions have helped immensely in both understanding and applying the Polyvagal Theory material covered in the Unstucking Academy."
+          <span class="ua-attr">An Academy member &middot; name withheld at his request</span>
+        </blockquote>
+      </details>
+    </div>
+  </section>
+  <!-- WHAT'S INSIDE -->
+  <section id="ua-inside">
+    <div class="ua-page">
+      <p class="ua-eyebrow">What you get</p>
+      <h2>What's inside</h2>
+      <p class="ua-lede" style="margin-bottom:56px">One curriculum, live practices, and people to connect with. (As you're ready to, of course.)</p>
+      <div style="margin-bottom:32px">
+        <h3>The Unstucking Pathway</h3>
+        <p>You don't need a pile of courses you won't finish. You need one source to learn and practice from that progresses as you build mastery. Every lesson is under 10 minutes and you won't ever wonder what to work on next.</p>
+        <div class="ua-stages">
+          <span>Learn the theory</span><span class="ua-arrow">&rarr;</span>
+          <span>Build safety</span><span class="ua-arrow">&rarr;</span>
+          <span>Unstuck defense</span>
+        </div>
+      </div>
+      <!-- Hosted on Wix media (static.wixstatic.com) -->
+      <img class="ua-shot" src="https://static.wixstatic.com/media/2d354d_c71321aac36b4997b0f5d036fecce29f~mv2.png" alt="Inside an Unstucking Pathway lesson: the Polyvagal Ladder video mid-play, with the lesson path and completed checkmarks in the sidebar">
+      <div class="ua-cap">A lesson on the Polyvagal Ladder from the Unstucking Pathway.</div>
+      <details class="ua-qfold" style="margin:24px 0 90px">
+        <summary><span>"&hellip;steady progress easy & inviting" <span class="ua-qwho">&middot; L., Academy member</span></span></summary>
+        <blockquote class="ua-quote">"Having this clear path + 'bite sized' lessons make steady progress easy & inviting. I know I can set aside 10-ish minutes most mornings and make it through a lesson or two."
+        <span class="ua-attr">L., Academy member</span>
+      </blockquote>
+      </details>
+      <div style="margin-bottom:32px">
+        <h3>Live practice</h3>
+        <p>Understanding the theory is one thing. Using it mid-stress is another. The live sessions are where you practice with me and other students, within your capacity, so the skills are there when you actually need them.</p>
+        <div class="ua-live2">
+        <table class="ua-sched">
+          <thead>
+            <tr><th>Session</th><th>When</th><th>Recorded?</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="ua-sname">Capacity Builders</span><span class="ua-ssub">Guided self-regulation practice</span></td>
+              <td>Every other Monday 9:00am&ndash;10:30am &amp; Friday 3:00pm&ndash;4:30pm PT</td>
+              <td>Present-moment only, not recorded</td>
+            </tr>
+            <tr>
+              <td><span class="ua-sname">Cohorts &amp; workshops</span><span class="ua-ssub">Small-group deep dives</span></td>
+              <td>Timing set with the community</td>
+              <td>Recorded for those taking them</td>
+            </tr>
+            <tr>
+              <td><span class="ua-sname">Q&amp;As</span><span class="ua-ssub">Ask me anything, plus the full archive</span></td>
+              <td>Second Monday of the month, 10:30am&ndash;11:30am PT</td>
+              <td>Recorded for every Co-Regulator</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="ua-next">
+          <span class="ua-next-h">Next sessions</span>
+          <ul>
+            <li><span class="ua-nname">Capacity Builder</span><span class="ua-ndate" data-snb="events.capacity_builder.next_display">Friday, September 4 at 3:00 PM PT</span></li>
+            <li><span class="ua-nname">Mindful Moment</span><span class="ua-ndate" data-snb="events.mindful_moment.next_display">Wednesday, September 2 at 9:00 AM PT</span></li>
+            <li><span class="ua-nname">Q&amp;A</span><span class="ua-ndate" data-snb="events.qa.next_display">Monday, September 14 at 10:30 AM PT</span></li>
+          </ul>
+          <p style="font-size:13px;color:var(--muted);margin:10px 0 0">New cohorts and workshops open regularly, with timing set alongside the community.</p>
+        </div>
+        </div>
+      </div>
+      <!-- Hosted on Wix media (static.wixstatic.com) -->
+      <img class="ua-shot" src="https://static.wixstatic.com/media/2d354d_5e99f0bce2c04045bd4664288604e479~mv2.png" alt="A live Capacity Builder session: the Pendulating practice slide with participants on Zoom (members blurred for privacy)">
+      <div class="ua-cap">A Capacity Builder live practice.</div>
+      <details class="ua-qfold" style="margin:24px 0 90px">
+        <summary><span>"&hellip;a lasting, cumulative effect" <span class="ua-qwho">&middot; a licensed social worker</span></span></summary>
+        <blockquote class="ua-quote">"I believe the live sessions in Unstucking Academy have a lasting, cumulative effect, and the safety we build in those sessions carries over into the following days."
+        <span class="ua-attr">A licensed social worker, 12 years in mental health</span>
+      </blockquote>
+      </details>
+      <!-- composition pass: community runs text-beside-image on the grid (3fr/2fr) instead of a third
+           full-stack repeat; the feed post reads fine at column width, and the section shape now
+           differs from its two neighbours (07: no more than two consecutive same-shape sections). -->
+      <div class="ua-cols">
+        <div>
+          <h3>The community</h3>
+          <p>Co-Regulator is capped at 100 members on purpose. Real connection needs a group small enough that people actually know you and your progress gets witnessed, not a crowd you disappear into. There's no drive-by advice or performative vulnerability here, just real people making real progress.</p>
+          <details class="ua-qfold" style="margin:24px 0 0">
+            <summary><span>"I am never pressured to share&hellip;" <span class="ua-qwho">&middot; an Academy member</span></span></summary>
+            <blockquote class="ua-quote">"I am never pressured to share nor am I ever 'called out'. It is a place to recognize what is going on biologically, watch others see what is going on with themselves and be in an environment that supports me whatever might be going on."
+            <span class="ua-attr">An Academy member &middot; longtime live-session regular</span>
+          </blockquote>
+          </details>
+        </div>
+        <div>
+          <!-- Hosted on Wix media (static.wixstatic.com) -->
+          <img class="ua-shot" src="https://static.wixstatic.com/media/2d354d_bb17089d71854c6a9a9ce8833b18c6c8~mv2.png" alt="The Academy community feed: a member's insight post after a Q&A session (identities anonymized)">
+          <div class="ua-cap">The private discussion space.</div>
+        </div>
+      </div>
+      <!-- ALSO INCLUDED (2026-08-27, Web Designer): things that come with the membership rather than
+           being part of the Pathway itself. BOTH are Co-Regulator only (Justin, 2026-08-27 -- this
+           settles the "tier/offer scope needs Justin/GMS confirm" flag PAGES.md has carried since
+           2026-07-15). The heading, the Self-Regulator card and the compare table all have to agree
+           with that. Guardrail 04 SS8: no urgency/pressure. -->
+      <div style="margin-top:56px">
+        <h3>Also included with Co-Regulator</h3>
+        <p>The Co-Regulator tier comes with even more.</p>
+        <div class="ua-incl">
+        <div class="ua-incl-item">
+        <h4 class="ua-incl-h">The Stuck Not Broken app</h4>
+        <p>A self-regulation practice that meets you where you are: you tell it how you're doing, and it builds a custom meditation for the state you're actually in. Every check-in and every practice changes what it gives you next, so it adapts as you do.</p>
+        <div class="ua-appshots">
+          <img src="https://justinlmft.github.io/snb-website/img/app-checkin.webp" alt="An afternoon check-in in the Stuck Not Broken app: three sliders and the app's one-sentence read-back of what you reported." loading="lazy">
+          <img src="https://justinlmft.github.io/snb-website/img/app-custom-practice.webp" alt="A custom practice built from that check-in: why it was chosen, what to expect, and how it was tuned for you." loading="lazy">
+        </div>
+        </div>
+        <div class="ua-incl-item">
+        <h4 class="ua-incl-h">The Stuck Not Broken books</h4>
+        <p>All three books as PDFs, the same ones sold on the books page. Book 1 explains what's happening in your nervous system, Book 2 builds real safety in your body, and Book 3 takes you into your stuck defensive states and back out.</p>
+        <div class="ua-books">
+          <figure><img src="https://app.circle.so/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCRE9yREFvPSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--72113ae76d9fe3e8d2d18b53ff3f7c3b79b8fde6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2Q25OaGRtVnlld1k2Q25OMGNtbHdWQT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--7b88afbd5e288465610dd18b3dd46eee1e00dec4/SNB1%20Cover%20Front.jpg" alt="Trauma &amp; the Polyvagal Paradigm book cover" loading="lazy"></figure>
+          <figure><img src="https://app.circle.so/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCQjJxREFvPSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f1d57c92c2abf50317282aa7aeb7ebab77402814/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2Q25OaGRtVnlld1k2Q25OMGNtbHdWQT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--7b88afbd5e288465610dd18b3dd46eee1e00dec4/SNB2%20Cover%20Front%20Final.jpg" alt="Building Safety book cover" loading="lazy"></figure>
+          <figure><img src="https://app.circle.so/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCTXlwREFvPSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6b1a2db69c66c3b6a1825bfb230e61a01d0e6e5f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJNEJEQTZDbk5oZG1WeWV3WTZDbk4wY21sd1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--a9f899a0c764220ba5650fc8daea690765ef2c6f/SNB3%20Cover%20Front.jpg" alt="Unstucking Defense book cover" loading="lazy"></figure>
+        </div>
+        </div>
+        <div class="ua-incl-item">
+        <h4 class="ua-incl-h">The Knowledge Bot</h4>
+        <p>Trained on the full curriculum and all three books. Ask it about any concept or skill and it will go as deep as you want, in your own time between live sessions.</p>
+        <img class="ua-kb" src="https://justinlmft.github.io/snb-website/img/knowledge-bot.webp" alt="The Knowledge Bot answering a question about safety anchoring" loading="lazy">
+        </div>
+        </div>
+      </div>
+      <p class="ua-midcta"><a href="#ua-join">See the membership &darr;</a></p>
+    </div>
+  </section>
+  <!-- WHAT CHANGE LOOKS LIKE (self-recognition, now that you understand the thing) -->
+  <section>
+    <div class="ua-page">
+      <p class="ua-eyebrow">What change looks like</p>
+      <h2>What to realistically expect</h2>
+      <p class="ua-lede">Everything in the Unstucking Academy points at one thing: sustainable self-regulation. Can it reduce stuck defense? Yes. Is that guaranteed? Of course not. But here's what change can look like.</p>
+      <p class="ua-qnote" style="margin-top:18px">Pick what sounds most like you. Most people come in with more than one, and that's normal.</p>
+      <div class="ua-xc" id="ua-xc">
+        <div class="ua-xc-headrow"><span></span><div class="ua-xc-pair"><span class="ua-xc-h">Where you're at</span><span></span><span class="ua-xc-h">Where you're headed</span></div><span></span></div>
+        <div class="ua-xc-row">
+          <button class="ua-xc-head" aria-expanded="false">
+            <span class="snb-badge is-fight" role="img" aria-label="Flight" style="--snb-size:20px"><svg viewBox="0 0 1288 446.31" aria-hidden="true"><path class="snb-i-heart" d="M 228.6626430999995,414.99967965948633 C 193.0931878499996,414.99967965948633 159.69623824999962,401.15528090948635 134.56332974999987,376.0223724094866 L 42.977307250000194,284.43634990948647 C 17.844398749999527,259.30344140948625 4.0,225.86389365948654 4.0,190.3370365594864 C 4.0,154.76758130948647 17.844398750000437,121.3706317094865 42.977307250000194,96.23772320948629 C 68.11021574999995,71.10481470948653 101.54976350000015,57.26041595948655 137.07662059999984,57.260415959486096 C 171.45332764999966,57.260415959486096 203.82792165000046,70.21025355948623 228.6626430999995,93.76703050948609 C 280.7175823999996,44.35317650948619 363.2727970999995,45.20513950948626 414.34797894999974,96.23772320948629 C 466.23252564999984,148.1222699094864 466.23252564999984,232.5518032094864 414.34797894999974,284.47894805948624 L 322.76195644999916,376.06497055948637 C 297.6290479499994,401.1978790594861 264.1895001999992,415.0422778094861 228.6626430999995,415.0422778094861 L 228.6626430999995,414.99967965948633 M 137.11921875000007,109.86913120948648 C 115.60715299999993,109.86913120948648 95.41562990000057,118.21836860948625 80.20809035000002,133.42590815948634 C 48.813253799999075,164.82074470948638 48.813253799999075,215.8533284094864 80.20809035000002,247.24816495948645 L 171.7941128499997,338.83418745948654 C 187.00165239999933,354.0417270094862 207.1931754999996,362.3909644094864 228.70524124999974,362.3909644094864 C 250.2173069999999,362.3909644094864 270.40883009999925,354.0417270094862 285.6163696499989,338.83418745948654 L 377.20239214999947,247.24816495948645 C 408.5546305500002,215.89592655948618 408.5546305500002,164.82074470948638 377.20239214999947,133.42590815948634 C 345.80755560000034,102.0310716094863 294.7749719000003,102.0310716094863 263.3801353500003,133.42590815948634 L 228.70524124999974,168.10080225948641 L 194.03034714999922,133.42590815948634 C 178.82280759999958,118.21836860948625 158.6312844999993,109.86913120948648 137.11921875000007,109.86913120948648"/><path class="snb-i-bolt" d="M 673.9837031999996,442.30509380948604 C 665.0806898499995,442.30509380948604 656.092480199999,440.5585696594861 647.4876538999997,437.02292320948607 C 621.5879787000003,426.2881894094861 604.8469057499997,401.24047720948636 604.8469057499997,373.2108945094859 L 604.8469057499997,282.43423685948653 L 544.8687105499994,282.43423685948653 C 516.8391278499994,282.43423685948653 491.7914156499992,265.6931639094863 481.05668185000013,239.79348870948652 C 470.3219480500002,213.89381350948625 476.2004927499993,184.3306974094866 496.0512306499995,164.4799595094859 L 636.2417422999997,24.28944785948616 C 656.092480199999,4.438709959486374 685.6129981499989,-1.439834740514101 711.5552714999994,9.294899059486312 C 737.4549466999997,20.02963285948627 754.1960196499995,45.07734505948602 754.1960196499995,73.10692775948601 L 754.1960196499995,163.8835854094863 L 814.1742148499998,163.8835854094863 C 842.2037975499998,163.8835854094863 867.25150975,180.62465835948652 877.9862435499999,206.52433355948634 C 888.7209773499999,232.4240087594866 882.842432649999,261.98712485948624 862.9916947499996,281.8378627594865 L 722.8011830999994,422.0283744094862 C 709.5531584499995,435.27639905948615 691.9601224999997,442.30509380948604 674.0263013499998,442.30509380948604 L 673.9837031999996,442.30509380948604 M 684.6758388499993,56.57884555948604 C 681.2679868499999,56.57884555948604 677.1785644499996,57.68639745948613 673.3873291,61.47763280948621 L 533.1968174499998,201.6681444594864 C 526.168122699999,208.69683920948628 528.3832264999992,216.53489880948646 529.6185728500004,219.60196560948626 C 530.8965173500001,222.6690324094865 534.9007434500008,229.7829234594864 544.8261124,229.7829234594864 L 657.4556210000001,229.7829234594864 L 657.4556210000001,373.16829635948613 C 657.4556210000001,383.09366530948625 664.5695120499995,387.0978914094861 667.6365788499998,388.3758359094862 C 670.70364565,389.6537804094859 678.5417052499997,391.8262860594858 685.5703999999996,384.7975913094864 L 825.7609116499998,244.60707965948623 C 832.7896063999988,237.57838490948635 830.5745025999995,229.74032530948617 829.3391562500001,226.67325850948637 C 828.0612117500004,223.60619170948613 824.0569856499997,216.49230065948623 814.1316166999995,216.49230065948623 L 701.5021080999995,216.49230065948623 L 701.5021080999995,73.10692775948601 C 701.5021080999995,63.18155880948589 694.3882170499992,59.17733270948602 691.3211502499989,57.899388209486375 C 689.9154112999995,57.30301410948633 687.5299148999993,56.536247409486265 684.6758388499993,56.536247409486265 L 684.6758388499993,56.57884555948604"/><path class="snb-i-x" d="M 988.3580501999995,417.42777420948585 C 963.5233287499996,417.42777420948585 940.1795425499995,407.75799415948575 922.6291047499999,390.20755635948615 C 905.0786669499994,372.6571185594861 895.4088868999997,349.313332359486 895.4088868999997,324.4786109094865 C 895.4088868999997,299.64388945948656 905.0786669499994,276.3001032594865 922.6291047499999,258.749665459486 L 958.2837562999994,223.09501390948608 L 922.6291047499999,187.44036235948616 C 905.0786669499994,169.8899245594861 895.4088868999997,146.5461383594865 895.4088868999997,121.71141690948608 C 895.4088868999997,96.87669545948611 905.0786669499994,73.53290925948605 922.6291047499999,55.98247145948645 C 940.1795425499995,38.43203365948639 963.5233287499996,28.762253609486294 988.3580501999995,28.762253609486294 C 1013.1927716500004,28.762253609486294 1036.5365578500005,38.43203365948639 1054.0869956499992,55.98247145948645 L 1089.7416472000004,91.63712300948637 L 1125.39629875,55.98247145948645 C 1161.6473244,19.731445809486473 1220.6031639999992,19.731445809486473 1256.811591499999,55.98247145948645 C 1293.062617149999,92.23349710948642 1293.062617149999,151.18933670948664 1256.811591499999,187.39776420948593 L 1221.1569399499995,223.0524157594863 L 1256.811591499999,258.7070673094862 C 1293.062617149999,294.9580929594862 1293.062617149999,353.9139325594864 1256.811591499999,390.12236005948614 C 1220.560565849999,426.3733857094861 1161.6047262499997,426.3733857094861 1125.39629875,390.12236005948614 L 1089.7416472000004,354.4677085094862 L 1054.0869956499992,390.12236005948614 C 1036.5365578499996,407.6727978594862 1013.1927716499995,417.3425779094863 988.3580501999995,417.3425779094863 L 988.3580501999995,417.4277742094863 M 988.3580501999995,81.49876330948646 C 977.5807182499993,81.49876330948646 967.4849567000001,85.67338200948635 959.8598878499997,93.29845085948628 C 952.2348189999993,100.92351970948621 948.0602002999985,111.01928125948635 948.0602002999995,121.79661320948608 C 948.0602002999995,132.57394515948582 952.2348189999993,142.66970670948595 959.8598878499997,150.29477555948634 L 1032.7027243499997,223.13761205948586 L 959.8598878499997,295.98044855948626 C 952.2348189999993,303.60551740948665 948.0602002999985,313.7012789594868 948.0602002999995,324.4786109094865 C 948.0602002999995,335.25594285948625 952.2348189999993,345.3517044094864 959.8598878499997,352.97677325948587 C 967.4849566999992,360.60184210948626 977.5807182499993,364.7764608094857 988.3580501999995,364.77646080948614 C 999.1353821499997,364.77646080948614 1009.2311436999998,360.6018421094867 1016.8562125499993,352.97677325948587 L 1089.6990490499993,280.13393675948635 L 1162.5418855500002,352.97677325948587 C 1178.2606029000008,368.695490609486 1203.8194929000001,368.695490609486 1219.5382102499989,352.97677325948587 C 1235.2569275999995,337.2580559094862 1235.2569275999995,311.69916590948594 1219.5382102499989,295.98044855948626 L 1146.6953737499998,223.13761205948586 L 1219.5382102499989,150.29477555948634 C 1235.2569275999995,134.5760582094862 1235.2569275999995,109.01716820948596 1219.5382102499989,93.29845085948628 C 1203.8194928999992,77.57973350948615 1178.2606028999999,77.57973350948615 1162.5418855500002,93.29845085948628 L 1089.6990490499993,166.14128735948626 L 1016.8562125499993,93.29845085948628 C 1009.2311436999998,85.67338200948635 999.1353821499988,81.49876330948646 988.3580501999995,81.49876330948646"/></svg></span>
+            <span class="ua-xc-pair"><span class="ua-xc-now">You can't settle. Your mind runs ahead, and you're always braced for the next thing.</span><span class="ua-xc-arr">&rarr;</span><span class="ua-xc-to">You're able to intentionally settle each day, connect with loved ones, and have more spontaneity and playfulness.</span></span>
+            <span class="ua-xc-chev"></span>
+          </button>
+          <div class="ua-xc-panel">
+            <p class="ua-xc-reco">If you live braced for the next bad thing (worried, on alert, hard to switch off): change tends to look like catching it sooner and coming back to calm faster, not the anxiety vanishing.</p>
+            <blockquote class="ua-xc-q">"When I was feeling anxious, I would just look around for anything that I felt connected to and focused on it, and it really worked and helped bring me back to the present moment."<span class="ua-a">A member who worked on anxiety</span></blockquote>
+          </div>
+        </div>
+        <div class="ua-xc-row">
+          <button class="ua-xc-head" aria-expanded="false">
+            <span class="snb-badge is-fight" role="img" aria-label="Fight" style="--snb-size:20px"><svg viewBox="0 0 1288 446.31" aria-hidden="true"><path class="snb-i-heart" d="M 228.6626430999995,414.99967965948633 C 193.0931878499996,414.99967965948633 159.69623824999962,401.15528090948635 134.56332974999987,376.0223724094866 L 42.977307250000194,284.43634990948647 C 17.844398749999527,259.30344140948625 4.0,225.86389365948654 4.0,190.3370365594864 C 4.0,154.76758130948647 17.844398750000437,121.3706317094865 42.977307250000194,96.23772320948629 C 68.11021574999995,71.10481470948653 101.54976350000015,57.26041595948655 137.07662059999984,57.260415959486096 C 171.45332764999966,57.260415959486096 203.82792165000046,70.21025355948623 228.6626430999995,93.76703050948609 C 280.7175823999996,44.35317650948619 363.2727970999995,45.20513950948626 414.34797894999974,96.23772320948629 C 466.23252564999984,148.1222699094864 466.23252564999984,232.5518032094864 414.34797894999974,284.47894805948624 L 322.76195644999916,376.06497055948637 C 297.6290479499994,401.1978790594861 264.1895001999992,415.0422778094861 228.6626430999995,415.0422778094861 L 228.6626430999995,414.99967965948633 M 137.11921875000007,109.86913120948648 C 115.60715299999993,109.86913120948648 95.41562990000057,118.21836860948625 80.20809035000002,133.42590815948634 C 48.813253799999075,164.82074470948638 48.813253799999075,215.8533284094864 80.20809035000002,247.24816495948645 L 171.7941128499997,338.83418745948654 C 187.00165239999933,354.0417270094862 207.1931754999996,362.3909644094864 228.70524124999974,362.3909644094864 C 250.2173069999999,362.3909644094864 270.40883009999925,354.0417270094862 285.6163696499989,338.83418745948654 L 377.20239214999947,247.24816495948645 C 408.5546305500002,215.89592655948618 408.5546305500002,164.82074470948638 377.20239214999947,133.42590815948634 C 345.80755560000034,102.0310716094863 294.7749719000003,102.0310716094863 263.3801353500003,133.42590815948634 L 228.70524124999974,168.10080225948641 L 194.03034714999922,133.42590815948634 C 178.82280759999958,118.21836860948625 158.6312844999993,109.86913120948648 137.11921875000007,109.86913120948648"/><path class="snb-i-bolt" d="M 673.9837031999996,442.30509380948604 C 665.0806898499995,442.30509380948604 656.092480199999,440.5585696594861 647.4876538999997,437.02292320948607 C 621.5879787000003,426.2881894094861 604.8469057499997,401.24047720948636 604.8469057499997,373.2108945094859 L 604.8469057499997,282.43423685948653 L 544.8687105499994,282.43423685948653 C 516.8391278499994,282.43423685948653 491.7914156499992,265.6931639094863 481.05668185000013,239.79348870948652 C 470.3219480500002,213.89381350948625 476.2004927499993,184.3306974094866 496.0512306499995,164.4799595094859 L 636.2417422999997,24.28944785948616 C 656.092480199999,4.438709959486374 685.6129981499989,-1.439834740514101 711.5552714999994,9.294899059486312 C 737.4549466999997,20.02963285948627 754.1960196499995,45.07734505948602 754.1960196499995,73.10692775948601 L 754.1960196499995,163.8835854094863 L 814.1742148499998,163.8835854094863 C 842.2037975499998,163.8835854094863 867.25150975,180.62465835948652 877.9862435499999,206.52433355948634 C 888.7209773499999,232.4240087594866 882.842432649999,261.98712485948624 862.9916947499996,281.8378627594865 L 722.8011830999994,422.0283744094862 C 709.5531584499995,435.27639905948615 691.9601224999997,442.30509380948604 674.0263013499998,442.30509380948604 L 673.9837031999996,442.30509380948604 M 684.6758388499993,56.57884555948604 C 681.2679868499999,56.57884555948604 677.1785644499996,57.68639745948613 673.3873291,61.47763280948621 L 533.1968174499998,201.6681444594864 C 526.168122699999,208.69683920948628 528.3832264999992,216.53489880948646 529.6185728500004,219.60196560948626 C 530.8965173500001,222.6690324094865 534.9007434500008,229.7829234594864 544.8261124,229.7829234594864 L 657.4556210000001,229.7829234594864 L 657.4556210000001,373.16829635948613 C 657.4556210000001,383.09366530948625 664.5695120499995,387.0978914094861 667.6365788499998,388.3758359094862 C 670.70364565,389.6537804094859 678.5417052499997,391.8262860594858 685.5703999999996,384.7975913094864 L 825.7609116499998,244.60707965948623 C 832.7896063999988,237.57838490948635 830.5745025999995,229.74032530948617 829.3391562500001,226.67325850948637 C 828.0612117500004,223.60619170948613 824.0569856499997,216.49230065948623 814.1316166999995,216.49230065948623 L 701.5021080999995,216.49230065948623 L 701.5021080999995,73.10692775948601 C 701.5021080999995,63.18155880948589 694.3882170499992,59.17733270948602 691.3211502499989,57.899388209486375 C 689.9154112999995,57.30301410948633 687.5299148999993,56.536247409486265 684.6758388499993,56.536247409486265 L 684.6758388499993,56.57884555948604"/><path class="snb-i-x" d="M 988.3580501999995,417.42777420948585 C 963.5233287499996,417.42777420948585 940.1795425499995,407.75799415948575 922.6291047499999,390.20755635948615 C 905.0786669499994,372.6571185594861 895.4088868999997,349.313332359486 895.4088868999997,324.4786109094865 C 895.4088868999997,299.64388945948656 905.0786669499994,276.3001032594865 922.6291047499999,258.749665459486 L 958.2837562999994,223.09501390948608 L 922.6291047499999,187.44036235948616 C 905.0786669499994,169.8899245594861 895.4088868999997,146.5461383594865 895.4088868999997,121.71141690948608 C 895.4088868999997,96.87669545948611 905.0786669499994,73.53290925948605 922.6291047499999,55.98247145948645 C 940.1795425499995,38.43203365948639 963.5233287499996,28.762253609486294 988.3580501999995,28.762253609486294 C 1013.1927716500004,28.762253609486294 1036.5365578500005,38.43203365948639 1054.0869956499992,55.98247145948645 L 1089.7416472000004,91.63712300948637 L 1125.39629875,55.98247145948645 C 1161.6473244,19.731445809486473 1220.6031639999992,19.731445809486473 1256.811591499999,55.98247145948645 C 1293.062617149999,92.23349710948642 1293.062617149999,151.18933670948664 1256.811591499999,187.39776420948593 L 1221.1569399499995,223.0524157594863 L 1256.811591499999,258.7070673094862 C 1293.062617149999,294.9580929594862 1293.062617149999,353.9139325594864 1256.811591499999,390.12236005948614 C 1220.560565849999,426.3733857094861 1161.6047262499997,426.3733857094861 1125.39629875,390.12236005948614 L 1089.7416472000004,354.4677085094862 L 1054.0869956499992,390.12236005948614 C 1036.5365578499996,407.6727978594862 1013.1927716499995,417.3425779094863 988.3580501999995,417.3425779094863 L 988.3580501999995,417.4277742094863 M 988.3580501999995,81.49876330948646 C 977.5807182499993,81.49876330948646 967.4849567000001,85.67338200948635 959.8598878499997,93.29845085948628 C 952.2348189999993,100.92351970948621 948.0602002999985,111.01928125948635 948.0602002999995,121.79661320948608 C 948.0602002999995,132.57394515948582 952.2348189999993,142.66970670948595 959.8598878499997,150.29477555948634 L 1032.7027243499997,223.13761205948586 L 959.8598878499997,295.98044855948626 C 952.2348189999993,303.60551740948665 948.0602002999985,313.7012789594868 948.0602002999995,324.4786109094865 C 948.0602002999995,335.25594285948625 952.2348189999993,345.3517044094864 959.8598878499997,352.97677325948587 C 967.4849566999992,360.60184210948626 977.5807182499993,364.7764608094857 988.3580501999995,364.77646080948614 C 999.1353821499997,364.77646080948614 1009.2311436999998,360.6018421094867 1016.8562125499993,352.97677325948587 L 1089.6990490499993,280.13393675948635 L 1162.5418855500002,352.97677325948587 C 1178.2606029000008,368.695490609486 1203.8194929000001,368.695490609486 1219.5382102499989,352.97677325948587 C 1235.2569275999995,337.2580559094862 1235.2569275999995,311.69916590948594 1219.5382102499989,295.98044855948626 L 1146.6953737499998,223.13761205948586 L 1219.5382102499989,150.29477555948634 C 1235.2569275999995,134.5760582094862 1235.2569275999995,109.01716820948596 1219.5382102499989,93.29845085948628 C 1203.8194928999992,77.57973350948615 1178.2606028999999,77.57973350948615 1162.5418855500002,93.29845085948628 L 1089.6990490499993,166.14128735948626 L 1016.8562125499993,93.29845085948628 C 1009.2311436999998,85.67338200948635 999.1353821499988,81.49876330948646 988.3580501999995,81.49876330948646"/></svg></span>
+            <span class="ua-xc-pair"><span class="ua-xc-now">You're on edge and quick to anger. Small things set off a heat you can't talk yourself out of.</span><span class="ua-xc-arr">&rarr;</span><span class="ua-xc-to">You feel more motivated and are better able to get stuff done.</span></span>
+            <span class="ua-xc-chev"></span>
+          </button>
+          <div class="ua-xc-panel">
+            <p class="ua-xc-reco">Working doesn't mean the anger disappears. For people in our cohort the fight energy actually got more usable, less blowing up and more setting a boundary. (In the data, fight showed up less often but with more intensity, energy people could finally aim.)</p>
+            <blockquote class="ua-xc-q">"I was finally able to turn my fear into assertive, boundary-setting anger. A massive win."<span class="ua-a">A member who worked on fight energy</span></blockquote>
+          </div>
+        </div>
+        <div class="ua-xc-row">
+          <button class="ua-xc-head" aria-expanded="false">
+            <span class="snb-badge is-shutdown" role="img" aria-label="Shutdown" style="--snb-size:20px"><svg viewBox="0 0 1288 446.31" aria-hidden="true"><path class="snb-i-heart" d="M 228.6626430999995,414.99967965948633 C 193.0931878499996,414.99967965948633 159.69623824999962,401.15528090948635 134.56332974999987,376.0223724094866 L 42.977307250000194,284.43634990948647 C 17.844398749999527,259.30344140948625 4.0,225.86389365948654 4.0,190.3370365594864 C 4.0,154.76758130948647 17.844398750000437,121.3706317094865 42.977307250000194,96.23772320948629 C 68.11021574999995,71.10481470948653 101.54976350000015,57.26041595948655 137.07662059999984,57.260415959486096 C 171.45332764999966,57.260415959486096 203.82792165000046,70.21025355948623 228.6626430999995,93.76703050948609 C 280.7175823999996,44.35317650948619 363.2727970999995,45.20513950948626 414.34797894999974,96.23772320948629 C 466.23252564999984,148.1222699094864 466.23252564999984,232.5518032094864 414.34797894999974,284.47894805948624 L 322.76195644999916,376.06497055948637 C 297.6290479499994,401.1978790594861 264.1895001999992,415.0422778094861 228.6626430999995,415.0422778094861 L 228.6626430999995,414.99967965948633 M 137.11921875000007,109.86913120948648 C 115.60715299999993,109.86913120948648 95.41562990000057,118.21836860948625 80.20809035000002,133.42590815948634 C 48.813253799999075,164.82074470948638 48.813253799999075,215.8533284094864 80.20809035000002,247.24816495948645 L 171.7941128499997,338.83418745948654 C 187.00165239999933,354.0417270094862 207.1931754999996,362.3909644094864 228.70524124999974,362.3909644094864 C 250.2173069999999,362.3909644094864 270.40883009999925,354.0417270094862 285.6163696499989,338.83418745948654 L 377.20239214999947,247.24816495948645 C 408.5546305500002,215.89592655948618 408.5546305500002,164.82074470948638 377.20239214999947,133.42590815948634 C 345.80755560000034,102.0310716094863 294.7749719000003,102.0310716094863 263.3801353500003,133.42590815948634 L 228.70524124999974,168.10080225948641 L 194.03034714999922,133.42590815948634 C 178.82280759999958,118.21836860948625 158.6312844999993,109.86913120948648 137.11921875000007,109.86913120948648"/><path class="snb-i-bolt" d="M 673.9837031999996,442.30509380948604 C 665.0806898499995,442.30509380948604 656.092480199999,440.5585696594861 647.4876538999997,437.02292320948607 C 621.5879787000003,426.2881894094861 604.8469057499997,401.24047720948636 604.8469057499997,373.2108945094859 L 604.8469057499997,282.43423685948653 L 544.8687105499994,282.43423685948653 C 516.8391278499994,282.43423685948653 491.7914156499992,265.6931639094863 481.05668185000013,239.79348870948652 C 470.3219480500002,213.89381350948625 476.2004927499993,184.3306974094866 496.0512306499995,164.4799595094859 L 636.2417422999997,24.28944785948616 C 656.092480199999,4.438709959486374 685.6129981499989,-1.439834740514101 711.5552714999994,9.294899059486312 C 737.4549466999997,20.02963285948627 754.1960196499995,45.07734505948602 754.1960196499995,73.10692775948601 L 754.1960196499995,163.8835854094863 L 814.1742148499998,163.8835854094863 C 842.2037975499998,163.8835854094863 867.25150975,180.62465835948652 877.9862435499999,206.52433355948634 C 888.7209773499999,232.4240087594866 882.842432649999,261.98712485948624 862.9916947499996,281.8378627594865 L 722.8011830999994,422.0283744094862 C 709.5531584499995,435.27639905948615 691.9601224999997,442.30509380948604 674.0263013499998,442.30509380948604 L 673.9837031999996,442.30509380948604 M 684.6758388499993,56.57884555948604 C 681.2679868499999,56.57884555948604 677.1785644499996,57.68639745948613 673.3873291,61.47763280948621 L 533.1968174499998,201.6681444594864 C 526.168122699999,208.69683920948628 528.3832264999992,216.53489880948646 529.6185728500004,219.60196560948626 C 530.8965173500001,222.6690324094865 534.9007434500008,229.7829234594864 544.8261124,229.7829234594864 L 657.4556210000001,229.7829234594864 L 657.4556210000001,373.16829635948613 C 657.4556210000001,383.09366530948625 664.5695120499995,387.0978914094861 667.6365788499998,388.3758359094862 C 670.70364565,389.6537804094859 678.5417052499997,391.8262860594858 685.5703999999996,384.7975913094864 L 825.7609116499998,244.60707965948623 C 832.7896063999988,237.57838490948635 830.5745025999995,229.74032530948617 829.3391562500001,226.67325850948637 C 828.0612117500004,223.60619170948613 824.0569856499997,216.49230065948623 814.1316166999995,216.49230065948623 L 701.5021080999995,216.49230065948623 L 701.5021080999995,73.10692775948601 C 701.5021080999995,63.18155880948589 694.3882170499992,59.17733270948602 691.3211502499989,57.899388209486375 C 689.9154112999995,57.30301410948633 687.5299148999993,56.536247409486265 684.6758388499993,56.536247409486265 L 684.6758388499993,56.57884555948604"/><path class="snb-i-x" d="M 988.3580501999995,417.42777420948585 C 963.5233287499996,417.42777420948585 940.1795425499995,407.75799415948575 922.6291047499999,390.20755635948615 C 905.0786669499994,372.6571185594861 895.4088868999997,349.313332359486 895.4088868999997,324.4786109094865 C 895.4088868999997,299.64388945948656 905.0786669499994,276.3001032594865 922.6291047499999,258.749665459486 L 958.2837562999994,223.09501390948608 L 922.6291047499999,187.44036235948616 C 905.0786669499994,169.8899245594861 895.4088868999997,146.5461383594865 895.4088868999997,121.71141690948608 C 895.4088868999997,96.87669545948611 905.0786669499994,73.53290925948605 922.6291047499999,55.98247145948645 C 940.1795425499995,38.43203365948639 963.5233287499996,28.762253609486294 988.3580501999995,28.762253609486294 C 1013.1927716500004,28.762253609486294 1036.5365578500005,38.43203365948639 1054.0869956499992,55.98247145948645 L 1089.7416472000004,91.63712300948637 L 1125.39629875,55.98247145948645 C 1161.6473244,19.731445809486473 1220.6031639999992,19.731445809486473 1256.811591499999,55.98247145948645 C 1293.062617149999,92.23349710948642 1293.062617149999,151.18933670948664 1256.811591499999,187.39776420948593 L 1221.1569399499995,223.0524157594863 L 1256.811591499999,258.7070673094862 C 1293.062617149999,294.9580929594862 1293.062617149999,353.9139325594864 1256.811591499999,390.12236005948614 C 1220.560565849999,426.3733857094861 1161.6047262499997,426.3733857094861 1125.39629875,390.12236005948614 L 1089.7416472000004,354.4677085094862 L 1054.0869956499992,390.12236005948614 C 1036.5365578499996,407.6727978594862 1013.1927716499995,417.3425779094863 988.3580501999995,417.3425779094863 L 988.3580501999995,417.4277742094863 M 988.3580501999995,81.49876330948646 C 977.5807182499993,81.49876330948646 967.4849567000001,85.67338200948635 959.8598878499997,93.29845085948628 C 952.2348189999993,100.92351970948621 948.0602002999985,111.01928125948635 948.0602002999995,121.79661320948608 C 948.0602002999995,132.57394515948582 952.2348189999993,142.66970670948595 959.8598878499997,150.29477555948634 L 1032.7027243499997,223.13761205948586 L 959.8598878499997,295.98044855948626 C 952.2348189999993,303.60551740948665 948.0602002999985,313.7012789594868 948.0602002999995,324.4786109094865 C 948.0602002999995,335.25594285948625 952.2348189999993,345.3517044094864 959.8598878499997,352.97677325948587 C 967.4849566999992,360.60184210948626 977.5807182499993,364.7764608094857 988.3580501999995,364.77646080948614 C 999.1353821499997,364.77646080948614 1009.2311436999998,360.6018421094867 1016.8562125499993,352.97677325948587 L 1089.6990490499993,280.13393675948635 L 1162.5418855500002,352.97677325948587 C 1178.2606029000008,368.695490609486 1203.8194929000001,368.695490609486 1219.5382102499989,352.97677325948587 C 1235.2569275999995,337.2580559094862 1235.2569275999995,311.69916590948594 1219.5382102499989,295.98044855948626 L 1146.6953737499998,223.13761205948586 L 1219.5382102499989,150.29477555948634 C 1235.2569275999995,134.5760582094862 1235.2569275999995,109.01716820948596 1219.5382102499989,93.29845085948628 C 1203.8194928999992,77.57973350948615 1178.2606028999999,77.57973350948615 1162.5418855500002,93.29845085948628 L 1089.6990490499993,166.14128735948626 L 1016.8562125499993,93.29845085948628 C 1009.2311436999998,85.67338200948635 999.1353821499988,81.49876330948646 988.3580501999995,81.49876330948646"/></svg></span>
+            <span class="ua-xc-pair"><span class="ua-xc-now">You feel flat, heavy, and far away. The energy to care just isn't there.</span><span class="ua-xc-arr">&rarr;</span><span class="ua-xc-to">You feel rested and restored, with more energy for life.</span></span>
+            <span class="ua-xc-chev"></span>
+          </button>
+          <div class="ua-xc-panel">
+            <p class="ua-xc-reco">This is the state people most often arrive in, and in the cohorts that tracked it week to week, it's also the one that eased the most. Change here usually looks like the shutdown feeling less solid, and a bit more stillness and energy that you actually chose.</p>
+            <blockquote class="ua-xc-q">"My confidence and capacity to sit with it has grown, leading to periods of real stillness and peace. I also feel more confident about what to do when something else, like anxiety, arises."<span class="ua-a">A member who worked on shutdown</span></blockquote>
+          </div>
+        </div>
+        <div class="ua-xc-row">
+          <button class="ua-xc-head" aria-expanded="false">
+            <span class="snb-badge is-freeze" role="img" aria-label="Freeze" style="--snb-size:20px"><svg viewBox="0 0 1288 446.31" aria-hidden="true"><path class="snb-i-heart" d="M 228.6626430999995,414.99967965948633 C 193.0931878499996,414.99967965948633 159.69623824999962,401.15528090948635 134.56332974999987,376.0223724094866 L 42.977307250000194,284.43634990948647 C 17.844398749999527,259.30344140948625 4.0,225.86389365948654 4.0,190.3370365594864 C 4.0,154.76758130948647 17.844398750000437,121.3706317094865 42.977307250000194,96.23772320948629 C 68.11021574999995,71.10481470948653 101.54976350000015,57.26041595948655 137.07662059999984,57.260415959486096 C 171.45332764999966,57.260415959486096 203.82792165000046,70.21025355948623 228.6626430999995,93.76703050948609 C 280.7175823999996,44.35317650948619 363.2727970999995,45.20513950948626 414.34797894999974,96.23772320948629 C 466.23252564999984,148.1222699094864 466.23252564999984,232.5518032094864 414.34797894999974,284.47894805948624 L 322.76195644999916,376.06497055948637 C 297.6290479499994,401.1978790594861 264.1895001999992,415.0422778094861 228.6626430999995,415.0422778094861 L 228.6626430999995,414.99967965948633 M 137.11921875000007,109.86913120948648 C 115.60715299999993,109.86913120948648 95.41562990000057,118.21836860948625 80.20809035000002,133.42590815948634 C 48.813253799999075,164.82074470948638 48.813253799999075,215.8533284094864 80.20809035000002,247.24816495948645 L 171.7941128499997,338.83418745948654 C 187.00165239999933,354.0417270094862 207.1931754999996,362.3909644094864 228.70524124999974,362.3909644094864 C 250.2173069999999,362.3909644094864 270.40883009999925,354.0417270094862 285.6163696499989,338.83418745948654 L 377.20239214999947,247.24816495948645 C 408.5546305500002,215.89592655948618 408.5546305500002,164.82074470948638 377.20239214999947,133.42590815948634 C 345.80755560000034,102.0310716094863 294.7749719000003,102.0310716094863 263.3801353500003,133.42590815948634 L 228.70524124999974,168.10080225948641 L 194.03034714999922,133.42590815948634 C 178.82280759999958,118.21836860948625 158.6312844999993,109.86913120948648 137.11921875000007,109.86913120948648"/><path class="snb-i-bolt" d="M 673.9837031999996,442.30509380948604 C 665.0806898499995,442.30509380948604 656.092480199999,440.5585696594861 647.4876538999997,437.02292320948607 C 621.5879787000003,426.2881894094861 604.8469057499997,401.24047720948636 604.8469057499997,373.2108945094859 L 604.8469057499997,282.43423685948653 L 544.8687105499994,282.43423685948653 C 516.8391278499994,282.43423685948653 491.7914156499992,265.6931639094863 481.05668185000013,239.79348870948652 C 470.3219480500002,213.89381350948625 476.2004927499993,184.3306974094866 496.0512306499995,164.4799595094859 L 636.2417422999997,24.28944785948616 C 656.092480199999,4.438709959486374 685.6129981499989,-1.439834740514101 711.5552714999994,9.294899059486312 C 737.4549466999997,20.02963285948627 754.1960196499995,45.07734505948602 754.1960196499995,73.10692775948601 L 754.1960196499995,163.8835854094863 L 814.1742148499998,163.8835854094863 C 842.2037975499998,163.8835854094863 867.25150975,180.62465835948652 877.9862435499999,206.52433355948634 C 888.7209773499999,232.4240087594866 882.842432649999,261.98712485948624 862.9916947499996,281.8378627594865 L 722.8011830999994,422.0283744094862 C 709.5531584499995,435.27639905948615 691.9601224999997,442.30509380948604 674.0263013499998,442.30509380948604 L 673.9837031999996,442.30509380948604 M 684.6758388499993,56.57884555948604 C 681.2679868499999,56.57884555948604 677.1785644499996,57.68639745948613 673.3873291,61.47763280948621 L 533.1968174499998,201.6681444594864 C 526.168122699999,208.69683920948628 528.3832264999992,216.53489880948646 529.6185728500004,219.60196560948626 C 530.8965173500001,222.6690324094865 534.9007434500008,229.7829234594864 544.8261124,229.7829234594864 L 657.4556210000001,229.7829234594864 L 657.4556210000001,373.16829635948613 C 657.4556210000001,383.09366530948625 664.5695120499995,387.0978914094861 667.6365788499998,388.3758359094862 C 670.70364565,389.6537804094859 678.5417052499997,391.8262860594858 685.5703999999996,384.7975913094864 L 825.7609116499998,244.60707965948623 C 832.7896063999988,237.57838490948635 830.5745025999995,229.74032530948617 829.3391562500001,226.67325850948637 C 828.0612117500004,223.60619170948613 824.0569856499997,216.49230065948623 814.1316166999995,216.49230065948623 L 701.5021080999995,216.49230065948623 L 701.5021080999995,73.10692775948601 C 701.5021080999995,63.18155880948589 694.3882170499992,59.17733270948602 691.3211502499989,57.899388209486375 C 689.9154112999995,57.30301410948633 687.5299148999993,56.536247409486265 684.6758388499993,56.536247409486265 L 684.6758388499993,56.57884555948604"/><path class="snb-i-x" d="M 988.3580501999995,417.42777420948585 C 963.5233287499996,417.42777420948585 940.1795425499995,407.75799415948575 922.6291047499999,390.20755635948615 C 905.0786669499994,372.6571185594861 895.4088868999997,349.313332359486 895.4088868999997,324.4786109094865 C 895.4088868999997,299.64388945948656 905.0786669499994,276.3001032594865 922.6291047499999,258.749665459486 L 958.2837562999994,223.09501390948608 L 922.6291047499999,187.44036235948616 C 905.0786669499994,169.8899245594861 895.4088868999997,146.5461383594865 895.4088868999997,121.71141690948608 C 895.4088868999997,96.87669545948611 905.0786669499994,73.53290925948605 922.6291047499999,55.98247145948645 C 940.1795425499995,38.43203365948639 963.5233287499996,28.762253609486294 988.3580501999995,28.762253609486294 C 1013.1927716500004,28.762253609486294 1036.5365578500005,38.43203365948639 1054.0869956499992,55.98247145948645 L 1089.7416472000004,91.63712300948637 L 1125.39629875,55.98247145948645 C 1161.6473244,19.731445809486473 1220.6031639999992,19.731445809486473 1256.811591499999,55.98247145948645 C 1293.062617149999,92.23349710948642 1293.062617149999,151.18933670948664 1256.811591499999,187.39776420948593 L 1221.1569399499995,223.0524157594863 L 1256.811591499999,258.7070673094862 C 1293.062617149999,294.9580929594862 1293.062617149999,353.9139325594864 1256.811591499999,390.12236005948614 C 1220.560565849999,426.3733857094861 1161.6047262499997,426.3733857094861 1125.39629875,390.12236005948614 L 1089.7416472000004,354.4677085094862 L 1054.0869956499992,390.12236005948614 C 1036.5365578499996,407.6727978594862 1013.1927716499995,417.3425779094863 988.3580501999995,417.3425779094863 L 988.3580501999995,417.4277742094863 M 988.3580501999995,81.49876330948646 C 977.5807182499993,81.49876330948646 967.4849567000001,85.67338200948635 959.8598878499997,93.29845085948628 C 952.2348189999993,100.92351970948621 948.0602002999985,111.01928125948635 948.0602002999995,121.79661320948608 C 948.0602002999995,132.57394515948582 952.2348189999993,142.66970670948595 959.8598878499997,150.29477555948634 L 1032.7027243499997,223.13761205948586 L 959.8598878499997,295.98044855948626 C 952.2348189999993,303.60551740948665 948.0602002999985,313.7012789594868 948.0602002999995,324.4786109094865 C 948.0602002999995,335.25594285948625 952.2348189999993,345.3517044094864 959.8598878499997,352.97677325948587 C 967.4849566999992,360.60184210948626 977.5807182499993,364.7764608094857 988.3580501999995,364.77646080948614 C 999.1353821499997,364.77646080948614 1009.2311436999998,360.6018421094867 1016.8562125499993,352.97677325948587 L 1089.6990490499993,280.13393675948635 L 1162.5418855500002,352.97677325948587 C 1178.2606029000008,368.695490609486 1203.8194929000001,368.695490609486 1219.5382102499989,352.97677325948587 C 1235.2569275999995,337.2580559094862 1235.2569275999995,311.69916590948594 1219.5382102499989,295.98044855948626 L 1146.6953737499998,223.13761205948586 L 1219.5382102499989,150.29477555948634 C 1235.2569275999995,134.5760582094862 1235.2569275999995,109.01716820948596 1219.5382102499989,93.29845085948628 C 1203.8194928999992,77.57973350948615 1178.2606028999999,77.57973350948615 1162.5418855500002,93.29845085948628 L 1089.6990490499993,166.14128735948626 L 1016.8562125499993,93.29845085948628 C 1009.2311436999998,85.67338200948635 999.1353821499988,81.49876330948646 988.3580501999995,81.49876330948646"/></svg></span>
+            <span class="ua-xc-pair"><span class="ua-xc-now">You're stuck in place: part of you wants to move, and part of you can't.</span><span class="ua-xc-arr">&rarr;</span><span class="ua-xc-to">You have more emotional freedom, choice, and empowerment.</span></span>
+            <span class="ua-xc-chev"></span>
+          </button>
+          <div class="ua-xc-panel">
+            <p class="ua-xc-reco">This is the smallest slice of our data, so here it's people's words more than numbers. Change looks like a little more room to move, and a little more say in what you do next.</p>
+            <blockquote class="ua-xc-q">"It gives skills to home in on the mobilization your body is actually asking for, what would feel good to do right now."<span class="ua-a">A member who worked on mobilizing out of stillness</span></blockquote>
+          </div>
+        </div>
+      </div>
+      <p class="ua-grad" style="margin-top:32px;max-width:640px">That's where you are and where you're headed with the Unstucking Academy. The real finish line is not needing the Academy at all. And that's how I've designed everything inside.</p>
+    </div>
+  </section>
+  <!-- THE DATA (evidence right after the picture of change) -->
+  <section>
+    <div class="ua-page">
+      <p class="ua-eyebrow">The numbers</p>
+      <h2>Transparent data: real numbers from the Academy</h2>
+      <p class="ua-lede">Think about the progress you've made in the last four to eight weeks. Now look at what Academy students reported over that same stretch, tracking themselves week to week.</p>
+      <!-- 2026-08-28 (Justin): stats rebuilt from ALL weekly-tracked cohort runs (six runs, two live
+           programs, 2025-2026), not the single pilot cohort. Presented as MARGINS, each person against
+           their own starting point and headroom, so a high starter can't dilute the story. First-time
+           participants only: alumni retaking a cohort are not double-counted. Felt safety moved off the
+           tiles into the honest note: it does not survive this analysis as a headline number.
+           Source data: the "Before Week N" form responses (Drive); method + figures in the session's
+           margins analysis. Numbers: median defense shed -29%, median confidence headroom gained +37%,
+           33 of 35 improved on at least one front. -->
+      <div class="ua-stats">
+        <div class="ua-stat">
+          <div class="ua-num">&minus;29%</div>
+          <h3>Defensive activation</h3>
+          <p>The stuck, defensive states (shutdown, anxiety, anger, freeze): the median member shed about a third of theirs.</p>
+          <details class="ua-statmore"><summary>More on this</summary><p>Combined defensive states, week one to final week, measured against each person's own starting level. This covers every cohort that tracked itself weekly (six runs of two programs, 2025 to 2026), counting each person's first cohort only. 25 of 35 people saw an overall drop.</p></details>
+        </div>
+        <div class="ua-stat">
+          <div class="ua-num">+37%</div>
+          <h3>Confidence</h3>
+          <p>Of the confidence they had room to gain, the median member gained over a third.</p>
+          <details class="ua-statmore"><summary>More on this</summary><p>Confidence in steadying yourself is scored 0 to 10, so someone starting at 8 can only gain 2. This number measures each person's gain against their own headroom. 21 of 35 rose, and 3 more started at the top with no room to move.</p></details>
+        </div>
+        <div class="ua-stat">
+          <div class="ua-num">33 of 35</div>
+          <h3>Improved somewhere</h3>
+          <p>First-time participants who improved on at least one tracked front: defense, felt safety, or confidence.</p>
+          <details class="ua-statmore"><summary>More on this</summary><p>Felt safety is the honest wobble in this data. People who started low tended to gain ground; people who started high often scored themselves lower later, partly because members get more discerning about what safety actually feels like.</p></details>
+        </div>
+      </div>
+      <p class="ua-varynote">These are honest numbers from 35 real people tracking themselves week to week, and they're what a student can realistically expect. Real change is gradual, uneven, and different for every nervous system. That's exactly what this data shows, and it's the only kind of progress I'll promise you.</p>
+      <p class="ua-midcta"><a href="#ua-join">See the membership &darr;</a></p>
+    </div>
+  </section>
+  <!-- FIT CHECK -->
+  <section>
+    <div class="ua-page">
+      <p class="ua-eyebrow">Fit check</p>
+      <h2>Is the Academy for you?</h2>
+      <p class="ua-lede">This isn't for everyone (and that's a good thing).</p>
+      <div class="ua-fit">
+        <div class="ua-fitcol">
+          <h3>This is for you if&hellip;</h3>
+          <ul>
+            <li>You've been learning from the free content, and you're ready to <em>practice</em>, not just understand.</li>
+            <li>You want one sequenced path instead of another pile of coping techniques that lead nowhere.</li>
+            <li>You can show up in small, repeatable ways: a 10-minute lesson, a live practice, at whatever pace your capacity allows.</li>
+            <li>You don't want to do this alone anymore.</li>
+          </ul>
+        </div>
+        <div class="ua-fitcol">
+          <h3>This isn't for you (yet) if&hellip;</h3>
+          <ul>
+            <li>You're in active crisis, or what you need right now is professional, individual care. The Academy works alongside these, never in place of.</li>
+            <li>You want content to passively consume. Everything here is built around practice.</li>
+            <li>You're looking for a quick fix. There isn't one here, just small, sustainable steps.</li>
+            <li>Paying for it would strain you this month. I have <a href="https://www.stucknotbroken.com/how-i-can-help-you">other options for you</a>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ABOUT -->
+  <section>
+    <div class="ua-page">
+      <p class="ua-eyebrow">About Justin</p>
+      <h2>But why me?</h2>
+      <div class="ua-cols">
+        <div>
+          <p>I'm Justin Sunseri, a therapist and self-regulation coach. Since 2019, I've been teaching you Polyvagal Theory and how to apply it through the Stuck Not Broken podcast. You've likely spent many hours with me, maybe even read my books, and you're ready to take things a step further.</p>
+          <p style="margin-bottom:0">The Academy is where all my knowledge and practices come together, refined through years of application and feedback.</p>
+        </div>
+        <div>
+          <p style="font-size:15px;color:var(--muted);margin-bottom:6px">A little of the background</p>
+          <ul class="ua-bio">
+            <li>Licensed therapist (LMFT) since 2009</li>
+            <li>Host of the Stuck Not Broken podcast since 2019</li>
+            <li>Author of three books on applying Polyvagal Theory to self-regulation</li>
+            <li>Creator of the Polyvagal Current, my own autonomic model</li>
+            <li>Editorial Board member at the Polyvagal Institute, reviewing submissions for accuracy</li>
+            <li>Keynote speaker</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- VOICES -->
+  <section>
+    <div class="ua-page">
+      <p class="ua-eyebrow">In their words</p>
+      <h2>What members say</h2>
+      <p class="ua-qnote" style="margin-bottom:32px">Real members, in their own words, shared with permission. Every nervous system moves at its own pace; nobody's path looks the same.</p>
+      <div class="ua-cols">
+        <div>
+          <details open>
+            <summary>Is it real change, or hype?</summary>
+            <blockquote class="ua-quote" style="margin:6px 0 16px">"I spent some time dithering about joining, and once I did, I had no regrets except not joining sooner. &hellip; I haven't experienced any 'magic bullet' moments or 'one-and-done' sessions, just a steady week-by-week improvement that has added up to a significant expansion of my safety state&hellip; and, most noticeably, a much quicker return to calm after upset."<span class="ua-attr">An Academy member &middot; on the live cohorts</span></blockquote>
+          </details>
+          <details>
+            <summary>Does the change stick?</summary>
+            <blockquote class="ua-quote" style="margin:6px 0 16px">"I've been using the Academy almost daily&hellip; It's actually helped me stay consistent with daily regulation, and because of that, I'm finally making progress on sharpening my CV, all thanks to being more regulated than before."<span class="ua-attr">A., Academy member</span></blockquote>
+          </details>
+          <details>
+            <summary>And when people are better?</summary>
+            <blockquote class="ua-quote" style="margin:6px 0 16px">"I got everything I needed from you and the community. Thank you so much."<span class="ua-attr">A former member &middot; on moving on</span></blockquote>
+          </details>
+        </div>
+        <div>
+          <div style="position:relative;width:100%;max-width:820px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000">
+            <iframe src="https://www.youtube.com/embed/4Vw_6RHL99M" title="Eva's story (Stuck Not Broken 256)" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="autoplay; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="ua-cap">Eva's story: Stuck Not Broken episode 256</div>
+          <p style="font-size:13px;color:var(--muted);margin-top:8px">"This is not a paid testimonial&hellip; I asked current and past Unstucking Academy students if they would share their success story, and Eva volunteered." (Justin)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- JOIN: simplified pricing -->
+  <section class="snb-band" id="ua-join">
+    <div class="ua-page">
+      <p class="ua-eyebrow">Pricing</p>
+      <h2>Join the Unstucking Academy</h2>
+      <p class="ua-lede">I don't run sales, and I don't hide fees. (So there's no reason to wait for a deal.)</p>
+      <div class="ua-pricing">
+        <div class="ua-pcard">
+          <h3>Self-Regulator</h3>
+          <p class="ua-tag">Self-paced learning</p>
+          <div class="ua-price"><span class="ua-big">$24</span><span class="ua-per">/ month</span></div>
+          <p class="ua-terms">Billed monthly</p>
+          <p class="ua-pdesc">The Pathway, learning hubs, and downloads at your own pace, plus monthly live Q&amp;As for direct access to me.</p>
+          <a class="ua-btn2" href="https://www.stucknotbroken.com/checkout/self-regulator" data-ga-cta="academy_selfreg">Start the Pathway</a>
+          <p class="ua-policy">Renews automatically; cancel in one click anytime. No refunds or pauses.</p>
+        </div>
+        <div class="ua-pcard ua-feat">
+          <h3>Co-Regulator</h3>
+          <p class="ua-tag">Everything, with people &middot; capped at 100 members</p>
+          <div class="ua-price"><span class="ua-big">$39</span><span class="ua-per">/ month</span></div>
+          <p class="ua-terms">Billed monthly</p>
+          <p class="ua-pdesc">Everything in Self-Regulator, plus unlimited live practices and cohorts, the private community, the Stuck Not Broken app, the Knowledge Bot, and exclusive resources, meditations &amp; book PDFs.</p>
+          <a class="ua-btn" href="https://www.stucknotbroken.com/checkout/co-regulator" data-ga-cta="academy_coreg">Join Co-Regulator</a>
+          <p class="ua-policy">Renews automatically; cancel in one click anytime. No refunds or pauses.</p>
+        </div>
+      </div>
+      <details style="max-width:none;margin-top:28px">
+        <summary>Compare what's included</summary>
+        <table class="ua-cmp">
+          <thead>
+            <tr><th></th><th>Self-Regulator</th><th>Co-Regulator</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>The Unstucking Pathway</td><td class="ua-y">&check;</td><td class="ua-y">&check;</td></tr>
+            <tr><td>Downloads &amp; resources</td><td class="ua-y">&check;</td><td class="ua-y">&check;</td></tr>
+            <tr><td>Monthly live Q&amp;As</td><td class="ua-y">&check;</td><td class="ua-y">&check;</td></tr>
+            <tr><td>The Stuck Not Broken app</td><td class="ua-n">&ndash;</td><td class="ua-y">&check;</td></tr>
+            <tr><td>The three book PDFs</td><td class="ua-n">&ndash;</td><td class="ua-y">&check;</td></tr>
+            <tr><td>The Knowledge Bot</td><td class="ua-n">&ndash;</td><td class="ua-y">&check;</td></tr>
+            <tr><td>Live practices</td><td class="ua-n">&ndash;</td><td class="ua-y">&check;</td></tr>
+            <tr><td>Cohorts &amp; workshops</td><td class="ua-n">&ndash;</td><td class="ua-y">&check;</td></tr>
+            <tr><td>Small, private community</td><td class="ua-n">&ndash;</td><td class="ua-y">&check;</td></tr>
+            <tr><td>Future content</td><td>While a member</td><td>While a member</td></tr>
+          </tbody>
+        </table>
+      </details>
+      <p style="font-size:14px;color:var(--muted);margin-top:18px;max-width:none">Cohorts are included free with Co-Regulator. Sold separately, a single cohort ranges from $250-400.</p>
+      <blockquote class="ua-quote" style="margin-top:48px">"Your lack of industry-standard high-pressure sales was the thing (after diving headfirst into your podcast) that 'sold me' on purchasing your course."
+        <span class="ua-attr">B., Academy member</span>
+      </blockquote>
+      <h3 style="font-size:24px;margin-top:48px">Still deciding? That's okay.</h3>
+      <div class="ua-decide" style="margin-top:20px">
+        <div>
+          <p style="margin-bottom:0"><strong style="font-weight:500">Want to see inside?</strong> Take the tour. No rush, and no pressure either way.</p>
+        </div>
+        <div>
+          <!-- poster = the Academy interior frame (~0:24) instead of the dark "start the tour." card:
+             content-carrying UI per 07 Imagery. Same 2026-08-28 approval as the welcome poster. -->
+          <video controls playsinline preload="none" poster="https://justinlmft.github.io/snb-website/img/academy-tour-poster.jpg" style="width:100%;display:block;border-radius:16px;background:#000">
+            <source src="https://video.wixstatic.com/video/2d354d_5cd1e2dfaaee41298600b779cd8fd827/1080p/mp4/file.mp4" type="video/mp4">
+            Your browser can't play this video: <a href="https://video.wixstatic.com/video/2d354d_5cd1e2dfaaee41298600b779cd8fd827/1080p/mp4/file.mp4">open the tour here</a>.
+          </video>
+        </div>
+      </div>
+      <div class="ua-decide" style="margin-top:32px">
+        <div></div>
+        <div>
+          <p style="margin:0;text-align:left;font-size:inherit;color:inherit"><strong style="font-weight:500">Not ready at all?</strong> Stay free for now. The free learning isn't going anywhere, and neither am I. <a href="https://www.stucknotbroken.com/how-i-can-help-you">See all the ways I can help &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FAQ: only the decision-blockers -->
+  <section>
+    <div class="ua-page">
+      <p class="ua-eyebrow">FAQ</p>
+      <h2>Questions</h2>
+      <details>
+        <summary>How does billing work?</summary>
+        <p>Your membership renews automatically each month (you can <a href="#ua-join">review the options above</a>). You'll get a receipt at every renewal, and you can cancel anytime in one click from your account. No cancellation fees, no guilt trips.</p>
+      </details>
+      <details>
+        <summary>Can I switch tiers later?</summary>
+        <p>Yes. Switch between Self-Regulator and Co-Regulator whenever you want, right from your account. There's no term to switch; billing is monthly, so you're never locked into a length.</p>
+      </details>
+      <details>
+        <summary>What's your refund policy?</summary>
+        <p>No refunds, and no pauses. Here's the honest why: Co-Regulator is capped at 100 seats. A refunded or paused seat is one someone else in need couldn't fill. This policy applies wherever you live, so please weigh it carefully and join only when you're sure. Not sure yet? Stay free for now, or email me first and we'll figure out your next step together.</p>
+      </details>
+      <details>
+        <summary>How much time will I need each week?</summary>
+        <p>The Academy is truly self-paced and designed to gradually increase your capacity. You choose based on what your capacity allows, whether live or through the curriculum.</p>
+      </details>
+      <details>
+        <summary>Is community participation mandatory?</summary>
+        <p>Yes and no. I want active, engaged members, but I won't force you to participate in any way that's uncomfortable for you. There are many ways to be part of the community, and I'm sure you'll find one. If you're not ready to connect with the community, you're probably better off in the Self-Regulator tier. <a href="#ua-join">Join Co-Regulator when you're ready.</a></p>
+      </details>
+      <details>
+        <summary>What are the community guidelines?</summary>
+        <p>It's a small group of global members from all demographics, and all members are at least 18. No one shares trauma stories (it's against the guidelines; if someone does, I remove the post and reach out privately), and there's no political or religious discussion.</p>
+      </details>
+      <details>
+        <summary>How is this different than everything else?</summary>
+        <p>The Academy is built on Polyvagal Theory and is free of psychobabble and woo-woo. It's hyper-focused and methodical: short lessons, brief practices, and sustainable growth without distracting detours into ego, shadow work, or parts work.</p>
+      </details>
+      <div style="margin-top:48px">
+        <h3 style="margin-bottom:8px">Another question? Let's talk.</h3>
+        <p style="font-size:16px">If you're wondering whether the Academy is right for you, reach out to me, and I'll answer whatever questions you have.</p>
+        <ul style="font-size:16px;margin:12px 0 0;padding-left:22px;list-style:disc">
+          <li style="margin:5px 0">Email me at <a href="mailto:justin@stucknotbroken.com">justin@stucknotbroken.com</a></li>
+          <li style="margin:5px 0">Set up a <a href="https://tidycal.com/justinlmft/15-minute-meeting">15 minute chat through my calendar</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- CLOSE -->
+  <section class="snb-band">
+    <div class="ua-page">
+      <h2 style="font-size:clamp(28px,5vw,40px)">Stuck means change is near.</h2>
+      <p class="ua-lede" style="margin:16px 0 0">Stuck not broken, right? Stuck tells us that something is trying to move. To change. Your body is trying to regulate, and it probably has been for a very long time.</p>
+      <p class="ua-lede" style="margin:16px 0 28px">Ready to stop chasing relief and find real regulation? Join a small group of people who are learning to work <em>with</em> their nervous system (not against it).</p>
+      <p><a class="ua-btn" href="#ua-join">Join the Academy</a></p>
+      <p style="font-size:13px;color:var(--muted);margin-top:10px">Co-Regulator is capped at 100 members.</p>
+    </div>
+  </section>
+<!-- STANDARD FOOTER (shared across SNB pages; source: STANDARD-FOOTER.html) -->
+<div data-snb-include="footer">
+<!-- ============================================================================
+  STANDARD FOOTER v2 -- SOURCE OF TRUTH (owned by Web Designer)
+  Moved here 2026-07-09 from the Get More Sales folder: this workstream owns the
+  footer's design. Edit HERE first, then re-propagate into every page/embed
+  (SNB-Web-*-embed.html, SNB-App-embed.html, etc.). Keep them in sync.
+
+  Namespaced under .snb-footer so it drops into any Circle custom-HTML embed as-is
+  (no <html>/<head>/<body>; the host page supplies those).
+
+  v2 design standard (files 04/05, 2026-07-09):
+  - Background TRANSPARENT (inherits the host surface) + STANDARD DARK MODE via
+    prefers-color-scheme, with a [data-theme] escape hatch. Tokens flip.
+  - SWISS GRID: content shares one page frame (max-width 1120, --pad-x gutter) and
+    the crisis band uses the SAME 3-column track as the nav columns, so every column
+    lines up top-to-bottom. Drops to 2 cols at 820px, 1 col at 480px (nav + crisis
+    stay locked together at each breakpoint).
+  - Flat: no shadows. Hairlines are the only separators.
+  - TARGETS (2026-08-09, DQA W1b): every footer link is a 44px-tall hit box.
+    Padding sits on the <a> (never the <li>) so the padded box is the real
+    target; li/h4 margins were folded into that padding, so spacing is unchanged.
+
+  Canonical facts (keep correct): links are stucknotbroken.com (never justinlmft.com);
+  contact justin@stucknotbroken.com; crisis band verbatim, 988 first; Triad PNG (Wix
+  asset). Watch: verify the Triad PNG reads on a dark host.
+============================================================================= -->
+<style>
+  .snb-footer{
+    --snb-ink:#1A1F2A; --snb-ink-80:#3A3F4A; --snb-muted:#5E5A4E;
+    --snb-hairline:#D8D2C2; --snb-link:#0645AD; --snb-bone:#FAF9F5;
+    /* paints its own paper -- see the root note (the Circle wrapper never goes dark) */
+    background:var(--snb-bone); color:var(--snb-muted);
+    font:400 14px/20px Inter,system-ui,sans-serif;
+    padding:48px 0 64px;
+  }
+  @media (prefers-color-scheme:dark){.snb-footer:not([data-theme="light"]){
+    --snb-ink:#ECE9E0; --snb-ink-80:#C7C4BB; --snb-muted:#9A968C;
+    --snb-hairline:#2C313C; --snb-link:#8FB6FF; --snb-bone:#14171E;
+  }}
+  .snb-footer[data-theme="dark"]{
+    --snb-ink:#ECE9E0; --snb-ink-80:#C7C4BB; --snb-muted:#9A968C;
+    --snb-hairline:#2C313C; --snb-link:#8FB6FF; --snb-bone:#14171E;
+  }
+  /* Triad PNG is a dark monochrome mark (no light asset yet) -- it vanishes on the dark footer.
+     brightness(0) invert(1) forces it to solid white in dark mode. Swap the src + drop this if a
+     real light asset lands. (Resolves the "verify the Triad PNG reads on a dark host" watch note.) */
+  @media (prefers-color-scheme:dark){.snb-footer:not([data-theme="light"]) .snb-brand img{filter:brightness(0) invert(1)}}
+  .snb-footer[data-theme="dark"] .snb-brand img{filter:brightness(0) invert(1)}
+  .snb-footer *,.snb-footer *::before,.snb-footer *::after{box-sizing:border-box}
+  .snb-footer .snb-page{box-sizing:border-box;max-width:var(--snb-footer-width,1080px);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .snb-footer hr{border:0;border-top:1px solid var(--snb-hairline);margin:0 0 32px}
+  .snb-footer a{color:var(--snb-link);text-decoration:none}
+  .snb-footer a:hover{text-decoration:underline}
+  .snb-brand{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+  .snb-brand img{flex:none;height:40px;width:auto;display:block}
+  .snb-wordmark{font-size:16px;font-weight:500;color:var(--snb-ink);line-height:24px}
+  .snb-byline{font-size:13px;color:var(--snb-muted);margin-top:4px}
+  /* one 3-column track shared by the nav cols AND the crisis band */
+  .snb-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px clamp(20px,4vw,32px)}
+  .snb-col h4{font-size:12px;font-weight:500;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--snb-ink);margin:0}
+  .snb-col ul{list-style:none;margin:0;padding:0}
+  .snb-col li{margin:0}
+  /* WCAG 2.5.8 / HIG 44: padding lives on the <a>, so the padded box IS the hit
+     area (padding on the <li> would only pad around an unchanged target).
+     line-height 20 + 12/12 = 44px tall; the 12px top pad also reproduces the
+     old 12px heading-to-first-link gap, so the Swiss grid rhythm is unchanged. */
+  .snb-col li a{display:inline-block;line-height:20px;padding:12px 0;min-width:44px}
+  .snb-crisis{margin-top:48px;padding-top:24px;border-top:1px solid var(--snb-hairline)}
+  .snb-crisis h4{font-size:12px;font-weight:500;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--snb-ink);margin:0 0 16px}
+  .snb-crisis ul{list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px clamp(20px,4vw,32px)}
+  .snb-crisis li{font-size:13px;line-height:20px;color:var(--snb-muted)}
+  .snb-crisis li b{font-weight:500;color:var(--snb-ink-80);display:block}
+  .snb-crisis .snb-911{margin-top:16px;font-size:13px;color:var(--snb-ink-80)}
+  .snb-bottom{display:flex;flex-wrap:wrap;align-items:center;
+    justify-content:space-between;gap:8px;
+    margin-top:32px;padding-top:12px;border-top:1px solid var(--snb-hairline);
+    font-size:12.5px;color:var(--snb-muted)}
+  .snb-bottom a{color:var(--snb-muted)}
+  /* same 2.5.8 treatment as the nav links; padding-top above is 12 (not 24)
+     because the legal links' own 12px top pad restores the 24px hairline gap. */
+  .snb-bottom .snb-legal a{display:inline-block;line-height:20px;padding:12px 0;
+    min-width:44px;margin-left:16px}
+  @media (prefers-contrast:more){
+    .snb-footer{--snb-muted:var(--snb-ink-80);--snb-hairline:var(--snb-muted)}
+  }
+  @media (max-width:820px){
+    .snb-footer{padding:32px 0 48px}
+    .snb-cols{grid-template-columns:1fr 1fr;gap:24px clamp(20px,4vw,32px)}
+    .snb-crisis ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:480px){
+    .snb-cols,.snb-crisis ul{grid-template-columns:1fr}
+  }
+</style>
+<footer class="snb-footer">
+  <div class="snb-page">
+    <hr>
+    <div class="snb-brand">
+      <img src="https://static.wixstatic.com/media/2d354d_44e5aa0ee94c4c44928b3994c1e63df7~mv2.png" alt="Stuck Not Broken">
+      <div>
+        <div class="snb-wordmark">Stuck Not Broken</div>
+        <div class="snb-byline">Justin Sunseri, LMFT</div>
+      </div>
+    </div>
+    <div class="snb-cols">
+      <div class="snb-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="https://www.stucknotbroken.com/polyvagal-theory-introduction">Polyvagal Intro</a></li>
+          <li><a href="https://www.stucknotbroken.com/c/blog">Blog</a></li>
+          <li><a href="https://stuck-not-broken.captivate.fm/">Podcast</a></li>
+          <li><a href="https://www.stucknotbroken.com/books">Books</a></li>
+        </ul>
+      </div>
+      <div class="snb-col">
+        <h4>Go further</h4>
+        <ul>
+          <li><a href="https://www.stucknotbroken.com/app">Stuck Not Broken app</a></li>
+          <li><a href="https://www.stucknotbroken.com/how-i-can-help-you">How I Can Help You</a></li>
+          <li><a href="https://www.stucknotbroken.com/unstuckingacademy">Unstucking Academy</a></li>
+          <li><a href="https://www.stucknotbroken.com/c/public_resources/">Free Resources</a></li>
+        </ul>
+      </div>
+      <div class="snb-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:justin@stucknotbroken.com">justin@stucknotbroken.com</a></li>
+          <li><a href="https://www.youtube.com/channel/UCduAkQrvmvWq2oy8aJSNcEQ">YouTube</a></li>
+          <li><a href="https://www.instagram.com/justinlmft">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/justinlmft/">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/JustinLMFT/">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="snb-crisis">
+      <h4>Crisis &amp; other resources</h4>
+      <ul>
+        <li><b>988 Suicide &amp; Crisis Lifeline</b>Call or text 988</li>
+        <li><b>National Domestic Violence Hotline</b>1 (800) 799-7233</li>
+        <li><b>LGBT Trevor Project Lifeline</b>1 (866) 488-7386</li>
+        <li><b>National Sexual Assault Hotline</b>1 (800) 656-4673</li>
+        <li><b>Crisis Text Line</b>Text &ldquo;HOME&rdquo; to 741741</li>
+      </ul>
+      <p class="snb-911">If you are experiencing an emergency, please call 911.</p>
+    </div>
+    <div class="snb-bottom">
+      <span>&copy; 2026 Stuck Not Broken &middot; Justin Sunseri, LMFT</span>
+      <span class="snb-legal">
+        <a href="https://www.stucknotbroken.com/terms">Terms</a>
+        <a href="https://www.stucknotbroken.com/privacy">Privacy</a>
+      </span>
+    </div>
+  </div>
+</footer>
+</div>
+</div>
+<script>
+/* Academy disclosures: the same motion engine every other page in the estate
+   already runs (Books / manifesto / stuck / how-to-read / three-stuck-states /
+   polyvagal-current / app) -- WAAPI on height + opacity + paddingBottom, 200ms,
+   the one estate easing curve, fractional measure so there is no sub-pixel
+   snap, and the close holds its end state (fill:forwards) so nothing flashes
+   back. This page was the ONLY one missing it, which is why its dropdowns
+   dropped (Justin, 2026-08-27).
+
+   Two families here, one engine:
+   (a) the FAQ / "more" <details>, single-open per group like everywhere else;
+   (b) the compare rows, which are buttons + panels rather than <details>.
+       Those stay MULTI-OPEN on purpose: they are the side-by-side comparison
+       exception to single-open -- you are meant to hold two states open and
+       read across them.
+   Degrades: no WAAPI or reduced motion -> everything toggles instantly, exactly
+   as before, and single-open still holds. */
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var DUR = 200, EASE = 'cubic-bezier(.2,.6,.2,1)';
+
+  function grow(b, done){
+    if(!b || reduce || !b.animate){ if(done) done(); return; }
+    var pb = getComputedStyle(b).paddingBottom;
+    var h = b.getBoundingClientRect().height;
+    b.style.overflow='hidden'; b.style.height=h+'px';
+    var a = b.animate([{height:'0px',opacity:0,paddingBottom:'0px'},{height:h+'px',opacity:1,paddingBottom:pb}],{duration:DUR,easing:EASE});
+    a.onfinish = function(){ b.style.overflow=''; b.style.height=''; if(done) done(); };
+  }
+  function shrink(b, done){
+    if(!b || reduce || !b.animate){ if(done) done(); return; }
+    var pb = getComputedStyle(b).paddingBottom;
+    var h = b.getBoundingClientRect().height;
+    b.style.overflow='hidden';
+    var a = b.animate([{height:h+'px',opacity:1,paddingBottom:pb},{height:'0px',opacity:0,paddingBottom:'0px'}],{duration:DUR,easing:EASE,fill:'forwards'});
+    a.onfinish = function(){ if(done) done(); a.cancel(); b.style.overflow=''; b.style.height=''; };
+  }
+
+  /* (a) <details> -- single-open within each group */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.ua-root details'));
+  function body(d){
+    var n = d.firstElementChild;
+    while(n && n.tagName === 'SUMMARY') n = n.nextElementSibling;
+    return (n && !n.nextElementSibling) ? n : null;
+  }
+  function expand(d){ if(d.open) return; d.open = true; grow(body(d)); }
+  function collapse(d){
+    if(!d.open) return;
+    var b = body(d);
+    if(!b || reduce || !b.animate){ d.open = false; return; }
+    shrink(b, function(){ d.open = false; });
+  }
+  items.forEach(function(d){
+    var sum = d.querySelector('summary'); if(!sum) return;
+    sum.addEventListener('click', function(e){
+      e.preventDefault();
+      if(d.open){ collapse(d); return; }
+      items.forEach(function(x){ if(x!==d && x.open && x.parentElement===d.parentElement) collapse(x); });
+      expand(d);
+    });
+  });
+
+  /* in-page jumps: smooth scroll + move focus (07 Anchor nav). Circle scrolls an inner
+     container, so scroll-behavior on html/body never applies here; scrollIntoView targets
+     the real scroller and honors the scroll-margin-top Circle already sets, so headings
+     still clear the sticky masthead. Reduced motion jumps instantly, exactly as before. */
+  document.querySelectorAll('.ua-root a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.getElementById(a.getAttribute('href').slice(1));
+      if(!t) return;
+      e.preventDefault();
+      t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+      t.setAttribute('tabindex','-1');
+      t.focus({preventScroll:true});
+    });
+  });
+
+  /* (b) the compare rows -- multi-open by design */
+  var root=document.getElementById('ua-xc'); if(!root) return;
+  root.classList.add('ua-on');
+  var rows=[].slice.call(root.querySelectorAll('.ua-xc-row'));
+  function sync(){root.classList.toggle('ua-sel',rows.some(function(r){return r.classList.contains('ua-open');}));}
+  rows.forEach(function(row){
+    var btn=row.querySelector('.ua-xc-head');
+    var panel=row.querySelector('.ua-xc-panel');
+    btn.addEventListener('click',function(){
+      var willOpen = !row.classList.contains('ua-open');
+      if(willOpen){ row.classList.add('ua-open'); grow(panel); }
+      else { shrink(panel, function(){ row.classList.remove('ua-open'); }); }
+      btn.setAttribute('aria-expanded', willOpen?'true':'false');
+      sync();
+    });
+  });
+})();
+</script>
+<!-- SNB live values: fills [data-snb="dotted.path"] from the shared data file; baked text is the fallback.
+     Event dates read events.<series>.upcoming[] -- a forward-looking LIST of occurrences -- and pick the
+     first one still in the future AT PAGE LOAD, not at refresh time. That is what makes these self-updating:
+     the list stays correct on its own between refreshes, so a slow or failed refresh can no longer strand a
+     date that has already gone by (which is exactly what put "to be announced" on Capacity Builder and
+     Mindful Moment before 2026-08-27). Falls back to the single next_utc/next_display pair for any series
+     that has no list yet, and only says "to be announced" when there is genuinely nothing left ahead. -->
+<script>
+(function () {
+  var SRC = "https://raw.githubusercontent.com/justinlmft/stucknotbroken/main/site-data.json";
+  function get(o, p){ return p.split('.').reduce(function(a,k){ return (a&&a[k]!=null)?a[k]:undefined; }, o); }
+  function future(list){
+    if (!list || !list.length) return null;
+    var now = Date.now();
+    for (var i=0;i<list.length;i++){
+      var it = list[i];
+      if (!it) continue;
+      var t = Date.parse(it.utc);
+      if (!isNaN(t) && t > now && typeof it.display === 'string') return it.display;
+    }
+    return null;
+  }
+  function apply(d){
+    var n = document.querySelectorAll('[data-snb]');
+    for (var i=0;i<n.length;i++){
+      var path = n[i].getAttribute('data-snb');
+      var v = get(d, path);
+      if (typeof v==='string' || typeof v==='number') n[i].textContent = v;
+      var m = path.match(/^events\.([^.]+)\.next_display$/);
+      if (m){
+        var pick = future(get(d, 'events.'+m[1]+'.upcoming'));
+        if (pick){ n[i].textContent = pick; continue; }
+        var utc = get(d, 'events.'+m[1]+'.next_utc');
+        if (utc && !isNaN(Date.parse(utc)) && Date.parse(utc) < Date.now()){
+          n[i].textContent = "to be announced";
+        }
+      }
+    }
+  }
+  function run(){
+    try{
+      var c = ('AbortController' in window) ? new AbortController() : null;
+      var t = c ? setTimeout(function(){c.abort();},6000) : null;
+      fetch(SRC, c?{signal:c.signal,cache:'no-store'}:{cache:'no-store'})
+        .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function(d){ if(t)clearTimeout(t); apply(d); })
+        .catch(function(){ /* keep static fallbacks */ });
+    }catch(e){ /* keep static fallbacks */ }
+  }
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+})();
+</script>

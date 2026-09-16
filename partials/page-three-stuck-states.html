@@ -1,0 +1,1560 @@
+<!-- GENERATED from ../SNB-Web-Three-Stuck-States-embed.html by generate.py; DO NOT EDIT HERE -->
+<link rel="stylesheet" href="https://justinlmft.github.io/snb-website/snb-web-live.css">
+<!-- ============================================================================
+  /THE-THREE-STUCK-STATES: Circle custom-HTML embed fragment (v3, new-DS, 2026-07-10)
+  Third page in the Polyvagal Current series, rebuilt onto the SNB design system.
+  - Paste this whole file into ONE Custom HTML element in a Circle CUSTOM PAGE.
+  - No <html>/<head>/<body>: Circle supplies those. STANDARD-FOOTER v2 included
+    (source of truth: STANDARD-FOOTER.html), matched to the 880px reading column
+    via --snb-footer-width.
+  - All page CSS scoped under .ss-root; footer under .snb-footer. The Polyvagal
+    Current figures keep their own scopes + per-instance gradient ids:
+      general current = .pv-flow (#pv-*),  stuck-state figures = .pvcx (gyr-vN/grb-vN).
+  - Carries JS (the figures + enhancer) => MUST live in a Circle CUSTOM PAGE,
+    never a blog post (Tiptap strips JS).
+  - Pure-ASCII / entity-encoded (Circle fragments carry no charset).
+
+  DS conformance vs v2 (files 04/05/06/07 + WEB-FORMAT, the 2026-07-09/10 standard):
+  - TRANSPARENT background (inherits the host surface) + STANDARD DARK MODE via
+    prefers-color-scheme, with a [data-theme] escape hatch. Ink/paper flip.
+  - Surfaces + hairlines are translucent tints (--separator via color-mix) so
+    they read on any light or dark host.
+  - Accent AA-darkened on bone (sky #3F6FA3), raised in dark; kept in eyebrows +
+    column labels + the "find your state" arrow only (arrow now SKY, not raw link).
+  - Section headings 600 semibold, lowercase; Inter 400/500/600.
+  - 8px-grid frame + role tokens (--page/--pad-x/--section/--measure/--space-*);
+    4px-baseline line-heights on fixed-size text.
+  - ONE --section between sections, applied once (padding-top only). All the
+    decorative between-section <hr> rules are REMOVED (06/07: whitespace is the
+    separator). The reading column is 880px (long-form) via --measure-narrow.
+  - Anchor nav "on this page" rebuilt to the 07 spec: non-sticky, UNBOXED rows
+    (no border-bottom label bar / no box), lowercase label, link-blue links with
+    a DOWN-ARROW signifier, inset + tight ~40px rows, focus moved to target,
+    scroll-margin-top so headings clear Circle's header, reduced-motion honored.
+    Quiet "back to top": ONE at the end of page content (estate rule, long TOC page).
+  - Figures re-themed off tokens: slider tracks/thumbs FLAT (no box-shadow),
+    thumb border = --ink, hint/label colors = --muted (were hard-coded stone),
+    so the widgets flip cleanly in dark mode. Figure animation logic untouched.
+  - :focus-visible, prefers-reduced-motion, prefers-contrast:more supported.
+============================================================================= -->
+<style>
+  /* Migrated onto snb-web-live.css 2026-07-16 (Phase 1). The shared sheet (.snb-live,
+     added to .ss-root below) now owns tokens, dark/contrast flips, reset, frame (1080),
+     base type (h1/h2/p), links, focus, and smooth scroll. Kept here: page-specific
+     --separator/--on-ink/--measure-narrow tokens + all .ss-* components. Frame is now
+     1080 (snb-page); the interactive figures stay capped at the reading measure so they
+     don't balloon (Phase 2 adds the nav rail). Footer override holds at 1080 until finale. */
+  .ss-root{
+    --on-ink:#FAF9F5; --measure-narrow:880px;
+  }
+  @media (prefers-color-scheme:dark){.ss-root:not([data-theme="light"]){
+    --on-ink:#14171E;
+  }}
+  .ss-root[data-theme="dark"]{
+    --on-ink:#14171E;
+  }
+  
+  .ss-root img{display:block;max-width:100%;height:auto}
+  .ss-root h3{font-size:20px;font-weight:500;line-height:28px;margin:var(--space-block) 0 var(--space-bound);color:var(--ink)}   /* page keeps its top-margin on h3 sub-blocks */
+  .ss-root h3:first-of-type{margin-top:var(--space-group)}
+  .ss-root a:not([class]){text-decoration:underline;text-underline-offset:2px}   /* underline ALL unclassed links (broader than shared p a) */
+  .ss-root nav.ss-toc a{text-decoration:none}   /* "on this page" TOC nav: no underline */
+  .ss-root b{font-weight:500;color:var(--ink)}
+  .ss-root .ss-author{display:flex;align-items:center;gap:var(--space-snug);margin-top:var(--space-group)}
+  .ss-root .ss-author img{flex:none;width:56px;height:56px;border-radius:50%;object-fit:cover;display:block;border:1px solid var(--separator)}
+  .ss-root .ss-byline{color:var(--muted);font-size:15px;line-height:20px}
+  .ss-root .ss-byline b{font-weight:500;color:var(--ink-80)}
+  /* on-this-page jump nav (07 spec: non-sticky, unboxed rows, lowercase label, link-blue + down-arrow, inset + tight) */
+  .ss-root .ss-toc{margin-top:var(--space-sub)}
+  .ss-root .ss-toc-label{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:var(--space-snug)}
+  .ss-root .ss-toc ul{list-style:none;display:flex;flex-direction:column;max-width:440px;padding-left:var(--space-snug)}
+  .ss-root .ss-toc li{margin:0}
+  .ss-root .ss-toc a{display:inline-flex;align-items:center;gap:var(--space-bound);min-height:44px;padding:8px 0;font-size:16px;line-height:20px;color:var(--link);text-decoration:none}
+  .ss-root .ss-toc a::before{content:"\2193";color:var(--link);font-weight:400;flex:none}   /* jump-down signifier = link-blue (07), NOT sky (sky reserved for the education track) */
+  .ss-root .ss-toc a:hover{text-decoration:underline;text-underline-offset:3px}
+  /* back to top (quiet, ONE per page at content end, long TOC page) */
+  .ss-root .ss-top{display:inline-flex;align-items:center;gap:var(--space-bound);min-height:44px;margin-top:var(--space-group);font-size:14px;line-height:20px;color:var(--link)}
+  .ss-root .ss-top::after{content:"\2191";color:var(--link)}   /* back-to-top = link-blue, NOT sky (sky reserved for the education track) */
+  .ss-root .ss-stagelede{font-size:18px;line-height:28px;color:var(--ink-80);max-width:var(--measure);margin-bottom:var(--space-bound)}
+  /* app CTA: plain heading + lede + canonical ink pill, no box (07). App CTA is ALWAYS ink, never sky. */
+  .ss-root .ss-cta h3{font-size:24px;line-height:32px;margin:0 0 var(--space-bound);color:var(--ink)}
+  .ss-root .ss-cta p{font-size:18px;line-height:28px;color:var(--ink-80);margin-bottom:0;max-width:var(--measure)}
+  .ss-root .ss-cta .ss-fine{font-size:14px;line-height:20px;color:var(--muted);margin-top:var(--space-bound)}
+  .ss-root .ss-btn{display:inline-flex;align-items:center;gap:var(--space-bound);min-height:50px;padding:0 26px;
+    border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--on-ink);
+    font:500 15.5px/1 'Inter',system-ui,sans-serif;white-space:nowrap;margin-top:var(--space-group);
+    transition:transform var(--dur) var(--ease),background var(--dur) var(--ease),color var(--dur) var(--ease);
+    -webkit-tap-highlight-color:transparent}
+  .ss-root .ss-btn:hover{background:transparent;color:var(--ink);text-decoration:none}
+  .ss-root .ss-btn:active{transform:scale(.985)}
+  .ss-root .ss-btn::after{content:"\2192";color:inherit;transition:transform var(--dur) var(--ease)}   /* button arrow matches text, NOT sky */
+  .ss-root .ss-btn:hover::after{transform:translateX(3px)}
+  @media (prefers-reduced-motion:reduce){.ss-root .ss-btn,.ss-root .ss-btn::after{transition:none}}
+  .ss-root h2 .snb-badge{margin-left:var(--space-bound)}
+  /* the four observable columns: a label-and-value ROW LIST, not prose with an inline kicker.
+     (v3 fix: the old .ss-coln was uppercase + tracked + SKY == the section-eyebrow style, so
+     "SENSATIONS" read as a section kicker mid-paragraph and sky stopped meaning "eyebrow."
+     Sky is now reserved for eyebrows; these labels are muted, in their own column. 06: label
+     to value = a row; hairlines earned (07: row lists); list ends in blank space.) */
+  .ss-root .ss-cols{margin:var(--space-block) 0 var(--space-stack);max-width:var(--measure);border-top:1px solid var(--separator)}
+  .ss-root .ss-crow{display:grid;grid-template-columns:minmax(104px,13ch) minmax(0,1fr);gap:var(--space-bound) var(--space-group);align-items:baseline;padding:var(--space-stack) 0;border-bottom:1px solid var(--separator)}
+  .ss-root .ss-crow:last-child{border-bottom:0}
+  .ss-root .ss-crow dt{font-size:11px;font-weight:500;line-height:16px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .ss-root .ss-crow dd{font-size:17px;line-height:28px;color:var(--ink-80);margin:0}
+  @media (max-width:600px){
+    .ss-root .ss-crow{grid-template-columns:1fr;gap:var(--space-bound)}
+  }
+  /* bulleted list */
+  .ss-root .ss-traits{list-style:none;margin:var(--space-bound) 0 var(--space-stack);max-width:var(--measure)}
+  .ss-root .ss-traits li{position:relative;padding:var(--sp-1) 0 var(--sp-1) var(--sp-5);color:var(--ink-80);font-size:17px;line-height:24px}
+  .ss-root .ss-traits li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--sky)}
+  /* freeze equation callout */
+  .ss-root .ss-eq{text-align:left;font-size:20px;font-weight:500;color:var(--ink);margin:var(--space-group) 0;max-width:var(--measure);line-height:28px}
+  /* whats-next + faq */
+  .ss-root .ss-faq{margin-top:var(--space-bound);border-top:1px solid var(--separator)}
+  .ss-root .ss-faq .ss-q{border-bottom:1px solid var(--separator)}
+  .ss-root .ss-faq .ss-q summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--sp-5);align-items:baseline;padding:var(--sp-5) 0;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+  .ss-root .ss-faq .ss-q summary::-webkit-details-marker{display:none}
+  .ss-root .ss-faq .ss-q summary::after{content:"+";font-size:22px;font-weight:400;color:var(--ink);line-height:1;transition:transform var(--dur) var(--ease)}
+  .ss-root .ss-faq .ss-q[open] summary::after{transform:rotate(45deg)}
+  .ss-root .ss-faq h3{font-size:19px;line-height:24px;margin:0}
+  .ss-root .ss-faq .ss-a{padding:0 0 var(--sp-5);overflow:hidden}
+  .ss-root .ss-faq .ss-a p{color:var(--ink-80);margin:0}
+  @media (prefers-reduced-motion:reduce){
+    .ss-root .ss-faq .ss-q summary::after{transition:none}
+    .ss-root .ss-faq .ss-q[open] summary::after{transform:none;content:"\2212"}
+  }
+  /* author bio */
+  .ss-root .ss-bio{display:flex;gap:var(--space-stack);align-items:flex-start;margin-top:var(--space-bound)}
+  .ss-root .ss-bio img{flex:none;width:64px;height:64px;border-radius:50%;object-fit:cover;display:block;border:1px solid var(--separator)}
+  .ss-root .ss-bio p{font-size:16px;line-height:24px;color:var(--ink-80);margin-bottom:0}
+  /* widget fit: left-align the interactive figures with the headings/body, full column width */
+  .ss-root .pv-flow{width:100%;max-width:var(--measure-narrow);margin:var(--space-block) 0 var(--space-bound);align-items:flex-start;font-family:Inter,system-ui,-apple-system,sans-serif}   /* cap at reading measure so figures don't balloon in the 1080 frame */
+  .ss-root .pv-flow .controls,.ss-root .pv-flow .word-bank{width:100%;max-width:100%}
+  .ss-root .pv-flow .credit{text-align:left}
+  /* watch + cue + live readout (added by the figure enhancer) */
+  .ss-root .pv-watch{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 4px;margin-bottom:4px;border:0;background:transparent;color:var(--link);font:400 14px/1 Inter,system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+  .ss-root .pv-watch:hover{text-decoration:underline;text-underline-offset:3px}
+  .ss-root .pv-watch:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
+  .ss-root .pv-watch-tri{font-size:8px;line-height:1}
+  .ss-root .pv-hint{font-size:13px;line-height:20px;color:var(--muted);margin-top:4px}
+  .ss-root .pv-live{position:absolute;top:13px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);white-space:nowrap;display:none}
+  @media (pointer:coarse){
+    .ss-root .pv-flow input[type="range"]{height:32px}
+    .ss-root .pv-flow input[type="range"]::-webkit-slider-thumb{width:30px;height:30px;margin-top:-13px}
+    .ss-root .pv-flow input[type="range"]::-moz-range-thumb{width:30px;height:30px}
+  }
+  @media (max-width:600px){
+    .ss-root .pv-flow .label{font-size:24px}
+  }
+  @media (max-width:820px){
+    .ss-root .ss-bio{gap:var(--space-snug)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .ss-root .ss-toc a,.ss-root .pv-watch{transition:none}
+  }
+  @media (prefers-contrast:more){
+    .ss-root{--ink-80:var(--ink);}
+  }
+</style>
+<!-- ============================================================
+  SNB STATE ICONS - reusable component (paste once per page).
+  Stuck Not Broken logo (heart = safety, bolt = flight/fight,
+  X = shutdown), color-coded to the state palette. Used here on
+  the three stuck-state headings: shutdown = is-shutdown,
+  freeze = is-freeze, flight/fight = is-fight.
+============================================================ -->
+<style>
+  .snb-badge{display:inline-block;height:var(--snb-size,28px);line-height:0;vertical-align:middle}
+  .snb-badge svg{height:100%;width:auto;display:block}
+  .snb-badge{--c-heart:#D8D2C2;--c-bolt:#D8D2C2;--c-x:#D8D2C2}
+  .snb-i-heart{fill:var(--c-heart)}
+  .snb-i-bolt{fill:var(--c-bolt)}
+  .snb-i-x{fill:var(--c-x)}
+  .snb-badge.is-safety{--c-heart:#F4D58D}
+  .snb-badge.is-fight{--c-bolt:#E89B9B}
+  .snb-badge.is-shutdown{--c-x:#A3C0DD}
+  .snb-badge.is-play{--c-heart:#E8A871;--c-bolt:#E8A871}
+  .snb-badge.is-stillness{--c-heart:#9FC498;--c-x:#9FC498}
+  .snb-badge.is-freeze{--c-bolt:#B89AC4;--c-x:#B89AC4}
+</style>
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <g id="snb-logo">
+      <path class="snb-i-heart" d="M 228.6626430999995,414.99967965948633 C 193.0931878499996,414.99967965948633 159.69623824999962,401.15528090948635 134.56332974999987,376.0223724094866 L 42.977307250000194,284.43634990948647 C 17.844398749999527,259.30344140948625 4.0,225.86389365948654 4.0,190.3370365594864 C 4.0,154.76758130948647 17.844398750000437,121.3706317094865 42.977307250000194,96.23772320948629 C 68.11021574999995,71.10481470948653 101.54976350000015,57.26041595948655 137.07662059999984,57.260415959486096 C 171.45332764999966,57.260415959486096 203.82792165000046,70.21025355948623 228.6626430999995,93.76703050948609 C 280.7175823999996,44.35317650948619 363.2727970999995,45.20513950948626 414.34797894999974,96.23772320948629 C 466.23252564999984,148.1222699094864 466.23252564999984,232.5518032094864 414.34797894999974,284.47894805948624 L 322.76195644999916,376.06497055948637 C 297.6290479499994,401.1978790594861 264.1895001999992,415.0422778094861 228.6626430999995,415.0422778094861 L 228.6626430999995,414.99967965948633 M 137.11921875000007,109.86913120948648 C 115.60715299999993,109.86913120948648 95.41562990000057,118.21836860948625 80.20809035000002,133.42590815948634 C 48.813253799999075,164.82074470948638 48.813253799999075,215.8533284094864 80.20809035000002,247.24816495948645 L 171.7941128499997,338.83418745948654 C 187.00165239999933,354.0417270094862 207.1931754999996,362.3909644094864 228.70524124999974,362.3909644094864 C 250.2173069999999,362.3909644094864 270.40883009999925,354.0417270094862 285.6163696499989,338.83418745948654 L 377.20239214999947,247.24816495948645 C 408.5546305500002,215.89592655948618 408.5546305500002,164.82074470948638 377.20239214999947,133.42590815948634 C 345.80755560000034,102.0310716094863 294.7749719000003,102.0310716094863 263.3801353500003,133.42590815948634 L 228.70524124999974,168.10080225948641 L 194.03034714999922,133.42590815948634 C 178.82280759999958,118.21836860948625 158.6312844999993,109.86913120948648 137.11921875000007,109.86913120948648"/>
+      <path class="snb-i-bolt" d="M 673.9837031999996,442.30509380948604 C 665.0806898499995,442.30509380948604 656.092480199999,440.5585696594861 647.4876538999997,437.02292320948607 C 621.5879787000003,426.2881894094861 604.8469057499997,401.24047720948636 604.8469057499997,373.2108945094859 L 604.8469057499997,282.43423685948653 L 544.8687105499994,282.43423685948653 C 516.8391278499994,282.43423685948653 491.7914156499992,265.6931639094863 481.05668185000013,239.79348870948652 C 470.3219480500002,213.89381350948625 476.2004927499993,184.3306974094866 496.0512306499995,164.4799595094859 L 636.2417422999997,24.28944785948616 C 656.092480199999,4.438709959486374 685.6129981499989,-1.439834740514101 711.5552714999994,9.294899059486312 C 737.4549466999997,20.02963285948627 754.1960196499995,45.07734505948602 754.1960196499995,73.10692775948601 L 754.1960196499995,163.8835854094863 L 814.1742148499998,163.8835854094863 C 842.2037975499998,163.8835854094863 867.25150975,180.62465835948652 877.9862435499999,206.52433355948634 C 888.7209773499999,232.4240087594866 882.842432649999,261.98712485948624 862.9916947499996,281.8378627594865 L 722.8011830999994,422.0283744094862 C 709.5531584499995,435.27639905948615 691.9601224999997,442.30509380948604 674.0263013499998,442.30509380948604 L 673.9837031999996,442.30509380948604 M 684.6758388499993,56.57884555948604 C 681.2679868499999,56.57884555948604 677.1785644499996,57.68639745948613 673.3873291,61.47763280948621 L 533.1968174499998,201.6681444594864 C 526.168122699999,208.69683920948628 528.3832264999992,216.53489880948646 529.6185728500004,219.60196560948626 C 530.8965173500001,222.6690324094865 534.9007434500008,229.7829234594864 544.8261124,229.7829234594864 L 657.4556210000001,229.7829234594864 L 657.4556210000001,373.16829635948613 C 657.4556210000001,383.09366530948625 664.5695120499995,387.0978914094861 667.6365788499998,388.3758359094862 C 670.70364565,389.6537804094859 678.5417052499997,391.8262860594858 685.5703999999996,384.7975913094864 L 825.7609116499998,244.60707965948623 C 832.7896063999988,237.57838490948635 830.5745025999995,229.74032530948617 829.3391562500001,226.67325850948637 C 828.0612117500004,223.60619170948613 824.0569856499997,216.49230065948623 814.1316166999995,216.49230065948623 L 701.5021080999995,216.49230065948623 L 701.5021080999995,73.10692775948601 C 701.5021080999995,63.18155880948589 694.3882170499992,59.17733270948602 691.3211502499989,57.899388209486375 C 689.9154112999995,57.30301410948633 687.5299148999993,56.536247409486265 684.6758388499993,56.536247409486265 L 684.6758388499993,56.57884555948604"/>
+      <path class="snb-i-x" d="M 988.3580501999995,417.42777420948585 C 963.5233287499996,417.42777420948585 940.1795425499995,407.75799415948575 922.6291047499999,390.20755635948615 C 905.0786669499994,372.6571185594861 895.4088868999997,349.313332359486 895.4088868999997,324.4786109094865 C 895.4088868999997,299.64388945948656 905.0786669499994,276.3001032594865 922.6291047499999,258.749665459486 L 958.2837562999994,223.09501390948608 L 922.6291047499999,187.44036235948616 C 905.0786669499994,169.8899245594861 895.4088868999997,146.5461383594865 895.4088868999997,121.71141690948608 C 895.4088868999997,96.87669545948611 905.0786669499994,73.53290925948605 922.6291047499999,55.98247145948645 C 940.1795425499995,38.43203365948639 963.5233287499996,28.762253609486294 988.3580501999995,28.762253609486294 C 1013.1927716500004,28.762253609486294 1036.5365578500005,38.43203365948639 1054.0869956499992,55.98247145948645 L 1089.7416472000004,91.63712300948637 L 1125.39629875,55.98247145948645 C 1161.6473244,19.731445809486473 1220.6031639999992,19.731445809486473 1256.811591499999,55.98247145948645 C 1293.062617149999,92.23349710948642 1293.062617149999,151.18933670948664 1256.811591499999,187.39776420948593 L 1221.1569399499995,223.0524157594863 L 1256.811591499999,258.7070673094862 C 1293.062617149999,294.9580929594862 1293.062617149999,353.9139325594864 1256.811591499999,390.12236005948614 C 1220.560565849999,426.3733857094861 1161.6047262499997,426.3733857094861 1125.39629875,390.12236005948614 L 1089.7416472000004,354.4677085094862 L 1054.0869956499992,390.12236005948614 C 1036.5365578499996,407.6727978594862 1013.1927716499995,417.3425779094863 988.3580501999995,417.3425779094863 L 988.3580501999995,417.4277742094863 M 988.3580501999995,81.49876330948646 C 977.5807182499993,81.49876330948646 967.4849567000001,85.67338200948635 959.8598878499997,93.29845085948628 C 952.2348189999993,100.92351970948621 948.0602002999985,111.01928125948635 948.0602002999995,121.79661320948608 C 948.0602002999995,132.57394515948582 952.2348189999993,142.66970670948595 959.8598878499997,150.29477555948634 L 1032.7027243499997,223.13761205948586 L 959.8598878499997,295.98044855948626 C 952.2348189999993,303.60551740948665 948.0602002999985,313.7012789594868 948.0602002999995,324.4786109094865 C 948.0602002999995,335.25594285948625 952.2348189999993,345.3517044094864 959.8598878499997,352.97677325948587 C 967.4849566999992,360.60184210948626 977.5807182499993,364.7764608094857 988.3580501999995,364.77646080948614 C 999.1353821499997,364.77646080948614 1009.2311436999998,360.6018421094867 1016.8562125499993,352.97677325948587 L 1089.6990490499993,280.13393675948635 L 1162.5418855500002,352.97677325948587 C 1178.2606029000008,368.695490609486 1203.8194929000001,368.695490609486 1219.5382102499989,352.97677325948587 C 1235.2569275999995,337.2580559094862 1235.2569275999995,311.69916590948594 1219.5382102499989,295.98044855948626 L 1146.6953737499998,223.13761205948586 L 1219.5382102499989,150.29477555948634 C 1235.2569275999995,134.5760582094862 1235.2569275999995,109.01716820948596 1219.5382102499989,93.29845085948628 C 1203.8194928999992,77.57973350948615 1178.2606028999999,77.57973350948615 1162.5418855500002,93.29845085948628 L 1089.6990490499993,166.14128735948626 L 1016.8562125499993,93.29845085948628 C 1009.2311436999998,85.67338200948635 999.1353821499988,81.49876330948646 988.3580501999995,81.49876330948646"/>
+    </g>
+  </defs>
+</svg>
+<div class="ss-root snb-live" id="ss-top">
+<!-- HERO -->
+<section>
+  <div class="ss-page snb-page">
+    <h1>The three stuck states</h1>
+    <p class="snb-lede" style="margin-top:var(--space-group)">A Polyvagal model of shutdown, freeze, and flight/fight</p>
+    <div class="ss-author">
+      <img src="https://assets-v2.circle.so/5pf91sby1jgi4n17bbm09vc23ses" alt="Justin Sunseri, LMFT" width="56" height="56" loading="lazy">
+      <p class="ss-byline"><b>Justin Sunseri</b> &middot; therapist, Polyvagal Institute Editorial Board member</p>
+    </div>
+    <nav class="ss-toc" aria-label="On this page">
+      <span class="ss-toc-label">On this page</span>
+      <ul>
+        <li><a href="#ss-simpler">A simpler understanding</a></li>
+        <li><a href="#ss-which">Which stuck state am I in?</a></li>
+        <li><a href="#ss-means">What &ldquo;stuck&rdquo; means</a></li>
+        <li><a href="#ss-shutdown">Stuck shutdown</a></li>
+        <li><a href="#ss-freeze">Stuck freeze</a></li>
+        <li><a href="#ss-flightfight">Stuck flight/fight</a></li>
+        <li><a href="#ss-path">The path out: add safety</a></li>
+        <li><a href="#ss-practice">A daily practice</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+<!-- A SIMPLER UNDERSTANDING -->
+<section id="ss-simpler">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">Start here</div>
+    <h2>Three stuck states: a simpler understanding</h2>
+    <p class="ss-stagelede">There are three ways your nervous system can get stuck. Just three. Not thirty. Not three thousand. Three.</p>
+    <p>The Polyvagal Theory lists many autonomic primary and mixed states: ventral vagal safety, sympathetic flight/fight, dorsal vagal shutdown, plus the mixed states derived from those. Many states, but you don&rsquo;t get stuck in all of them.</p>
+    <p>Just three: shutdown, freeze, or flight/fight.</p>
+    <p>This simplification is extremely useful. Once you narrow down to three, you can narrow down even further and identify which of the three is running things within yourself, quietly driving your every thought, feeling, and action. Then you stop being at the mercy of a vague, shapeless &ldquo;something&rsquo;s wrong&rdquo; and you start working with what&rsquo;s actually happening in your body.</p>
+    <p>This page maps all three:</p>
+    <ul class="ss-traits">
+      <li>Stuck shutdown (numbness, depression, disconnection)</li>
+      <li>Stuck freeze (panic, rage, overwhelm)</li>
+      <li>Stuck fight-or-flight (anxiety, anger)</li>
+    </ul>
+    <p>For each stuck state, you&rsquo;ll see what it looks like across four observable columns, why your system goes there, and what coming out actually involves.</p>
+    <p>This page is the third in a three-page series. The first, <a href="https://www.stucknotbroken.com/polyvagal-current">The Polyvagal Current</a>, introduces the model: three circles for the autonomic states flowing in a continuous current, plus a Safety Influence slider that determines whether each branch shows up regulated or stuck. The second, <a href="https://www.stucknotbroken.com/how-to-read-your-nervous-system">How to read your own nervous system</a>, teaches the daily literacy practice for using the model on yourself. If either of those is new ground, start there. The series works as a set: the Current is the map of how your nervous system moves; the literacy page teaches you to read it; this page is the map of where it gets stuck.</p>
+    <p>A reminder if needed: stuck isn&rsquo;t broken. A stuck nervous system is doing exactly what it evolved to do when the situation it was facing was too much, too long, or too dangerous to move through cleanly. The fact that it&rsquo;s stuck doesn&rsquo;t mean something is wrong with you. It means your system did the thing it knew how to do, and now it&rsquo;s waiting for enough safety to release.</p>
+    <p>The good news is that &ldquo;enough safety&rdquo; is something you can actually work with! And that&rsquo;s the entire second half of this page.</p>
+  </div>
+</section>
+<!-- WHICH STUCK STATE AM I IN -->
+<section id="ss-which">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">Quick orientation</div>
+    <h2>Which stuck state am I in?</h2>
+    <p class="ss-stagelede">The short answer: one of three.</p>
+    <p>Stuck dorsal is shutdown: heavy, numb, cold, retreated. You can&rsquo;t get out of bed. Nothing matters. The dial is at zero.</p>
+    <p>Stuck sympathetic is fight-or-flight: racing, urgent, tight, on edge. Heart fast, thoughts narrow, can&rsquo;t slow down, can&rsquo;t sleep.</p>
+    <p>Stuck freeze is the overlap of the two: your heart is pounding but you can&rsquo;t move; your mind is racing but you can&rsquo;t think. Activation underneath, brake on top.</p>
+    <p>To tell which one you&rsquo;re in right now, read four observable signals: your thoughts, your emotions, your body sensations, and your action impulses. Foggy and heavy points to shutdown. Racing and tight points to fight-or-flight. Activation underneath a blocked impulse points to freeze. The rest of this page walks through each one in detail, plus what coming out of each actually involves.</p>
+    <p>If you can&rsquo;t read yourself at all right now, read this companion page: <a href="https://www.stucknotbroken.com/how-to-read-your-nervous-system">How to read your own nervous system</a>.</p>
+  </div>
+</section>
+<!-- WHAT STUCK MEANS -->
+<section id="ss-means">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">The mechanism</div>
+    <h2>What &ldquo;stuck&rdquo; means in the Polyvagal Current</h2>
+    <p>In the Polyvagal Current, every state of your nervous system has a regulated expression and a stuck expression. Same state. Different output. Your level of ventral vagal safety activation determines which state is active and your level of stuckness.</p>
+    <p>With enough safety, the slider sits near the top and you get safety, play, and stillness.</p>
+    <p>Without enough safety, the slider sits near the bottom and the same three autonomic branches produce the three stuck states this page is about: shutdown, flight/fight, and freeze.</p>
+    <p>(Ventral itself doesn&rsquo;t really have a &ldquo;stuck&rdquo; version. When safety drops, ventral simply decreases. The newer social engagement system steps back and lets the older defensive autonomic branches take over. The three stuck states are stuck versions of the other two branches, plus the freeze overlap.)</p>
+    <p><b>Why &ldquo;stuck&rdquo;?</b> Because stuck inherently means there is momentum to move forward, but something is stopping the momentum. Your system is always trying to regulate. There is indeed momentum. But something is blocking regulation.</p>
+    <p>This reframe matters in practice. The path out of a stuck state isn&rsquo;t to fight it, fix it, or suppress it. The path out is to ask: what is my system not getting that it needs to be able to move? The answer is more ventral vagal safety in small, repeated, sustainable doses, delivered through specific practices and relationships that meet your specific system.</p>
+    <p>The rest of this page walks through each stuck state in detail. One might describe your current stuckness, but it&rsquo;s very possible that you&rsquo;ll experience some degree of stuckness in the others. I invite you to read through them all.</p>
+    <style>
+  .pv-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: min(92vw, 1000px);
+    margin: 24px auto;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    color: var(--ink-80);
+  }
+  .pv-flow svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .pv-flow .baseflow {
+    transition: filter 0.5s ease;
+  }
+  .pv-flow .baseflow path {
+    stroke-dasharray: 14 18;
+    transition: stroke-opacity 0.35s ease, stroke-width 0.35s ease, stroke 0.35s ease, filter 0.35s ease;
+  }
+  .pv-flow .baseflow .x-yr, .pv-flow .baseflow .x-rb {
+    stroke-width: 4;
+  }
+  .pv-flow .label {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    fill: var(--muted);
+  }
+  .pv-flow .controls {
+    width: min(80vw, 640px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pv-flow .controls .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pv-flow input[type="range"] {
+    width: 120px;
+    height: 24px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    transform: rotate(-90deg);
+  }
+  .pv-flow input[type="range"]::-webkit-slider-runnable-track {
+    height: 4px;
+    background: linear-gradient(
+      to right,
+      #A3C0DD 0%,
+      #B89AC4 20%,
+      #E89B9B 40%,
+      #E8A871 60%,
+      #F4D58D 80%,
+      #9FC498 100%
+    );
+    border-radius: 2px;
+  }
+  /* the thumb carries the CURRENT state's colour, the same value the chip and the
+     circles use (JS sets --pvc-tint). The rainbow track stays: on the axis the track
+     IS the six-state map, so its colours are positional, not live. */
+  .pv-flow input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--pvc-tint, var(--bone));
+    border: 2px solid var(--ink);
+    margin-top: -10px;
+    transition: background .35s ease;
+  }
+  .pv-flow input[type="range"]::-moz-range-track {
+    height: 4px;
+    background: linear-gradient(
+      to right,
+      #A3C0DD 0%,
+      #B89AC4 20%,
+      #E89B9B 40%,
+      #E8A871 60%,
+      #F4D58D 80%,
+      #9FC498 100%
+    );
+    border-radius: 2px;
+  }
+  .pv-flow input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--pvc-tint, var(--bone));
+    border: 2px solid var(--ink);
+    transition: background .35s ease;
+  }
+  .pv-flow .ticks {
+    position: relative;
+    height: 28px;
+    margin-top: 4px;
+  }
+  .pv-flow .tick {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+  }
+  .pv-flow .tick::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 6px;
+    background: var(--separator);
+    transition: background 0.2s ease;
+  }
+  .pv-flow .tick:hover {
+    color: var(--ink);
+  }
+  .pv-flow .tick:hover::before {
+    background: var(--ink);
+  }
+  .pv-flow .tick[data-s="0"] {
+    transform: none;
+    align-items: flex-start;
+  }
+  .pv-flow .tick[data-s="100"] {
+    transform: translateX(-100%);
+    align-items: flex-end;
+  }
+  .pv-flow .word-bank {
+    width: min(92vw, 1000px);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px;
+    margin-top: 8px;
+  }
+  .pv-flow .word-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pv-flow .word-header {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--separator);
+    padding-bottom: 8px;
+  }
+  .pv-flow .word-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--ink-80);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 600px) {
+    .pv-flow .word-bank {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 24px;
+    }
+    .pv-flow .ticks { height: 26px; }
+    .pv-flow .tick { font-size: 0; line-height: 0; gap: 0; }
+    .pv-flow .pv-live { display: block; }
+    .pv-flow .tick::before { height: 8px; }
+  }
+  .pv-flow .credit {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-top: 16px;
+    text-align: center;
+    align-self: stretch;
+  }
+  .pv-flow .credit a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--separator);
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+  }
+  .pv-flow .credit a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+  .pv-flow .pvc-model { display: flex; align-items: stretch; gap: 16px; width: 100%; }
+  .pv-flow .pvc-sliderside { position: relative; width: 24px; flex: none; }
+  /* percentages are of the svg box. viewBox is now `60 55 780 250`, so the circle
+     band (y 70..230) starts at (70-55)/250 = 6% and spans 160/250 = 64%. */
+  .pv-flow .pvc-slidercol { position: absolute; left: 0; top: 6%; height: 64%; width: 24px; display: flex; align-items: center; justify-content: center; }
+  .pv-flow .pv-fig { flex: 1; min-width: 0; }
+  /* The state name was a <text> inside the svg, centred below the branch labels -
+     a whole text row of dead space between the circles and the control that
+     drives them. It is now plain text ABOVE the figure, top-left.
+     Deliberately UNDERSTATED - ink, no chip, no state colour (Justin
+     2026-08-11: "the focus should remain on the current, not the state word").
+     Two earlier attempts are recorded in PAGES.md so nobody re-tries them:
+     coloured text fails because safety (43deg) and play (27deg) both go brown
+     once darkened enough to read on bone, and a filled chip - pastel+ink or
+     deep+bone - out-shouts the figure it labels. The circles and the sliders
+     still carry the state colour; the word does not need to. */
+  .pv-flow .pv-state { font-size: 28px; font-weight: 500; line-height: 1.25;
+    margin: 0 0 4px; color: var(--ink); }
+</style>
+<div class="pv-flow">
+  <p class="pv-state">Safety</p>
+  <div class="pvc-model">
+    <div class="pvc-sliderside"><div class="pvc-slidercol"><input class="pv-slider" type="range" min="0" max="100" value="80" step="any" aria-label="Safety influence" aria-orientation="vertical"/></div></div>
+    <svg class="pv-fig" viewBox="60 55 780 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Polyvagal Current: ventral, sympathetic, and dorsal circuits whose dominance shifts as you add safety.">
+    <defs>
+      <linearGradient id="pv-grad-yr" gradientUnits="userSpaceOnUse" x1="150" y1="150" x2="450" y2="150">
+        <stop offset="0%"   stop-color="#F4D58D" stop-opacity="0"/>
+        <stop offset="10%"  stop-color="#F4D58D" stop-opacity="1"/>
+        <stop offset="90%"  stop-color="#E89B9B" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#E89B9B" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="pv-grad-rb" gradientUnits="userSpaceOnUse" x1="450" y1="150" x2="750" y2="150">
+        <stop offset="0%"   stop-color="#E89B9B" stop-opacity="0"/>
+        <stop offset="10%"  stop-color="#E89B9B" stop-opacity="1"/>
+        <stop offset="90%"  stop-color="#A3C0DD" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#A3C0DD" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g class="baseflow" fill="none" stroke-width="6" stroke-linecap="round">
+      <path class="x-yr" d="M 150,70  C 250,70  350,230 450,230" stroke="url(#pv-grad-yr)"/>
+      <path class="x-yr" d="M 450,70  C 350,70  250,230 150,230" stroke="url(#pv-grad-yr)"/>
+      <path class="x-rb" d="M 750,230 C 650,230 550,70  450,70"  stroke="url(#pv-grad-rb)"/>
+      <path class="x-rb" d="M 450,230 C 550,230 650,70  750,70"  stroke="url(#pv-grad-rb)"/>
+      <path class="pv-circle-yellow" d="M 150,70 A 80 80 0 0 1 150,230 A 80 80 0 0 1 150,70" stroke="#F4D58D"/>
+      <path class="pv-circle-red"    d="M 450,70 A 80 80 0 0 0 450,230 A 80 80 0 0 0 450,70" stroke="#E89B9B"/>
+      <path class="pv-circle-blue"   d="M 750,70 A 80 80 0 0 1 750,230 A 80 80 0 0 1 750,70" stroke="#A3C0DD"/>
+    </g>
+    <g class="label" text-anchor="middle">
+      <text x="150" y="285">Ventral</text>
+      <text x="450" y="285">Sympathetic</text>
+      <text x="750" y="285">Dorsal</text>
+    </g>
+  </svg>
+  </div>
+  <div class="word-bank">
+    <div class="word-column">
+      <div class="word-header">Cognitions</div>
+      <ul class="word-list" data-track="cognitions"></ul>
+    </div>
+    <div class="word-column">
+      <div class="word-header">Emotions</div>
+      <ul class="word-list" data-track="emotions"></ul>
+    </div>
+    <div class="word-column">
+      <div class="word-header">Sensations</div>
+      <ul class="word-list" data-track="sensations"></ul>
+    </div>
+    <div class="word-column">
+      <div class="word-header">Impulses</div>
+      <ul class="word-list" data-track="impulses"></ul>
+    </div>
+  </div>
+  <div class="credit">
+    Polyvagal Current created by Justin Sunseri &middot; <a href="https://stucknotbroken.com" target="_blank" rel="noopener">stucknotbroken.com</a>
+  </div>
+</div>
+<script>
+  (function () {
+    function init() {
+      const stage = document.querySelector('.ss-root .pv-flow');
+      if (!stage) return;
+      const slider     = stage.querySelector('.pv-slider');
+    const baseflowEl = stage.querySelector('.baseflow');
+    const stateEl    = stage.querySelector('.pv-state');
+    const svgEl      = stage.querySelector('.pv-fig');
+    const STATE_WORD = { shutdown:'Shutdown', freeze:'Freeze', ff:'Fight / flight', play:'Play / motivation', safety:'Safety', stillness:'Stillness / intimacy' };
+    /* the chip + the slider thumb take the named state's own colour, so the three
+       places that carry colour (circles, chip, thumb) all come off one palette. */
+    const STATE_TINT = { shutdown:'#A3C0DD', freeze:'#B89AC4', ff:'#E89B9B', play:'#E8A871', safety:'#F4D58D', stillness:'#9FC498' };
+    /* 160 = the circle band (y 70..230) as a share of the 250-unit viewBox. */
+    function layout(){ if(!svgEl) return; const h = svgEl.getBoundingClientRect().height; if(h) slider.style.width = (h * 160/250) + 'px'; }
+    if(window.ResizeObserver && svgEl){ new ResizeObserver(layout).observe(svgEl); }
+    window.addEventListener('resize', layout);
+    window.addEventListener('load', layout);
+    var _lc=0,_lt=setInterval(function(){ layout(); if(++_lc>=40) clearInterval(_lt); },100);
+    const xYR        = stage.querySelectorAll('.x-yr');
+    const xRB        = stage.querySelectorAll('.x-rb');
+    const gradYrStops = stage.querySelectorAll('#pv-grad-yr stop');
+    const gradRbStops = stage.querySelectorAll('#pv-grad-rb stop');
+    function setGradStops(stops, leftColor, rightColor) {
+      stops[0].setAttribute('stop-color', leftColor);
+      stops[1].setAttribute('stop-color', leftColor);
+      stops[2].setAttribute('stop-color', rightColor);
+      stops[3].setAttribute('stop-color', rightColor);
+    }
+    const BASE = { yellow: '#F4D58D', red: '#E89B9B', blue: '#A3C0DD' };
+    const MIX  = { play: '#E8A871', stillness: '#9FC498', freeze: '#B89AC4' };
+    const circles = {
+      yellow: { el: stage.querySelector('.pv-circle-yellow'), color: BASE.yellow, glow: 42, peakWidth: 9.5 },
+      red:    { el: stage.querySelector('.pv-circle-red'),    color: BASE.red,    glow: 16, peakWidth: 8.5 },
+      blue:   { el: stage.querySelector('.pv-circle-blue'),   color: BASE.blue,   glow: 26, peakWidth: 9.5 },
+    };
+    function intensity(s, anchor) { return Math.max(0, 1 - Math.abs(s - anchor) / 0.2); }
+    function hexToRgb(hex) {
+      const n = parseInt(hex.slice(1), 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    }
+    function rgbToHex([r, g, b]) {
+      return '#' + [r, g, b].map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
+    }
+    function lerpColor(c1, c2, t) {
+      if (t <= 0) return c1;
+      if (t >= 1) return c2;
+      const a = hexToRgb(c1), b = hexToRgb(c2);
+      return rgbToHex([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]);
+    }
+    const BASE_DURATION = 1600;
+    const KEYFRAMES = [{ strokeDashoffset: 0 }, { strokeDashoffset: -32 }];
+    const ANIM_OPTS = { duration: BASE_DURATION, iterations: Infinity, easing: 'linear' };
+    const CIRCUIT_DUR = { yellow: 1600, red: 550, blue: 3600 };
+    const X_YR_DUR = (CIRCUIT_DUR.yellow + CIRCUIT_DUR.red)  / 2;
+    const X_RB_DUR = (CIRCUIT_DUR.red    + CIRCUIT_DUR.blue) / 2;
+    const animations = {
+      yellow: circles.yellow.el.animate(KEYFRAMES, ANIM_OPTS),
+      red:    circles.red.el.animate(KEYFRAMES, ANIM_OPTS),
+      blue:   circles.blue.el.animate(KEYFRAMES, ANIM_OPTS),
+      xYR:    Array.from(xYR).map(p => p.animate(KEYFRAMES, ANIM_OPTS)),
+      xRB:    Array.from(xRB).map(p => p.animate(KEYFRAMES, ANIM_OPTS)),
+    };
+    animations.yellow.updatePlaybackRate(BASE_DURATION / CIRCUIT_DUR.yellow);
+    animations.red.updatePlaybackRate(BASE_DURATION / CIRCUIT_DUR.red);
+    animations.blue.updatePlaybackRate(BASE_DURATION / CIRCUIT_DUR.blue);
+    animations.xYR.forEach(a => a.updatePlaybackRate(BASE_DURATION / X_YR_DUR));
+    animations.xRB.forEach(a => a.updatePlaybackRate(BASE_DURATION / X_RB_DUR));
+    const lerp = (a, b, t) => a + (b - a) * t;
+    function applyPresence({ el, color, glow, peakWidth }, p) {
+      el.style.strokeOpacity = lerp(0.35, 1.0, p);
+      el.style.strokeWidth = lerp(6, peakWidth, p);
+    }
+    function update() {
+      const s = slider.value / 100;
+      const I_stillness = intensity(s, 1.00);
+      const I_safety    = intensity(s, 0.80);
+      const I_play      = intensity(s, 0.60);
+      const I_ff        = intensity(s, 0.40);
+      const I_freeze    = intensity(s, 0.20);
+      const I_shutdown  = intensity(s, 0.00);
+      const py = I_stillness + I_safety + I_play;
+      const pr = I_play      + I_ff     + I_freeze;
+      const pb = I_freeze    + I_shutdown + I_stillness;
+      const MIX_AMP = 1.6;
+      const playMix   = Math.min(1, Math.min(py, pr) * MIX_AMP);
+      const stillMix  = Math.min(1, Math.min(py, pb) * MIX_AMP);
+      const freezeMix = Math.min(1, Math.min(pr, pb) * MIX_AMP);
+      const yellowC = lerpColor(lerpColor(BASE.yellow, MIX.play,      playMix), MIX.stillness, stillMix);
+      const redC    = lerpColor(lerpColor(BASE.red,    MIX.play,      playMix), MIX.freeze,    freezeMix);
+      const blueC   = lerpColor(lerpColor(BASE.blue,   MIX.stillness, stillMix), MIX.freeze,    freezeMix);
+      circles.yellow.color = yellowC;
+      circles.red.color    = redC;
+      circles.blue.color   = blueC;
+      circles.yellow.el.style.stroke = yellowC;
+      circles.red.el.style.stroke    = redC;
+      circles.blue.el.style.stroke   = blueC;
+      setGradStops(gradYrStops, yellowC, redC);
+      setGradStops(gradRbStops, redC, blueC);
+      applyPresence(circles.yellow, py);
+      applyPresence(circles.red, pr);
+      applyPresence(circles.blue, pb);
+      const yrOp = lerp(0.35, 1.0, Math.max(py, pr));
+      const rbOp = lerp(0.35, 1.0, Math.max(pr, pb));
+      xYR.forEach(el => el.style.strokeOpacity = yrOp);
+      xRB.forEach(el => el.style.strokeOpacity = rbOp);
+      const shutdownDrag = 1 + I_shutdown * 0.5;
+      animations.yellow.updatePlaybackRate(BASE_DURATION / (CIRCUIT_DUR.yellow * shutdownDrag));
+      animations.red.updatePlaybackRate(BASE_DURATION / (CIRCUIT_DUR.red * shutdownDrag));
+      baseflowEl.style.filter = `saturate(${lerp(1, 0.85, I_shutdown)})`;
+    }
+    const WORDS = {
+      shutdown: {
+        cognitions: ['hopeless', 'discouraged', 'pessimistic', 'slow'],
+        emotions:   ['numb', 'helpless', 'alone', 'sad'],
+        sensations: ['cold', 'heavy', 'empty', 'numb'],
+        impulses:   ['death feign', 'immobilize', 'isolate', 'disconnect'],
+      },
+      freeze: {
+        cognitions: ['scattered', 'all-or-nothing', 'ruminating', 'obsessive'],
+        emotions:   ['panic', 'fear', 'rage', 'overwhelm'],
+        sensations: ['tense', 'tight', 'clenched', 'pressure'],
+        impulses:   ['be invisible', 'endure', 'release', 'brace'],
+      },
+      ff: {
+        cognitions: ['blame', 'judge', 'polarize', 'catastrophize'],
+        emotions:   ['anxiety', 'anger', 'nervous', 'irritable'],
+        sensations: ['hot', 'sharp', 'jittery', 'jagged'],
+        impulses:   ['run', 'escape', 'fight', 'aggress'],
+      },
+      play: {
+        cognitions: ['imaginative', 'creative', 'collaborative', 'curious'],
+        emotions:   ['fun', 'excitement', 'joy', 'belonging'],
+        sensations: ['rhythmic', 'open', 'connected', 'energized'],
+        impulses:   ['imagine', 'create', 'produce', 'share'],
+      },
+      safety: {
+        cognitions: ['optimistic', 'understanding', 'logical', 'balanced'],
+        emotions:   ['caring', 'playful', 'calm', 'still'],
+        sensations: ['warm', 'tender', 'whole', 'connected'],
+        impulses:   ['co-regulate', 'connect', 'socialize', 'mindfulness'],
+      },
+      stillness: {
+        cognitions: ['reflective', 'scope & scale', 'wondering', 'noticing'],
+        emotions:   ['calm', 'peaceful', 'relaxed', 'awe'],
+        sensations: ['settled', 'quiet', 'whole', 'soft'],
+        impulses:   ['reflect', 'breathe', 'take in', 'mindfulness'],
+      },
+    };
+    function nearestStateKey(s) {
+      if (s < 0.10) return 'shutdown';
+      if (s < 0.30) return 'freeze';
+      if (s < 0.50) return 'ff';
+      if (s < 0.70) return 'play';
+      if (s < 0.90) return 'safety';
+      return 'stillness';
+    }
+    const wordLists = {
+      cognitions: stage.querySelector('.word-list[data-track="cognitions"]'),
+      emotions:   stage.querySelector('.word-list[data-track="emotions"]'),
+      sensations: stage.querySelector('.word-list[data-track="sensations"]'),
+      impulses:   stage.querySelector('.word-list[data-track="impulses"]'),
+    };
+    let lastWordKey = null;
+    function refreshWords(s) {
+      const key = nearestStateKey(s);
+      if (key === lastWordKey) return;
+      lastWordKey = key;
+      if (stateEl) stateEl.textContent = STATE_WORD[key];
+      stage.style.setProperty('--pvc-tint', STATE_TINT[key]);
+      const data = WORDS[key];
+      for (const track of Object.keys(wordLists)) {
+        wordLists[track].innerHTML =
+          data[track].map(w => `<li>${w}</li>`).join('');
+      }
+    }
+    slider.addEventListener('input', () => { update(); refreshWords(slider.value / 100); });
+    layout(); update();
+    refreshWords(slider.value / 100);
+    requestAnimationFrame(layout); setTimeout(layout, 120); setTimeout(layout, 400);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+  </div>
+</section>
+<!-- STUCK SHUTDOWN -->
+<section id="ss-shutdown">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">State one</div>
+    <h2>Stuck dorsal vagal shutdown<span class="snb-badge is-shutdown" role="img" aria-label="Shutdown: the dorsal branch" style="--snb-size:24px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span></h2>
+    <p>If you&rsquo;ve ever woken up at 11am unable to face the day. If you&rsquo;ve ever stared at a screen for an hour without taking in a word. If you&rsquo;ve ever felt like the volume on your own life got turned down, like you&rsquo;re behind glass, watching yourself go through the motions... you&rsquo;ve maybe been in some form of stuck dorsal.</p>
+    <p>Shutdown.</p>
+    <p>It&rsquo;s perhaps the most misunderstood of the three stuck states and the one people get most ashamed of. It looks like laziness from the outside. It feels like nothing from the inside. It&rsquo;s neither.</p>
+    <h3>What stuck shutdown looks like across the four columns</h3>
+    <dl class="ss-cols">
+      <div class="ss-crow"><dt>Cognitions</dt><dd>Slow, foggy, absent. Can&rsquo;t think clearly. Decisions feel impossible. Everything feels pointless or hopeless. Reading the same sentence three times without absorbing it. Internal monologue: nothing matters. I don&rsquo;t care. I&rsquo;m useless. What&rsquo;s the point.</dd></div>
+      <div class="ss-crow"><dt>Emotions</dt><dd>Flat, numb, empty. Not sad exactly. The dial got turned to zero. You might cry without feeling it. Want to feel something, anything, and can&rsquo;t find the feeling.</dd></div>
+      <div class="ss-crow"><dt>Sensations</dt><dd>Heavy, cold, leaden. Limbs feel weighted. Body feels distant, like it belongs to someone else. Reduced appetite or eating without tasting. Sleep that doesn&rsquo;t restore. Voice goes quiet or monotone. Difficulty with eye contact.</dd></div>
+      <div class="ss-crow"><dt>Impulses</dt><dd>Hide, sleep, disappear, scroll, retreat. The pull is away from people, away from tasks, away from your own life. Not because you don&rsquo;t care. Because the part of you that cares went offline to protect itself.</dd></div>
+    </dl>
+    <p>This is what depression looks like through a polyvagal lens. It&rsquo;s what burnout looks like. It&rsquo;s what trauma response looks like when fight and flight weren&rsquo;t available or successful and so the system collapsed instead, which is what it evolved to do.</p>
+    <h3>Why your nervous system shuts down</h3>
+    <p>Dorsal vagal immobilization is the oldest survival response we have. Older than fight. Older than flight. When mobilization isn&rsquo;t available, when fighting won&rsquo;t work, when fleeing won&rsquo;t work, when the threat is too big or too long or inside us, the system drops into immobilization as a survival strategy.</p>
+    <p>A few common reasons people end up stuck in dorsal:</p>
+    <p><b>Chronic overwhelm.</b> Long enough exposure to stress with no recovery and the system stops trying to mobilize. It conserves.</p>
+    <p><b>Inescapable situations.</b> Childhood environments, abusive relationships, jobs you can&rsquo;t leave. The system learns there&rsquo;s no exit, so it stops looking for one.</p>
+    <p><b>Repeated activation without resolution.</b> Years of fight-or-flight that never got to discharge. Eventually the system flips the breaker into collapse.</p>
+    <p><b>Grief, loss, illness.</b> Real losses that the body needs to mourn through a slower, quieter state.</p>
+    <p>Sometimes there isn&rsquo;t a clear cause. Stuck dorsal doesn&rsquo;t always trace back to a single thing. Sometimes the system has just been carrying too much for too long. And maybe one extra little thing happens that tips an overwhelmed system into shutdown.</p>
+    <p>Shutdown isn&rsquo;t a malfunction. It&rsquo;s a useful and normal function; an unconscious temporary biological state. The fact that it doesn&rsquo;t feel good doesn&rsquo;t mean it&rsquo;s wrong. That&rsquo;s your conscious experience of your stuck dorsal state.</p>
+    <h3>What coming out of stuck dorsal shutdown actually looks like</h3>
+    <p>You cannot push out of shutdown. Trying to force yourself out usually makes it worse. Shame doesn&rsquo;t move you. Discipline doesn&rsquo;t move you. Cold plunges and breathwork hacks don&rsquo;t move you, despite what the algorithm says.</p>
+    <p>What does move you is ventral vagal safety, in small repeated doses, until the system has enough cumulative input to allow the dorsal influence to lessen and the sympathetic influence to increase.</p>
+    <div class="snb-pvc" data-scenario="stuck-shutdown"></div>
+    <p>Use the Polyvagal Current model above to follow the sequence of state shifts. It starts in stuck dorsal: shutdown is dominant (blue), but safety (yellow) increases with the slider. When enough safety is present (~50% in the model), the shutdown mixes with safety and turns into stillness (green). From stillness, the body can continue to self-regulate out of shutdown and into sympathetic (red). However, in this model, the safety state welcomes the sympathetic activation, mixing with it to form play (orange). Self-regulation continues with more safety containing the system and eventually into stillness again.</p>
+    <p>The above is an ideal form of coming out of stuck shutdown. But life is not that simple. In real life:</p>
+    <ul class="ss-traits">
+      <li>Stuck shutdown is resistant to change</li>
+      <li>Moments of mixing safety and shutdown come and go</li>
+      <li>Increased sympathetic activation is likely, showing up as irritability and aggression</li>
+      <li>As sympathetic returns, it&rsquo;s likely that shutdown will resist, resulting in freeze</li>
+    </ul>
+    <p>It&rsquo;s essential to build a strong foundation of ventral vagal safety. All the system&rsquo;s regulation efforts are built on top of this.</p>
+    <h3>Coming out of stuck shutdown in practice</h3>
+    <p>Let&rsquo;s look at how to come out of stuck shutdown through deliberate practice.</p>
+    <p><b>Reduce sensory input.</b> Shutdown doesn&rsquo;t like sensory overload. Dim lighting. Silence. Smaller spaces. Comfort. Warmth.</p>
+    <p><b>Small movement, not big movement.</b> Shutdown prefers small. A short walk. Stretching. Wiggling your toes. The body has to be invited back, not yanked.</p>
+    <p><b>Let some activation in.</b> As you come out of shutdown, you&rsquo;ll often pass through irritability, restlessness, even anxiety. That&rsquo;s your sympathetic coming online. You&rsquo;re close to play at this point. Don&rsquo;t push back down. The activation is the path through. Continue to build safety and feel into sympathetic as you can.</p>
+    <p><b>Settle into stillness, not back into shutdown.</b> When you&rsquo;ve been in shutdown a long time, anything that feels like &ldquo;lying down quietly&rdquo; can feel like a relapse. It isn&rsquo;t necessarily. Stillness, dorsal with safety, feels warm, not cold. Present, not absent. The four columns tell you which one you&rsquo;re in.</p>
+    <p><b>Co-regulation.</b> Borrow someone else&rsquo;s nervous system. A safe person, a pet, a body next to yours. Co-regulation is faster than self-regulation when you&rsquo;re in deep shutdown. If you don&rsquo;t have a safe person, a familiar place or a piece of music your body knows can serve as an anchor.</p>
+  </div>
+</section>
+<!-- STUCK FREEZE -->
+<section id="ss-freeze">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">State two</div>
+    <h2>Stuck freeze<span class="snb-badge is-freeze" role="img" aria-label="Freeze: sympathetic and dorsal at once" style="--snb-size:24px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span></h2>
+    <p>Freeze is the most confusing of the three stuck states, usually.</p>
+    <p>First, people struggle to recognize <a href="https://www.youtube.com/watch?v=kQZLWybFbrA" target="_blank" rel="noopener">the difference between freeze and shutdown</a>. Second, they struggle to see it alive within themselves.</p>
+    <p>Shutdown is &ldquo;off.&rdquo; Fight-or-flight is &ldquo;on.&rdquo; Freeze is both, at the same time.</p>
+    <p>You know freeze when you&rsquo;ve lived it. Your heart is pounding but you can&rsquo;t move. Your mind is racing but you can&rsquo;t think clearly. You know you should do something but can&rsquo;t start. Not because you don&rsquo;t want to, of course. Quite the opposite. Because something inside has locked the controls.</p>
+    <p>People call it deer in headlights. Procrastination. Brain fog. Paralysis. Indecision. The labels miss the mechanism. Freeze isn&rsquo;t a single nervous system state. It&rsquo;s a collision of two. Sympathetic activation underneath, dorsal immobilization on top. The accelerator and the parking brake at the same time.</p>
+    <p>In the Polyvagal Current above, that&rsquo;s two of the three circles firing into each other at once.</p>
+    <p class="ss-eq">Sympathetic<span class="snb-badge is-fight" role="img" aria-label="sympathetic (fight or flight)" style="--snb-size:26px;margin-left:9px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span> + dorsal vagal<span class="snb-badge is-shutdown" role="img" aria-label="dorsal (shutdown)" style="--snb-size:26px;margin-left:9px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span> = freeze<span class="snb-badge is-freeze" role="img" aria-label="freeze" style="--snb-size:26px;margin-left:9px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span></p>
+    <h3>What stuck freeze looks like across the four columns</h3>
+    <dl class="ss-cols">
+      <div class="ss-crow"><dt>Cognitions</dt><dd>Fast but aimless. Racing in a loop. Catastrophizing without resolution. I should. I need to. Why can&rsquo;t I. What&rsquo;s wrong with me. Thinking is spinning but with no traction. Sometimes the opposite: mind goes blank in a way that feels more like a wall than an emptiness.</dd></div>
+      <div class="ss-crow"><dt>Emotions</dt><dd>Anxious, panicky, ashamed, helpless, confused. Often a thick layer of self-judgment: what is wrong with me that I can&rsquo;t just do this. The shame is louder than the original fear much of the time.</dd></div>
+      <div class="ss-crow"><dt>Sensations</dt><dd>Locked, tight, immobile, but with activation underneath. Muscles tense. Breath shallow or held in the chest. Sometimes trembling or buzzing under the skin. Sometimes the opposite, a heavy, weighted stillness. The hallmark is the combination high arousal without movement.</dd></div>
+      <div class="ss-crow"><dt>Impulses</dt><dd>The impulse to do something is there, but blocked. You want to run, but you can&rsquo;t move. You want to speak, but your throat closes. You want to start the task, but your hands won&rsquo;t pick up the pen. The intention is there. The action gate is shut.</dd></div>
+    </dl>
+    <p>People stuck in freeze will have high levels of activation, followed by low levels of activation. Their body spirals in a freeze for much of the day, then collapses in shutdown the rest. This cycle plays out endlessly.</p>
+    <h3>Why your nervous system freezes</h3>
+    <p>Freeze happens when your nervous system mobilizes in sympathetic and also immobilizes, whether through force or perception. Dorsal vagal locks the sympathetic activation in place. The result is a system with a foot on the gas and the brake at the same time.</p>
+    <p>A few common reasons people end up stuck in freeze:</p>
+    <p><b>Conflicting drives.</b> Part of you wants to act; part of you can&rsquo;t. Mobile and immobile at the same time.</p>
+    <p><b>History of unsuccessful action.</b> Childhoods where speaking up made things worse, where fighting was punished, where running away wasn&rsquo;t possible or where danger was always present yet unpredictable. The system learned: don&rsquo;t move.</p>
+    <p><b>Overload.</b> Too many demands, too many options, too many people wanting different things. The system can&rsquo;t pick a direction, so it picks none.</p>
+    <p>Coming out of a stuck freeze is a delicate, slow process requiring a firm anchoring in your safety state.</p>
+    <h3>What coming out of stuck freeze actually looks like</h3>
+    <p>As I&rsquo;m sure you know, you can&rsquo;t think your way out of freeze. Thinking is one of the things freeze is locking. Trying to talk yourself out of freeze with logic is like trying to push a car forward with the parking brake on. The brake has to release first.</p>
+    <p>Coming out of freeze necessarily requires the shutdown immobilization brake releasing. And to do that, the system needs a lot of safety activation.</p>
+    <p>Safety thaws the freeze. Once thawed, the once-frozen flight/fight activation can release.</p>
+    <p>Ideally, you recover from freeze slowly. The underlying sympathetic activation can be intense, driving you into desperate actions that go nowhere, like isolating and phone-binging, hours in the gym per day, or even self-harm.</p>
+    <p>The system needs to withdraw the shutdown brake a little bit, then release the sympathetic energy a little bit. This process happens repeatedly.</p>
+    <div class="snb-pvc" data-scenario="stuck-freeze"></div>
+    <p>Use the Polyvagal Current slider above. It&rsquo;s set to the stuck freeze position (purple). As you move the Safety Influence slider up, ventral vagal safety (yellow) grows. As it grows and reaches the midpoint, the freeze thaws, shutdown (blue) diminishes, and sympathetic (red) emerges. Continue to add safety with the slider, and sympathetic merges with safety into play (orange), then more into safety (yellow) and eventually into stillness (green).</p>
+    <p>In real life, no, it&rsquo;s not that clean. Decoupling shutdown and sympathetic takes time. And the system will reject the process as safety builds. There will likely be lots of friction, doubt, and layers of once-frozen pains will emerge.</p>
+    <p>Again, safety is essential for this process.</p>
+    <h3>Coming out of stuck freeze in practice</h3>
+    <p>Here are some helpful tips for thawing a stuck freeze.</p>
+    <p><b>Intentional, mindful movement.</b> For someone in freeze, they may have moments of intense activation. I highly recommend movement with mindfulness. Running endlessly and spending hours in the gym only physically exhausts you. It does not result in actual freeze unstucking. Actually pay attention to the experience of movement. This helps the system to unstuck.</p>
+    <p><b>Small moments of mindfulness.</b> I don&rsquo;t expect you to meditate for 30 minutes when you&rsquo;re in a stuck freeze. Instead, spend thirty seconds mindfully connecting with the outside world while moving, like during a walk or during morning pushups. Slowly work your way toward stillness.</p>
+    <p><b>Direct the energy somewhere useful.</b> As you successfully thaw, the underlying flight/fight needs an outlet. Plan ahead of time what you want that to be, whether movement or creativity or productivity. Eventually, you&rsquo;ll connect so deeply with the once-frozen, flight/fight that it will tell you what it needs. For now, listen as best you can, then give it a chosen, intentional outlet.</p>
+    <p><b>Then settle.</b> Stillness is on the far side of the activation, not before it. Trying to &ldquo;calm down&rdquo; before the activation has discharged will likely refreeze the system.</p>
+    <p>Note what&rsquo;s not in this list: insight, willpower, positive thinking, breathing exercises designed to make you &ldquo;relax.&rdquo; Freeze responds to small, mindful, intentional physical action much more reliably than to mental effort.</p>
+  </div>
+</section>
+<!-- STUCK FLIGHT/FIGHT -->
+<section id="ss-flightfight">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">State three</div>
+    <h2>Stuck sympathetic flight/fight<span class="snb-badge is-fight" role="img" aria-label="Flight or fight: the sympathetic branch" style="--snb-size:24px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span></h2>
+    <p>Stuck fight-or-flight might have the most language and diagnostic terms dedicated to it: anxiety, anger, stress, always on, type A, driven... The labels make it sound like a personality. But it&rsquo;s not.</p>
+    <p>Fight-or-flight is your sympathetic nervous system mobilizing to act on a threat.</p>
+    <ul class="ss-traits">
+      <li>Acute mobilization is the appropriate response when an actual threat is present.</li>
+      <li>Chronic mobilization, when no threat is actually here but the system can&rsquo;t stand down, is the stuck version. Your body is fighting a tiger that left the room three years ago.</li>
+    </ul>
+    <h3>What stuck flight/fight looks like across the four columns</h3>
+    <dl class="ss-cols">
+      <div class="ss-crow"><dt>Cognitions</dt><dd>Racing, urgent, narrow. Thoughts come fast and fixate on threats: what could go wrong, who is judging you, what you forgot, what you have to do. Catastrophic loops. Worst-case scanning. The thinking feels productive (like problem-solving) but it usually isn&rsquo;t generating solutions. It&rsquo;s burning fuel endlessly.</dd></div>
+      <div class="ss-crow"><dt>Emotions</dt><dd>Anxious, irritated, angry, worried, urgent. Often a low background hum of dread or pressure even when nothing is wrong. Sudden flashes of anger over small things. Quick to startle. Easily defensive.</dd></div>
+      <div class="ss-crow"><dt>Sensations</dt><dd>Fast heart, shallow breath, tight chest, clenched jaw, buzzing under the skin. Difficulty being still. Difficulty falling asleep. A sense of being &ldquo;on edge&rdquo; without being able to point to what&rsquo;s threatening.</dd></div>
+      <div class="ss-crow"><dt>Impulses</dt><dd>To act, to fix, to fight, to escape, to control, to talk fast, to do more, to leave. Fidgeting. The body wants to go. There&rsquo;s nowhere to go. The energy stays in the system, building.</dd></div>
+    </dl>
+    <p>People stuck in flight/fight can get a lot done if they have a means to channel their activation. That doesn&rsquo;t result in the stuckness actually alleviating, unfortunately. So, they repeat a productivity pattern day after day. They may also have coping mechanisms. Eventually, these methods are not as effective and the system slips into a shutdown.</p>
+    <h3>Why your nervous system fights or flees</h3>
+    <p>Sympathetic mobilization is supposed to be acute. Threat appears &rarr; system mobilizes &rarr; action is taken &rarr; threat resolves &rarr; system settles. The trouble is when there&rsquo;s no clean resolution.</p>
+    <p>A couple common reasons people end up stuck in fight-or-flight:</p>
+    <p><b>Chronic, low-grade threat that never resolves.</b> A job that demands too much. A relationship with unpredictable conflict. Financial pressure. The threat isn&rsquo;t acute enough to fight or flee from, but it&rsquo;s persistent enough that the system stays revved.</p>
+    <p><b>Environmental shaping.</b> A childhood filled with unpredictability. Bouncing around from home to home. Tension in the family. A partner prone to high mobilization without end. Not enough to shutdown and not enough to freeze. But enough to shape the system toward mobilization and away from connection.</p>
+    <p>The mechanism is the same in all cases: your nervous system reads the current moment as requiring mobilization, and keeps mobilizing. The mobilization isn&rsquo;t the problem. The system not being able to complete and settle is the problem.</p>
+    <h3>What coming out of stuck flight/fight actually looks like</h3>
+    <p>Telling an activated nervous system to &ldquo;just relax&rdquo; is like telling a running engine to stop revving without taking your foot off the gas. The activation is there for a reason. It needs to move through, not be suppressed.</p>
+    <div class="snb-pvc" data-scenario="stuck-flightfight"></div>
+    <p>Check out the Current model above. It starts in stuck sympathetic (red). As you add safety, the ventral circle (yellow) increases, eventually combining with sympathetic, resulting in play (orange). As you utilize activation through play, the stuck flight/fight moves through the system and releases, leaving more space for safety and even stillness (green).</p>
+    <p>Stuck flight/fight necessitates enough safety to combine into play. But play is with another safe person. If alone, safety can still combine with flight/fight, but it will show up as motivation. Use motivation to create, produce, and move.</p>
+    <h3>Coming out of flight/fight in practice</h3>
+    <p>So how do we utilize sympathetic activation?</p>
+    <p><b>Discharge the activation.</b> Whatever your body wants to do, give it a small physical version. Pace. Walk fast. Shake out your hands. Push against a wall. Stomp. Make noise: sigh, growl, sing, hum. The sympathetic branch is mobilized energy with nowhere to go. Give it somewhere to go that doesn&rsquo;t damage anything.</p>
+    <p><b>Slow your movement down on the back end.</b> Pay attention to your body&rsquo;s cues. You may notice that once you&rsquo;ve discharged some, your body is ready for some settling.</p>
+    <p><b>Orient.</b> Look around your space mindfully, allowing your eyes to take you where they want. Your ears, too. And your other senses. Let your attention widen to the greater world as your body settles.</p>
+    <p><b>Co-regulate.</b> If settled enough, connect with a safe other person or pet.</p>
+    <p><b>Remain open to stillness.</b> Over time, you will have more capacity for immobilization, but be okay with it. Stillness is the result of regulation, not the tool. Be open to it as it presents itself.</p>
+    <p>Flight/fight doesn&rsquo;t do well with slowing down, so let your body move. Connect with it through movement. Let yourself feel powerful... but don&rsquo;t overdo it. Be mindful. Pay attention to your muscles as they expand and contract. Notice your breath shifting naturally.</p>
+    <p>Be. Don&rsquo;t force.</p>
+  </div>
+</section>
+<!-- THE PATH OUT -->
+<section id="ss-path">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">The throughline</div>
+    <h2>The path is the same in all three stuck states: add safety</h2>
+    <p>Across all three stuck states, the pattern is the same. The autonomic state isn&rsquo;t the problem. The lack of safety is the problem. Add safety, and the state sorts itself back into its regulated expression. This is the single most useful reframe in the whole Polyvagal Current model.</p>
+    <p>You don&rsquo;t have to climb fully back to ventral. You have to ask: where can I add safety right now? Sometimes that&rsquo;s a person. Sometimes it&rsquo;s a place. Sometimes it&rsquo;s slowing your exhale, or taking a walk, or putting your hand on your chest, or making a phone call to someone you trust. None of these are hacks. They are small inputs to a system that has been undersupplied with safety.</p>
+    <p>Your real-world Safety Influence slider moves on its own when safety comes in. You don&rsquo;t have to drag it. Your job is to keep adding small, sustainable, repeated safety signals, and to be patient enough to let the system respond on its own timeline.</p>
+    <p>Some practical implications:</p>
+    <p><b>Stop trying to fix the state.</b> Trying to &ldquo;get out of dorsal&rdquo; or &ldquo;calm down from sympathetic&rdquo; is fighting the state. Adding safety is working with it, especially if you can listen to the needs of your stuck state.</p>
+    <p><b>Trust the current.</b> You&rsquo;re not supposed to live 100% in ventral. Your self-regulation current is supposed to flow into, out of, amongst, and between all of your primary and mixed states.</p>
+    <p><b>Stuck is information.</b> When you&rsquo;re stuck, it means the safety in the system isn&rsquo;t enough for the demand the system is facing. The solution might not be inside you. It might be that the demand needs to change.</p>
+    <p>The same logic works for all three. The specifics differ, sure. Shutdown needs quiet, while sympathetic needs space, and freeze needs careful attention paid to potential overwhelm. But the underlying principle is identical: small, repeated, sustainable safety inputs, applied in the way your specific stuck state can accept them.</p>
+    <p>The Current doesn&rsquo;t promise you a permanent good state. It teaches you to read where you are and add what&rsquo;s missing. And it shows you the benefit of slowly adding safety into your system.</p>
+  </div>
+</section>
+<!-- A DAILY PRACTICE -->
+<section id="ss-practice">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">Over time</div>
+    <h2>A daily practice of unstucking</h2>
+    <p>I don&rsquo;t believe in quick nervous system fixes or hacks or shortcuts. I believe in practice. Small, realistic, and sustainable practice tailored to your specific state.</p>
+    <p>Unstucking isn&rsquo;t a one-time event. It&rsquo;s a repeated re-entry into yourself and the present moment.</p>
+    <p>What helps over time:</p>
+    <p><b>A daily anchor.</b> One small thing you do every day that signals safety. A morning walk. Coffee on the porch. Five minutes of stillness before sleep. Not a productivity habit. A safety habit. Best if done mindfully.</p>
+    <p><b>A safe relationship, even one.</b> Co-regulation is nervous system medicine. If you don&rsquo;t have a person, then a therapist, a community, or a pet.</p>
+    <p><b>Permission to be in the regulated states.</b> You&rsquo;re allowed to be in play, stillness, motivation, intimacy, and safety. These are restorative and fulfilling.</p>
+    <p><b>Tracking the four columns.</b> Name the shift when you notice it. Or, when reflecting back on it. Naming reinforces the state and the awareness of the experience. Most people only name what&rsquo;s wrong; learning to name what&rsquo;s coming back online is its own practice.</p>
+    <p><b>Honest assessment of your demands.</b> Stuckness makes sense when put into life context. Your nervous system isn&rsquo;t wrong. Yes, there is benefit to increasing your system&rsquo;s capacity, but maybe you also need to reduce the demand on your system.</p>
+    <p><b>Patience with friction.</b> As you work on your stuckness, friction is going to happen. Your body wants to shift state, but the system as a whole may resist as it tries. Use compassion here.</p>
+  </div>
+</section>
+<!-- WHEN TO GET HELP -->
+<section id="ss-help">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">A caution</div>
+    <h2>When to get help</h2>
+    <p>The three stuck states overlap with real clinical territory:</p>
+    <p>Chronic stuck dorsal overlaps significantly with clinical depression. If you&rsquo;re having thoughts of harming yourself, if your daily functioning has eroded, please reach out to a therapist or your doctor.</p>
+    <p>Chronic stuck freeze shows up as cycles of intensity and collapse. It&rsquo;s also likely connected to acute traumatic incidents. Reach out to someone who specializes in trauma.</p>
+    <p>Chronic stuck fight-or-flight overlaps with anxiety disorders, anger, and stress-related medical issues. A therapist can help. A primary care doctor is also worth seeing, since chronic sympathetic activation has real physical consequences and there are sometimes medical contributors that look identical to anxiety (thyroid, cardiac, hormonal).</p>
+    <p>This page is education, not treatment. The Polyvagal Current is a map. A therapist is a guide. Both are useful, and they aren&rsquo;t substitutes for each other.</p>
+    <p>If you&rsquo;re in crisis in the US, you can dial or text 988 to reach the Suicide and Crisis Lifeline.</p>
+  </div>
+</section>
+<!-- FOR CLINICIANS -->
+<section id="ss-clinicians">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">For helpers</div>
+    <h2>For clinicians and other helpers</h2>
+    <p>If you&rsquo;re a therapist, coach, or other professional helper, here&rsquo;s what this framework offers:</p>
+    <p><b>A unified map of stuckness.</b> Rather than treating depression, anxiety, and PTSD as separate clinical pictures, they (and more) are seen as patterns of the same underlying mechanism (insufficient safety in the system). For treatment-resistant clients, keep this in mind.</p>
+    <p><b>Four-column observation.</b> Clients eventually learn to track themselves through sensations and impulses, not just cognitions and emotions. This might be a challenge for clients who think more objectively, but progress can be made toward the inner world.</p>
+    <p><b>A non-pathologizing frame.</b> &ldquo;Stuck&rdquo; is more workable than &ldquo;disordered.&rdquo; Clients arrive with significant shame attached to their diagnostic labels. The Polyvagal Current and the stuck-state framework give them a vocabulary that&rsquo;s accurate but not pathologizing. Hope underlies this thinking.</p>
+    <p><b>A consistent path-out logic.</b> All three stuck states share the same underlying intervention principle (add safety; let the system re-regulate). The specific practices differ by state, but the logic is unified. This is easier for clients and providers to internalize than numerous separate symptom-management protocols.</p>
+    <p>For the model itself (the Polyvagal Current, the Safety Influence slider, and the three circles), see <a href="https://www.stucknotbroken.com/polyvagal-current">The Polyvagal Current</a>. For the daily literacy practice that uses the model on yourself, see <a href="https://www.stucknotbroken.com/how-to-read-your-nervous-system">How to read your own nervous system</a>.</p>
+    <p>The page itself is freely linkable. Attribution to this page is appreciated.</p>
+  </div>
+</section>
+<!-- WHAT'S NEXT -->
+<section id="ss-next">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">The series</div>
+    <h2>What&rsquo;s next</h2>
+    <p class="ss-stagelede">The Polyvagal Current is the map. This page is the close-up of where you get stuck. The next step depends on what you need:</p>
+    <p>If you haven&rsquo;t yet read the model itself, that&rsquo;s the foundation: <a href="https://www.stucknotbroken.com/polyvagal-current">The Polyvagal Current</a>.</p>
+    <p>For the daily literacy practice that turns the model into a habit, see <a href="https://www.stucknotbroken.com/how-to-read-your-nervous-system">How to read your own nervous system</a>.</p>
+    <p>For the broader polyvagal foundation, see <a href="https://www.stucknotbroken.com/polyvagal-theory-introduction">Polyvagal Theory Introduction</a>. Start there if you want the underlying neuroscience and Porges&rsquo; framing.</p>
+    <p>The podcast is at <a href="https://stuck-not-broken.captivate.fm/" target="_blank" rel="noopener">Stuck Not Broken</a>, where I work through these concepts in depth with real-world applications, including specific stuck-state episodes.</p>
+  </div>
+</section>
+<!-- WHERE TO START (free /stuck door) -->
+<section id="ss-stuck">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">Where to start</div>
+    <h2>Not sure which one is yours?</h2>
+    <p class="ss-stagelede">If you saw yourself in one of these three and want somewhere to begin, you don&rsquo;t have to sort it out alone.</p>
+    <p>Find which stuck state sounds the most like you right now, and get a few free pointers to begin with. <a href="https://www.stucknotbroken.com/stuck">Find your state &rarr;</a></p>
+  </div>
+</section>
+<!-- APP CTA - free, immediate practice for the state you just recognized. Ink pill (app CTA is ALWAYS ink,
+     never sky). Copy pulled from the app page (SNB-App.html). Guardrail 04 SS8: no urgency/pressure. -->
+<section class="snb-band" id="ss-app">
+  <div class="ss-page snb-page">
+    <div data-snb-include="app-cta" data-snb-src="three-stuck-states" data-snb-cta="three-stuck-states" data-snb-heading="A self-regulation practice built for you, that changes with you." data-snb-lede="You tell it how you&rsquo;re doing, and it builds a custom meditation for the state you&rsquo;re actually in. Every check-in and every practice changes what it gives you next. Free to use.">
+<div class="ss-cta">
+      <h3>A self-regulation practice built for you, that changes with you.</h3>
+      <p>You tell it how you&rsquo;re doing, and it builds a custom meditation for the state you&rsquo;re actually in. Every check-in and every practice changes what it gives you next. Free to use.</p>
+      <a class="ss-btn" href="https://app.stucknotbroken.com/?start=practice&amp;src=three-stuck-states" data-cta="three-stuck-states">Do a practice now</a>
+      <p class="ss-fine">No account. No card.</p>
+    </div>
+</div>
+  </div>
+</section>
+<!-- FAQ -->
+<section id="ss-faq">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">Quick answers</div>
+    <h2>FAQ</h2>
+    <div class="ss-faq">
+      <details class="ss-q" open>
+        <summary><h3>Are these the only three stuck states?</h3></summary>
+        <div class="ss-a"><p>Yes. There are flavors within each, as all primary states are active to some degree all the time. But stuckness shows up as sympathetic, shutdown, or freeze. Clinical presentations and behavioral adaptations sort into one of the three or a recognizable blend.</p></div>
+      </details>
+      <details class="ss-q">
+        <summary><h3>What about fawn and appeasement?</h3></summary>
+        <div class="ss-a"><p>Polyvagal Theory posits fawn as a mix of sympathetic and dorsal, which is freeze. I think of it as a behavioral adaptation to significant shutdown. Appeasement is suggested to be all three states active at the same time. I think of it also as a behavioral adaptation to significant shutdown. <a href="https://www.youtube.com/watch?v=oi_G-18c1nA" target="_blank" rel="noopener">Watch my podcast episode</a> to learn more.</p></div>
+      </details>
+      <details class="ss-q">
+        <summary><h3>Can I be in more than one stuck state at once?</h3></summary>
+        <div class="ss-a"><p>Freeze is already a blend (sympathetic and dorsal at the same time). Beyond that, you can rapid-cycle between states: fight-or-flight that crashes into shutdown, shutdown that pulses back into freeze. The four-column observation will tell you which one is dominant in any given moment.</p></div>
+      </details>
+      <details class="ss-q">
+        <summary><h3>Is stuck dorsal the same as depression?</h3></summary>
+        <div class="ss-a"><p>Polyvagal Theory suggests that a stuck, dominant dorsal vagal state is the biological explanation for depression. Depression is the clinical diagnosis.</p></div>
+      </details>
+      <details class="ss-q">
+        <summary><h3>Does flight present different than fight when stuck?</h3></summary>
+        <div class="ss-a"><p>Flight shows up as anxiety, worry, and nervousness. Fight shows up as irritability, anger, and aggression.</p></div>
+      </details>
+      <details class="ss-q">
+        <summary><h3>Can I get unstuck without therapy?</h3></summary>
+        <div class="ss-a"><p>Yes, generally, with daily practice, co-regulation in healthy relationships, and time. For chronic or trauma-related stuckness, therapy speeds and deepens the process and may be necessary. There&rsquo;s no shame in either path.</p></div>
+      </details>
+      <details class="ss-q">
+        <summary><h3>Will I ever stop getting stuck?</h3></summary>
+        <div class="ss-a"><p>The pattern softens with practice. You can live with much more emotional freedom and choice. More connection to self, environment, and others.</p></div>
+      </details>
+    </div>
+    <a class="ss-top" href="#ss-top">Back to top</a>
+  </div>
+</section>
+<!-- AUTHOR BIO -->
+<section id="ss-bio" style="padding-bottom:var(--section)">
+  <div class="ss-page snb-page">
+    <div class="snb-eyebrow sky">About the author</div>
+    <div class="ss-bio">
+      <img src="https://assets-v2.circle.so/5pf91sby1jgi4n17bbm09vc23ses" alt="Justin Sunseri, LMFT" width="64" height="64" loading="lazy">
+      <p>Justin Sunseri is a licensed Marriage and Family Therapist and Coach specializing in trauma and nervous system self-regulation. He is the host of the <a href="https://stuck-not-broken.captivate.fm/" target="_blank" rel="noopener">Stuck Not Broken</a> podcast and author of the <a href="https://www.stucknotbroken.com/books">Stuck Not Broken Book series</a>.</p>
+    </div>
+  </div>
+</section>
+</div>
+<!-- /.ss-root -->
+<!-- ============================================================
+  FIGURE ENHANCER (unchanged logic; scoped to .ss-root).
+  Adds a "watch this" auto-sweep, a one-line drag/tap cue, and (on the
+  regulated figure) a live state-name readout for mobile, by dispatching
+  'input' on each figure's existing slider.
+============================================================ -->
+<script>
+  (function () {
+    var TICK_LABELS = ['Shutdown', 'Freeze', 'Fight / Flight', 'Play', 'Safety', 'Stillness'];
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ease = function (t) { return -(Math.cos(Math.PI * t) - 1) / 2; };
+    function enhance(opts) {
+      var stage = document.querySelector(opts.sel);
+      if (!stage) return;
+      var slider = stage.querySelector('input[type="range"]');
+      var controls = stage.querySelector('.controls');
+      if (!slider || !controls) return;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'pv-watch';
+      btn.innerHTML = '<span class="pv-watch-tri" aria-hidden="true">\u25B6</span><span class="pv-watch-txt">watch this</span>';
+      controls.insertBefore(btn, controls.firstChild);
+      var hint = document.createElement('p');
+      hint.className = 'pv-hint';
+      hint.innerHTML = opts.hint;
+      controls.appendChild(hint);
+      var liveEl = null;
+      if (opts.live) {
+        var ticks = stage.querySelector('.ticks');
+        if (ticks) {
+          liveEl = document.createElement('span');
+          liveEl.className = 'pv-live';
+          liveEl.setAttribute('aria-hidden', 'true');
+          ticks.appendChild(liveEl);
+        }
+      }
+      var raf = 0, playing = false;
+      function setPlaying(p) {
+        playing = p;
+        btn.querySelector('.pv-watch-tri').textContent = p ? '\u25A0' : '\u25B6';
+        btn.querySelector('.pv-watch-txt').textContent = p ? 'stop' : 'watch this';
+      }
+      function stop() { cancelAnimationFrame(raf); setPlaying(false); }
+      function fire(v) {
+        slider.value = v;
+        slider.dispatchEvent(new Event('input', { bubbles: true }));
+        updateLive();
+      }
+      function updateLive() {
+        if (!liveEl) return;
+        var ni = Math.max(0, Math.min(5, Math.round(slider.value / 20)));
+        liveEl.textContent = TICK_LABELS[ni];
+        var lv = +slider.value;
+        if (lv <= 8) { liveEl.style.left = '0'; liveEl.style.transform = 'none'; }
+        else if (lv >= 92) { liveEl.style.left = '100%'; liveEl.style.transform = 'translateX(-100%)'; }
+        else { liveEl.style.left = lv + '%'; liveEl.style.transform = 'translateX(-50%)'; }
+      }
+      btn.addEventListener('click', function () {
+        if (playing) { stop(); return; }
+        cancelAnimationFrame(raf);
+        if (reduceMotion) { fire(opts.rest); return; }
+        var path = opts.path, segDur = opts.segDur, total = segDur * (path.length - 1), loop = opts.loop;
+        setPlaying(true);
+        var t0 = performance.now();
+        (function step(now) {
+          var e = now - t0;
+          if (loop) { e %= total; }
+          else if (e >= total) { fire(path[path.length - 1]); setPlaying(false); return; }
+          var seg = Math.min(path.length - 2, Math.floor(e / segDur));
+          var tt = ease((e - seg * segDur) / segDur);
+          fire(path[seg] + (path[seg + 1] - path[seg]) * tt);
+          raf = requestAnimationFrame(step);
+        })(performance.now());
+      });
+      slider.addEventListener('pointerdown', stop);
+      slider.addEventListener('keydown', stop);
+      slider.addEventListener('input', updateLive);
+      stage.querySelectorAll('.tick').forEach(function (t) { t.addEventListener('pointerdown', stop); });
+      updateLive();
+    }
+    function boot() {
+      enhance({ sel: '.ss-root .pv-flow', live: true, loop: true, path: [0, 100, 0], segDur: 6800, rest: 80,
+        hint: 'Drag the slider, tap any state, or press <b>watch this</b> to see the whole system shift.' });
+      // anchor nav (07): move FOCUS to the jumped-to section, not just the scroll position,
+      // so keyboard + screen-reader users land there too. scroll-margin-top does the visual clearance.
+      document.querySelectorAll('.ss-root .ss-toc a, .ss-root .ss-top').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var t = document.getElementById(this.getAttribute('href').slice(1));
+          if (!t) return;
+          t.setAttribute('tabindex', '-1');
+          setTimeout(function () { t.focus({ preventScroll: true }); }, 0);
+        });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', boot);
+    } else {
+      boot();
+    }
+  })();
+</script>
+<style>
+  .ss-root .pvcx{font:400 16px/1.6 Inter,system-ui,sans-serif;color:var(--muted);max-width:840px;width:100%;container-type:inline-size;margin:32px 0 8px}
+  .ss-root .pvcx-stage{display:flex;flex-direction:column;align-items:flex-start;gap:24px;width:100%}
+  .ss-root .pvcx-svg{width:100%;height:auto;overflow:visible}
+  .ss-root .pvcx-baseflow{transition:filter .5s ease}
+  .ss-root .pvcx-baseflow path{stroke-dasharray:14 18;transition:stroke-opacity .35s ease,stroke-width .35s ease,stroke .35s ease,filter .35s ease}
+  .ss-root .pvcx-baseflow .pvcx-x-yr,.ss-root .pvcx-baseflow .pvcx-x-rb{stroke-width:4}
+  .ss-root .pvcx-label{font-size:13px;letter-spacing:.12em;text-transform:uppercase;fill:var(--muted)}
+  .ss-root .pvcx-controls{width:100%;display:flex;flex-direction:column;gap:8px}
+  .ss-root .pvcx-watch{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 4px;margin-bottom:4px;border:0;background:transparent;color:var(--link);font:400 14px/1 Inter,system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+  .ss-root .pvcx-watch:hover{text-decoration:underline;text-underline-offset:3px}
+  .ss-root .pvcx-watch:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
+  .ss-root .pvcx-tri{font-size:8px;line-height:1}
+  .ss-root .pvcx-row{display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .ss-root .pvcx input[type="range"]{width:120px;height:24px;-webkit-appearance:none;appearance:none;background:transparent;cursor:pointer;margin:0;transform:rotate(-90deg)}
+  .ss-root .pvcx input[type="range"]::-webkit-slider-runnable-track{height:4px;background:linear-gradient(to right,#A3C0DD 0%,#B89AC4 20%,#E89B9B 40%,#E8A871 60%,#F4D58D 80%,#9FC498 100%);border-radius:2px}
+  /* the thumb carries the CURRENT state's colour, the same value the chip and the
+     circles use (JS sets --pvc-tint). The rainbow track stays: on the axis the track
+     IS the six-state map, so its colours are positional, not live. */
+  .ss-root .pvcx input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:var(--pvc-tint,var(--bone));border:2px solid var(--ink);margin-top:-11px;transition:background .35s ease}
+  .ss-root .pvcx input[type="range"]::-moz-range-track{height:4px;background:linear-gradient(to right,#A3C0DD 0%,#B89AC4 20%,#E89B9B 40%,#E8A871 60%,#F4D58D 80%,#9FC498 100%);border-radius:2px}
+  .ss-root .pvcx input[type="range"]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--pvc-tint,var(--bone));border:2px solid var(--ink);transition:background .35s ease}
+  @media (pointer:coarse){
+    .ss-root .pvcx input[type="range"]{height:32px}
+    .ss-root .pvcx input[type="range"]::-webkit-slider-thumb{width:30px;height:30px;margin-top:-14px}
+    .ss-root .pvcx input[type="range"]::-moz-range-thumb{width:30px;height:30px}
+  }
+  .ss-root .pvcx-ticks{position:relative;height:18px;margin-top:4px}
+  .ss-root .pvcx-live{position:absolute;top:2px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+  .ss-root .pvcx-credit{font-size:11px;letter-spacing:.05em;color:var(--muted);margin-top:4px;text-align:left;align-self:stretch}
+  @media (max-width:600px){ .ss-root .pvcx-label{font-size:24px} }
+  .ss-root .pvcx-model{display:flex;align-items:stretch;gap:16px;width:100%}
+  .ss-root .pvcx-sliderside{position:relative;width:24px;flex:none}
+  /* percentages are of the svg box. viewBox is now `60 55 780 250`, so the circle
+     band (y 70..230) starts at (70-55)/250 = 6% and spans 160/250 = 64%. */
+  .ss-root .pvcx-slidercol{position:absolute;left:0;top:6%;height:64%;width:24px;display:flex;align-items:center;justify-content:center}
+  .ss-root .pvcx-fig{flex:1;min-width:0;width:100%;height:auto;display:block;overflow:visible}
+  /* understated on purpose - see the note on .pv-flow .pv-state above. */
+  .ss-root .pvcx-state{font-size:28px;font-weight:500;line-height:1.25;
+    margin:0 0 4px;color:var(--ink)}
+</style>
+<!-- The Polyvagal Current stuck-state figures, self-contained vanilla JS. One engine, three scenarios. -->
+<script>
+(function(){
+  var BASE={yellow:'#F4D58D',red:'#E89B9B',blue:'#A3C0DD'};
+  var MIX={play:'#E8A871',stillness:'#9FC498',freeze:'#B89AC4'};
+  var BRIGHT_RED='#D64A45';
+  var MIX_AMP=1.6, PEAK={yellow:9.5,red:8.5,blue:9.5};
+  var BASE_DURATION=1600, CIRCUIT_DUR={yellow:1600,red:550,blue:3600};
+  var X_YR_DUR=(CIRCUIT_DUR.yellow+CIRCUIT_DUR.red)/2, X_RB_DUR=(CIRCUIT_DUR.red+CIRCUIT_DUR.blue)/2;
+  var KEYFRAMES=[{strokeDashoffset:0},{strokeDashoffset:-32}];
+  var min=Math.min;
+  function clamp01(v){return Math.max(0,Math.min(1,v));}
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function hexToRgb(h){var n=parseInt(h.slice(1),16);return [(n>>16)&255,(n>>8)&255,n&255];}
+  function rgbToHex(a){return '#'+a.map(function(v){return Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0');}).join('');}
+  function lerpColor(c1,c2,t){if(t<=0)return c1;if(t>=1)return c2;var a=hexToRgb(c1),b=hexToRgb(c2);return rgbToHex([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t]);}
+  function regulated(s){
+    function I(a){return Math.max(0,1-Math.abs(s-a)/0.2);}
+    var Istill=I(1.0),Isafe=I(0.8),Iplay=I(0.6),Iff=I(0.4),Ifreeze=I(0.2),Ishut=I(0.0);
+    var py=Istill+Isafe+Iplay, pr=Iplay+Iff+Ifreeze, pb=Ifreeze+Ishut+Istill;
+    return {py:py,pr:pr,pb:pb,playMix:min(1,min(py,pr)*MIX_AMP),stillMix:min(1,min(py,pb)*MIX_AMP),freezeMix:min(1,min(pr,pb)*MIX_AMP),dragYellow:1+Ishut*0.5,dragRed:1+Ishut*0.5,sat:lerp(1,0.85,Ishut)};
+  }
+  function stuckShutdown(s){
+    var SC={safetyBuildEnd:0.42,shutdownReleaseStart:0.56,shutdownReleaseEnd:0.72,ffEmergeStart:0.42,ffPeak:0.66,ffEnd:0.95,ffPeakMagnitude:0.82,playEmergeStart:0.66,playEmergeEnd:0.78,stillnessRebuildStart:0.85};
+    var py=min(1,s/SC.safetyBuildEnd);
+    var pb;
+    if(s<=SC.shutdownReleaseStart)pb=1;
+    else if(s<=SC.shutdownReleaseEnd)pb=1-(s-SC.shutdownReleaseStart)/(SC.shutdownReleaseEnd-SC.shutdownReleaseStart);
+    else if(s<=SC.stillnessRebuildStart)pb=0;
+    else pb=(s-SC.stillnessRebuildStart)/(1-SC.stillnessRebuildStart);
+    var pr;
+    if(s<=SC.ffEmergeStart)pr=0;
+    else if(s<=SC.ffPeak)pr=(s-SC.ffEmergeStart)/(SC.ffPeak-SC.ffEmergeStart)*SC.ffPeakMagnitude;
+    else if(s<=SC.ffEnd)pr=(SC.ffEnd-s)/(SC.ffEnd-SC.ffPeak)*SC.ffPeakMagnitude;
+    else pr=0;
+    var playEmergeGate=clamp01((s-SC.playEmergeStart)/(SC.playEmergeEnd-SC.playEmergeStart));
+    var stillnessGate=clamp01((s-SC.stillnessRebuildStart)/0.04);
+    var stuckness=pb*(1-py);
+    return {py:py,pr:pr,pb:pb,playMix:min(1,min(py,pr)*MIX_AMP*playEmergeGate),stillMix:min(1,min(py,pb)*MIX_AMP*stillnessGate),freezeMix:min(1,min(pr,pb)*MIX_AMP),dragYellow:1/(1+py*0.7),dragRed:1/(1+pr*1.4),sat:lerp(1,0.85,stuckness)};
+  }
+  function stuckFreeze(s){
+    var SC={safetyFullAt:0.5,mergeStart:0.4,mergeFull:0.5,shutdownReleaseStart:0.5,unfreezeEnd:0.55,shutdownReleaseEnd:0.65,playEmergeStart:0.65,playEmergeEnd:0.72,ffReleaseStart:0.72,ffReleaseEnd:0.82,stillnessRebuildStart:0.88};
+    var py=min(1,s/SC.safetyFullAt);
+    var pr;
+    if(s<=SC.ffReleaseStart)pr=1;
+    else if(s<=SC.ffReleaseEnd)pr=1-(s-SC.ffReleaseStart)/(SC.ffReleaseEnd-SC.ffReleaseStart);
+    else pr=0;
+    var pb;
+    if(s<=SC.shutdownReleaseStart)pb=1;
+    else if(s<=SC.shutdownReleaseEnd)pb=1-(s-SC.shutdownReleaseStart)/(SC.shutdownReleaseEnd-SC.shutdownReleaseStart);
+    else if(s<=SC.stillnessRebuildStart)pb=0;
+    else pb=(s-SC.stillnessRebuildStart)/(1-SC.stillnessRebuildStart);
+    var mergeGate=clamp01((s-SC.mergeStart)/(SC.mergeFull-SC.mergeStart));
+    var unfrozen=clamp01((s-SC.shutdownReleaseStart)/(SC.unfreezeEnd-SC.shutdownReleaseStart));
+    var playEmergeGate=clamp01((s-SC.playEmergeStart)/(SC.playEmergeEnd-SC.playEmergeStart));
+    var stuckness=pb*(1-py), agitation=py*pb, redBoost=1+agitation*0.35;
+    return {py:py,pr:pr,pb:pb,playMix:min(1,min(py,pr)*MIX_AMP*mergeGate*playEmergeGate),stillMix:min(1,min(py,pb)*MIX_AMP*mergeGate*(1-pr)),freezeMix:min(1,min(pr,pb)*MIX_AMP)*(1-unfrozen),dragYellow:1+stuckness*0.5,dragRed:(1+stuckness*0.5)/redBoost,sat:lerp(1,0.85,stuckness)};
+  }
+  function stuckFlightFight(s){
+    var SC={safetyFullAt:0.5,mergeStart:0.4,mergeFull:0.5,ffReleaseStart:0.6,ffReleaseEnd:0.75,stillnessRebuildStart:0.85};
+    var py=min(1,s/SC.safetyFullAt);
+    var pr;
+    if(s<=SC.ffReleaseStart)pr=1;
+    else if(s<=SC.ffReleaseEnd)pr=1-(s-SC.ffReleaseStart)/(SC.ffReleaseEnd-SC.ffReleaseStart);
+    else pr=0;
+    var pb;
+    if(s<=SC.stillnessRebuildStart)pb=0;
+    else pb=(s-SC.stillnessRebuildStart)/(1-SC.stillnessRebuildStart);
+    var mergeGate=clamp01((s-SC.mergeStart)/(SC.mergeFull-SC.mergeStart));
+    return {py:py,pr:pr,pb:pb,playMix:min(1,min(py,pr)*MIX_AMP*mergeGate),stillMix:min(1,min(py,pb)*MIX_AMP),freezeMix:min(1,min(pr,pb)*MIX_AMP),dragYellow:1,dragRed:1,sat:1};
+  }
+  var SCENARIOS={
+    'stuck-shutdown':{compute:stuckShutdown,defaultValue:0,label:'Stuck shutdown',tint:'#A3C0DD',tension:true,tensionCenter:0.5,stuckKeys:['blue'],rises:null,brightenRed:true,noFreeze:true,tensionLabel:'Shutdown',watchPath:[0,8,16,24,32,40,44,48,50,52,54,56,58,60,63,66,70,74,78,82,86,90,95,100]},
+    'stuck-freeze':{compute:stuckFreeze,defaultValue:0,label:'Stuck freeze',tint:'#B89AC4',tension:true,stuckKeys:['blue','red'],rises:'red',tensionLabel:'Freeze',watchPath:[0,8,16,24,32,40,45,48,50,52,54,57,60,64,68,71,74,76,78,80,86,92,100]},
+    'stuck-flightfight':{compute:stuckFlightFight,defaultValue:0,label:'Stuck flight / fight',tint:'#E89B9B',tension:false,stuckKeys:['red'],rises:null,noFreeze:true,tensionLabel:'Fight / Flight',watchPath:[0,9,18,27,36,44,48,50,52,55,58,62,66,68,70,72,76,82,90,100]}
+  };
+  function bump(s,c,hw){return Math.max(0,1-Math.abs(s-c)/hw);}
+  function tensionFor(scn,s){var sc=SCENARIOS[scn];if(!sc||!sc.tension)return 0;return bump(s,sc.tensionCenter||0.5,0.1);}
+  function stateName(r){
+    var blends=[['Freeze',r.freezeMix],['Play',r.playMix],['Stillness',r.stillMix]];
+    blends.sort(function(a,b){return b[1]-a[1];});
+    if(blends[0][1]>=0.5)return blends[0][0];
+    var singles=[['Safety',r.py],['Fight / Flight',r.pr],['Shutdown',r.pb]];
+    singles.sort(function(a,b){return b[1]-a[1];});
+    return singles[0][0];
+  }
+  var SVGNS='http://www.w3.org/2000/svg', uidc=0, TRI=String.fromCharCode(0x25B6), SQ=String.fromCharCode(0x25A0);
+  function build(mount){
+    var scn=mount.getAttribute('data-scenario');
+    var sc=SCENARIOS[scn]; if(!sc) return;
+    var STATE_MAP={'Shutdown':'Shutdown','Freeze':'Freeze','Fight / Flight':'Fight / flight','Play':'Play / motivation','Safety':'Safety','Stillness':'Stillness / intimacy'};
+    /* the chip + the slider thumb take the named state's own colour, so the three
+       places that carry colour (circles, chip, thumb) all come off one palette.
+       When the figure is naming the SCENARIO instead of a state ("stuck freeze"),
+       it uses that scenario's own tint. */
+    var STATE_TINT={'Shutdown':'#A3C0DD','Freeze':'#B89AC4','Fight / Flight':'#E89B9B','Play':'#E8A871','Safety':'#F4D58D','Stillness':'#9FC498'};
+    var uid='v'+(uidc++);
+    mount.innerHTML=''
+      +'<div class="pvcx"><p class="pvcx-state"></p><div class="pvcx-model">'
+      +'<div class="pvcx-sliderside"><div class="pvcx-slidercol"><input type="range" min="0" max="100" step="any" value="'+(sc.defaultValue||0)+'" aria-label="Safety influence over time" aria-orientation="vertical"/></div></div>'
+      +'<svg class="pvcx-fig" viewBox="60 55 780 250" xmlns="'+SVGNS+'" role="img" aria-label="The Polyvagal Current, '+sc.label+' recovery journey">'
+      +'<defs>'
+      +'<linearGradient id="gyr-'+uid+'" gradientUnits="userSpaceOnUse" x1="150" y1="150" x2="450" y2="150"><stop offset="0%" stop-color="#F4D58D" stop-opacity="0"/><stop offset="10%" stop-color="#F4D58D" stop-opacity="1"/><stop offset="90%" stop-color="#E89B9B" stop-opacity="1"/><stop offset="100%" stop-color="#E89B9B" stop-opacity="0"/></linearGradient>'
+      +'<linearGradient id="grb-'+uid+'" gradientUnits="userSpaceOnUse" x1="450" y1="150" x2="750" y2="150"><stop offset="0%" stop-color="#E89B9B" stop-opacity="0"/><stop offset="10%" stop-color="#E89B9B" stop-opacity="1"/><stop offset="90%" stop-color="#A3C0DD" stop-opacity="1"/><stop offset="100%" stop-color="#A3C0DD" stop-opacity="0"/></linearGradient>'
+      +'</defs>'
+      +'<g class="pvcx-baseflow" fill="none" stroke-width="6" stroke-linecap="round">'
+      +'<path class="pvcx-x-yr" d="M 150,70  C 250,70  350,230 450,230" stroke="url(#gyr-'+uid+')"/>'
+      +'<path class="pvcx-x-yr" d="M 450,70  C 350,70  250,230 150,230" stroke="url(#gyr-'+uid+')"/>'
+      +'<path class="pvcx-x-rb" d="M 750,230 C 650,230 550,70  450,70" stroke="url(#grb-'+uid+')"/>'
+      +'<path class="pvcx-x-rb" d="M 450,230 C 550,230 650,70  750,70" stroke="url(#grb-'+uid+')"/>'
+      +'<path class="pvcx-c-yellow" d="M 150,70 A 80 80 0 0 1 150,230 A 80 80 0 0 1 150,70" stroke="#F4D58D"/>'
+      +'<path class="pvcx-c-red" d="M 450,70 A 80 80 0 0 0 450,230 A 80 80 0 0 0 450,70" stroke="#E89B9B"/>'
+      +'<path class="pvcx-c-blue" d="M 750,70 A 80 80 0 0 1 750,230 A 80 80 0 0 1 750,70" stroke="#A3C0DD"/>'
+      +'</g>'
+      +'<g class="pvcx-label" text-anchor="middle"><text x="150" y="285">Ventral</text><text x="450" y="285">Sympathetic</text><text x="750" y="285">Dorsal</text></g>'
+      +'</svg>'
+      +'</div>'
+      +'<div class="pvcx-credit">Polyvagal Current, created by Justin Sunseri.</div>'
+      +'</div>';
+    var fig=mount.querySelector('.pvcx');
+    var slider=fig.querySelector('input');
+    var yellowEl=fig.querySelector('.pvcx-c-yellow'),redEl=fig.querySelector('.pvcx-c-red'),blueEl=fig.querySelector('.pvcx-c-blue');
+    var xYR=fig.querySelectorAll('.pvcx-x-yr'),xRB=fig.querySelectorAll('.pvcx-x-rb');
+    var baseflowEl=fig.querySelector('.pvcx-baseflow');
+    var gradYrStops=fig.querySelectorAll('#gyr-'+uid+' stop'),gradRbStops=fig.querySelectorAll('#grb-'+uid+' stop');
+    var stateEl=fig.querySelector('.pvcx-state'),svgEl=fig.querySelector('.pvcx-fig');
+    var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var motionOn=!reduceMotion;
+    /* 160 = the circle band (y 70..230) as a share of the 250-unit viewBox. */
+    function layout(){ if(!svgEl) return; var h=svgEl.getBoundingClientRect().height; if(h) slider.style.width=(h*160/250)+'px'; }
+    if(window.ResizeObserver&&svgEl){ new ResizeObserver(layout).observe(svgEl); }
+    window.addEventListener('resize',layout);
+    var _lc=0,_lt=setInterval(function(){ layout(); if(++_lc>=40) clearInterval(_lt); },100);
+    function setGradStops(st,l,r){if(!st.length)return;st[0].setAttribute('stop-color',l);st[1].setAttribute('stop-color',l);st[2].setAttribute('stop-color',r);st[3].setAttribute('stop-color',r);}
+    function applyPresence(el,peak,p){el.style.strokeOpacity=lerp(0.35,1,p);el.style.strokeWidth=lerp(6,peak,p);}
+    var anims=null;
+    if('animate' in document.createElement('div')){
+      var opts={duration:BASE_DURATION,iterations:Infinity,easing:'linear'};
+      anims={yellow:yellowEl.animate(KEYFRAMES,opts),red:redEl.animate(KEYFRAMES,opts),blue:blueEl.animate(KEYFRAMES,opts),
+        xYR:Array.prototype.map.call(xYR,function(p){return p.animate(KEYFRAMES,opts);}),
+        xRB:Array.prototype.map.call(xRB,function(p){return p.animate(KEYFRAMES,opts);})};
+      anims.yellow.updatePlaybackRate(BASE_DURATION/CIRCUIT_DUR.yellow);
+      anims.red.updatePlaybackRate(BASE_DURATION/CIRCUIT_DUR.red);
+      anims.blue.updatePlaybackRate(BASE_DURATION/CIRCUIT_DUR.blue);
+      anims.xYR.forEach(function(a){a.updatePlaybackRate(BASE_DURATION/X_YR_DUR);});
+      anims.xRB.forEach(function(a){a.updatePlaybackRate(BASE_DURATION/X_RB_DUR);});
+      if(!motionOn)[anims.yellow,anims.red,anims.blue].concat(anims.xYR,anims.xRB).forEach(function(a){a.pause();});
+    }
+    function update(v){
+      var s=v/100, r=sc.compute(s), tn=sc.tension?tensionFor(scn,s):0;
+      var stillMix=r.stillMix*(1-tn), freezeMix=sc.noFreeze?0:r.freezeMix;
+      var yellowC=lerpColor(lerpColor(BASE.yellow,MIX.play,r.playMix),MIX.stillness,stillMix);
+      var redBase=sc.brightenRed?lerpColor(BASE.red,BRIGHT_RED,clamp01(r.pr*1.7)):BASE.red;
+      var redC=lerpColor(lerpColor(redBase,MIX.play,r.playMix),MIX.freeze,freezeMix);
+      var blueC=lerpColor(lerpColor(BASE.blue,MIX.stillness,stillMix),MIX.freeze,freezeMix);
+      yellowEl.style.stroke=yellowC;redEl.style.stroke=redC;blueEl.style.stroke=blueC;
+      setGradStops(gradYrStops,yellowC,redC);setGradStops(gradRbStops,redC,blueC);
+      var pRed=sc.rises==='red'?Math.max(r.pr,tn*0.8):r.pr;
+      applyPresence(yellowEl,PEAK.yellow,r.py);
+      applyPresence(redEl,sc.brightenRed?lerp(PEAK.red,13,clamp01(r.pr)):PEAK.red,pRed);
+      if(sc.brightenRed)redEl.style.strokeOpacity=lerp(0.35,1,clamp01(pRed*1.3));
+      applyPresence(blueEl,PEAK.blue,r.pb);
+      var yrOp=lerp(0.35,1,Math.max(r.py,pRed)),rbOp=lerp(0.35,1,Math.max(pRed,r.pb));
+      xYR.forEach(function(el){el.style.strokeOpacity=yrOp;});
+      xRB.forEach(function(el){el.style.strokeOpacity=rbOp;});
+      var sk=sc.stuckKeys||[], slowR=sk.indexOf('red')>=0?(1+tn*4):1, slowB=sk.indexOf('blue')>=0?(1+tn*4):1;
+      if(anims){
+        anims.yellow.updatePlaybackRate(BASE_DURATION/(CIRCUIT_DUR.yellow*r.dragYellow));
+        anims.red.updatePlaybackRate(BASE_DURATION/(CIRCUIT_DUR.red*r.dragRed*slowR));
+        anims.blue.updatePlaybackRate(BASE_DURATION/(CIRCUIT_DUR.blue*slowB));
+      }
+      baseflowEl.style.filter='saturate('+r.sat+')';
+      var lr=sc.compute(s); if(sc.noFreeze)lr.freezeMix=0;
+      if(stateEl){
+        var sp=Math.max.apply(null,(sc.stuckKeys||[]).map(function(k){return k==='red'?r.pr:(k==='blue'?r.pb:0);}).concat(0));
+        var sn=stateName(lr), stuck=(sp>r.py);
+        stateEl.textContent=stuck?sc.label:STATE_MAP[sn];
+        fig.style.setProperty('--pvc-tint', stuck?(sc.tint||'#A3C0DD'):STATE_TINT[sn]);
+      }
+    }
+    var stuckEls=(sc.stuckKeys||[]).map(function(k){return {el:k==='red'?redEl:blueEl,peak:k==='red'?PEAK.red:PEAK.blue};});
+    var frRaf=0,inZone=false;
+    function tensionTick(now){
+      var tn=(motionOn&&sc.tension)?tensionFor(scn,(+slider.value)/100):0;
+      if(tn>0){
+        var pulse=tn*(3.2+1.3*Math.sin(now*0.0085));
+        var sx=tn*Math.sin(now*0.045)*1.9, sy=tn*Math.sin(now*0.061+0.7)*1.2;
+        stuckEls.forEach(function(o,i){o.el.style.strokeWidth=o.peak+pulse;o.el.style.transform='translate('+((i?-sx:sx)).toFixed(2)+'px,'+sy.toFixed(2)+'px)';});
+        inZone=true;
+      } else if(inZone){
+        stuckEls.forEach(function(o){o.el.style.transform='';});
+        update(+slider.value); inZone=false;
+      }
+      frRaf=requestAnimationFrame(tensionTick);
+    }
+    if(motionOn)frRaf=requestAnimationFrame(tensionTick);
+    slider.addEventListener('input',function(){update(+slider.value);});
+    slider.value = (sc.defaultValue||0);
+    layout(); update(+slider.value);
+    requestAnimationFrame(layout); setTimeout(layout,120); setTimeout(layout,400);
+  }
+  function boot(){
+    document.querySelectorAll('.ss-root .snb-pvc').forEach(build);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+<!-- STANDARD FOOTER v2 (source of truth: STANDARD-FOOTER.html), matched to the 880px reading column -->
+<div data-snb-include="footer">
+<!-- ============================================================================
+  STANDARD FOOTER v2 -- SOURCE OF TRUTH (owned by Web Designer)
+  Moved here 2026-07-09 from the Get More Sales folder: this workstream owns the
+  footer's design. Edit HERE first, then re-propagate into every page/embed
+  (SNB-Web-*-embed.html, SNB-App-embed.html, etc.). Keep them in sync.
+
+  Namespaced under .snb-footer so it drops into any Circle custom-HTML embed as-is
+  (no <html>/<head>/<body>; the host page supplies those).
+
+  v2 design standard (files 04/05, 2026-07-09):
+  - Background TRANSPARENT (inherits the host surface) + STANDARD DARK MODE via
+    prefers-color-scheme, with a [data-theme] escape hatch. Tokens flip.
+  - SWISS GRID: content shares one page frame (max-width 1120, --pad-x gutter) and
+    the crisis band uses the SAME 3-column track as the nav columns, so every column
+    lines up top-to-bottom. Drops to 2 cols at 820px, 1 col at 480px (nav + crisis
+    stay locked together at each breakpoint).
+  - Flat: no shadows. Hairlines are the only separators.
+  - TARGETS (2026-08-09, DQA W1b): every footer link is a 44px-tall hit box.
+    Padding sits on the <a> (never the <li>) so the padded box is the real
+    target; li/h4 margins were folded into that padding, so spacing is unchanged.
+
+  Canonical facts (keep correct): links are stucknotbroken.com (never justinlmft.com);
+  contact justin@stucknotbroken.com; crisis band verbatim, 988 first; Triad PNG (Wix
+  asset). Watch: verify the Triad PNG reads on a dark host.
+============================================================================= -->
+<style>
+  .snb-footer{
+    --snb-ink:#1A1F2A; --snb-ink-80:#3A3F4A; --snb-muted:#5E5A4E;
+    --snb-hairline:#D8D2C2; --snb-link:#0645AD; --snb-bone:#FAF9F5;
+    /* paints its own paper -- see the root note (the Circle wrapper never goes dark) */
+    background:var(--snb-bone); color:var(--snb-muted);
+    font:400 14px/20px Inter,system-ui,sans-serif;
+    padding:48px 0 64px;
+  }
+  @media (prefers-color-scheme:dark){.snb-footer:not([data-theme="light"]){
+    --snb-ink:#ECE9E0; --snb-ink-80:#C7C4BB; --snb-muted:#9A968C;
+    --snb-hairline:#2C313C; --snb-link:#8FB6FF; --snb-bone:#14171E;
+  }}
+  .snb-footer[data-theme="dark"]{
+    --snb-ink:#ECE9E0; --snb-ink-80:#C7C4BB; --snb-muted:#9A968C;
+    --snb-hairline:#2C313C; --snb-link:#8FB6FF; --snb-bone:#14171E;
+  }
+  /* Triad PNG is a dark monochrome mark (no light asset yet) -- it vanishes on the dark footer.
+     brightness(0) invert(1) forces it to solid white in dark mode. Swap the src + drop this if a
+     real light asset lands. (Resolves the "verify the Triad PNG reads on a dark host" watch note.) */
+  @media (prefers-color-scheme:dark){.snb-footer:not([data-theme="light"]) .snb-brand img{filter:brightness(0) invert(1)}}
+  .snb-footer[data-theme="dark"] .snb-brand img{filter:brightness(0) invert(1)}
+  .snb-footer *,.snb-footer *::before,.snb-footer *::after{box-sizing:border-box}
+  .snb-footer .snb-page{box-sizing:border-box;max-width:var(--snb-footer-width,1080px);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .snb-footer hr{border:0;border-top:1px solid var(--snb-hairline);margin:0 0 32px}
+  .snb-footer a{color:var(--snb-link);text-decoration:none}
+  .snb-footer a:hover{text-decoration:underline}
+  .snb-brand{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+  .snb-brand img{flex:none;height:40px;width:auto;display:block}
+  .snb-wordmark{font-size:16px;font-weight:500;color:var(--snb-ink);line-height:24px}
+  .snb-byline{font-size:13px;color:var(--snb-muted);margin-top:4px}
+  /* one 3-column track shared by the nav cols AND the crisis band */
+  .snb-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px clamp(20px,4vw,32px)}
+  .snb-col h4{font-size:12px;font-weight:500;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--snb-ink);margin:0}
+  .snb-col ul{list-style:none;margin:0;padding:0}
+  .snb-col li{margin:0}
+  /* WCAG 2.5.8 / HIG 44: padding lives on the <a>, so the padded box IS the hit
+     area (padding on the <li> would only pad around an unchanged target).
+     line-height 20 + 12/12 = 44px tall; the 12px top pad also reproduces the
+     old 12px heading-to-first-link gap, so the Swiss grid rhythm is unchanged. */
+  .snb-col li a{display:inline-block;line-height:20px;padding:12px 0;min-width:44px}
+  .snb-crisis{margin-top:48px;padding-top:24px;border-top:1px solid var(--snb-hairline)}
+  .snb-crisis h4{font-size:12px;font-weight:500;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--snb-ink);margin:0 0 16px}
+  .snb-crisis ul{list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px clamp(20px,4vw,32px)}
+  .snb-crisis li{font-size:13px;line-height:20px;color:var(--snb-muted)}
+  .snb-crisis li b{font-weight:500;color:var(--snb-ink-80);display:block}
+  .snb-crisis .snb-911{margin-top:16px;font-size:13px;color:var(--snb-ink-80)}
+  .snb-bottom{display:flex;flex-wrap:wrap;align-items:center;
+    justify-content:space-between;gap:8px;
+    margin-top:32px;padding-top:12px;border-top:1px solid var(--snb-hairline);
+    font-size:12.5px;color:var(--snb-muted)}
+  .snb-bottom a{color:var(--snb-muted)}
+  /* same 2.5.8 treatment as the nav links; padding-top above is 12 (not 24)
+     because the legal links' own 12px top pad restores the 24px hairline gap. */
+  .snb-bottom .snb-legal a{display:inline-block;line-height:20px;padding:12px 0;
+    min-width:44px;margin-left:16px}
+  @media (prefers-contrast:more){
+    .snb-footer{--snb-muted:var(--snb-ink-80);--snb-hairline:var(--snb-muted)}
+  }
+  @media (max-width:820px){
+    .snb-footer{padding:32px 0 48px}
+    .snb-cols{grid-template-columns:1fr 1fr;gap:24px clamp(20px,4vw,32px)}
+    .snb-crisis ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:480px){
+    .snb-cols,.snb-crisis ul{grid-template-columns:1fr}
+  }
+</style>
+<footer class="snb-footer">
+  <div class="snb-page">
+    <hr>
+    <div class="snb-brand">
+      <img src="https://static.wixstatic.com/media/2d354d_44e5aa0ee94c4c44928b3994c1e63df7~mv2.png" alt="Stuck Not Broken">
+      <div>
+        <div class="snb-wordmark">Stuck Not Broken</div>
+        <div class="snb-byline">Justin Sunseri, LMFT</div>
+      </div>
+    </div>
+    <div class="snb-cols">
+      <div class="snb-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="https://www.stucknotbroken.com/polyvagal-theory-introduction">Polyvagal Intro</a></li>
+          <li><a href="https://www.stucknotbroken.com/c/blog">Blog</a></li>
+          <li><a href="https://stuck-not-broken.captivate.fm/">Podcast</a></li>
+          <li><a href="https://www.stucknotbroken.com/books">Books</a></li>
+        </ul>
+      </div>
+      <div class="snb-col">
+        <h4>Go further</h4>
+        <ul>
+          <li><a href="https://www.stucknotbroken.com/app">Stuck Not Broken app</a></li>
+          <li><a href="https://www.stucknotbroken.com/how-i-can-help-you">How I Can Help You</a></li>
+          <li><a href="https://www.stucknotbroken.com/unstuckingacademy">Unstucking Academy</a></li>
+          <li><a href="https://www.stucknotbroken.com/c/public_resources/">Free Resources</a></li>
+        </ul>
+      </div>
+      <div class="snb-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:justin@stucknotbroken.com">justin@stucknotbroken.com</a></li>
+          <li><a href="https://www.youtube.com/channel/UCduAkQrvmvWq2oy8aJSNcEQ">YouTube</a></li>
+          <li><a href="https://www.instagram.com/justinlmft">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/justinlmft/">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/JustinLMFT/">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="snb-crisis">
+      <h4>Crisis &amp; other resources</h4>
+      <ul>
+        <li><b>988 Suicide &amp; Crisis Lifeline</b>Call or text 988</li>
+        <li><b>National Domestic Violence Hotline</b>1 (800) 799-7233</li>
+        <li><b>LGBT Trevor Project Lifeline</b>1 (866) 488-7386</li>
+        <li><b>National Sexual Assault Hotline</b>1 (800) 656-4673</li>
+        <li><b>Crisis Text Line</b>Text &ldquo;HOME&rdquo; to 741741</li>
+      </ul>
+      <p class="snb-911">If you are experiencing an emergency, please call 911.</p>
+    </div>
+    <div class="snb-bottom">
+      <span>&copy; 2026 Stuck Not Broken &middot; Justin Sunseri, LMFT</span>
+      <span class="snb-legal">
+        <a href="https://www.stucknotbroken.com/terms">Terms</a>
+        <a href="https://www.stucknotbroken.com/privacy">Privacy</a>
+      </span>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script>
+/* ss faq: single-open accordion (estate standard -- INK toggle, one open by default, WAAPI motion,
+   reduced-motion / no-WAAPI safe). Mirrors the Books Q&A engine. */
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var items = Array.prototype.slice.call(document.querySelectorAll('.ss-root .ss-faq .ss-q'));
+  var DUR = 200, EASE = 'cubic-bezier(.2,.6,.2,1)';
+  function body(d){ return d.querySelector('.ss-a'); }
+  function expand(d){
+    if(d.open) return; d.open = true;
+    var b = body(d); if(!b || reduce || !b.animate) return;
+    var pb = getComputedStyle(b).paddingBottom;
+    var h = b.getBoundingClientRect().height; b.style.overflow = 'hidden'; b.style.height = h+'px';
+    var a = b.animate([{height:'0px',opacity:0,paddingBottom:'0px'},{height:h+'px',opacity:1,paddingBottom:pb}], {duration:DUR, easing:EASE});
+    a.onfinish = function(){ b.style.overflow=''; b.style.height=''; };
+  }
+  function collapse(d){
+    if(!d.open) return; var b = body(d);
+    if(!b || reduce || !b.animate){ d.open = false; return; }
+    var pb = getComputedStyle(b).paddingBottom;
+    var h = b.getBoundingClientRect().height; b.style.overflow = 'hidden';
+    var a = b.animate([{height:h+'px',opacity:1,paddingBottom:pb},{height:'0px',opacity:0,paddingBottom:'0px'}], {duration:DUR, easing:EASE, fill:'forwards'});
+    a.onfinish = function(){ d.open = false; a.cancel(); b.style.overflow=''; b.style.height=''; };
+  }
+  items.forEach(function(d){
+    var sum = d.querySelector('summary'); if(!sum) return;
+    sum.addEventListener('click', function(e){
+      e.preventDefault();
+      if(d.open){ collapse(d); return; }
+      items.forEach(function(x){ if(x!==d && x.open) collapse(x); });
+      expand(d);
+    });
+  });
+})();
+</script>
