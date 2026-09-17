@@ -27,6 +27,15 @@
    · Page-scoped class prefix .ap-* (cf. .hh-*, .pv-*, .bk-*). Self-contained, no external CSS.
    · Hero: H1 + ONE lede, no extra intro paragraph.
 
+  V7 — THE 08 REBUILD (2026-09-16, roadmap essential #3; structure approved by Justin item-list)
+   · Audit + plan: _spec-app-rebuild.md. Order now: hero (with a Free / $12 line) -> how it works
+     (3 steps, 3 phones; the full 10-screen visit folded under a details) -> what $12 adds (reader +
+     stats) -> pricing (terms ABOVE the subscribe button, parallel lists) -> method + 54% -> Q&A -> CTA.
+   · V7 COPY APPROVED by Justin 2026-09-16 (Web Designer drafted; Justin edited + approved). Q&A answers untouched.
+   · Cut from the page: the "kinda useful meditations" jab, the duplicated "zero addictive elements",
+     "Nothing is staged and nothing is skipped", "Start practicing today" (-> now).
+   · §3 free/paid split now CONFIRMED by the live pricing card that shipped in July.
+
   V6 — THE REAL-VISIT NARRATIVE (2026-07-14, Justin's direction)
    · ALL previous screenshots replaced. Justin screenshotted EVERY step of one real app visit
      (IMG_3898-3917, same afternoon, status-bar clocks 3:54 → 4:03). The page now tells that
@@ -158,7 +167,16 @@
     --pad-x:clamp(20px,5vw,40px);
     --measure:66ch;                            /* prose cap — the frame never touches readability */
     --section:clamp(64px,9vw,112px);
-    --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:48px;
+    /* 06 spacing scale + relationship roles, mirrored here so the page resolves every token on its
+       own (the shared sheet defines the same values; if it fails to load, nothing collapses to 0). */
+    --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:48px;
+    --sp-8:64px; --sp-9:96px; --sp-10:128px;
+    --space-bound:var(--sp-2); --space-snug:var(--sp-3); --space-stack:var(--sp-4);
+    --space-group:var(--sp-5); --space-block:var(--sp-6); --space-sub:var(--sp-7);
+    --space-section:var(--section);
+    --gap:clamp(20px,4vw,32px);
+    /* 12-column frame (05/WEB-FORMAT): width of N columns inside .ap-page, gaps included */
+    --cols8:calc((100% - 11 * var(--gap)) * 8 / 12 + 7 * var(--gap));
 
     --ease:cubic-bezier(.2,.6,.2,1); --dur:200ms;
     color-scheme:light dark;
@@ -179,6 +197,9 @@
   }
 
   *{box-sizing:border-box}
+  /* standalone preview only: when the page is opened on its own, lose the browser's 8px body margin so the
+     paper runs edge to edge. Inside Circle .ap-root is never a direct child of body, so this never applies. */
+  body:has(> .ap-root){margin:0}
   img{max-width:100%;height:auto}
 
   /* the root PAINTS ITS OWN PAPER (WEB-FORMAT). Not transparent.
@@ -189,7 +210,7 @@
   .ap-root{
     background:var(--bone); color:var(--secondary-label);
     font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    font-weight:400; font-size:17px; line-height:1.65;
+    font-weight:400; font-size:17px; line-height:28px;
     -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
   }
   .ap-page{max-width:var(--page); margin:0 auto; padding:0 var(--pad-x)}
@@ -199,9 +220,9 @@
   }
   .ap-root h1{font-size:clamp(38px,6vw,64px); line-height:1.04; letter-spacing:-.025em; max-width:18ch; margin-bottom:0}   /* product hero: opts out of the DS standard title->lede gap */
   .ap-root h2{font-size:clamp(26px,3.6vw,38px); line-height:1.12; letter-spacing:-.02em;
-    text-transform:lowercase; margin-bottom:var(--sp-5); max-width:30ch}
-  .ap-root h3{font-size:clamp(21px,2.6vw,24px); line-height:1.3; text-transform:lowercase; margin-bottom:var(--sp-4)}
-  .ap-root p{margin:0 0 var(--sp-4); max-width:var(--measure)}
+    margin-bottom:var(--space-group); max-width:30ch}
+  .ap-root h3{font-size:clamp(21px,2.6vw,24px); line-height:1.3; margin-bottom:var(--space-snug)}
+  .ap-root p{margin:0 0 var(--space-stack); max-width:var(--measure)}
   .ap-root a{color:var(--link); text-decoration:underline; text-underline-offset:2px}
   .ap-root a:hover{text-decoration-thickness:2px}
   .ap-root a:focus-visible{outline:2px solid var(--ink); outline-offset:2px; border-radius:2px}
@@ -209,24 +230,23 @@
   .ap-eyebrow{font-size:11.5px; font-weight:500; text-transform:uppercase; letter-spacing:.15em;
     color:var(--tertiary-label); margin:0}
   .ap-lede{font-size:clamp(19px,2.3vw,23px); line-height:1.45; color:var(--label); max-width:38rem}
-  .ap-tiny{font-size:14px; color:var(--tertiary-label); line-height:1.5}
+  .ap-tiny{font-size:14px; color:var(--tertiary-label); line-height:20px}
 
   /* ---------- hero: H1 + ONE lede. No screenshot (07: only a calm face earns the hero; and
        the hero must stay light for LCP, one of the few clean causal conversion levers). ---------- */
-  .ap-hero{padding:clamp(64px,10vw,120px) 0 var(--sp-7)}
-  .ap-byline{display:flex; align-items:center; gap:12px; margin:0 0 var(--sp-5)}
+  .ap-hero{padding:var(--section) 0 0}
+  .ap-byline{display:flex; align-items:center; gap:var(--space-snug); margin:0 0 var(--space-bound)}
   .ap-avatar{width:56px; height:56px; border-radius:50%; background:var(--bone-deep);
     object-fit:cover; flex:0 0 auto}
-  .ap-hero h1{margin-bottom:var(--sp-5)}
-  .ap-hero .ap-lede{margin-bottom:var(--sp-6)}
+  .ap-hero h1{margin-bottom:var(--space-group)}
+  .ap-hero .ap-lede{margin-bottom:var(--space-block)}
 
   /* ---------- sections ---------- */
   .ap-sec{padding:var(--section) 0 0}
   /* FALSE-FLOOR GUARD (NN/g). Whitespace-heavy minimalism creates sections that LOOK like the
      page end and kill the scroll. Our single highest-risk brand/evidence collision. A short rule
      that stops well before the measure says "there is more" without adding chrome. */
-  .ap-sec::before{content:""; display:block; width:56px; height:1px; background:var(--separator);
-    margin:0 0 var(--sp-7)}
+  /* (the 56px section rule was removed 2026-09-16: 06 says whitespace alone separates sections) */
 
   /* ---------- §2 V6: the real-visit walkthrough ----------
      Numbered beats. A beat is either an .ap-split (text left, ONE phone right) or a text
@@ -236,7 +256,7 @@
   .ap-step:last-child{margin-bottom:0}
   .ap-step > h3 + p{max-width:var(--measure)}
   .ap-trio{display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:clamp(16px,3vw,32px); margin:var(--sp-5) 0 0}
+    gap:var(--gap); margin:var(--space-group) 0 0}
   .ap-trio.ap-x2{grid-template-columns:repeat(2,minmax(0,1fr)); max-width:560px}
   .ap-trio figure{margin:0}
   @media (max-width:699px){
@@ -274,7 +294,7 @@
     width:100%; display:block;
     border-radius:16px; background:#FAF9F5; border:1px solid var(--hairline);
   }
-  .ap-face figcaption{margin-top:var(--sp-3); font-size:15px; color:var(--tertiary-label); text-align:center}
+  .ap-face figcaption{margin-top:var(--space-snug); font-size:15px; line-height:24px; color:var(--tertiary-label); text-align:center}
   .ap-root .ap-split figure img{max-width:300px}
   /* the ONLY two image treatments on the page (Justin, 2026-07-14): a WHOLE phone (rounded all
      round) or a SHELF CUT — whole bezel at top, clean straight bottom, no rounded bottom corners
@@ -312,34 +332,35 @@
      Reusable "grounded zone" component (2026-07-17) — promote to 03/07; must stay grid-true, never a
      centered floating box. Flat: outline only, no fill/shadow (DNA). */
   .ap-offer{
-    margin:var(--sp-6) 0 0; padding:clamp(24px,3.2vw,40px);
-    border:1px solid var(--hairline); border-radius:22px;
+    margin:var(--space-block) 0 0; padding:0; border:0;
   }
   .ap-plans{
-    display:grid; grid-template-columns:1fr 1fr; gap:var(--gap);
+    display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:var(--gap);
     align-items:stretch;
   }
-  @media (max-width:680px){ .ap-plans{grid-template-columns:1fr} }
+  .ap-plans > .ap-plan{grid-column:span 6
+  }
+  @media (max-width:699px){ .ap-plans > .ap-plan{grid-column:1 / -1} .ap-plans{row-gap:var(--space-block)} }
   .ap-plan{
     position:relative; display:flex; flex-direction:column;
     background:var(--bone); border:1px solid var(--hairline); border-radius:18px;
-    padding:var(--sp-6);
+    padding:var(--space-group);
   }
   .ap-plan--featured{ border:1.5px solid var(--ink); }
-  .ap-plan h3{ font-size:19px; margin:0 0 var(--sp-3); text-transform:lowercase; color:var(--label) }
-  .ap-price{ display:flex; align-items:baseline; gap:7px; margin:0 0 var(--sp-2) }
+  .ap-plan h3{ font-size:20px; line-height:28px; margin:0 0 var(--space-snug); color:var(--label) }
+  .ap-price{ display:flex; align-items:baseline; gap:var(--space-bound); margin:0 0 var(--space-bound) }
   .ap-price b{ font-size:clamp(30px,5vw,38px); font-weight:600; color:var(--label);
     letter-spacing:-.015em; line-height:1 }
-  .ap-price span{ font-size:15px; color:var(--tertiary-label) }
-  .ap-plan-note{ font-size:14.5px; color:var(--tertiary-label); margin:0 0 var(--sp-5); max-width:none }
-  .ap-feat{ list-style:none; padding:0; margin:0 0 var(--sp-6); display:grid; gap:var(--sp-3) }
+  .ap-price span{ font-size:15px; line-height:20px; color:var(--tertiary-label) }
+  .ap-plan-note{ font-size:15px; line-height:20px; color:var(--tertiary-label); margin:0 0 var(--space-group); max-width:none }
+  .ap-feat{ list-style:none; padding:0; margin:0 0 var(--space-group); display:grid; gap:var(--space-snug) }
   .ap-feat li{
-    position:relative; padding-left:26px; margin:0; max-width:none;
-    font-size:15.5px; line-height:1.42; color:var(--secondary-label);
+    position:relative; padding-left:var(--space-group); margin:0; max-width:none;
+    font-size:16px; line-height:24px; color:var(--secondary-label);
   }
   .ap-feat li::before{
     content:"✓"; position:absolute; left:0; top:0;
-    font-size:15px; font-weight:600; color:var(--ink);
+    font-size:15px; line-height:24px; font-weight:600; color:var(--ink);
   }
   .ap-plan a.ap-cta{ margin-top:auto; width:100% }
   .ap-root a.ap-cta.ap-cta--ghost{ background:transparent; color:var(--ink); border-color:var(--ink) }
@@ -347,25 +368,25 @@
   /* monthly/annual segmented toggle. Equal-width halves so annual never reads quieter than
      monthly (08 §6 hidden-info warning). Selected = ink fill, matching the CTA language. */
   .ap-toggle{
-    display:grid; grid-template-columns:1fr 1fr; gap:4px; margin:0 0 var(--sp-4);
+    display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-1); margin:0 0 var(--space-stack);
     padding:4px; background:var(--bone); border:1px solid var(--hairline); border-radius:999px;
   }
   .ap-toggle button{
     appearance:none; -webkit-appearance:none; border:0; cursor:pointer; font:inherit;
-    font-size:15px; line-height:1; min-height:44px; padding:0 10px; border-radius:999px;
-    background:transparent; color:var(--secondary-label); text-transform:lowercase;
+    font-size:15px; line-height:20px; min-height:44px; padding:0 var(--space-snug); border-radius:999px;
+    background:transparent; color:var(--secondary-label);
     transition:background-color var(--dur) var(--ease), color var(--dur) var(--ease);
   }
   .ap-toggle button[aria-pressed="true"]{ background:var(--ink); color:var(--on-ink); font-weight:500 }
   .ap-toggle button:focus-visible{ outline:2px solid var(--ink); outline-offset:2px }
-  .ap-price-block{ margin:0 0 var(--sp-5) }
+  .ap-price-block{ margin:0 0 var(--space-group) }
   .ap-price-block .ap-price{ margin:0 }
-  .ap-price-block .ap-price-sub{ margin:var(--sp-2) 0 0; font-size:14.5px; color:var(--tertiary-label); max-width:none }
-  .ap-plan .ap-policy{ margin:var(--sp-4) 0 0; font-size:14.5px; color:var(--tertiary-label); max-width:none }
+  .ap-price-block .ap-price-sub{ margin:var(--space-bound) 0 0; font-size:15px; line-height:20px; color:var(--tertiary-label); max-width:none }
+  .ap-plan .ap-policy{ margin:0 0 var(--space-stack); font-size:15px; line-height:20px; color:var(--tertiary-label); max-width:none }
   /* Q&A accordion — canonical details/summary pattern (matches Books /books). "+" rotates to "×";
      single-open via JS (WAAPI height+opacity); native <details> toggle is the no-JS/reduced-motion
      fallback. */
-  .ap-qa{ margin:var(--sp-6) 0 0; max-width:var(--measure); border-top:1px solid var(--hairline) }
+  .ap-qa{ margin:var(--space-block) 0 0; max-width:var(--cols8); border-top:1px solid var(--hairline) }
   .ap-q{ border-bottom:1px solid var(--hairline) }
   .ap-q summary{
     display:grid; grid-template-columns:3ch minmax(0,1fr) auto; gap:var(--sp-4) var(--sp-5);
@@ -379,7 +400,7 @@
   .ap-q summary:focus-visible{ outline:2px solid var(--ink); outline-offset:3px }
   .ap-qn{ font-size:12px; font-weight:500; line-height:24px; letter-spacing:.16em;
     color:var(--tertiary-label); font-variant-numeric:tabular-nums }
-  .ap-q h3{ font-size:18px; margin:0 }
+  .ap-q h3{ font-size:18px; line-height:24px; margin:0 }
   .ap-q .ap-a{ padding:0 0 var(--sp-5); margin-left:calc(3ch + var(--sp-5)); overflow:hidden }
   .ap-q .ap-a p{ margin:0; color:var(--secondary-label); max-width:none }
   @media (max-width:480px){ .ap-q .ap-a{ margin-left:0 } }
@@ -399,7 +420,7 @@
      kill the underline explicitly. (Caught in dark mode, but it was wrong in both.) */
   .ap-root a.ap-cta{
     display:inline-flex; align-items:center; justify-content:center;
-    min-height:50px; padding:0 26px; border-radius:999px;
+    min-height:48px; padding:var(--space-snug) var(--space-group); border-radius:999px; text-align:center; line-height:24px;
     background:var(--ink); color:var(--on-ink); border:1.5px solid var(--ink);
     font-weight:500; font-size:17px;
     text-decoration:none; text-underline-offset:0;
@@ -412,19 +433,19 @@
   }
   .ap-root a.ap-cta:active{transform:scale(.985)}
   .ap-root a.ap-cta:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
-  .ap-sub{margin:var(--sp-3) 0 0; font-size:15px; color:var(--tertiary-label); max-width:38rem}
+  .ap-sub{margin:var(--space-bound) 0 0; font-size:15px; line-height:20px; color:var(--tertiary-label); max-width:38rem}
   .ap-sub span{display:block}
 
   /* ---------- sticky mobile CTA (79% of traffic is mobile) ---------- */
   .ap-sticky{
     position:fixed; left:0; right:0; bottom:0; z-index:20;
-    display:none; justify-content:center; align-items:center; gap:14px;
-    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    display:none; justify-content:center; align-items:center; gap:var(--space-stack);
+    padding:var(--space-snug) var(--space-stack) calc(var(--space-snug) + env(safe-area-inset-bottom));
     background:var(--bone); border-top:1px solid var(--hairline);
   }
   /* must out-specify .ap-root a.ap-cta (0,2,1) or the sticky button inherits full size */
-  .ap-root .ap-sticky a.ap-cta{min-height:46px; padding:0 22px; font-size:16px}
-  .ap-sticky small{font-size:13px; color:var(--tertiary-label)}
+  .ap-root .ap-sticky a.ap-cta{min-height:48px; padding:0 var(--space-group); font-size:16px}
+  .ap-sticky small{font-size:14px; line-height:20px; color:var(--tertiary-label)}
   @media (max-width:759px){
     .ap-sticky.is-on{display:flex}
     /* keep the fixed sticky CTA from covering the footer's last line. .ap-root ancestor raises
@@ -432,6 +453,8 @@
     .ap-root .snb-footer{padding-bottom:104px}
   }
 
+  .ap-root section.ap-closer{background:var(--bone-deep); padding:var(--space-sub) 0; margin-top:var(--section)}
+  @media (min-width:860px){ .ap-root section.ap-closer{padding:var(--sp-8) 0} }
   .ap-closer p.ap-big{font-size:19px; color:var(--label); margin-top:var(--sp-6)}
   .ap-sig{margin-top:var(--sp-2)}
 
@@ -441,6 +464,59 @@
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   
+  /* ---------- V7 rebuild (2026-09-16): hero tier line, 3-step row, folded visit, $12 duo ---------- */
+  .ap-tiers{margin:0 0 var(--space-block); padding:var(--space-stack) 0 0; display:grid; gap:var(--space-snug); max-width:var(--cols8);
+    border-top:1px solid var(--hairline)}
+  .ap-tiers > div{display:grid; grid-template-columns:128px minmax(0,1fr); gap:var(--space-stack); align-items:baseline}
+  .ap-tiers dt{font-weight:600; color:var(--label); font-size:16px; line-height:24px}
+  .ap-tiers dd{margin:0; font-size:16px; line-height:24px; color:var(--secondary-label)}
+  @media (max-width:480px){ .ap-tiers > div{grid-template-columns:1fr; gap:0} }
+
+  .ap-steps{list-style:none; margin:var(--space-block) 0 0; padding:0;
+    display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:var(--gap)}
+  .ap-steps > li{grid-column:span 4}
+  .ap-steps li{margin:0; display:flex; flex-direction:column}
+  .ap-steps h3{display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-bound); font-size:20px; line-height:28px; margin-bottom:var(--space-bound)}
+  .ap-steps p{font-size:16px; line-height:24px; margin-bottom:0}
+  .ap-root .ap-steps figure{margin-top:auto; padding-top:var(--space-group)}
+  .ap-root .ap-steps figure img{max-width:260px}
+  .ap-n{display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%;
+    border:1.5px solid var(--ink); font-size:14px; line-height:20px; font-weight:600; color:var(--label); flex:0 0 auto}
+  .ap-tag{font-size:12px; font-weight:500; letter-spacing:.02em; color:var(--tertiary-label);
+    border:1px solid var(--hairline); border-radius:999px; padding:0 var(--sp-2); line-height:20px}
+  /* mobile: the three steps STACK (a side-scrolling row cut the next card's text off at the screen edge) */
+  @media (max-width:699px){
+    .ap-steps > li{grid-column:1 / -1} .ap-steps{row-gap:var(--space-sub)}
+    .ap-root .ap-steps figure img{max-width:220px}
+  }
+
+  .ap-visit{margin:var(--space-block) 0 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline)}
+  .ap-visit summary{cursor:pointer; list-style:none; min-height:48px; display:flex; align-items:center; gap:var(--space-snug);
+    padding:var(--space-stack) 0; font-weight:500; color:var(--label)}
+  .ap-visit summary::-webkit-details-marker{display:none}
+  .ap-visit summary::after{content:"+"; margin-left:auto; font-size:22px; line-height:1; transition:transform var(--dur) var(--ease)}
+  .ap-visit[open] summary::after{transform:rotate(45deg)}
+  .ap-visit summary:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+  .ap-visit > p{margin:0 0 var(--space-stack); color:var(--tertiary-label); font-size:15px; line-height:24px}
+  .ap-gallery{display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:var(--space-group) var(--gap); padding-bottom:var(--space-group)}
+  .ap-gallery > figure{grid-column:span 2}
+  .ap-root .ap-gallery figure{margin:0}
+  .ap-gallery figcaption{margin-top:var(--space-bound); font-size:14px; line-height:20px; color:var(--tertiary-label)}
+  @media (max-width:699px){ .ap-gallery > figure{grid-column:span 6} }   /* 2 across on phones, still on the tracks */
+
+  .ap-duo{display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:var(--gap); margin:var(--space-block) 0 0}
+  .ap-duo > div{grid-column:span 4}
+  .ap-duo h3{font-size:20px; line-height:28px; margin-bottom:var(--space-bound)}
+  .ap-duo p{font-size:16px; line-height:24px; margin-bottom:0}
+  .ap-root .ap-duo figure img{max-width:260px}
+  .ap-ethic{display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:var(--gap); margin:var(--space-block) 0 0}
+  .ap-ethic > div{grid-column:span 4}
+  .ap-ethic h3{font-size:20px; line-height:28px; margin-bottom:var(--space-snug)}
+  .ap-ethic ul{list-style:none; margin:0; padding:0; border-top:1px solid var(--hairline)}
+  .ap-ethic li{margin:0; padding:var(--space-snug) 0; border-bottom:1px solid var(--hairline); font-size:16px; line-height:24px; color:var(--secondary-label)}
+  @media (max-width:699px){ .ap-ethic > div{grid-column:1 / -1} .ap-ethic{row-gap:var(--space-sub)} }
+  @media (max-width:699px){ .ap-duo > div{grid-column:1 / -1} .ap-duo{row-gap:var(--space-sub)} .ap-root .ap-duo figure img{max-width:220px} }
+
 </style>
 </head>
 
@@ -449,174 +525,111 @@
 <div class="ap-root snb-live">
 <main>
 
-<!-- ========================= §1 HERO =========================
-     Value prop legible in <10s, top half of the first viewport, CTA visible.
-     57% of viewing time is above the fold; users leave in 10-20s (NN/g).
-     H1 + ONE lede (WEB-FORMAT). No screenshot: LCP.
-========================================================== -->
+<!-- ========================= §1 HERO (V7, 2026-09-16 rebuild) =========================
+     H1 + ONE lede + the free/paid line + CTA. The free/paid line is the fix for audit finding 3
+     (a subscriber cancelled four hours after paying, believing it was free). 08 §6: cost
+     transparency is a lever. V7 copy approved by Justin 2026-09-16.
+===================================================================================== -->
 <header class="ap-hero">
   <div class="ap-page">
     <div class="ap-byline">
       <p class="ap-eyebrow">The Stuck Not Broken app</p>
     </div>
 
-    <h1>A self-regulation practice built entirely for you, that changes with you.</h1>
+    <h1>A self-regulation practice built for you, that changes with you.</h1>
 
     <p class="ap-lede">
-      You tell it how you're doing. It gives you a custom meditation practice designed for you and only
-      you. Every check-in and every practice changes what it gives you next. Don't believe it? Try it
-      free below to see your own before and after. Or, scroll to see a walkthrough of the app.
+      As you report how your system is doing, the app builds custom self-regulation practices for you
+      and only you.
     </p>
+
+    <dl class="ap-tiers">
+      <div><dt>Free</dt><dd>Unlimited guided mindfulness and check-ins. (No card required.)</dd></div>
+      <div><dt>$12 a month</dt><dd>The paid version unlocks custom practices, a personal reader, and data analysis.</dd></div>
+    </dl>
 
     <p><a class="ap-cta" href="https://app.stucknotbroken.com/?start=practice&amp;src=app-page" data-cta="hero" data-ga-cta="door_app" data-ga-placement="hero">Do a practice now</a></p>
-
-    <p style="margin-top:var(--sp-6)">
-      The SNB app is not just another meditation app. It does more than provide kinda useful meditations
-      that kinda help you feel better for maybe a little bit. It's a <i>self-regulation</i> app. It does
-      one thing, and it does it seriously: slowly and sustainably increase your level of presence and
-      distress tolerance.
-    </p>
   </div>
 </header>
 
 
-<!-- ========================= §2 ONE VISIT, START TO FINISH =========================
-     V6 (Justin): every screen from ONE real visit, in order. Radical transparency IS the
-     sales argument: the reader watches an actual afternoon happen, including the paid
-     surfaces. Status-bar clocks (3:54 → 3:59, reflections read at 4:02) are left visible on
-     purpose — they're the receipt, so no "these are real" disclaimer is needed (Justin cut it).
-     ALL COPY BELOW = DRAFT for Justin/GMS to edit. No app-voice inventions; quotes only if
-     verbatim on the screen shown.
-================================================================== -->
+<!-- ========================= §2 HOW IT WORKS: 3 steps, 3 screenshots =========================
+     Audit finding 1: the price sat ~5,400px down behind 10 screenshots. Three beats carry the
+     argument; the full real visit is kept, folded, for anyone who wants every screen.
+     Paid-only beats carry a literal "full app" tag (a factual label, not a false-hierarchy cue).
+============================================================================================ -->
 <section class="ap-sec" id="how-it-works">
   <div class="ap-page">
-    <h2>A real app visit from start to finish</h2>
-    <p>
-      Everything below is a single afternoon in the app, shown in the order it happened. Nothing is
-      staged and nothing is skipped. (Check the clock in the corner.)
-    </p>
+    <h2>How it works</h2>
 
-    <!-- beat 1 · 3898. The today screen already knows the state and has ONE suggestion + reason. -->
-    <div class="ap-step ap-split">
-      <div>
-        <h3>1. it opens where you left off</h3>
-        <p>
-          The today tab is ready for your check-in, leads you through one intentional breath, gives a
-          recommended practice based on your capacity, and a personal reader reflection.
-        </p>
-        <p>
-          Note there are zero streak counters. The app is a self-regulation tool you use as you want or
-          need to. There are zero addictive elements to the SNB app. There is also no: AI,
-          micro-transactions, treasure chests, costumes to buy, nothing to unlock... you get the idea.
-          The app treats you like an adult who is serious about their emotional health.
-        </p>
-      </div>
-      <figure>
-        <img src="https://justinlmft.github.io/snb-website/img/app/visit-01-home.webp" width="620" height="1344" decoding="async"
-             alt="The today screen: the ring's ready when you are, this afternoon's state, one recommended practice with its reason, and a reflection waiting.">
-      </figure>
-    </div>
-
-    <!-- beat 2 · 3899. Sliders VARY by state — visible here vs beat 5's check-in. -->
-    <div class="ap-step ap-split">
-      <div>
-        <h3>2. you check in</h3>
-        <p>
-          The check-ins drive everything in the SNB app. Based on your reports, it designs custom
-          self-regulation practices for you and your wonderful nervous system. Check-ins also provide
-          deep data insights for you to learn about your system and how to best give it what it
-          needs.
-        </p>
-        <p>
-          How often should you check in? As much as you like, but the app learns your patterns over
-          time, so the more the merrier.
-        </p>
-        <p>
-          What happens to all this data? It sits in the background and the app adjusts everything based
-          on it. You can delete your data at any time.
-        </p>
-      </div>
-      <figure>
-        <img src="https://justinlmft.github.io/snb-website/img/app/visit-02-checkin.webp" width="620" height="1344" loading="lazy" decoding="async"
-             alt="The second afternoon check-in: three sliders, then the app's one-sentence read-back of what you reported.">
-      </figure>
-    </div>
-
-    <!-- beat 3 · 3902 → 3903 → 3904: picker, the why, the controls. -->
-    <div class="ap-step">
-      <h3>3. it builds you a practice</h3>
-      <p>
-        Practices are literally designed and built just for you based on a number of factors. Don't
-        want the recommended custom one? That's fine, you can create your own.
-      </p>
-      <p>
-        Other meditation apps serve you pre-recorded whole meditations, which is fine, but those are
-        general-purpose, temporary feel-goods. SNB's meditations are self-regulation practices,
-        dynamically stitched together, tailored to what works for you.
-      </p>
-      <div class="ap-trio">
+    <ol class="ap-steps">
+      <li>
+        <h3><span class="ap-n">1</span>You check in</h3>
+        <p>Three sliders tell the app how your system is doing. Check in as often as you like. The more you do, the better it knows your patterns.</p>
         <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app/visit-03-practice-tab.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="The practice screen: a custom practice made for you at the top, the other practices listed under it.">
+          <img src="https://justinlmft.github.io/snb-website/img/app/visit-02-checkin.webp" width="620" height="1344" loading="lazy" decoding="async"
+               alt="A check-in: three sliders, then the app's one-sentence read-back of what you reported.">
         </figure>
+      </li>
+      <li>
+        <h3><span class="ap-n">2</span>It builds you a practice <span class="ap-tag">Full app</span></h3>
+        <p>It puts together a self-regulation practice for this moment and tells you why. Every practice is Justin's voice. No celebrity voices, no AI.</p>
         <figure>
           <img src="https://justinlmft.github.io/snb-website/img/app/visit-04-custom-practice.webp" width="620" height="1344" loading="lazy" decoding="async"
                alt="Your custom practice: why this practice was chosen for you, what to expect, and how it was tuned.">
         </figure>
-        <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app/visit-05-adjust.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="Adjusting the practice: choose what to anchor with, and how much silence between guidance.">
-        </figure>
-      </div>
-    </div>
-
-    <!-- beat 4 · 3905 + 3906. The ended-early screen is the anti-pressure argument, shown not told. -->
-    <div class="ap-step">
-      <h3>4. practice with Justin</h3>
-      <p>
-        In the practice player, you'll see a simple visual (like the breath ring here), plus options to
-        extend or reduce silence, and turn on closed captions.
-      </p>
-      <p>
-        The practices feature exactly zero celebrity voices. And no AI ones either. Just Justin, like
-        you've been listening to on the podcast for years.
-      </p>
-      <p>
-        Need to end a practice early? That's fine. The player learns from it and adapts.
-      </p>
-      <div class="ap-trio ap-x2">
-        <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app-shot-3.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="The practice player: a breathing circle, about nine minutes left, a silence control, and a begin-ease-out button.">
-        </figure>
-        <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app/visit-07-ended-early.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="After ending early: no problem. want to say why? with four gentle options and a skip.">
-        </figure>
-      </div>
-    </div>
-
-    <!-- beat 5 · 3909 → 3910 → 3911. THE PAGE'S CORE PROMISE, photographed: compare 3899's
-         read-back with 3911's. Same afternoon, one practice apart. -->
-    <div class="ap-step">
-      <h3>5. immediate before &amp; after results</h3>
-      <p>
-        After you practice, you note how your system feels, then do another optional check-in using the
-        same sliders as before. You'll see the before and after comparison immediately and the results
-        are fed back into the app so it can learn what works best for you.
-      </p>
-      <div class="ap-trio">
-        <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app/visit-08-after.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="After the practice: how does your system feel now? with 'more connected and present' selected.">
-        </figure>
+      </li>
+      <li>
+        <h3><span class="ap-n">3</span>You see what shifted</h3>
+        <p>After you practice, check in again with the same sliders and see your before and after right away. The app learns what works for you.</p>
         <figure>
           <img src="https://justinlmft.github.io/snb-website/img/app/visit-09-response.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="The app's response: something shifted toward connection. Safety doesn't erase the rest, it just holds them.">
+               alt="The app's response after a practice: something shifted toward connection.">
         </figure>
+      </li>
+    </ol>
+
+    <details class="ap-visit">
+      <summary>See a whole real visit, screen by screen</summary>
+      <p>One afternoon in the app, in the order it happened. Check the clock in the corner.</p>
+      <div class="ap-gallery">
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-01-home.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The home screen: this afternoon's state, one recommended practice with its reason, and a reflection waiting."><figcaption>It opens where you left off</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-02-checkin.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The second afternoon check-in: three sliders, then the app's one-sentence read-back."><figcaption>You check in</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-03-practice-tab.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The practice screen: a custom practice made for you at the top, the other practices under it."><figcaption>A practice made for you</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-04-custom-practice.webp" width="620" height="1344" loading="lazy" decoding="async" alt="Your custom practice: why it was chosen, what to expect, and how it was tuned."><figcaption>Why it was chosen</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-05-adjust.webp" width="620" height="1344" loading="lazy" decoding="async" alt="Adjusting the practice: choose what to anchor with, and how much silence between guidance."><figcaption>Adjust it if you like</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app-shot-3.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The practice player: a breathing circle, about nine minutes left, and a silence control."><figcaption>Practice with Justin</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-07-ended-early.webp" width="620" height="1344" loading="lazy" decoding="async" alt="After ending early: no problem. want to say why? with four gentle options and a skip."><figcaption>Ending early is fine</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-08-after.webp" width="620" height="1344" loading="lazy" decoding="async" alt="After the practice: how does your system feel now? with 'more connected and present' selected."><figcaption>How do you feel now?</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-09-response.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The app's response: something shifted toward connection."><figcaption>What shifted</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-10-third-checkin.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The third afternoon check-in: new sliders, and a read-back that now says connecting is doable."><figcaption>The after check-in</figcaption></figure>
+      </div>
+    </details>
+  </div>
+</section>
+
+
+<!-- ========================= §3 WHAT $12 ADDS (before the price: audit finding 2) ========================= -->
+<section class="ap-sec" id="whats-included">
+  <div class="ap-page">
+    <h2>What $12 a month adds</h2>
+    <p>Everything in Free, plus custom practices designed for your nervous system, a personal reader, and stats.</p>
+
+    <div class="ap-duo">
+      <div>
+        <h3>Your personal reader</h3>
+        <p>Your check-ins and practices turn into writing about you: what's shifting, what to watch for, and your patterns over days and weeks.</p>
         <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app/visit-10-third-checkin.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="The third afternoon check-in: new sliders, and a read-back that now says connecting is doable.">
+          <img src="https://justinlmft.github.io/snb-website/img/app/reader-02-week.webp" width="620" height="1344" loading="lazy" decoding="async"
+               alt="A page of the week's reflection, written from your own check-ins.">
+        </figure>
+      </div>
+      <div>
+        <h3>Your stats</h3>
+        <p>See the best times of day to practice, which practices help you most, and how your sense of safety changes over time.</p>
+        <figure>
+          <img src="https://justinlmft.github.io/snb-website/img/app/you-02-practice-helping.webp" width="620" height="1344" loading="lazy" decoding="async"
+               alt="Is practice helping? Your average safety after you practice versus not, side by side.">
         </figure>
       </div>
     </div>
@@ -624,37 +637,31 @@
 </section>
 
 
-<!-- ========================= §3 THE OFFER =========================
-     MOVED UP from the bottom of the live page. This is the section the page turns on.
-     Hidden cost = #1 abandonment cause (~48%, Baymard). Cost transparency is a LEVER (+21%,
-     Mohan/Buell/John). Encapsulated, because reassurance belongs inside the commitment moment.
-============================================================= -->
+<!-- ========================= §4 PRICING =========================
+     Terms ABOVE the subscribe button (08 §8, audit finding 5). The two lists are written row for
+     row so the difference reads at a glance. Monthly stays the default; annual shown in full.
+============================================================== -->
 <section class="ap-sec" id="whats-free">
   <div class="ap-page">
-    <h2>Signup options</h2>
-
-    <p>
-      Start right now at no cost and subscribe to the full experience when you're ready for personally
-      designed practices, insights, and analytics.
-    </p>
+    <h2>Pricing</h2>
 
     <div class="ap-offer">
     <div class="ap-plans">
       <div class="ap-plan">
         <h3>Free</h3>
         <div class="ap-price"><b>$0</b><span>forever, no card</span></div>
-        <p class="ap-plan-note">Start practicing today</p>
+        <p class="ap-plan-note">Start practicing now</p>
         <ul class="ap-feat">
-          <li>Two guided mindfulness practices</li>
+          <li>Unlimited guided mindfulness</li>
           <li>Check in as often as you like</li>
-          <li>Saved check-in history</li>
+          <li>Your check-in history</li>
         </ul>
         <a class="ap-cta ap-cta--ghost" href="https://app.stucknotbroken.com/?start=practice&amp;src=app-page-free" data-cta="plan-free" data-ga-cta="door_app" data-ga-placement="pricing_free">Do a practice now</a>
       </div>
 
       <div class="ap-plan ap-plan--featured">
         <h3>The full app</h3>
-        <p class="ap-plan-note">Everything. Cancel any time.</p>
+        <p class="ap-plan-note">Everything in Free, plus:</p>
 
         <div class="ap-toggle" role="group" aria-label="billing period">
           <button type="button" data-plan="monthly" aria-pressed="true">Monthly</button>
@@ -667,21 +674,16 @@
         </div>
 
         <ul class="ap-feat">
-          <li>Everything in Free, plus:</li>
-          <li>Practices designed for you and only you</li>
-          <li>Deeper practices: connect with safety, and practice self-regulation</li>
-          <li>A personal reader to gain deep insight into yourself based on moment, day, week, and beyond</li>
-          <li>The stats playground: your patterns, safety, and what actually helps, over time</li>
+          <li>Every practice, including the deeper ones: connect with safety, and practice self-regulation</li>
+          <li>Practices built for you, and the reason each was chosen</li>
+          <li>Your personal reader</li>
+          <li>Your stats: patterns, safety, and what helps</li>
         </ul>
 
+        <p class="ap-policy">Renews automatically. Cancel any time from settings. No refunds or pauses.</p>
         <a class="ap-cta" data-cta="plan-paid" data-ga-cta="door_app" data-ga-placement="pricing_signup"
            data-href-base="https://app.stucknotbroken.com/?start=signup&amp;src=app-page-paid"
            href="https://app.stucknotbroken.com/?start=signup&amp;plan=monthly&amp;src=app-page-paid">Subscribe · $12/mo</a>
-
-        <!-- Policy on the card = reassurance inside the commitment moment (Baymard). Wording is the
-             product-verified "cancel any time from settings" (ROSCA / CA AB 2863) — NOT GMS's "one
-             click" until that's confirmed literally true in the app. -->
-        <p class="ap-policy">Renews automatically. Cancel any time from settings. No refunds or pauses.</p>
       </div>
     </div>
     </div>
@@ -689,107 +691,67 @@
 </section>
 
 
-<!-- ========================= §4 THE $12 VALUE — three feature sections =========================
-     V6: what the paid tier actually looks like, using the same real visit. One idea per
-     section (Apple HIG layout). Eyebrow "with the $12 tier" ties value to the price the
-     offer box just named — ⚠️ GMS confirms the free/paid boundary before ship.
-     Step-down section CUT by Justin (2026-07-14) — its gentleness is now visible inside the
-     walkthrough (3898's reason, 3903's "safety has been slipping", 3906's ended-early).
-================================================================ -->
-<section class="ap-sec" id="your-reader">
+<!-- ========================= §4b BUILT TO BE PUT DOWN (Justin, 2026-09-16) =========================
+     Justin asked for the non-addictive, ethical design to be its own section, before the method.
+     Plain columns + hairline rows (07: lists are never cards). No crossed-out glyphs (04: nothing
+     crossed-out). Every line traces to Justin's own copy on the July page or the Q&A. Approved by Justin 2026-09-16.
+===================================================================================================== -->
+<section class="ap-sec" id="built-to-put-down">
   <div class="ap-page">
-    <h2>A personal reader</h2>
+    <h2>Built to help you need it less</h2>
     <p>
-      Your check-in and practice history data come together in the personal reader. It's like a blog
-      that's relevant only to you. The personal reader features your data along with helpful information,
-      like recommendations and things to keep an eye out for as your system starts to shift. Over the
-      moments, days, weeks, months, and beyond, the reader continues to change as you do.
+      I designed the Stuck Not Broken app to make itself unnecessary. If it's working, you need it less
+      over time, not more. There are zero addictive elements. The app treats you like an adult who is
+      serious about your emotional health.
     </p>
-    <div class="ap-trio">
-      <figure>
-        <img src="https://justinlmft.github.io/snb-website/img/app/reader-01-reflections.webp" width="620" height="1344" loading="lazy" decoding="async"
-             alt="Your Reflections: today so far, a chart of the afternoon, and an outline of the week's reflection.">
-      </figure>
-      <figure>
-        <img src="https://justinlmft.github.io/snb-website/img/app/reader-02-week.webp" width="620" height="1344" loading="lazy" decoding="async"
-             alt="A page of the week's reflection, written from your own check-ins.">
-      </figure>
-      <figure>
-        <img src="https://justinlmft.github.io/snb-website/img/app/reader-03-patterns.webp" width="620" height="1344" loading="lazy" decoding="async"
-             alt="What your patterns show: your most regulated days and times, written out in plain language.">
-      </figure>
+    <div class="ap-ethic">
+      <div>
+        <h3>What you won't find</h3>
+        <ul>
+          <li>Streak counters or badges</li>
+          <li>Anything to unlock</li>
+          <li>Treasure chests, costumes, or micro-transactions</li>
+          <li>AI, or celebrity voices</li>
+          <li>Your data for sale</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What you will find</h3>
+        <ul>
+          <li>A tool you use when you want or need to</li>
+          <li>Every practice in my voice</li>
+          <li>One clear price, and cancel any time from settings</li>
+          <li>Your identifiable data, deletable any time</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 
-<!-- 3901 chosen over 3900/3913: same screen family, NO trip count (04 §8 stays clean). -->
-<section class="ap-sec" id="your-patterns">
-  <div class="ap-page">
-    <h2>The stats playground</h2>
-    <p>
-      The You tab is where you go to learn more in-depth about your nervous system patterns. Identify
-      the best times of day to practice, which practices are most effective, your level of safety over
-      time, and much more.
-    </p>
-    <div class="ap-trio ap-x2">
-      <figure>
-        <img src="https://justinlmft.github.io/snb-website/img/app/you-01-patterns.webp" width="620" height="1344" loading="lazy" decoding="async"
-             alt="The patterns screen: how regulated you tend to be by time of day, and day by day across the week.">
-      </figure>
-      <figure>
-        <img src="https://justinlmft.github.io/snb-website/img/app/you-02-practice-helping.webp" width="620" height="1344" loading="lazy" decoding="async"
-             alt="Is practice helping? Your average safety after you practice versus not, shown side by side.">
-      </figure>
-    </div>
-  </div>
-</section>
-
-
-<!-- ========================= §5 THE METHOD + THE PROOF =========================
-     V3: merged (both were headingless fragments floating in whitespace — three false floors
-     in a row at the tail of the page). One labeled section: the objection ("will this do
-     anything for ME?") answered by provenance, then the one honest number.
-
-     THE 54% STAYS CORRECTED: it's the LIVE Self-Regulation Simplified group, NOT the app.
-     "Not from the app" is the most persuasive sentence in the paragraph, precisely because
-     we didn't have to say it. GMS: expect to defend this. It is not a weakness.
-     Nothing else goes here. No counter, no logo bar, no star widget, no testimonial wall.
-     Still OPEN FOR GMS: the link URL + the group's N (a percentage with no N invites the question).
-====================================================================== -->
+<!-- ========================= §5 THE METHOD + THE PROOF (54% stays: live group, not the app) ========================= -->
 <section class="ap-sec" id="the-method">
   <div class="ap-page">
     <div class="ap-split ap-split-method">
       <div>
         <h2>The method isn't new</h2>
-
-    <p>
-      I designed the Stuck Not Broken app to make itself unnecessary. If it's working, you need it less
-      over time, not more. There are zero addictive elements to hook you in longer.
-    </p>
-
-    <p>
-      The method underneath is the same one I've taught in the Unstucking Academy for years. It's the one I
-      use in my own practice, and the one I walk clients through one-on-one. This is a new way to practice
-      the Self-Regulation System on your own, in your own life, on the days you actually have.
-    </p>
-
-    <p>
-      In the first Self-Regulation Simplified group, people reported a 54% rise in confidence in their own
-      regulation. That is their own before-and-after, from the live version, not from the app.
-      <a href="https://www.stucknotbroken.com/self-regulation-simplified" data-ga-cta="efficacy_numbers">The numbers are here.</a>
-      </p>
+        <p>
+          The method under the app is the one I've taught in the Unstucking Academy for years, and the one I use
+          with clients one-on-one. The app is a way to practice it on your own, in your own life.
+        </p>
+        <p>
+          In the first Self-Regulation Simplified group, people reported a 54% rise in confidence in their own
+          regulation. That came from the live group, not the app.
+          <a href="https://www.stucknotbroken.com/self-regulation-simplified" data-ga-cta="efficacy_numbers">The numbers are here.</a>
+        </p>
       </div>
-      <figure class="ap-face"><img src="https://justinlmft.github.io/snb-website/img/justin-author.webp" alt="Justin Sunseri, who makes the practices." width="640" height="640"><figcaption>Justin Sunseri</figcaption></figure>
+      <figure class="ap-face"><img src="https://justinlmft.github.io/snb-website/img/justin-author.webp" alt="Justin Sunseri, who makes the practices." width="640" height="640" loading="lazy" decoding="async"><figcaption>Justin Sunseri</figcaption></figure>
     </div>
   </div>
 </section>
 
 
-<!-- ========================= §7b Q&A =========================
-     Canonical accordion (matches /books). Answers = Justin's verbatim copy (2026-07-15); only two
-     obvious spelling typos fixed on entry ("customize", "de-identified"). Short, not a FAQ wall (08 §7).
-============================================================= -->
+<!-- ========================= §6 Q&A (answers = Justin's verbatim copy, 2026-07-15) ========================= -->
 <section class="ap-sec" id="questions">
   <div class="ap-page">
     <h2>Questions</h2>
@@ -815,9 +777,7 @@
 </section>
 
 
-<!-- ========================= §8 FINAL CTA =========================
-     Same CTA, same words. Repeat, don't escalate. No new offer, no price, no urgency.
-============================================================= -->
+<!-- ========================= §7 FINAL CTA: same words, repeat, don't escalate ========================= -->
 <section class="ap-sec ap-closer snb-band">
   <div class="ap-page">
     <p><a class="ap-cta" href="https://app.stucknotbroken.com/?start=practice&amp;src=app-page" data-cta="footer" data-ga-cta="door_app" data-ga-placement="footer">Do a practice now</a></p>
@@ -830,7 +790,7 @@
 <!-- sticky mobile CTA — appears once the hero CTA scrolls out -->
 <div class="ap-sticky" id="ap-sticky" aria-hidden="true">
   <a class="ap-cta" href="https://app.stucknotbroken.com/?start=practice&amp;src=app-page" data-cta="sticky" data-ga-cta="door_app" data-ga-placement="sticky">Do a practice now</a>
-  <small>free, no card</small>
+  <small>Free, no card</small>
 </div>
 
 
@@ -1050,12 +1010,12 @@
       monthly: {
         price: '<div class="ap-price"><b>$12</b><span>/ mo</span></div>' +
                '<p class="ap-price-sub">Annual cost: $144</p>',
-        cta: 'subscribe · $12/mo'
+        cta: 'Subscribe · $12/mo'
       },
       annual: {
         price: '<div class="ap-price"><b>$9</b><span>/ mo</span></div>' +
                '<p class="ap-price-sub">Annual cost: $108</p>',
-        cta: 'subscribe · $108/yr'
+        cta: 'Subscribe · $108/yr'
       }
     };
     function set(plan) {
