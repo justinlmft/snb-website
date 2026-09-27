@@ -6,7 +6,8 @@
      grid (.snb-grid/.snb-c*), one flush-left edge at --pad-x. The bespoke 2-shot app section was replaced
      by the shared dynamic app-cta slot (data-snb-include="app-cta", 3-up, single source), copy preserved
      via data-snb-* overrides. Member quotes restyled per 08 SS4 (roman, no pull-quote bar). Copy byte-identical.
-     No <html>/<head>/<body>: Circle supplies those. CSS scoped under .snb-hm / footer under .snb-footer. -->
+     No <html>/<head>/<body>: Circle supplies those. CSS scoped under .snb-hm / footer under .snb-footer.
+     2026-09-26: new first screen + three-step strip (Brand Design NOTE 2026-09-26, Justin-approved copy). -->
 <div class="snb-hm snb-live">
 <style>
   /* PAGE-SPECIFIC ONLY. Tokens, type ladder, spacing roles, eyebrow, links, the
@@ -80,6 +81,28 @@
   .snb-hm .hm-creds li{padding:12px 0;border-bottom:1px solid var(--hairline);font-size:15px;line-height:24px;color:var(--ink-80)}
   .snb-hm .hm-creds li:last-child{border-bottom:0}
 
+  /* hero actions (2026-09-26): one filled pill + one quiet outline pill (05), price line
+     centred under the Academy pill, everything-link below. Wraps to a stack on narrow screens. */
+  .snb-hm .hm-actions{display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--sp-4);margin-top:var(--space-group)}
+  .snb-hm .hm-act2{display:inline-flex;flex-direction:column;align-items:center}
+  .snb-hm a.snb-btn.hm-btn-quiet{background:transparent;color:var(--ink)}
+  .snb-hm a.snb-btn.hm-btn-quiet:hover{background:var(--bone-deep);color:var(--ink)}
+  .snb-hm .hm-price-line{font-size:14px;line-height:20px;color:var(--muted);margin:var(--sp-2) 0 0;text-align:center}
+  .snb-hm .hm-all{margin:calc(var(--space-group) - 12px) 0 -12px}
+
+  /* three steps: its own section, but part of the first screen, so the gap above is the
+     sub-section 48 (06), not the full --section. Hairline-topped columns, no boxes (07 cards). */
+  .snb-hm .hm-steps-sec{padding-top:var(--space-sub)}
+  .snb-hm .hm-steps{list-style:none}
+  .snb-hm .hm-steps li{border-top:1px solid var(--hairline);padding-top:var(--space-stack);
+    font-size:18px;line-height:28px;color:var(--ink)}
+  .snb-hm .hm-step-n{display:block;font-size:15px;line-height:20px;font-weight:600;color:var(--muted);
+    font-variant-numeric:tabular-nums;margin-bottom:var(--sp-2)}
+  .snb-hm .hm-step-t{font-weight:500;color:var(--ink)}
+  .snb-hm a.hm-step-t{color:var(--link);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+  .snb-hm .hm-step-d{display:block;font-size:16px;line-height:24px;color:var(--ink-80)}
+  .snb-hm .hm-step-d a{text-decoration:underline;text-underline-offset:2px}
+
   /* closing */
   .snb-hm .hm-closing p{font-style:italic;font-size:18px;line-height:28px;color:var(--ink-80);max-width:var(--measure)}
 
@@ -89,32 +112,48 @@
   }
 </style>
 
-  <!-- HERO -- copy c8, face c4 (row 1); doors c6+c6 full-width pair (row 2) -->
+  <!-- HERO (first screen, 2026-09-26: Brand Design copy, Justin-approved; words fixed, layout ours).
+       Copy c8 + face c4, top-aligned (07 hero). One filled action (/stuck) + one quiet outline
+       action (Academy, price line under it) per 05 "one prominent action per view"; the
+       everything-page link sits below as a text link. Mobile stacks text-first, face beneath. -->
   <section>
     <div class="snb-page">
       <div class="snb-grid hm-hero">
         <div class="snb-c8">
           <div class="snb-eyebrow">Start here</div>
-          <h1>Polyvagal Theory, made simple and usable.</h1>
-          <p class="snb-lede">I'm Justin, a therapist who teaches how your nervous system actually works, and how to work with it, without the psychobabble or the woo-woo. If you feel stuck, you're in the right place. Stuck is not broken; it means something is trying to shift.</p>
+          <h1>Feeling stuck isn't a sign you're broken.</h1>
+          <p class="snb-lede">I'm Justin, a therapist. I help people understand why they got stuck, how they stay stuck, and how to get unstuck. Without the psychobabble or woo-woo.</p>
+          <div class="hm-actions">
+            <a class="snb-btn" href="https://www.stucknotbroken.com/stuck">Find where you're stuck</a>
+            <div class="hm-act2">
+              <a class="snb-btn hm-btn-quiet" href="https://www.stucknotbroken.com/unstuckingacademy">Explore the Academy</a>
+              <p class="hm-price-line">from $24 a month, cancel anytime</p>
+            </div>
+          </div>
+          <a class="hm-arrowlink hm-all" href="https://www.stucknotbroken.com/how-i-can-help-you">Show me everything you offer <span class="hm-ar">&rarr;</span></a>
         </div>
         <div class="snb-c4">
           <img class="hm-face" src="https://assets-v2.circle.so/dekcb8h4oefuofxk52vcwtnfef6y" alt="Justin Sunseri, LMFT">
         </div>
-        <a class="snb-door snb-c6" href="https://www.stucknotbroken.com/stuck">
-          <div class="snb-door-t">I'm not sure where to start</div>
-          <p>Find which stuck state sounds like you, then get a few free pointers.</p>
-        </a>
-        <a class="snb-door snb-c6" href="https://www.stucknotbroken.com/how-i-can-help-you">
-          <div class="snb-door-t">Show me everything you offer</div>
-          <p>Every free and paid option on one page, organized from free to paid.</p>
-        </a>
       </div>
     </div>
   </section>
 
+  <!-- THREE STEPS -- directly after the first screen. A path, not an ask, so it stays on bone
+       (07 Bands: home already carries its two bands, Academy + app). Three c4 columns, each a
+       numbered step under a hairline; stacks at 720. Step 2 jumps to #start-free below. -->
+  <section class="hm-steps-sec">
+    <div class="snb-page">
+      <ol class="snb-grid hm-steps" aria-label="Three steps">
+        <li class="snb-c4"><span class="hm-step-n" aria-hidden="true">1</span><a class="hm-step-t" href="https://www.stucknotbroken.com/stuck">Find where you're stuck.</a></li>
+        <li class="snb-c4"><span class="hm-step-n" aria-hidden="true">2</span><a class="hm-step-t" href="#start-free">Learn why it happens</a> <span class="hm-step-d">(free podcast, videos, and articles).</span></li>
+        <li class="snb-c4"><span class="hm-step-n" aria-hidden="true">3</span><span class="hm-step-t">Practice getting unstuck</span> <span class="hm-step-d">(<a href="https://www.stucknotbroken.com/app">the app</a> and <a href="https://www.stucknotbroken.com/unstuckingacademy">the Academy</a>).</span></li>
+      </ol>
+    </div>
+  </section>
+
   <!-- START FREE -- intro c8; offer rows in a c12 (nested grids land on the overlay) -->
-  <section>
+  <section id="start-free">
     <div class="snb-page">
       <div class="snb-grid">
         <div class="snb-c8">
