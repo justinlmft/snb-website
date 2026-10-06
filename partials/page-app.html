@@ -27,6 +27,17 @@
    · Page-scoped class prefix .ap-* (cf. .hh-*, .pv-*, .bk-*). Self-contained, no external CSS.
    · Hero: H1 + ONE lede, no extra intro paragraph.
 
+  V8 — THE 10-05 APP RELEASE (2026-10-06, GMS prompt approved by Justin)
+   · Source: NOTE-from-GMS-2026-10-06-website-app-copy-prompt.md (+ APP-LAUNCH-PLAN_2026-10-06 §2, §3, §7).
+   · Order: hero (free / $12 line) -> Pathway -> how a practice works -> Learn -> Reflections + Journal ->
+     pricing (free vs $12, lists rewritten from the facts) -> voices -> built to help you need it less ->
+     FAQ -> CTA.
+   · "Optional AI." Never the old no-AI claim, "every word is me", or "nothing to unlock".
+   · "The method isn't new" folded in: the 54% line sits under the Pathway, the photo + method line under Voices.
+   · No Pathway / Learn screenshots exist yet; asked App Designer. Prices, plans, checkout links and the
+     monthly/annual toggle are untouched.
+   · Plain words on the GMS drafts: "within your capacity" -> "can handle", "freeze" -> "freezing up".
+
   V7 — THE 08 REBUILD (2026-09-16, roadmap essential #3; structure approved by Justin item-list)
    · Audit + plan: _spec-app-rebuild.md. Order now: hero (with a Free / $12 line) -> how it works
      (3 steps, 3 phones; the full 10-screen visit folded under a details) -> what $12 adds (reader +
@@ -51,7 +62,7 @@
      65% practice days vs 54% other days — the app keeping score on itself).
    · CUT by Justin: the step-down pull quote (+ its whole section; the gentleness is now
      visible inside the walkthrough screens) · "The screens are my own. Real, not mocked up."
-     · "No AI writes these..." — do not resurrect any of them.
+     · A line denying any AI in the app. Do not resurrect any of them (false since 10-05: optional AI voice).
    · COPY: all new copy in §2/§4 is DRAFT by Web Designer at Justin's request; he edits.
      App-voice standing rule still absolute: nothing in quotes unless verbatim on a screen.
    · Eyebrows "with the $12 tier" on the three paid sections — GMS confirms the boundary.
@@ -142,7 +153,7 @@
 
   OPEN FOR GMS
    · All copy is theirs. I moved, trimmed, and sourced; I did not reinvent.
-   · The "no AI writes these" line (§2) is optional. I'd take it.
+   · (Retired 2026-10-06: a line denying any AI in the app. The 10-05 release added an optional AI voice.)
    · §3 "all six practices" — the app shows: a tiny practice · simple mindfulness · connect
      with safety · practice self-regulation · more meditations. NAMING them beats counting
      them ("six practices" means nothing to someone who has never seen one). Need the last two.
@@ -517,6 +528,23 @@
   @media (max-width:699px){ .ap-ethic > div{grid-column:1 / -1} .ap-ethic{row-gap:var(--space-sub)} }
   @media (max-width:699px){ .ap-duo > div{grid-column:1 / -1} .ap-duo{row-gap:var(--space-sub)} .ap-root .ap-duo figure img{max-width:220px} }
 
+
+  /* ---------- V8 (2026-10-06): the Pathway strip ----------
+     Three columns on the 12-col tracks, hairline above each (07: lists are never cards). Labels are
+     Start / Then / Later, not numbers: the Pathway has more skills than three, so no count is implied. */
+  .ap-path{list-style:none; margin:var(--space-block) 0 0; padding:0; max-width:none;
+    display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:var(--gap)}
+  .ap-path > li{grid-column:span 4; margin:0; padding-top:var(--space-stack); border-top:1px solid var(--hairline)}
+  .ap-path > li:first-child{border-top:1.5px solid var(--ink)}
+  .ap-root .ap-path .ap-eyebrow{margin:0 0 var(--space-bound)}
+  .ap-path h3{font-size:20px; line-height:28px; margin-bottom:var(--space-bound)}
+  .ap-path p{font-size:16px; line-height:24px; margin-bottom:0}
+  @media (max-width:699px){ .ap-path > li{grid-column:1 / -1} .ap-path{row-gap:var(--space-group)} }
+  .ap-root p.ap-path-note{margin:var(--space-group) 0 0}
+  .ap-root p.ap-proof{margin:var(--space-block) 0 0}
+  .ap-duo h3 .ap-tag{vertical-align:middle; margin-left:var(--space-bound)}
+  .ap-root .ap-terms a{color:var(--link)}
+
 </style>
 </head>
 
@@ -544,13 +572,57 @@
     </p>
 
     <dl class="ap-tiers">
-      <div><dt>Free</dt><dd>Unlimited guided mindfulness and check-ins. (No card required.)</dd></div>
-      <div><dt>$12 a month</dt><dd>The paid version unlocks custom practices, a personal reader, and data analysis.</dd></div>
+      <div><dt>Free</dt><dd>Check-ins, guided mindfulness, and every Learn article. (No card required.)</dd></div>
+      <div><dt>$12 a month</dt><dd>Custom practices, the full Unstucking Pathway, your data in Learn, full reflections, and an optional AI voice.</dd></div>
     </dl>
 
     <p><a class="ap-cta" href="https://app.stucknotbroken.com/?start=practice&amp;src=app-page" data-cta="hero" data-ga-cta="door_app" data-ga-placement="hero">Do a practice now</a></p>
   </div>
 </header>
+
+
+<!-- ========================= PATHWAY (V8, 2026-10-06: the 10-05 app release) =========================
+     GMS prompt 2026-10-06, Justin-approved. The plan is on screen now, so it leads. No count of skills:
+     the strip names where it starts, where it goes, and that it moves when you do. No screenshot yet
+     (asked App Designer). The 54% line moved here from the retired method section (live group, not the app).
+==================================================================================================== -->
+<section class="ap-sec" id="pathway">
+  <div class="ap-page">
+    <p class="ap-eyebrow">The Unstucking Pathway</p>
+    <h2>The skills, in order</h2>
+    <p>
+      The same path I teach in the Unstucking Academy and in my books: from the present moment and a sense of
+      safety to working with the defenses that keep you stuck. You choose the emotions you want to work with,
+      from easier to harder. The next skill opens when your practices show you can handle the last one, not
+      when you tick a box.
+    </p>
+
+    <ol class="ap-path">
+      <li>
+        <p class="ap-eyebrow">Start</p>
+        <h3>The present moment</h3>
+        <p>Noticing what is happening in your body now. The mindfulness practices are free.</p>
+      </li>
+      <li>
+        <p class="ap-eyebrow">Then</p>
+        <h3>A sense of safety</h3>
+        <p>Building the feeling that you are okay, so there is room to handle more.</p>
+      </li>
+      <li>
+        <p class="ap-eyebrow">Later</p>
+        <h3>Your body's defenses</h3>
+        <p>Working with the emotions that keep you stuck, one at a time, easier ones first.</p>
+      </li>
+    </ol>
+    <p class="ap-tiny ap-path-note">The rest of the Pathway comes with the full app.</p>
+
+    <p class="ap-proof">
+      In the first Self-Regulation Simplified group, people reported a 54% rise in confidence in their own
+      regulation. That came from the live group, not the app.
+      <a href="https://www.stucknotbroken.com/self-regulation-simplified" data-ga-cta="efficacy_numbers">The numbers are here.</a>
+    </p>
+  </div>
+</section>
 
 
 <!-- ========================= §2 HOW IT WORKS: 3 steps, 3 screenshots =========================
@@ -560,7 +632,7 @@
 ============================================================================================ -->
 <section class="ap-sec" id="how-it-works">
   <div class="ap-page">
-    <h2>How it works</h2>
+    <h2>How a practice works</h2>
 
     <ol class="ap-steps">
       <li>
@@ -609,23 +681,46 @@
 </section>
 
 
-<!-- ========================= §3 WHAT $12 ADDS (before the price: audit finding 2) ========================= -->
-<section class="ap-sec" id="whats-included">
+<!-- ========================= LEARN (V8, 2026-10-06) =========================
+     GMS draft, plain words applied ("freeze" -> "freezing up"). No screenshot yet (asked App Designer).
+================================================================================ -->
+<section class="ap-sec" id="learn">
   <div class="ap-page">
-    <h2>What $12 a month adds</h2>
-    <p>Everything in Free, plus custom practices designed for your nervous system, a personal reader, and stats.</p>
+    <p class="ap-eyebrow">Learn</p>
+    <h2>My teaching, with your data in it</h2>
+    <p>
+      My blog posts, sections of my books and podcast episodes, with your check-ins woven in. Read about
+      freezing up, and see when it showed up for you this week. Every article is free. Your data in it comes
+      with the full app.
+    </p>
+  </div>
+</section>
+
+
+<!-- ========================= REFLECTIONS AND THE JOURNAL (V8, 2026-10-06) =========================
+     Replaces "What $12 a month adds": the reader and stats screenshots move here. Both shots predate the
+     10-05 release; swap for current ones when App Designer sends them.
+=========================================================================================== -->
+<section class="ap-sec" id="reflections">
+  <div class="ap-page">
+    <p class="ap-eyebrow">Reflections and the Journal</p>
+    <h2>A look back at your week</h2>
+    <p>
+      Every Sunday morning, a read-back on your week: what shifted, what to watch for. Monthly and seasonal
+      ones too, and a journal right beside them. A short daily reflection is free.
+    </p>
 
     <div class="ap-duo">
       <div>
-        <h3>Your personal reader</h3>
-        <p>Your check-ins and practices turn into writing about you: what's shifting, what to watch for, and your patterns over days and weeks.</p>
+        <h3>Your weekly reflection <span class="ap-tag">Full app</span></h3>
+        <p>Written from your own check-ins and practices: what's shifting, what to watch for, and your patterns over days and weeks.</p>
         <figure>
           <img src="https://justinlmft.github.io/snb-website/img/app/reader-02-week.webp" width="620" height="1344" loading="lazy" decoding="async"
                alt="A page of the week's reflection, written from your own check-ins.">
         </figure>
       </div>
       <div>
-        <h3>Your stats</h3>
+        <h3>Practice impacts <span class="ap-tag">Full app</span></h3>
         <p>See the best times of day to practice, which practices help you most, and how your sense of safety changes over time.</p>
         <figure>
           <img src="https://justinlmft.github.io/snb-website/img/app/you-02-practice-helping.webp" width="620" height="1344" loading="lazy" decoding="async"
@@ -652,9 +747,11 @@
         <div class="ap-price"><b>$0</b><span>forever, no card</span></div>
         <p class="ap-plan-note">Start practicing now</p>
         <ul class="ap-feat">
-          <li>Unlimited guided mindfulness</li>
           <li>Check in as often as you like</li>
+          <li>Unlimited guided mindfulness: a full practice and a tiny one</li>
           <li>Your check-in history</li>
+          <li>Every Learn article (your data in it comes with the full app)</li>
+          <li>A short daily reflection</li>
         </ul>
         <a class="ap-cta ap-cta--ghost" href="https://app.stucknotbroken.com/?start=practice&amp;src=app-page-free" data-cta="plan-free" data-ga-cta="door_app" data-ga-placement="pricing_free">Do a practice now</a>
       </div>
@@ -674,10 +771,12 @@
         </div>
 
         <ul class="ap-feat">
-          <li>Every practice, including the deeper ones: connect with safety, and practice self-regulation</li>
           <li>Practices built for you, and the reason each was chosen</li>
-          <li>Your personal reader</li>
-          <li>Your stats: patterns, safety, and what helps</li>
+          <li>The rest of the Unstucking Pathway</li>
+          <li>Your data inside every Learn article</li>
+          <li>Full reflections: weekly, monthly, seasonal and annual</li>
+          <li>Practice impacts: what helps you most</li>
+          <li>An optional AI voice</li>
         </ul>
 
         <p class="ap-policy">Renews automatically. Cancel any time from settings. No refunds or pauses.</p>
@@ -686,6 +785,28 @@
            href="https://app.stucknotbroken.com/?start=signup&amp;plan=monthly&amp;src=app-page-paid">Subscribe · $12/mo</a>
       </div>
     </div>
+    <div class="ap-terms"><p>In the Unstucking Academy? The full app comes with both tiers, Self-Regulator (self-paced learning) and Co-Regulator (everything, with people), and your Academy progress carries into the Pathway. <a href="https://www.stucknotbroken.com/unstuckingacademy">About the Academy</a></p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================= VOICES (V8, 2026-10-06) =========================
+     "Optional AI." Never deny AI in the app, never "every word is me" or "nothing to unlock" (GMS + Justin, 2026-10-06).
+     The photo and the method line come from the retired "The method isn't new" section.
+=================================================================================== -->
+<section class="ap-sec" id="voices">
+  <div class="ap-page">
+    <div class="ap-split ap-split-method">
+      <div>
+        <h2>Whose voice you hear</h2>
+        <p>Every practice is written by me, in my voice. On the full app you can choose an optional AI voice instead.</p>
+        <p>
+          The method under the app is the one I've taught in the Unstucking Academy for years, and the one I use
+          with clients one-on-one. The app is a way to practice it on your own, in your own life.
+        </p>
+      </div>
+      <figure class="ap-face"><img src="https://justinlmft.github.io/snb-website/img/justin-author.webp" alt="Justin Sunseri, who writes the practices." width="640" height="640" loading="lazy" decoding="async"><figcaption>Justin Sunseri</figcaption></figure>
     </div>
   </div>
 </section>
@@ -722,28 +843,6 @@
           <li>Your identifiable data, deletable any time</li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ========================= §5 THE METHOD + THE PROOF (54% stays: live group, not the app) ========================= -->
-<section class="ap-sec" id="the-method">
-  <div class="ap-page">
-    <div class="ap-split ap-split-method">
-      <div>
-        <h2>The method isn't new</h2>
-        <p>
-          The method under the app is the one I've taught in the Unstucking Academy for years, and the one I use
-          with clients one-on-one. The app is a way to practice it on your own, in your own life.
-        </p>
-        <p>
-          In the first Self-Regulation Simplified group, people reported a 54% rise in confidence in their own
-          regulation. That came from the live group, not the app.
-          <a href="https://www.stucknotbroken.com/self-regulation-simplified" data-ga-cta="efficacy_numbers">The numbers are here.</a>
-        </p>
-      </div>
-      <figure class="ap-face"><img src="https://justinlmft.github.io/snb-website/img/justin-author.webp" alt="Justin Sunseri, who makes the practices." width="640" height="640" loading="lazy" decoding="async"><figcaption>Justin Sunseri</figcaption></figure>
     </div>
   </div>
 </section>
