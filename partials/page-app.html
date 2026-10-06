@@ -27,6 +27,14 @@
    · Page-scoped class prefix .ap-* (cf. .hh-*, .pv-*, .bk-*). Self-contained, no external CSS.
    · Hero: H1 + ONE lede, no extra intro paragraph.
 
+  V9 — THE PAGE FOLLOWS THE APP (2026-10-06, Justin: "map out a new sequence ... things have changed")
+   · Order: hero -> how it works (4 steps: check in, a practice built for you, practice, what shifted; the
+     whole visit folded under it) -> Pathway (+ screen) -> Learn (+ screen) -> Reflect + You (current screens)
+     -> pricing -> voices -> built to help you need it less -> FAQ -> CTA. Copy kept from V8 except the steps.
+   · 11 new phone shots, img/app/flow-01..11.webp (snb-website 80d5102): beta.stucknotbroken.com, test
+     account "Grace", 390px frame, light theme, beta bar hidden. The visit-*, reader-02 and you-02 shots are
+     no longer used on this page.
+
   V8 — THE 10-05 APP RELEASE (2026-10-06, GMS prompt approved by Justin)
    · Source: NOTE-from-GMS-2026-10-06-website-app-copy-prompt.md (+ APP-LAUNCH-PLAN_2026-10-06 §2, §3, §7).
    · Order: hero (free / $12 line) -> Pathway -> how a practice works -> Learn -> Reflections + Journal ->
@@ -545,6 +553,15 @@
   .ap-duo h3 .ap-tag{vertical-align:middle; margin-left:var(--space-bound)}
   .ap-root .ap-terms a{color:var(--link)}
 
+  /* V9: four steps across on desktop, two on tablets, one on phones; the 7-screen visit gallery */
+  .ap-steps--4 > li{grid-column:span 3}
+  @media (max-width:959px){ .ap-steps--4 > li{grid-column:span 6} }
+  @media (max-width:699px){ .ap-steps--4 > li{grid-column:1 / -1} }
+  .ap-gallery--flow{grid-template-columns:repeat(7,minmax(0,1fr))}
+  .ap-gallery--flow > figure{grid-column:auto}
+  @media (max-width:959px){ .ap-gallery--flow{grid-template-columns:repeat(4,minmax(0,1fr))} }
+  @media (max-width:699px){ .ap-gallery--flow{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
 </style>
 </head>
 
@@ -581,21 +598,91 @@
 </header>
 
 
-<!-- ========================= PATHWAY (V8, 2026-10-06: the 10-05 app release) =========================
-     GMS prompt 2026-10-06, Justin-approved. The plan is on screen now, so it leads. No count of skills:
-     the strip names where it starts, where it goes, and that it moves when you do. No screenshot yet
-     (asked App Designer). The 54% line moved here from the retired method section (live group, not the app).
-==================================================================================================== -->
+<!-- ========================= HOW IT WORKS (V9, 2026-10-06: the current app, screen by screen) =========================
+     Justin 2026-10-06: "map out a new sequence ... things have changed." The page now follows the order a
+     person moves through the app: one visit (4 steps) -> the Pathway -> Learn -> Reflect + You.
+     Screenshots: beta.stucknotbroken.com, test account "Grace", 390px phone frame, light theme, beta bar hidden.
+     Paid-only beats carry a literal "full app" tag (a factual label, not a false-hierarchy cue).
+=================================================================================================================== -->
+<section class="ap-sec" id="how-it-works">
+  <div class="ap-page">
+    <h2>How it works</h2>
+    <p>Every visit follows the same four steps, and takes a few minutes.</p>
+
+    <ol class="ap-steps ap-steps--4">
+      <li>
+        <h3><span class="ap-n">1</span>You check in</h3>
+        <p>Three sliders tell the app how your system is doing, and it reads that back to you in one sentence. Check in as often as you like.</p>
+        <figure>
+          <img src="https://justinlmft.github.io/snb-website/img/app/flow-02-checkin.webp" width="620" height="1341" loading="lazy" decoding="async"
+               alt="A check-in: three sliders, and the read-back: flight/fight, low, with some shutdown.">
+        </figure>
+      </li>
+      <li>
+        <h3><span class="ap-n">2</span>It builds you a practice <span class="ap-tag">Full app</span></h3>
+        <p>A self-regulation practice for this moment, with why it was chosen and what to expect. Every practice is written by Justin. Pick the voice and the background before you begin.</p>
+        <figure>
+          <img src="https://justinlmft.github.io/snb-website/img/app/flow-03-custom-practice.webp" width="620" height="1341" loading="lazy" decoding="async"
+               alt="Your custom practice: why it was chosen for you, what to expect, and a Begin button.">
+        </figure>
+      </li>
+      <li>
+        <h3><span class="ap-n">3</span>You practice</h3>
+        <p>Follow the guidance. Along the way, sliders let you tell it what your body is doing: chest or belly, shallow or full, tense or relaxed. Pause or end any time.</p>
+        <figure>
+          <img src="https://justinlmft.github.io/snb-website/img/app/flow-05-practice.webp" width="620" height="1341" loading="lazy" decoding="async"
+               alt="During a practice: sliders for chest or belly, shallow or full, tense or relaxed, with pause and end.">
+        </figure>
+      </li>
+      <li>
+        <h3><span class="ap-n">4</span>You see what shifted</h3>
+        <p>One question after: how does your system feel now? The app tells you what shifted, and learns what works for you.</p>
+        <figure>
+          <img src="https://justinlmft.github.io/snb-website/img/app/flow-07-shifted.webp" width="620" height="1341" loading="lazy" decoding="async"
+               alt="Practice finished: something shifted toward connection.">
+        </figure>
+      </li>
+    </ol>
+
+    <details class="ap-visit">
+      <summary>See a whole visit, screen by screen</summary>
+      <p>One afternoon in the app, in the order it happened.</p>
+      <div class="ap-gallery ap-gallery--flow">
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-01-now.webp" width="620" height="1341" loading="lazy" decoding="async" alt="The Now screen: a breathing ring to tap, and a Check in button."><figcaption>It opens on a breath</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-02-checkin.webp" width="620" height="1341" loading="lazy" decoding="async" alt="A check-in: three sliders, then the app's one-sentence read-back."><figcaption>You check in</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-03-custom-practice.webp" width="620" height="1341" loading="lazy" decoding="async" alt="Your custom practice: why it was chosen and what to expect."><figcaption>A practice made for you</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-04-voice.webp" width="620" height="1341" loading="lazy" decoding="async" alt="Choosing a voice: Justin, or the optional AI voice."><figcaption>Pick the voice</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-05-practice.webp" width="620" height="1341" loading="lazy" decoding="async" alt="During the practice: sliders for what your body is doing."><figcaption>Practice</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-06-after.webp" width="620" height="1341" loading="lazy" decoding="async" alt="After the practice: how does your system feel now? with 'more connected and present' selected."><figcaption>How do you feel now?</figcaption></figure>
+        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-07-shifted.webp" width="620" height="1341" loading="lazy" decoding="async" alt="The app's response: something shifted toward connection."><figcaption>What shifted</figcaption></figure>
+      </div>
+    </details>
+  </div>
+</section>
+
+
+<!-- ========================= PATHWAY (V8 copy; V9 moves it after the visit and adds the screen) =========================
+     GMS prompt 2026-10-06, Justin-approved copy. No count of skills: the strip names where it starts, where it
+     goes, and that it moves when you do. The 54% line is the live group, not the app.
+=================================================================================================================== -->
 <section class="ap-sec" id="pathway">
   <div class="ap-page">
-    <p class="ap-eyebrow">The Unstucking Pathway</p>
-    <h2>The skills, in order</h2>
-    <p>
-      The same path I teach in the Unstucking Academy and in my books: from the present moment and a sense of
-      safety to working with the defenses that keep you stuck. You choose the emotions you want to work with,
-      from easier to harder. The next skill opens when your practices show you can handle the last one, not
-      when you tick a box.
-    </p>
+    <div class="ap-split">
+      <div>
+        <p class="ap-eyebrow">The Unstucking Pathway</p>
+        <h2>The skills, in order</h2>
+        <p>
+          The same path I teach in the Unstucking Academy and in my books: from the present moment and a sense of
+          safety to working with the defenses that keep you stuck. You choose the emotions you want to work with,
+          from easier to harder. The next skill opens when your practices show you can handle the last one, not
+          when you tick a box.
+        </p>
+      </div>
+      <figure>
+        <img src="https://justinlmft.github.io/snb-website/img/app/flow-08-pathway.webp" width="620" height="1341" loading="lazy" decoding="async"
+             alt="The Unstucking Pathway in the app: each skill opens when the one before it is completed within your capacity, starting with the present moment.">
+      </figure>
+    </div>
 
     <ol class="ap-path">
       <li>
@@ -625,81 +712,30 @@
 </section>
 
 
-<!-- ========================= §2 HOW IT WORKS: 3 steps, 3 screenshots =========================
-     Audit finding 1: the price sat ~5,400px down behind 10 screenshots. Three beats carry the
-     argument; the full real visit is kept, folded, for anyone who wants every screen.
-     Paid-only beats carry a literal "full app" tag (a factual label, not a false-hierarchy cue).
-============================================================================================ -->
-<section class="ap-sec" id="how-it-works">
-  <div class="ap-page">
-    <h2>How a practice works</h2>
-
-    <ol class="ap-steps">
-      <li>
-        <h3><span class="ap-n">1</span>You check in</h3>
-        <p>Three sliders tell the app how your system is doing. Check in as often as you like. The more you do, the better it knows your patterns.</p>
-        <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app/visit-02-checkin.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="A check-in: three sliders, then the app's one-sentence read-back of what you reported.">
-        </figure>
-      </li>
-      <li>
-        <h3><span class="ap-n">2</span>It builds you a practice <span class="ap-tag">Full app</span></h3>
-        <p>It puts together a self-regulation practice for this moment and tells you why. Every practice is written by Justin, in his voice. On the full app you can choose an optional AI voice.</p>
-        <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app/visit-04-custom-practice.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="Your custom practice: why this practice was chosen for you, what to expect, and how it was tuned.">
-        </figure>
-      </li>
-      <li>
-        <h3><span class="ap-n">3</span>You see what shifted</h3>
-        <p>After you practice, check in again with the same sliders and see your before and after right away. The app learns what works for you.</p>
-        <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app/visit-09-response.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="The app's response after a practice: something shifted toward connection.">
-        </figure>
-      </li>
-    </ol>
-
-    <details class="ap-visit">
-      <summary>See a whole real visit, screen by screen</summary>
-      <p>One afternoon in the app, in the order it happened. Check the clock in the corner.</p>
-      <div class="ap-gallery">
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-01-home.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The home screen: this afternoon's state, one recommended practice with its reason, and a reflection waiting."><figcaption>It opens where you left off</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-02-checkin.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The second afternoon check-in: three sliders, then the app's one-sentence read-back."><figcaption>You check in</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-03-practice-tab.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The practice screen: a custom practice made for you at the top, the other practices under it."><figcaption>A practice made for you</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-04-custom-practice.webp" width="620" height="1344" loading="lazy" decoding="async" alt="Your custom practice: why it was chosen, what to expect, and how it was tuned."><figcaption>Why it was chosen</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-05-adjust.webp" width="620" height="1344" loading="lazy" decoding="async" alt="Adjusting the practice: choose what to anchor with, and how much silence between guidance."><figcaption>Adjust it if you like</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app-shot-3.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The practice player: a breathing circle, about nine minutes left, and a silence control."><figcaption>Practice with Justin</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-07-ended-early.webp" width="620" height="1344" loading="lazy" decoding="async" alt="After ending early: no problem. want to say why? with four gentle options and a skip."><figcaption>Ending early is fine</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-08-after.webp" width="620" height="1344" loading="lazy" decoding="async" alt="After the practice: how does your system feel now? with 'more connected and present' selected."><figcaption>How do you feel now?</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-09-response.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The app's response: something shifted toward connection."><figcaption>What shifted</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/visit-10-third-checkin.webp" width="620" height="1344" loading="lazy" decoding="async" alt="The third afternoon check-in: new sliders, and a read-back that now says connecting is doable."><figcaption>The after check-in</figcaption></figure>
-      </div>
-    </details>
-  </div>
-</section>
-
-
-<!-- ========================= LEARN (V8, 2026-10-06) =========================
-     GMS draft, plain words applied ("freeze" -> "freezing up"). No screenshot yet (asked App Designer).
-================================================================================ -->
+<!-- ========================= LEARN (V8 copy, V9 screen) ========================= -->
 <section class="ap-sec" id="learn">
   <div class="ap-page">
-    <p class="ap-eyebrow">Learn</p>
-    <h2>My teaching, with your data in it</h2>
-    <p>
-      My blog posts, sections of my books and podcast episodes, with your check-ins woven in. Read about
-      freezing up, and see when it showed up for you this week. Every article is free. Your data in it comes
-      with the full app.
-    </p>
+    <div class="ap-split">
+      <div>
+        <p class="ap-eyebrow">Learn</p>
+        <h2>My teaching, with your data in it</h2>
+        <p>
+          My blog posts, sections of my books and podcast episodes, with your check-ins woven in. Read about
+          freezing up, and see when it showed up for you this week. Every article is free. Your data in it comes
+          with the full app.
+        </p>
+      </div>
+      <figure>
+        <img src="https://justinlmft.github.io/snb-website/img/app/flow-09-learn.webp" width="620" height="1341" loading="lazy" decoding="async"
+             alt="A Learn article on freeze, with a card from your own check-ins: how many were freeze in the last 30 days.">
+      </figure>
+    </div>
   </div>
 </section>
 
 
-<!-- ========================= REFLECTIONS AND THE JOURNAL (V8, 2026-10-06) =========================
-     Replaces "What $12 a month adds": the reader and stats screenshots move here. Both shots predate the
-     10-05 release; swap for current ones when App Designer sends them.
+<!-- ========================= REFLECT AND YOU (V9: current screens) =========================
+     V8 copy. The two shots are the Reflect tab and the You tab from the current app.
 =========================================================================================== -->
 <section class="ap-sec" id="reflections">
   <div class="ap-page">
@@ -713,18 +749,18 @@
     <div class="ap-duo">
       <div>
         <h3>Your weekly reflection <span class="ap-tag">Full app</span></h3>
-        <p>Written from your own check-ins and practices: what's shifting, what to watch for, and your patterns over days and weeks.</p>
+        <p>Written from your own check-ins and practices: what's shifting, what to watch for, and your week charted state by state.</p>
         <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app/reader-02-week.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="A page of the week's reflection, written from your own check-ins.">
+          <img src="https://justinlmft.github.io/snb-website/img/app/flow-10-reflect.webp" width="620" height="1341" loading="lazy" decoding="async"
+               alt="Reflect: this week's chart of your states, the weekly reflection 'Your safety went up in most of your practices', and today's short reflection.">
         </figure>
       </div>
       <div>
-        <h3>Practice impacts <span class="ap-tag">Full app</span></h3>
-        <p>See the best times of day to practice, which practices help you most, and how your sense of safety changes over time.</p>
+        <h3>Your patterns <span class="ap-tag">Full app</span></h3>
+        <p>See your most regulated day, which practices help you most, and how your sense of safety changes over time.</p>
         <figure>
-          <img src="https://justinlmft.github.io/snb-website/img/app/you-02-practice-helping.webp" width="620" height="1344" loading="lazy" decoding="async"
-               alt="Is practice helping? Your average safety after you practice versus not, side by side.">
+          <img src="https://justinlmft.github.io/snb-website/img/app/flow-11-you.webp" width="620" height="1341" loading="lazy" decoding="async"
+               alt="The You tab: Wednesday is your most regulated day, with your reflection under it.">
         </figure>
       </div>
     </div>
