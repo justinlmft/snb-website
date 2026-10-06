@@ -34,6 +34,10 @@
    · 11 new phone shots, img/app/flow-01..11.webp (snb-website 80d5102): beta.stucknotbroken.com, test
      account "Grace", 390px frame, light theme, beta bar hidden. The visit-*, reader-02 and you-02 shots are
      no longer used on this page.
+   · V9.1 (Justin, same night): whole-visit gallery cut (repeated the steps); steps and the reflections pair
+     sit on subgrids so phones share one top line and text hangs under each number; Learn -> "A truly personal
+     blog"; Reflections -> "Changes over time" (week to year); AI-voice line in parentheses; hero tier line
+     drops the AI voice.
 
   V8 — THE 10-05 APP RELEASE (2026-10-06, GMS prompt approved by Justin)
    · Source: NOTE-from-GMS-2026-10-06-website-app-copy-prompt.md (+ APP-LAUNCH-PLAN_2026-10-06 §2, §3, §7).
@@ -553,14 +557,22 @@
   .ap-duo h3 .ap-tag{vertical-align:middle; margin-left:var(--space-bound)}
   .ap-root .ap-terms a{color:var(--link)}
 
-  /* V9: four steps across on desktop, two on tablets, one on phones; the 7-screen visit gallery */
+  /* V9.1: one shared top line per row. Each step is a subgrid (number / heading / text / phone), so the
+     headings, text and phones line up across the row however long the copy runs, and everything in a
+     step hangs on one left edge under its number. Reflections pair uses the same trick. */
+  .ap-root .ap-stepn{display:flex; align-items:center; gap:var(--space-snug); min-height:28px; margin:0 0 var(--space-snug)}
   .ap-steps--4 > li{grid-column:span 3}
+  @media (min-width:700px){
+    .ap-steps--4{row-gap:0}
+    .ap-steps--4 > li{display:grid; grid-row:span 4; grid-template-rows:subgrid; row-gap:0}
+    .ap-root .ap-steps--4 figure{margin-top:0; align-self:start}
+    .ap-duo{row-gap:0}
+    .ap-duo > div{display:grid; grid-row:span 3; grid-template-rows:subgrid; row-gap:0}
+    .ap-root .ap-duo figure{align-self:start}
+  }
   @media (max-width:959px){ .ap-steps--4 > li{grid-column:span 6} }
+  @media (min-width:700px) and (max-width:959px){ .ap-steps--4 > li:nth-child(n+3){margin-top:var(--space-sub)} }
   @media (max-width:699px){ .ap-steps--4 > li{grid-column:1 / -1} }
-  .ap-gallery--flow{grid-template-columns:repeat(7,minmax(0,1fr))}
-  .ap-gallery--flow > figure{grid-column:auto}
-  @media (max-width:959px){ .ap-gallery--flow{grid-template-columns:repeat(4,minmax(0,1fr))} }
-  @media (max-width:699px){ .ap-gallery--flow{grid-template-columns:repeat(2,minmax(0,1fr))} }
 
 </style>
 </head>
@@ -590,7 +602,7 @@
 
     <dl class="ap-tiers">
       <div><dt>Free</dt><dd>Check-ins, guided mindfulness, and every Learn article. (No card required.)</dd></div>
-      <div><dt>$12 a month</dt><dd>Custom practices, the full Unstucking Pathway, your data in Learn, full reflections, and an optional AI voice.</dd></div>
+      <div><dt>$12 a month</dt><dd>Custom practices, the full Unstucking Pathway, your data in Learn, and full reflections.</dd></div>
     </dl>
 
     <p><a class="ap-cta" href="https://app.stucknotbroken.com/?start=practice&amp;src=app-page" data-cta="hero" data-ga-cta="door_app" data-ga-placement="hero">Do a practice now</a></p>
@@ -611,7 +623,8 @@
 
     <ol class="ap-steps ap-steps--4">
       <li>
-        <h3><span class="ap-n">1</span>You check in</h3>
+        <p class="ap-stepn"><span class="ap-n">1</span></p>
+        <h3>You check in</h3>
         <p>Three sliders tell the app how your system is doing, and it reads that back to you in one sentence. Check in as often as you like.</p>
         <figure>
           <img src="https://justinlmft.github.io/snb-website/img/app/flow-02-checkin.webp" width="620" height="1341" loading="lazy" decoding="async"
@@ -619,7 +632,8 @@
         </figure>
       </li>
       <li>
-        <h3><span class="ap-n">2</span>It builds you a practice <span class="ap-tag">Full app</span></h3>
+        <p class="ap-stepn"><span class="ap-n">2</span><span class="ap-tag">Full app</span></p>
+        <h3>It builds you a practice</h3>
         <p>A self-regulation practice for this moment, with why it was chosen and what to expect. Every practice is written by Justin. Pick the voice and the background before you begin.</p>
         <figure>
           <img src="https://justinlmft.github.io/snb-website/img/app/flow-03-custom-practice.webp" width="620" height="1341" loading="lazy" decoding="async"
@@ -627,7 +641,8 @@
         </figure>
       </li>
       <li>
-        <h3><span class="ap-n">3</span>You practice</h3>
+        <p class="ap-stepn"><span class="ap-n">3</span></p>
+        <h3>You practice</h3>
         <p>Follow the guidance. Along the way, sliders let you tell it what your body is doing: chest or belly, shallow or full, tense or relaxed. Pause or end any time.</p>
         <figure>
           <img src="https://justinlmft.github.io/snb-website/img/app/flow-05-practice.webp" width="620" height="1341" loading="lazy" decoding="async"
@@ -635,7 +650,8 @@
         </figure>
       </li>
       <li>
-        <h3><span class="ap-n">4</span>You see what shifted</h3>
+        <p class="ap-stepn"><span class="ap-n">4</span></p>
+        <h3>You see what shifted</h3>
         <p>One question after: how does your system feel now? The app tells you what shifted, and learns what works for you.</p>
         <figure>
           <img src="https://justinlmft.github.io/snb-website/img/app/flow-07-shifted.webp" width="620" height="1341" loading="lazy" decoding="async"
@@ -643,20 +659,6 @@
         </figure>
       </li>
     </ol>
-
-    <details class="ap-visit">
-      <summary>See a whole visit, screen by screen</summary>
-      <p>One afternoon in the app, in the order it happened.</p>
-      <div class="ap-gallery ap-gallery--flow">
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-01-now.webp" width="620" height="1341" loading="lazy" decoding="async" alt="The Now screen: a breathing ring to tap, and a Check in button."><figcaption>It opens on a breath</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-02-checkin.webp" width="620" height="1341" loading="lazy" decoding="async" alt="A check-in: three sliders, then the app's one-sentence read-back."><figcaption>You check in</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-03-custom-practice.webp" width="620" height="1341" loading="lazy" decoding="async" alt="Your custom practice: why it was chosen and what to expect."><figcaption>A practice made for you</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-04-voice.webp" width="620" height="1341" loading="lazy" decoding="async" alt="Choosing a voice: Justin, or the optional AI voice."><figcaption>Pick the voice</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-05-practice.webp" width="620" height="1341" loading="lazy" decoding="async" alt="During the practice: sliders for what your body is doing."><figcaption>Practice</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-06-after.webp" width="620" height="1341" loading="lazy" decoding="async" alt="After the practice: how does your system feel now? with 'more connected and present' selected."><figcaption>How do you feel now?</figcaption></figure>
-        <figure><img src="https://justinlmft.github.io/snb-website/img/app/flow-07-shifted.webp" width="620" height="1341" loading="lazy" decoding="async" alt="The app's response: something shifted toward connection."><figcaption>What shifted</figcaption></figure>
-      </div>
-    </details>
   </div>
 </section>
 
@@ -718,10 +720,11 @@
     <div class="ap-split">
       <div>
         <p class="ap-eyebrow">Learn</p>
-        <h2>My teaching, with your data in it</h2>
+        <h2>A truly personal blog</h2>
         <p>
-          My blog posts, sections of my books and podcast episodes, with your check-ins woven in. Read about
-          freezing up, and see when it showed up for you this week. Every article is free. Your data in it comes
+          My blog posts, sections of my books and podcast episodes, with your own check-ins woven in. You don't
+          have to read something written for everyone and work out what applies to you. When I write about
+          freezing up, you see when it showed up for you this week. Every article is free. Your data in it comes
           with the full app.
         </p>
       </div>
@@ -740,16 +743,17 @@
 <section class="ap-sec" id="reflections">
   <div class="ap-page">
     <p class="ap-eyebrow">Reflections and the Journal</p>
-    <h2>A look back at your week</h2>
+    <h2>Changes over time</h2>
     <p>
-      Every Sunday morning, a read-back on your week: what shifted, what to watch for. Monthly and seasonal
-      ones too, and a journal right beside them. A short daily reflection is free.
+      See how you change across weeks, months, seasons and the year. A weekly read-back arrives every Sunday
+      morning, then monthly, seasonal and annual ones show the longer arc: what shifted, what held, and what
+      to watch for. A journal sits right beside them. A short daily reflection is free.
     </p>
 
     <div class="ap-duo">
       <div>
-        <h3>Your weekly reflection <span class="ap-tag">Full app</span></h3>
-        <p>Written from your own check-ins and practices: what's shifting, what to watch for, and your week charted state by state.</p>
+        <h3>Your reflections <span class="ap-tag">Full app</span></h3>
+        <p>Written from your own check-ins and practices, week by week up to the whole year: what's shifting, what to watch for, and your states charted over time.</p>
         <figure>
           <img src="https://justinlmft.github.io/snb-website/img/app/flow-10-reflect.webp" width="620" height="1341" loading="lazy" decoding="async"
                alt="Reflect: this week's chart of your states, the weekly reflection 'Your safety went up in most of your practices', and today's short reflection.">
@@ -836,7 +840,7 @@
     <div class="ap-split ap-split-method">
       <div>
         <h2>Whose voice you hear</h2>
-        <p>Every practice is written by me, in my voice. On the full app you can choose an optional AI voice instead.</p>
+        <p>Every practice is written by me, in my voice. (On the full app you can choose an optional AI voice instead.)</p>
         <p>
           The method under the app is the one I've taught in the Unstucking Academy for years, and the one I use
           with clients one-on-one. The app is a way to practice it on your own, in your own life.
