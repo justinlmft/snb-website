@@ -1105,8 +1105,8 @@
       });
     }
     function onScroll(){ if (!ticking) { ticking = true; requestAnimationFrame(spy); } }
-    window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('resize', onScroll); spy();
-    off.push(function(){ window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); });
+    document.addEventListener('scroll', onScroll, {passive:true, capture:true}); window.addEventListener('resize', onScroll); spy(); // capture: Circle scrolls an inner container, not the window
+    off.push(function(){ document.removeEventListener('scroll', onScroll, {capture:true}); window.removeEventListener('resize', onScroll); });
   }
 
   // phone folds: sections marked data-snb-fold; every h3 group EXCEPT one holding a live figure
