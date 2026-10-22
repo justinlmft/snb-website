@@ -192,6 +192,107 @@
   .snb-live .snb-c8,.snb-live .snb-c9{grid-column:span 12}
 }
 
+/* ---- variety kit v1 (Justin approved 2026-10-22; 07 "Variety kit") -------------------------------------
+Reusable patterns that break up runs of paragraphs WITHOUT changing a word.
+Each pattern restructures copy that is already on the page. All flat (no shadow,
+no fill used to make something pop), Inter, 06 spacing roles, 4-grid line-heights,
+one left edge, two breakpoints (720 / 860 already in use).
+Icons: inline SVG line icons, 24 grid, 1.6 stroke, round caps (05 functional set).
+Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
+-------------------------------------------------------------------------------- */
+
+/* line icon: always beside a visible text label (NN/g: icons need labels) */
+.snb-live .snb-ico-l{width:28px;height:28px;flex:none;display:block;
+  fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
+  color:var(--k-accent,var(--ink-80))}
+
+/* 1. ICON ROWS -- 3 to 6 parallel things. Grid of 2 or 3 (N divides 12), icon over text.
+   Phone: icon beside text, one per row. */
+.snb-live .snb-irows{list-style:none;padding:0;margin:var(--space-block) 0 0;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-block) var(--gap)}
+.snb-live .snb-irows.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.snb-live .snb-irows li{display:flex;flex-direction:column;gap:var(--space-snug);min-width:0;
+  font-size:16px;line-height:24px;color:var(--ink-80)}
+.snb-live .snb-irows li b{display:block;font-weight:500;color:var(--ink)}
+@media (max-width:720px){
+  .snb-live .snb-irows,.snb-live .snb-irows.two{grid-template-columns:1fr;gap:var(--space-group)}
+  .snb-live .snb-irows li{flex-direction:row;align-items:flex-start;gap:var(--space-stack)}
+}
+
+/* 2. STEP STRIP -- only for a real order. Numeral + hairline, 3 or 4 across. */
+.snb-live .snb-steps{list-style:none;padding:0;margin:var(--space-block) 0 0;counter-reset:k;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-group) var(--gap)}
+.snb-live .snb-steps.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.snb-live .snb-steps li{counter-increment:k;border-top:1px solid var(--hairline);padding-top:var(--space-stack);
+  min-width:0;font-size:16px;line-height:24px;color:var(--ink-80)}
+.snb-live .snb-steps li::before{content:counter(k);display:block;margin-bottom:var(--space-bound);
+  font-size:28px;line-height:32px;font-weight:500;color:var(--k-accent,var(--ink));font-variant-numeric:tabular-nums}
+.snb-live .snb-steps li .snb-ico-l{margin-bottom:var(--space-bound)}
+.snb-live .snb-steps.icons li::before{display:none}
+.snb-live .snb-steps li b{display:block;font-weight:500;color:var(--ink);margin-bottom:var(--sp-1)}
+@media (max-width:720px){
+  .snb-live .snb-steps,.snb-live .snb-steps.four{grid-template-columns:1fr;gap:var(--space-stack)}
+}
+
+/* 3. SIDE HEADING -- heading in columns 1-4, prose in 5-12. Uses the empty right
+   third on desktop; stacks on phones. Same left edge as every section. */
+.snb-live .snb-side{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-group) var(--gap);align-items:start}
+.snb-live .snb-side>.snb-side-h{grid-column:span 4}
+.snb-live .snb-side>.snb-side-b{grid-column:span 8;min-width:0}
+.snb-live .snb-side>.snb-side-b>:first-child{margin-top:0}
+@media (max-width:860px){
+  .snb-live .snb-side>.snb-side-h,.snb-live .snb-side>.snb-side-b{grid-column:1/-1}
+}
+
+/* 4. LEAD-IN ROWS -- paragraphs that already open with a bold lead become rows:
+   the lead in its own column, the rest beside it, hairline between (07 label rows). */
+.snb-live .snb-leads{margin:var(--space-block) 0 0}
+.snb-live .snb-leads>p{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-bound) var(--gap);
+  max-width:none;margin:0;padding:var(--space-group) 0;border-top:1px solid var(--hairline)}
+.snb-live .snb-leads>p>b:first-child{grid-column:span 4;font-weight:500;color:var(--ink)}
+.snb-live .snb-leads>p>span{grid-column:span 8;max-width:var(--measure)}
+@media (max-width:720px){.snb-live .snb-leads>p>b:first-child,.snb-live .snb-leads>p>span{grid-column:1/-1}}
+
+/* 5. PULL LINE -- one short sentence ALREADY in the copy, set larger in place
+   (never repeated, never a claim or a number). One per section at most. */
+.snb-live .snb-pull{font-size:24px;line-height:32px;font-weight:500;letter-spacing:-.01em;color:var(--ink);
+  max-width:30ch;margin:0 0 var(--space-group);text-wrap:balance}
+.snb-live .snb-pull::before{content:"";display:block;width:32px;border-top:2px solid var(--k-accent,var(--ink));margin-bottom:var(--space-stack)}
+
+/* 6. FIT LIST -- "for you if" rows with the hand-drawn tick; "not yet" rows with a
+   quiet dash. Never an x: the x names shutdown only (05). Not a quiz, no score (04 s8). */
+.snb-live .snb-fit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-block) var(--gap);margin-top:var(--space-block)}
+.snb-live .snb-fit ul{list-style:none;padding:0;margin:var(--space-snug) 0 0}
+.snb-live .snb-fit li,.snb-live .snb-checks li{display:flex;gap:var(--space-snug);align-items:flex-start;
+  font-size:16px;line-height:24px;color:var(--ink-80);padding:var(--space-snug) 0;border-top:1px solid var(--hairline)}
+.snb-live .snb-fit li svg,.snb-live .snb-checks li svg{width:20px;height:20px;flex:none;margin-top:2px;
+  fill:none;stroke-linecap:round;stroke-linejoin:round}
+.snb-live .snb-tick path{stroke:var(--k-accent,var(--ink));stroke-width:2.2}
+.snb-live .snb-dash path{stroke:var(--muted);stroke-width:1.6}
+.snb-live .snb-fit-l{font-size:15px;font-weight:500;line-height:20px;color:var(--ink)}
+@media (max-width:720px){.snb-live .snb-fit{grid-template-columns:1fr}}
+
+/* 6b. REASSURANCE ROW -- three short ticks side by side (no pressure, no card...) */
+.snb-live .snb-checks{list-style:none;padding:0;margin:var(--space-group) 0 0;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--gap)}
+.snb-live .snb-checks li{font-weight:500;color:var(--ink)}
+.snb-live .snb-checks.quiet li{font-weight:400;color:var(--ink-80)}
+@media (max-width:720px){.snb-live .snb-checks{grid-template-columns:1fr}}
+
+/* 7. TEXT + FIGURE -- prose in 7 columns, the thing it explains in 5 (a figure,
+   a screenshot, a short list, a quote). Top-aligned; stacks text-first. */
+.snb-live .snb-split{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-block) var(--gap);align-items:start}
+.snb-live .snb-split>.snb-split-t{grid-column:span 7;min-width:0}
+.snb-live .snb-split>.snb-split-f{grid-column:span 5;min-width:0}
+.snb-live .snb-split>div>:first-child{margin-top:0}
+@media (max-width:860px){.snb-live .snb-split>.snb-split-t,.snb-live .snb-split>.snb-split-f{grid-column:1/-1}}
+
+/* figure-side list: icon beside short text, hairline rows */
+.snb-live .snb-ilist{list-style:none;padding:0;margin:0}
+.snb-live .snb-ilist li{display:flex;gap:var(--space-stack);align-items:flex-start;padding:var(--space-group) 0;
+  border-top:1px solid var(--hairline);font-size:16px;line-height:24px;color:var(--ink)}
+.snb-live .snb-ilist li:last-child{border-bottom:1px solid var(--hairline)}
+
 /* ---- focus + motion prefs (00) ---- */
 .snb-live :focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:3px}
 @media (prefers-reduced-motion:reduce){

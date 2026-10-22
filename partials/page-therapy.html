@@ -83,6 +83,8 @@
   .sv-root .sv-attr{margin-top:var(--space-snug);font-style:normal;font-size:14px;line-height:20px;color:var(--muted)}
   .sv-root .sv-sig{margin-top:var(--space-group);font-style:italic;color:var(--muted);font-size:16px;line-height:24px}
   .sv-root .sv-closing{padding-bottom:var(--space-sub)}
+  /* variety kit (07, 2026-10-22): one-to-one track accent for icons, numerals and ticks */
+  .sv-root{--k-accent:var(--amber)}
 </style>
 <div class="sv-root snb-live">
 <!-- HERO (07: split hero -- H1 + one lede + one CTA left, co-regulating face top-right) -->
@@ -104,12 +106,14 @@
   </div>
 </section>
 <section>
-  <div class="snb-page">
-    <h2>You&rsquo;ve done &ldquo;the work&rdquo; &amp; you&rsquo;re tired of it.</h2>
-    <p>You&rsquo;ve done it all; I believe you! Therapy, meds, books, webinars, and on and on...</p>
+  <div class="snb-page snb-side">
+    <div class="snb-side-h"><h2>You&rsquo;ve done &ldquo;the work&rdquo; &amp; you&rsquo;re tired of it.</h2></div>
+    <div class="snb-side-b">
+    <p class="snb-pull">You&rsquo;ve done it all; I believe you! Therapy, meds, books, webinars, and on and on...</p>
     <p>You&rsquo;re motivated to make a change and ready to focus and work with someone who is truly trauma and Polyvagal-informed. Someone to ensure that you stay on your path and are fully equipped to handle whatever comes your way.</p>
     <p>You don&rsquo;t want more of the same - endlessly talking about your past, retelling trauma narratives, or just catching your provider up on your week.</p>
     <p>And you don&rsquo;t want psychobabble! It&rsquo;d be nice to be listened to, understood, validated, to feel normal, and to have specific things to do to meet your goals.</p>
+    </div>
   </div>
 </section>
 <section>
@@ -123,23 +127,21 @@
   <div class="snb-page">
     <h2>No psychobabble promise</h2>
     <p>Yes, I&rsquo;m a therapist. But I&rsquo;m a little different. A lot different, actually.</p>
-    <div class="sv-pair">
-      <div><div class="sv-listlabel">I do not:</div>
-    <ul class="sv-list sv-dont">
-      <li>Use psychobabble or woo-woo in session - no inner parts, no shadows, no ego, no bilateral stimulation, no tapping, no... You get the idea.</li>
-      <li>Expect you to discuss traumatic incidents before you want to or are willing to. (I don&rsquo;t even think it&rsquo;s necessary to do so.)</li>
-      <li>Diagnose or label you.</li>
-    </ul></div>
-      <div><div class="sv-listlabel">I do:</div>
-    <ul class="sv-list sv-do">
-      <li>Integrate my expertise in Polyvagal Theory into our sessions (without being too technical).</li>
-      <li>Use simple somatic techniques you can learn and master.</li>
-      <li>Talk to you like you&rsquo;re a capable human.</li>
-      <li>Validate, normalize, and do the best I can to understand your experience of your unique life.</li>
-      <li>Help you feel enough self-compassion and confidence to experience who you are, even the uncomfortable stuff, as you are ready.</li>
-      <li>Work with you to identify your growth points, stuck points, and homework assignments tailored to you and your needs.</li>
-    </ul></div>
-    </div>
+    <div class="sv-listlabel">I do not:</div>
+    <ul class="snb-checks quiet">
+      <li><svg class="snb-dash" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M5.5 10h9"/></svg><span>Use psychobabble or woo-woo in session - no inner parts, no shadows, no ego, no bilateral stimulation, no tapping, no... You get the idea.</span></li>
+      <li><svg class="snb-dash" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M5.5 10h9"/></svg><span>Expect you to discuss traumatic incidents before you want to or are willing to. (I don&rsquo;t even think it&rsquo;s necessary to do so.)</span></li>
+      <li><svg class="snb-dash" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M5.5 10h9"/></svg><span>Diagnose or label you.</span></li>
+    </ul>
+    <div class="sv-listlabel" style="margin-top:var(--space-sub)">I do:</div>
+    <ul class="snb-irows">
+      <li><svg class="snb-ico-l" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M12 6.6C10.2 5.2 7.5 4.6 4 4.8v13c3.5-.2 6.2.4 8 1.8 1.8-1.4 4.5-2 8-1.8v-13c-3.5-.2-6.2.4-8 1.8z"/><path d="M12 6.6v13"/></svg><span>Integrate my expertise in Polyvagal Theory into our sessions (without being too technical).</span></li>
+      <li><svg class="snb-ico-l" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M3 9h10.5a2.5 2.5 0 1 0-2.5-2.5M3 13h15.5a2.5 2.5 0 1 1-2.5 2.5M3 17h7"/></svg><span>Use simple somatic techniques you can learn and master.</span></li>
+      <li><svg class="snb-ico-l" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M5 5h14a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 19 16h-8l-4.5 3.5V16H5a1.5 1.5 0 0 1-1.5-1.5v-8A1.5 1.5 0 0 1 5 5z"/></svg><span>Talk to you like you&rsquo;re a capable human.</span></li>
+      <li><svg class="snb-ico-l" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 19.5c.8-3.4 3.6-5.5 7-5.5s6.2 2.1 7 5.5"/></svg><span>Validate, normalize, and do the best I can to understand your experience of your unique life.</span></li>
+      <li><svg class="snb-ico-l" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v1.5M12 19.5V21M3 12h1.5M19.5 12H21M5.6 5.6l1.1 1.1M17.3 17.3l1.1 1.1M5.6 18.4l1.1-1.1M17.3 6.7l1.1-1.1"/></svg><span>Help you feel enough self-compassion and confidence to experience who you are, even the uncomfortable stuff, as you are ready.</span></li>
+      <li><svg class="snb-ico-l" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16" rx="2"/><path d="M9 4.5v-1h6v1M8.5 10h7M8.5 13.5h7M8.5 17h4"/></svg><span>Work with you to identify your growth points, stuck points, and homework assignments tailored to you and your needs.</span></li>
+    </ul>
     <blockquote class="sv-quote">
       <p>&ldquo;The skills you taught me on how to ground myself in safety have really helped me and I do not get worked up or feel anywhere near as anxious as I used to.&rdquo;</p>
       <div class="sv-attr">Confidential</div>
@@ -147,26 +149,34 @@
   </div>
 </section>
 <section class="snb-band">
-  <div class="snb-page">
+  <div class="snb-page snb-split">
+    <div class="snb-split-t">
     <h2>Working together</h2>
     <p>I view the therapeutic relationship as a collaboration. You and I will work together.</p>
     <p>Yes, I have expertise that I bring to our sessions. But so do you. You&rsquo;re the expert in your life. We&rsquo;re two experts collaborating on a goal - how to help you get unstuck and live with more emotional freedom.</p>
-    <p>We create the treatment plan together. We work on homework together. Feedback is always okay and will help refine our therapeutic relationship.</p>
     <p class="sv-status">Currently accepting new clients at $150/session</p>
     <div class="sv-cta"><a class="snb-btn" href="https://justinlmft.clientsecure.me/">Request a Session Now</a></div>
+    </div>
+    <div class="snb-split-f">
+      <ul class="snb-ilist">
+        <li><svg class="snb-ico-l" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M3.5 6.5l5-2 7 2 5-2v13l-5 2-7-2-5 2z"/><path d="M8.5 4.5v13M15.5 6.5v13"/></svg><span>We create the treatment plan together.</span></li>
+        <li><svg class="snb-ico-l" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M15.5 4.5l4 4L9 19H5v-4z"/><path d="M13.5 6.5l4 4"/></svg><span>We work on homework together.</span></li>
+        <li><svg class="snb-ico-l" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M5 5h14a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 19 16h-8l-4.5 3.5V16H5a1.5 1.5 0 0 1-1.5-1.5v-8A1.5 1.5 0 0 1 5 5z"/></svg><span>Feedback is always okay and will help refine our therapeutic relationship.</span></li>
+      </ul>
+    </div>
   </div>
 </section>
 <section>
   <div class="snb-page">
-    <div class="sv-split">
+    <div>
       <div><h2>Who I love helping</h2>
     <p>I absolutely love working with Clients who have tried everything. They&rsquo;ve been to therapists, coaches, seminars, webinars, retreats, spiritual guides, taken meds, read books, and followed the gurus on social media.</p>
     <p>I love helping these people finally identify what works for them and stop wasting time. It&rsquo;s my passion. It drives me.</p></div>
-      <div><ul class="sv-list sv-do">
+      <ol class="snb-steps">
       <li>Declutter the process.</li>
       <li>Focus on what works.</li>
       <li>Get unstuck.</li>
-    </ul></div>
+    </ol>
     </div>
   </div>
 </section>
@@ -175,10 +185,10 @@
     <h2>Not sure? That&rsquo;s okay.</h2>
     <p>You can schedule a no-pressure, no-sales chat with me. I promise - zero pressure. I will never ask you to pay during these chats. I&rsquo;m here to answer any general questions about working with me as your Therapist.</p>
     <p>Choose the 15-minute consult option through the link below.</p>
-    <ul class="sv-list sv-do">
-      <li>No pressure</li>
-      <li>No payment method required</li>
-      <li>No obligations</li>
+    <ul class="snb-checks">
+      <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>No pressure</span></li>
+      <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>No payment method required</span></li>
+      <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>No obligations</span></li>
     </ul>
     <div class="sv-cta"><a class="snb-btn" href="https://justinlmft.clientsecure.me/">Request a Consult Now</a></div>
     <div class="sv-byline">

@@ -83,6 +83,8 @@
   .sv-root .sv-attr{margin-top:var(--space-snug);font-style:normal;font-size:14px;line-height:20px;color:var(--muted)}
   .sv-root .sv-sig{margin-top:var(--space-group);font-style:italic;color:var(--muted);font-size:16px;line-height:24px}
   .sv-root .sv-closing{padding-bottom:var(--space-sub)}
+  /* variety kit (07, 2026-10-22): one-to-one track accent for icons, numerals and ticks */
+  .sv-root{--k-accent:var(--amber)}
 </style>
 <div class="sv-root snb-live">
 <!-- HERO (07: split hero -- H1 + one lede + one CTA left, co-regulating face top-right) -->
@@ -104,12 +106,14 @@
   </div>
 </section>
 <section>
-  <div class="snb-page">
-    <h2>You&rsquo;re ready for results.</h2>
-    <p>You&rsquo;ve done it all; I believe you! Therapy, meds, books, webinars, and on and on...</p>
+  <div class="snb-page snb-side">
+    <div class="snb-side-h"><h2>You&rsquo;re ready for results.</h2></div>
+    <div class="snb-side-b">
+    <p class="snb-pull">You&rsquo;ve done it all; I believe you! Therapy, meds, books, webinars, and on and on...</p>
     <p>You&rsquo;re motivated to make a change and ready to focus and work with someone who is truly trauma and Polyvagal-informed. Someone to ensure that you stay on your path and are fully equipped to handle whatever comes your way.</p>
     <p>You don&rsquo;t want more of the same - endlessly talking about your past, retelling trauma narratives, or just catching your provider up on your week.</p>
     <p>And you don&rsquo;t want psychobabble! It&rsquo;d be nice to be listened to, understood, validated, to feel normal, and to have specific things to do to meet your goals.</p>
+    </div>
   </div>
 </section>
 <section>
@@ -120,15 +124,19 @@
   </div>
 </section>
 <section>
-  <div class="snb-page">
+  <div class="snb-page snb-split">
+    <div class="snb-split-t">
     <h2>I work differently.</h2>
     <p>Coaches typically focus on your thoughts as if these are the primary source of your problem. (They&rsquo;re not.)</p>
     <p>I help my Clients focus their efforts on their bodies - their emotions, sensations, and impulses. Yes, thoughts are important, but they&rsquo;re secondary to the state of their bodies.</p>
     <p>I deeply integrate my expertise in the Polyvagal Theory into my Client work. I help Clients re-regulate and come into connection, empowerment, and motivation.</p>
-    <blockquote class="sv-quote">
+    </div>
+    <div class="snb-split-f">
+    <blockquote class="sv-quote" style="margin-top:0">
       <p>&ldquo;Rather than working with each specific skill I am lacking, Justin&rsquo;s focus is on the underlying cause. I am quickly finding that the skills I thought I was lacking have been there all this time, and they are quickly coming back online in my work with Justin.&rdquo;</p>
       <div class="sv-attr">Beth</div>
     </blockquote>
+    </div>
   </div>
 </section>
 <section class="snb-band">
@@ -136,10 +144,10 @@
     <h2>Pricing</h2>
     <p>I do things differently than other coaches. They want you to purchase a package number of sessions and work with them endlessly.</p>
     <p>I want to help you in the fewest coaching sessions possible. I want you to meet your goals and move on with life. I want you to not need a coach. (I&rsquo;m weird, I know.) If we meet once and you get what you need, I&rsquo;m okay with that. If you want to meet with me regularly to ensure you&rsquo;re meeting your goals now and into the future, that&rsquo;s okay, too.</p>
-    <ul class="sv-list sv-do">
-      <li>No minimum session requirement</li>
-      <li>No minimum time requirement</li>
-      <li>No packages, one flat rate option</li>
+    <ul class="snb-checks">
+      <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>No minimum session requirement</span></li>
+      <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>No minimum time requirement</span></li>
+      <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>No packages, one flat rate option</span></li>
     </ul>
     <p class="sv-status">Currently accepting new clients at $150/session</p>
     <div class="sv-cta"><a class="snb-btn" href="https://justinlmft.clientsecure.me/">Request a Session Now</a></div>
@@ -147,15 +155,15 @@
 </section>
 <section>
   <div class="snb-page">
-    <div class="sv-split">
+    <div>
       <div><h2>Who I love helping</h2>
     <p>I absolutely love working with Clients who have tried everything. They&rsquo;ve been to therapists, coaches, seminars, webinars, retreats, spiritual guides, taken meds, read books, and followed the gurus on social media.</p>
     <p>I love helping these people finally identify what works for them and stop wasting time. It&rsquo;s my passion. It drives me.</p></div>
-      <div><ul class="sv-list sv-do">
+      <ol class="snb-steps">
       <li>Declutter the process.</li>
       <li>Focus on what works.</li>
       <li>Get unstuck.</li>
-    </ul></div>
+    </ol>
     </div>
   </div>
 </section>
@@ -164,10 +172,10 @@
     <h2>Not sure? That&rsquo;s okay.</h2>
     <p>You can schedule a no-pressure, no-sales chat with me. I promise - zero pressure. I will never ask you to pay during these chats. I&rsquo;m here to answer any general questions about working with me as your Coach.</p>
     <p>Choose the 15-minute consult option through the link below.</p>
-    <ul class="sv-list sv-do">
-      <li>No pressure</li>
-      <li>No payment method required</li>
-      <li>No obligations</li>
+    <ul class="snb-checks">
+      <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>No pressure</span></li>
+      <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>No payment method required</span></li>
+      <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>No obligations</span></li>
     </ul>
     <div class="sv-cta"><a class="snb-btn" href="https://justinlmft.clientsecure.me/">Request a Consult Now</a></div>
     <div class="sv-byline">
