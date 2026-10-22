@@ -744,7 +744,7 @@
   </div>
 </section>
 <!-- STUCK SHUTDOWN -->
-<section id="ss-shutdown">
+<section id="ss-shutdown" data-snb-fold>
   <div class="ss-page snb-page">
     <div class="snb-eyebrow sky">State one</div>
     <h2>Stuck dorsal vagal shutdown<span class="snb-badge is-shutdown" role="img" aria-label="Shutdown: the dorsal branch" style="--snb-size:24px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span></h2>
@@ -795,7 +795,7 @@
   </div>
 </section>
 <!-- STUCK FREEZE -->
-<section id="ss-freeze">
+<section id="ss-freeze" data-snb-fold>
   <div class="ss-page snb-page">
     <div class="snb-eyebrow sky">State two</div>
     <h2>Stuck freeze<span class="snb-badge is-freeze" role="img" aria-label="Freeze: sympathetic and dorsal at once" style="--snb-size:24px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span></h2>
@@ -845,7 +845,7 @@
   </div>
 </section>
 <!-- STUCK FLIGHT/FIGHT -->
-<section id="ss-flightfight">
+<section id="ss-flightfight" data-snb-fold>
   <div class="ss-page snb-page">
     <div class="snb-eyebrow sky">State three</div>
     <h2>Stuck sympathetic flight/fight<span class="snb-badge is-fight" role="img" aria-label="Flight or fight: the sympathetic branch" style="--snb-size:24px"><svg viewBox="0 0 1288 446.31"><use href="#snb-logo"/></svg></span></h2>
@@ -1390,6 +1390,115 @@
     document.querySelectorAll('.ss-root .snb-pvc').forEach(build);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+<script>
+/* snb-onpage v1 (2026-10-22): on-this-page navigator + phone folds. Builds only from the page's own
+   "On this page" list and headings (no new words). Runs twice safely (Circle snapshot, then the live
+   partial): each run tears down the previous one. Needs the shared sheet (checks --snb-onpage). */
+(function(){
+  'use strict';
+  if (window.__snbOnpage) { try { window.__snbOnpage(); } catch(e){} }
+  var off = [];
+  window.__snbOnpage = function(){ off.forEach(function(f){ try{f();}catch(e){} }); off = []; };
+  function start(){
+    var toc = document.querySelector('.snb-live nav[aria-label="On this page"]:not(.snb-op-rail):not(.snb-op-panel)');
+    if (!toc) return;
+    var root = toc.closest('.snb-live');
+    if (getComputedStyle(root).getPropertyValue('--snb-onpage').trim() !== '1') return; // sheet missing: keep the page as is
+    var links = [].slice.call(toc.querySelectorAll('a[href^="#"]'));
+    var items = links.map(function(a){ return { a:a, id:a.getAttribute('href').slice(1), text:a.innerHTML }; })
+                     .filter(function(it){ return document.getElementById(it.id); });
+    if (items.length < 4) return;
+    var label = (toc.querySelector('[class$="-toc-label"]') || {}).textContent || toc.getAttribute('aria-label');
+    function list(cls){
+      var ul = document.createElement('ul');
+      items.forEach(function(it){
+        var li = document.createElement('li'), a = document.createElement('a');
+        a.href = '#' + it.id; a.innerHTML = it.text; a.setAttribute('data-op', it.id);
+        li.appendChild(a); ul.appendChild(li);
+      });
+      return ul;
+    }
+    // wide: rail
+    var rail = document.createElement('nav');
+    rail.className = 'snb-op-rail'; rail.setAttribute('aria-label', label);
+    var rl = document.createElement('span'); rl.className = 'snb-op-l'; rl.textContent = label;
+    rail.appendChild(rl); rail.appendChild(list());
+    // narrow: pill + panel
+    var pill = document.createElement('button');
+    pill.type = 'button'; pill.className = 'snb-op-pill'; pill.textContent = label;
+    pill.setAttribute('aria-expanded', 'false'); pill.setAttribute('aria-controls', 'snb-op-panel');
+    var panel = document.createElement('nav');
+    panel.className = 'snb-op-panel'; panel.id = 'snb-op-panel'; panel.hidden = true; panel.setAttribute('aria-label', label);
+    panel.appendChild(list());
+    root.appendChild(rail); root.appendChild(pill); root.appendChild(panel);
+    off.push(function(){ rail.remove(); pill.remove(); panel.remove(); });
+
+    function close(focusBack){ panel.hidden = true; pill.setAttribute('aria-expanded','false'); if (focusBack) pill.focus(); }
+    pill.addEventListener('click', function(){
+      var open = panel.hidden;
+      panel.hidden = !open; pill.setAttribute('aria-expanded', String(open));
+      if (open) { var cur = panel.querySelector('[aria-current="true"]') || panel.querySelector('a'); if (cur) cur.focus(); }
+    });
+    panel.addEventListener('click', function(e){ if (e.target.closest('a')) close(false); });
+    function onKey(e){ if (e.key === 'Escape' && !panel.hidden) close(true); }
+    function onDoc(e){ if (!panel.hidden && !panel.contains(e.target) && e.target !== pill) close(false); }
+    document.addEventListener('keydown', onKey); document.addEventListener('click', onDoc);
+    off.push(function(){ document.removeEventListener('keydown', onKey); document.removeEventListener('click', onDoc); });
+
+    // show only once the in-page list has scrolled away; hide once the footer comes up
+    var foot = document.querySelector('.snb-footer');
+    function vis(){
+      var on = toc.getBoundingClientRect().bottom < 0 && !(foot && foot.getBoundingClientRect().top < window.innerHeight);
+      rail.classList.toggle('on', on); pill.classList.toggle('on', on);
+      if (!on) close(false);
+    }
+    // current section (the last one whose top has passed 30% of the screen)
+    var secs = items.map(function(it){ return document.getElementById(it.id); });
+    var ticking = false;
+    function spy(){
+      ticking = false; vis();
+      var line = window.innerHeight * 0.3, cur = null;
+      secs.forEach(function(s){ if (s.getBoundingClientRect().top <= line) cur = s.id; });
+      [].forEach.call(document.querySelectorAll('[data-op]'), function(a){
+        if (a.getAttribute('data-op') === cur) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+      });
+    }
+    function onScroll(){ if (!ticking) { ticking = true; requestAnimationFrame(spy); } }
+    window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('resize', onScroll); spy();
+    off.push(function(){ window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); });
+  }
+
+  // phone folds: sections marked data-snb-fold; every h3 group EXCEPT one holding a live figure
+  function folds(){
+    var mq = window.matchMedia('(max-width:719px)');
+    if (!mq.matches) return;
+    [].forEach.call(document.querySelectorAll('.snb-live section[data-snb-fold]'), function(sec){
+      var page = sec.querySelector('.snb-page') || sec;
+      [].forEach.call(page.querySelectorAll(':scope > h3'), function(h, i){
+        if (h.querySelector('.snb-fold-btn')) return;
+        var group = [], n = h.nextElementSibling;
+        while (n && n.tagName !== 'H3' && n.tagName !== 'H2') { group.push(n); n = n.nextElementSibling; }
+        if (!group.length || group.some(function(g){ return g.matches('.snb-pvc') || g.querySelector('.snb-pvc, svg[viewBox]'); })) return;
+        var id = (sec.id || 'f') + '-fold-' + i;
+        var panel = document.createElement('div'); panel.id = id;
+        h.parentNode.insertBefore(panel, group[0]); group.forEach(function(g){ panel.appendChild(g); });
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'snb-fold-btn';
+        b.setAttribute('aria-expanded','false'); b.setAttribute('aria-controls', id);
+        while (h.firstChild) b.appendChild(h.firstChild);
+        h.appendChild(b); h.classList.add('snb-fold-h');
+        panel.setAttribute('hidden','until-found');
+        function set(open){ b.setAttribute('aria-expanded', String(open)); if (open) panel.removeAttribute('hidden'); else panel.setAttribute('hidden','until-found'); }
+        b.addEventListener('click', function(){ set(b.getAttribute('aria-expanded') !== 'true'); });
+        panel.addEventListener('beforematch', function(){ set(true); });
+      });
+    });
+    function wide(e){ if (!e.matches) [].forEach.call(document.querySelectorAll('.snb-fold-btn[aria-expanded="false"]'), function(b){ b.click(); }); }
+    mq.addEventListener ? mq.addEventListener('change', wide) : mq.addListener(wide);
+  }
+  function go(){ start(); folds(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
 })();
 </script>
 <!-- STANDARD FOOTER v2 (source of truth: STANDARD-FOOTER.html), matched to the 880px reading column -->

@@ -302,6 +302,67 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
   border-top:1px solid var(--hairline);font-size:16px;line-height:24px;color:var(--ink)}
 .snb-live .snb-ilist li:last-child{border-bottom:1px solid var(--hairline)}
 
+/* ---- on-this-page navigator + phone folds (07 Anchor navigation, 2026-10-22) ----------------
+Long reference pages only (Justin approved for /the-three-stuck-states and /how-to-read-your-nervous-system).
+Built by the page's snb-onpage script FROM the page's own "On this page" list: no new words.
+Wide screens (>=1400px): the list stays visible in the left margin, current section in ink.
+Narrower: a quiet "On this page" pill at the bottom right opens the same list; it appears only after
+the in-page list has scrolled away and hides again at the footer. Flat, hairline, calm fade. */
+.snb-live{--snb-onpage:1}
+.snb-op-rail{position:fixed;top:112px;left:16px;z-index:20;
+  width:min(220px,calc((100vw - 1080px)/2 + 40px - 16px - 32px));
+  max-height:calc(100vh - 160px);overflow:auto;
+  font:400 13px/18px Inter,system-ui,-apple-system,sans-serif;
+  opacity:0;visibility:hidden;transition:opacity 200ms cubic-bezier(.2,.6,.2,1),visibility 0s linear 200ms}
+.snb-op-rail.on{opacity:1;visibility:visible;transition:opacity 200ms cubic-bezier(.2,.6,.2,1)}
+.snb-op-rail .snb-op-l{display:block;font-size:12px;line-height:16px;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.snb-op-rail ul,.snb-op-panel ul{list-style:none;margin:0;padding:0}
+.snb-live .snb-op-rail a,.snb-live .snb-op-panel a{text-decoration:none}
+.snb-op-rail a{display:block;padding:6px 0 6px 12px;border-left:1px solid var(--hairline);
+  color:var(--muted);text-decoration:none}
+.snb-op-rail a:hover{color:var(--ink)}
+.snb-op-rail a[aria-current="true"]{color:var(--ink);font-weight:500;border-left:2px solid var(--ink);padding-left:11px}
+@media (max-width:1399px){.snb-op-rail{display:none}}
+
+.snb-op-pill{position:fixed;z-index:20;right:max(16px,env(safe-area-inset-right,0px));
+  bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:999px;
+  border:1px solid var(--ink);background:var(--bone);color:var(--ink);
+  font:500 15px/20px Inter,system-ui,-apple-system,sans-serif;cursor:pointer;
+  opacity:0;visibility:hidden;transition:opacity 200ms cubic-bezier(.2,.6,.2,1),visibility 0s linear 200ms}
+.snb-op-pill.on{opacity:1;visibility:visible;transition:opacity 200ms cubic-bezier(.2,.6,.2,1)}
+.snb-op-pill::after{content:"\2191";font-weight:400}
+.snb-op-pill[aria-expanded="true"]::after{content:"\2193"}
+.snb-op-pill:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media (min-width:1400px){.snb-op-pill,.snb-op-panel{display:none!important}}
+.snb-op-panel{position:fixed;z-index:21;right:max(16px,env(safe-area-inset-right,0px));
+  bottom:calc(72px + env(safe-area-inset-bottom,0px));
+  width:min(320px,calc(100vw - 32px));max-height:min(60vh,520px);overflow:auto;
+  background:var(--bone);border:1px solid var(--hairline);border-radius:16px;padding:12px 16px}
+.snb-op-panel a{display:flex;align-items:center;min-height:44px;padding:4px 0;color:var(--link);text-decoration:none;
+  font:400 16px/20px Inter,system-ui,-apple-system,sans-serif;border-top:1px solid var(--hairline)}
+.snb-op-panel li:first-child a{border-top:0}
+.snb-op-panel a[aria-current="true"]{color:var(--ink);font-weight:500}
+
+/* phone folds: the heading becomes the button; panels stay in the page (hidden="until-found"
+   so find-in-page still reaches them). Desktop and no-JS readers see everything. */
+.snb-fold-btn{all:unset;box-sizing:border-box;display:flex;width:100%;justify-content:space-between;align-items:center;
+  gap:12px;min-height:44px;cursor:pointer;color:inherit;font:inherit}
+.snb-fold-btn::after{content:"";flex:none;width:9px;height:9px;margin-right:4px;
+  border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:translateY(-3px) rotate(45deg);
+  transition:transform 200ms cubic-bezier(.2,.6,.2,1)}
+.snb-fold-btn[aria-expanded="true"]::after{transform:translateY(2px) rotate(-135deg)}
+.snb-fold-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:4px}
+h3.snb-fold-h{border-top:1px solid var(--hairline);padding-top:4px;margin-top:16px}
+@media (prefers-reduced-motion:reduce){.snb-op-rail,.snb-op-pill,.snb-fold-btn::after{transition:none}}
+
+/* key facts row (service pages): short facts already stated on the site, icon + label, wraps */
+.snb-live .snb-facts{list-style:none;padding:var(--space-stack) 0 0;margin:var(--space-group) 0 0;
+  border-top:1px solid var(--hairline);display:flex;flex-wrap:wrap;gap:var(--space-snug) var(--space-group)}
+.snb-live .snb-facts li{display:flex;align-items:center;gap:var(--space-bound);font-size:15px;line-height:20px;color:var(--ink);min-height:28px}
+.snb-live .snb-facts .snb-ico-l{width:22px;height:22px}
+
 /* ---- focus + motion prefs (00) ---- */
 .snb-live :focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:3px}
 @media (prefers-reduced-motion:reduce){
