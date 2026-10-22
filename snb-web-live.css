@@ -287,6 +287,10 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 .snb-live .snb-split>div>:first-child{margin-top:0}
 @media (max-width:860px){.snb-live .snb-split>.snb-split-t,.snb-live .snb-split>.snb-split-f{grid-column:1/-1}}
 
+/* a kit block followed by ordinary content: one block gap after it (a page rule with the same
+   weight can still set its own, e.g. .sv-cta) */
+.snb-live .snb-steps+*,.snb-live .snb-irows+*,.snb-live .snb-fit+*,.snb-live .snb-checks+*{margin-top:var(--space-block)}
+
 /* figure-side list: icon beside short text, hairline rows */
 .snb-live .snb-ilist{list-style:none;padding:0;margin:0}
 .snb-live .snb-ilist li{display:flex;gap:var(--space-stack);align-items:flex-start;padding:var(--space-group) 0;
