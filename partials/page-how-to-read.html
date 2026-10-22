@@ -1032,7 +1032,7 @@
 </div>
 <!-- /.nr-root -->
 <script>
-/* snb-onpage v1 (2026-10-22): on-this-page navigator + phone folds. Builds only from the page's own
+/* snb-onpage v2 (2026-10-22): on-this-page navigator + phone folds. Builds only from the page's own
    "On this page" list and headings (no new words). Runs twice safely (Circle snapshot, then the live
    partial): each run tears down the previous one. Needs the shared sheet (checks --snb-onpage). */
 (function(){
@@ -1054,7 +1054,7 @@
       var ul = document.createElement('ul');
       items.forEach(function(it){
         var li = document.createElement('li'), a = document.createElement('a');
-        a.href = '#' + it.id; a.innerHTML = it.text; a.setAttribute('data-op', it.id);
+        a.className = 'snb-op-a'; a.href = '#' + it.id; a.innerHTML = it.text; a.setAttribute('data-op', it.id); // the class keeps page link styles (a:not([class])) off
         li.appendChild(a); ul.appendChild(li);
       });
       return ul;
@@ -1086,6 +1086,32 @@
     document.addEventListener('keydown', onKey); document.addEventListener('click', onDoc);
     off.push(function(){ document.removeEventListener('keydown', onKey); document.removeEventListener('click', onDoc); });
 
+    // wide rail = a 3-column span of the page's 12-column grid, mirrored into the left margin:
+    // right edge one gutter (--gap) from the text column, never closer than the side margin (--pad-x)
+    // to the edge of the reading area (Circle's own menu sits left of it). No room: the pill instead.
+    var page = toc.closest('.snb-page') || root.querySelector('.snb-page');
+    var area = (function(n){ for (; n && n !== document.body; n = n.parentElement) {
+      var o = getComputedStyle(n).overflowY; if ((o === 'auto' || o === 'scroll') && n.scrollHeight > n.clientHeight) return n; }
+      return null; })(root.parentElement);
+    var gw = -1, g = 32;
+    function place(){
+      if (!page) return;
+      if (gw !== window.innerWidth) { // resolve --gap once per width
+        var p = document.createElement('div'); p.style.cssText = 'position:absolute;visibility:hidden;width:var(--gap)';
+        root.appendChild(p); g = p.getBoundingClientRect().width || 32; p.remove(); gw = window.innerWidth;
+      }
+      var cs = getComputedStyle(page), pr = page.getBoundingClientRect();
+      var padL = parseFloat(cs.paddingLeft) || 0, w = pr.width - padL - (parseFloat(cs.paddingRight) || 0);
+      var ar = area ? area.getBoundingClientRect() : { left: 0, top: 0 };
+      var railW = Math.floor(w / 4 - g * 0.75), left = Math.round(pr.left + padL - g - railW);
+      var fits = left >= Math.max(ar.left, 0) + padL;
+      root.classList.toggle('snb-op-wide', fits);
+      if (fits) {
+        var top = Math.max(ar.top, 0) + 32; // --space-block below the top of the reading area
+        rail.style.left = left + 'px'; rail.style.width = railW + 'px';
+        rail.style.top = top + 'px'; rail.style.maxHeight = (window.innerHeight - top - 32) + 'px';
+      }
+    }
     // show only once the in-page list has scrolled away; hide once the footer comes up
     function vis(){
       // look the footer up each time: the loader swaps it in after this runs
@@ -1098,7 +1124,7 @@
     var secs = items.map(function(it){ return document.getElementById(it.id); });
     var ticking = false;
     function spy(){
-      ticking = false; vis();
+      ticking = false; place(); vis();
       var line = window.innerHeight * 0.3, cur = null;
       secs.forEach(function(s){ if (s.getBoundingClientRect().top <= line) cur = s.id; });
       [].forEach.call(document.querySelectorAll('[data-op]'), function(a){
@@ -1107,7 +1133,7 @@
     }
     function onScroll(){ if (!ticking) { ticking = true; requestAnimationFrame(spy); } }
     document.addEventListener('scroll', onScroll, {passive:true, capture:true}); window.addEventListener('resize', onScroll); spy(); // capture: Circle scrolls an inner container, not the window
-    off.push(function(){ document.removeEventListener('scroll', onScroll, {capture:true}); window.removeEventListener('resize', onScroll); });
+    off.push(function(){ document.removeEventListener('scroll', onScroll, {capture:true}); window.removeEventListener('resize', onScroll); root.classList.remove('snb-op-wide'); });
   }
 
   // phone folds: sections marked data-snb-fold; every h3 group EXCEPT one holding a live figure

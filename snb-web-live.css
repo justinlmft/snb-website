@@ -305,29 +305,30 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 /* ---- on-this-page navigator + phone folds (07 Anchor navigation, 2026-10-22) ----------------
 Long reference pages only (Justin approved for /the-three-stuck-states and /how-to-read-your-nervous-system).
 Built by the page's snb-onpage script FROM the page's own "On this page" list: no new words.
-Wide screens (>=1400px): the list stays visible in the left margin, current section in ink.
-Narrower: a quiet "On this page" pill at the bottom right opens the same list; it appears only after
-the in-page list has scrolled away and hides again at the footer. Flat, hairline, calm fade. */
+Wide rail (05 grid): a 3-column span of the 12-column grid mirrored into the left margin, one --gap from
+the text column, never closer than --pad-x to the reading area's edge (Circle's menu sits left of it).
+The script places it and sets .snb-op-wide only when that span fits; otherwise a quiet "On this page"
+pill at the bottom right opens the same list. Both appear only after the in-page list has scrolled away
+and hide again at the footer. Flat, hairline, calm fade, 8px scale, 4px line-heights, 44px targets. */
 .snb-live{--snb-onpage:1}
-.snb-op-rail{position:fixed;top:112px;left:16px;z-index:20;
-  width:min(220px,calc((100vw - 1080px)/2 + 40px - 16px - 32px));
-  max-height:calc(100vh - 160px);overflow:auto;
-  font:400 13px/18px Inter,system-ui,-apple-system,sans-serif;
+.snb-op-rail{display:none;position:fixed;top:96px;left:0;z-index:20;overflow:auto;
+  font:400 14px/20px Inter,system-ui,-apple-system,sans-serif;
   opacity:0;visibility:hidden;transition:opacity 200ms cubic-bezier(.2,.6,.2,1),visibility 0s linear 200ms}
+.snb-live.snb-op-wide .snb-op-rail{display:block}
 .snb-op-rail.on{opacity:1;visibility:visible;transition:opacity 200ms cubic-bezier(.2,.6,.2,1)}
 .snb-op-rail .snb-op-l{display:block;font-size:12px;line-height:16px;font-weight:500;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+  text-transform:uppercase;color:var(--muted);margin:0 0 8px 16px}
 .snb-op-rail ul,.snb-op-panel ul{list-style:none;margin:0;padding:0}
 .snb-live .snb-op-rail a,.snb-live .snb-op-panel a{text-decoration:none}
-.snb-op-rail a{display:block;padding:6px 0 6px 12px;border-left:1px solid var(--hairline);
-  color:var(--muted);text-decoration:none}
+.snb-op-rail a{display:flex;align-items:center;min-height:44px;padding:0 0 0 16px;
+  box-shadow:inset 1px 0 0 var(--hairline);color:var(--muted)}
 .snb-op-rail a:hover{color:var(--ink)}
-.snb-op-rail a[aria-current="true"]{color:var(--ink);font-weight:500;border-left:2px solid var(--ink);padding-left:11px}
-@media (max-width:1399px){.snb-op-rail{display:none}}
+.snb-op-rail a[aria-current="true"]{color:var(--ink);font-weight:500;box-shadow:inset 2px 0 0 var(--ink)}
+.snb-op-rail a:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
 
 .snb-op-pill{position:fixed;z-index:20;right:max(16px,env(safe-area-inset-right,0px));
   bottom:calc(16px + env(safe-area-inset-bottom,0px));
-  display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:999px;
+  box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 24px;border-radius:999px;
   border:1px solid var(--ink);background:var(--bone);color:var(--ink);
   font:500 15px/20px Inter,system-ui,-apple-system,sans-serif;cursor:pointer;
   opacity:0;visibility:hidden;transition:opacity 200ms cubic-bezier(.2,.6,.2,1),visibility 0s linear 200ms}
@@ -335,7 +336,7 @@ the in-page list has scrolled away and hides again at the footer. Flat, hairline
 .snb-op-pill::after{content:"\2191";font-weight:400}
 .snb-op-pill[aria-expanded="true"]::after{content:"\2193"}
 .snb-op-pill:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-@media (min-width:1400px){.snb-op-pill,.snb-op-panel{display:none!important}}
+.snb-live.snb-op-wide .snb-op-pill,.snb-live.snb-op-wide .snb-op-panel{display:none!important}
 .snb-op-panel{position:fixed;z-index:21;right:max(16px,env(safe-area-inset-right,0px));
   bottom:calc(72px + env(safe-area-inset-bottom,0px));
   width:min(320px,calc(100vw - 32px));max-height:min(60vh,520px);overflow:auto;
