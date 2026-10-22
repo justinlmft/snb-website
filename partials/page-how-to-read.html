@@ -1087,8 +1087,9 @@
     off.push(function(){ document.removeEventListener('keydown', onKey); document.removeEventListener('click', onDoc); });
 
     // show only once the in-page list has scrolled away; hide once the footer comes up
-    var foot = document.querySelector('.snb-footer');
     function vis(){
+      // look the footer up each time: the loader swaps it in after this runs
+      var foot = document.querySelector('.snb-footer');
       var on = toc.getBoundingClientRect().bottom < 0 && !(foot && foot.getBoundingClientRect().top < window.innerHeight);
       rail.classList.toggle('on', on); pill.classList.toggle('on', on);
       if (!on) close(false);
