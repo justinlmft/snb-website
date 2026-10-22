@@ -291,6 +291,11 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
    weight can still set its own, e.g. .sv-cta) */
 .snb-live .snb-steps+*,.snb-live .snb-irows+*,.snb-live .snb-fit+*,.snb-live .snb-checks+*{margin-top:var(--space-block)}
 
+/* icon on a row: a line icon leading an existing row's title + description (offer rows, link rows) */
+.snb-live .snb-rowi{display:flex;gap:var(--space-stack);align-items:flex-start;min-width:0}
+.snb-live .snb-rowi>div{min-width:0}
+.snb-live .snb-rowi>.snb-ico-l{margin-top:-2px}
+
 /* figure-side list: icon beside short text, hairline rows */
 .snb-live .snb-ilist{list-style:none;padding:0;margin:0}
 .snb-live .snb-ilist li{display:flex;gap:var(--space-stack);align-items:flex-start;padding:var(--space-group) 0;
