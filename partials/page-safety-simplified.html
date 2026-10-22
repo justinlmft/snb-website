@@ -42,7 +42,8 @@
   .sf-root ul.sf-list li{position:relative;padding-left:32px;font-size:16px;line-height:24px;color:var(--ink-80);margin-bottom:var(--space-snug)}
   .sf-root ul.sf-list li::before{position:absolute;left:0;top:0;font-weight:500}
   .sf-root ul.sf-do li::before{content:"\2713";color:var(--amber)}
-  .sf-root ul.sf-dont li::before{content:"\2715";color:var(--muted)}
+  /* variety kit (07, 2026-10-22): track accent; the x "don't" mark is gone (x = shutdown only), fit list uses a dash */
+  .sf-root{--k-accent:var(--amber)}
   .sf-root ul.sf-skills{margin-top:var(--space-group);columns:2 300px;column-gap:var(--gap);max-width:none}
   .sf-root ul.sf-skills li{break-inside:avoid}
   .sf-root .sf-pair{display:grid;gap:var(--space-block) var(--gap);margin-top:var(--space-group)}
@@ -104,10 +105,12 @@
 
 <!-- WHO IT'S FOR, in prose -->
 <section id="tired">
-  <div class="snb-page">
-    <h2>You're tired of feeling unsafe in your own body</h2>
+  <div class="snb-page snb-side">
+    <div class="snb-side-h"><h2>You're tired of feeling unsafe in your own body</h2></div>
+    <div class="snb-side-b">
     <p>You've tried breathing exercises, meditation apps, and all the "feel your feelings" advice. But your nervous system didn't get the memo. You still feel tense, on guard, or numb and shut down. You're exhausted.</p>
     <p>Safety Simplified is a 4-week, cohort-based program for people who know they're stuck in survival mode and are ready for a structured, gentle, simple, science-backed way to help their nervous system finally feel safe. If you're ready to connect with safety and grow real calm from the inside out, this is for you.</p>
+    </div>
   </div>
 </section>
 
@@ -147,24 +150,24 @@
 <section id="for-you">
   <div class="snb-page">
     <h2>Is it for you?</h2>
-    <div class="sf-pair">
+    <div class="snb-fit">
       <div>
-        <div class="sf-listlabel">It's a good fit if:</div>
-        <ul class="sf-list sf-do">
-          <li>You're tired of feeling unsafe in your own body and ready for a structured, gentle approach.</li>
-          <li>You want practical skills that build lasting safety, not just short relief through coping or distraction.</li>
-          <li>Safety is new to you, you want to deepen it, or you want to get back to basics.</li>
-          <li>You want a simple, direct approach grounded in Polyvagal Theory and nervous system science.</li>
-          <li>You want to master essential safety skills and stop relying on gurus, influencers, or the latest wellness trend.</li>
+        <div class="snb-fit-l">It's a good fit if:</div>
+        <ul>
+          <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>You're tired of feeling unsafe in your own body and ready for a structured, gentle approach.</span></li>
+          <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>You want practical skills that build lasting safety, not just short relief through coping or distraction.</span></li>
+          <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>Safety is new to you, you want to deepen it, or you want to get back to basics.</span></li>
+          <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>You want a simple, direct approach grounded in Polyvagal Theory and nervous system science.</span></li>
+          <li><svg class="snb-tick" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" aria-hidden="true"><path d="M4 10.6c1.3 1.1 2.4 2.4 3.3 3.8C9.2 9.9 12.2 6.6 16.2 4.3"/></svg><span>You want to master essential safety skills and stop relying on gurus, influencers, or the latest wellness trend.</span></li>
         </ul>
       </div>
       <div>
-        <div class="sf-listlabel">Please don't join if:</div>
-        <ul class="sf-list sf-dont">
-          <li>You're looking for a quick fix or a hack.</li>
-          <li>You want to spend time with "parts," ego, shadows, and so on.</li>
-          <li>You're not willing to be an active member of a cohort.</li>
-          <li>You aren't willing to practice the skills between meetings.</li>
+        <div class="snb-fit-l">Please don't join if:</div>
+        <ul>
+          <li><svg class="snb-dash" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M5.5 10h9"/></svg><span>You're looking for a quick fix or a hack.</span></li>
+          <li><svg class="snb-dash" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M5.5 10h9"/></svg><span>You want to spend time with "parts," ego, shadows, and so on.</span></li>
+          <li><svg class="snb-dash" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M5.5 10h9"/></svg><span>You're not willing to be an active member of a cohort.</span></li>
+          <li><svg class="snb-dash" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" aria-hidden="true"><path d="M5.5 10h9"/></svg><span>You aren't willing to practice the skills between meetings.</span></li>
         </ul>
       </div>
     </div>
