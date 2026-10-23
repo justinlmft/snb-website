@@ -302,6 +302,13 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
   border-top:1px solid var(--hairline);font-size:16px;line-height:24px;color:var(--ink)}
 .snb-live .snb-ilist li:last-child{border-bottom:1px solid var(--hairline)}
 
+/* kit v1.1 (2026-10-22, round 2): a 20px icon inside a link (resource rows), an icon at the top of a door,
+   fit lists whose column headings are real h3s */
+.snb-live .snb-ico-l.snb-ico-s{width:20px;height:20px}
+.snb-live .snb-ico-in{display:inline-block;vertical-align:-4px;margin-right:var(--space-bound)}
+.snb-live .snb-door>.snb-ico-l{margin-bottom:var(--space-snug)}
+.snb-live .snb-fit h3{margin:0;font-size:20px;line-height:28px}
+
 /* ---- on-this-page navigator + phone folds (07 Anchor navigation, 2026-10-22) ----------------
 Long reference pages only (Justin approved for /the-three-stuck-states and /how-to-read-your-nervous-system).
 Built by the page's snb-onpage script FROM the page's own "On this page" list: no new words.
