@@ -308,6 +308,8 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 .snb-live .snb-ico-in{display:inline-block;vertical-align:-4px;margin-right:var(--space-bound)}
 .snb-live .snb-door>.snb-ico-l{margin-bottom:var(--space-snug)}
 .snb-live .snb-fit h3{margin:0;font-size:20px;line-height:28px}
+/* visually hidden, still read by screen readers (e.g. the kind of a resource link whose icon shows it) */
+.snb-live .snb-vh{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* ---- on-this-page navigator + phone folds (07 Anchor navigation, 2026-10-22) ----------------
 Long reference pages only (Justin approved for /the-three-stuck-states and /how-to-read-your-nervous-system).
