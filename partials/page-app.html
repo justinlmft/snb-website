@@ -388,20 +388,6 @@
   .ap-plan a.ap-cta{ margin-top:auto; width:100% }
   .ap-root a.ap-cta.ap-cta--ghost{ background:transparent; color:var(--ink); border-color:var(--ink) }
   .ap-root a.ap-cta.ap-cta--ghost:hover{ background:var(--ink); color:var(--on-ink) }
-  /* monthly/annual segmented toggle. Equal-width halves so annual never reads quieter than
-     monthly (08 §6 hidden-info warning). Selected = ink fill, matching the CTA language. */
-  .ap-toggle{
-    display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-1); margin:0 0 var(--space-stack);
-    padding:4px; background:var(--bone); border:1px solid var(--hairline); border-radius:999px;
-  }
-  .ap-toggle button{
-    appearance:none; -webkit-appearance:none; border:0; cursor:pointer; font:inherit;
-    font-size:15px; line-height:20px; min-height:44px; padding:0 var(--space-snug); border-radius:999px;
-    background:transparent; color:var(--secondary-label);
-    transition:background-color var(--dur) var(--ease), color var(--dur) var(--ease);
-  }
-  .ap-toggle button[aria-pressed="true"]{ background:var(--ink); color:var(--on-ink); font-weight:500 }
-  .ap-toggle button:focus-visible{ outline:2px solid var(--ink); outline-offset:2px }
   .ap-price-block{ margin:0 0 var(--space-group) }
   .ap-price-block .ap-price{ margin:0 }
   .ap-price-block .ap-price-sub{ margin:var(--space-bound) 0 0; font-size:15px; line-height:20px; color:var(--tertiary-label); max-width:none }
@@ -800,14 +786,9 @@
         <h3>Self-Regulator</h3>
         <p class="ap-plan-note">Everything in Free, plus:</p>
 
-        <div class="ap-toggle" role="group" aria-label="billing period">
-          <button type="button" data-plan="monthly" aria-pressed="true">Monthly</button>
-          <button type="button" data-plan="annual" aria-pressed="false">Annual</button>
-        </div>
-
         <div class="ap-price-block" data-price>
           <div class="ap-price"><b>$12</b><span>/ mo</span></div>
-          <p class="ap-price-sub">Annual cost: $144</p>
+          <p class="ap-price-sub">Billed monthly, cancel anytime</p>
         </div>
 
         <ul class="ap-feat">
@@ -821,7 +802,6 @@
 
         <p class="ap-policy">Renews automatically. Cancel any time from settings. No refunds or pauses.</p>
         <a class="ap-cta" data-cta="plan-paid" data-ga-cta="door_app" data-ga-placement="pricing_signup"
-           data-href-base="https://app.stucknotbroken.com/?start=signup&amp;src=app-page-paid"
            href="https://app.stucknotbroken.com/?start=signup&amp;plan=monthly&amp;src=app-page-paid">Subscribe · $12/mo</a>
       </div>
     </div>
@@ -1133,43 +1113,8 @@
     }, { rootMargin: '0px 0px -20px 0px' }).observe(hero);
   })();
 
-  /* Monthly/annual billing toggle (paid card). Monthly is the default and is never pre-swapped
-     (GMS: keep the low-pressure stance). Both numbers show at equal weight; the FULL annual charge
-     ($108/yr) is the prominent figure, never hidden behind the /mo equivalent (08 §6). No-JS
-     fallback: the card ships showing monthly with a working subscribe link. */
-  (function () {
-    var toggle = document.querySelector('.ap-toggle');
-    var priceBox = document.querySelector('[data-price]');
-    var cta = document.querySelector('[data-cta="plan-paid"]');
-    if (!toggle || !priceBox || !cta) return;
-    var base = cta.getAttribute('data-href-base');
-    var PLANS = {
-      monthly: {
-        price: '<div class="ap-price"><b>$12</b><span>/ mo</span></div>' +
-               '<p class="ap-price-sub">Annual cost: $144</p>',
-        cta: 'Subscribe · $12/mo'
-      },
-      annual: {
-        price: '<div class="ap-price"><b>$9</b><span>/ mo</span></div>' +
-               '<p class="ap-price-sub">Annual cost: $108</p>',
-        cta: 'Subscribe · $108/yr'
-      }
-    };
-    function set(plan) {
-      var d = PLANS[plan];
-      if (!d) return;
-      priceBox.innerHTML = d.price;
-      cta.textContent = d.cta;
-      cta.href = base + '&plan=' + plan;
-      toggle.querySelectorAll('button').forEach(function (b) {
-        b.setAttribute('aria-pressed', b.getAttribute('data-plan') === plan ? 'true' : 'false');
-      });
-    }
-    toggle.addEventListener('click', function (e) {
-      var b = e.target.closest('button[data-plan]');
-      if (b) set(b.getAttribute('data-plan'));
-    });
-  })();
+  /* 2026-10-28 (Justin): the monthly/annual toggle is gone. The yearly plan ($108/yr) is offered only
+     as the upsell at the app's checkout, never on the site. */
 
   /* Q&A accordion — canonical single-open WAAPI motion (matches /books). Native <details> toggle is
      the no-JS / reduced-motion fallback; close holds its end state so nothing flashes back. */
