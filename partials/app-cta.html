@@ -34,11 +34,11 @@
   /* line-heights fixed px on the 4-grid (06: unitless banned on text); gaps on the
      --sp ladder: heading->lede 8 (bound), lede->button 24 (group), button->fine 16 (stack) */
   .snb-appcta.snb-appcta h3{font-size:24px;font-weight:500;line-height:32px;
-    letter-spacing:-.015em;margin:0 0 8px;color:var(--snb-ink)}
+    letter-spacing:-.015em;margin:0 0 var(--sp-2,8px);color:var(--snb-ink)}
   .snb-appcta.snb-appcta p{font-size:18px;line-height:28px;color:var(--snb-ink-80);
     max-width:66ch;margin:0}
-  .snb-appcta a.snb-appcta-btn{display:inline-flex;align-items:center;gap:8px;
-    min-height:50px;padding:0 26px;margin-top:24px;border-radius:999px;
+  .snb-appcta a.snb-appcta-btn{display:inline-flex;align-items:center;gap:var(--sp-2,8px);
+    min-height:50px;padding:0 var(--sp-5,24px);margin-top:var(--sp-5,24px);border-radius:999px;
     border:1px solid var(--snb-ink);background:var(--snb-ink);color:var(--snb-bone);
     font:500 15.5px/1 Inter,system-ui,sans-serif;text-decoration:none;white-space:nowrap;
     -webkit-tap-highlight-color:transparent;
@@ -48,7 +48,7 @@
   .snb-appcta a.snb-appcta-btn::after{content:"\2192";transition:transform var(--snb-dur) var(--snb-ease)}
   .snb-appcta a.snb-appcta-btn:hover::after{transform:translateX(3px)}
   .snb-appcta a.snb-appcta-btn:focus-visible{outline:2px solid var(--snb-ink);outline-offset:2px}
-  .snb-appcta.snb-appcta .snb-appcta-fine{font-size:14px;line-height:20px;color:var(--snb-muted);margin:16px 0 0}
+  .snb-appcta.snb-appcta .snb-appcta-fine{font-size:14px;line-height:20px;color:var(--snb-muted);margin:var(--sp-4,16px) 0 0}
   @media (prefers-reduced-motion:reduce){
     .snb-appcta a.snb-appcta-btn,.snb-appcta a.snb-appcta-btn::after{transition:none}
     .snb-appcta a.snb-appcta-btn:active{transform:none}
@@ -63,17 +63,19 @@
   @media (prefers-color-scheme:dark){.snb-appcta:not([data-theme="light"]){--snb-hairline:#2C313C}}
   .snb-appcta[data-theme="dark"]{--snb-hairline:#2C313C}
   /* 3-up (Justin 2026-07-16: a pair reads too dominant/tall; three spreads the
-     weight and lowers the block). Full measure width; on narrow screens the
-     column stacks but each phone stays a modest 260px, never full-bleed tall. */
-  .snb-appcta .snb-appcta-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
-    margin-top:32px;max-width:66ch}
+     weight and lowers the block). Swiss grid W7 (2026-10-28): no 66ch cap, gap = the
+     frame's --gap, so each shot spans 4 of the 12 columns (lines 1 / 5 / 9). On
+     narrow screens (below 720) the column stacks but each phone stays a modest
+     260px, never full-bleed tall. */
+  .snb-appcta .snb-appcta-shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:var(--gap,clamp(20px,4vw,32px));margin-top:var(--sp-6,32px)}
   .snb-appcta .snb-appcta-shots figure{margin:0}
   .snb-appcta .snb-appcta-shots img{width:100%;height:auto;display:block;
     border-radius:14px;border:1px solid var(--snb-hairline)}
   .snb-appcta .snb-appcta-shots figcaption{font-size:13px;line-height:20px;
-    color:var(--snb-muted);margin-top:8px}
+    color:var(--snb-muted);margin-top:var(--sp-2,8px)}
   .snb-appcta .snb-hide{display:none}
-  @media (max-width:640px){
+  @media (max-width:720px){
     .snb-appcta .snb-appcta-shots{grid-template-columns:1fr}
     .snb-appcta .snb-appcta-shots figure{max-width:260px}
   }

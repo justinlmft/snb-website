@@ -98,7 +98,7 @@
   --leaf:var(--leaf-deep);         /* --leaf is 4.28:1 on the band (4.5 bar) */
   --panel:var(--bone);             /* a panel tinted --bone-deep would vanish on the band */
 }
-@media (min-width:860px){
+@media (min-width:721px){
   .snb-live section.snb-band{padding:var(--sp-8) 0}   /* 64 inside < 112 outside (desktop) */
 }
 
@@ -196,7 +196,7 @@
 Reusable patterns that break up runs of paragraphs WITHOUT changing a word.
 Each pattern restructures copy that is already on the page. All flat (no shadow,
 no fill used to make something pop), Inter, 06 spacing roles, 4-grid line-heights,
-one left edge, two breakpoints (720 / 860 already in use).
+one left edge, only the Swiss grid breakpoints: 720 and 1000 (SWISS-GRID-STANDARD §2; grid W9, 2026-10-28).
 Icons: inline SVG line icons, 24 grid, 1.6 stroke, round caps (05 functional set).
 Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 -------------------------------------------------------------------------------- */
@@ -240,7 +240,7 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 .snb-live .snb-side>.snb-side-h{grid-column:span 4}
 .snb-live .snb-side>.snb-side-b{grid-column:span 8;min-width:0}
 .snb-live .snb-side>.snb-side-b>:first-child{margin-top:0}
-@media (max-width:860px){
+@media (max-width:720px){
   .snb-live .snb-side>.snb-side-h,.snb-live .snb-side>.snb-side-b{grid-column:1/-1}
 }
 
@@ -285,7 +285,7 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 .snb-live .snb-split>.snb-split-t{grid-column:span 7;min-width:0}
 .snb-live .snb-split>.snb-split-f{grid-column:span 5;min-width:0}
 .snb-live .snb-split>div>:first-child{margin-top:0}
-@media (max-width:860px){.snb-live .snb-split>.snb-split-t,.snb-live .snb-split>.snb-split-f{grid-column:1/-1}}
+@media (max-width:720px){.snb-live .snb-split>.snb-split-t,.snb-live .snb-split>.snb-split-f{grid-column:1/-1}}
 
 /* a kit block followed by ordinary content: one block gap after it (a page rule with the same
    weight can still set its own, e.g. .sv-cta) */
