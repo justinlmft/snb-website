@@ -182,7 +182,7 @@
     filter:brightness(0) invert(1) sepia(.12) saturate(.45) brightness(.95);
   }
   /* primary button: ink fill DRAINS to its ink outline on hover (05) */
-  .pv-root .pv-btn{display:inline-flex;align-items:center;gap:var(--space-bound);min-height:50px;padding:0 26px;
+  .pv-root .pv-btn{display:inline-flex;align-items:center;gap:var(--space-bound);min-height:50px;padding:0 var(--sp-5);
     border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--on-ink);
     font:500 15.5px/1 'Inter',system-ui,sans-serif;white-space:nowrap;margin-top:var(--space-group);
     transition:transform var(--dur) var(--ease),background var(--dur) var(--ease),color var(--dur) var(--ease);
@@ -204,7 +204,7 @@
   .pv-root .pv-step a.pv-go{margin-top:auto;display:inline-flex;align-items:center;gap:var(--space-bound);min-height:44px;font-size:15px;font-weight:500;line-height:20px}
   .pv-root .pv-step a.pv-go::after{content:"\2192";color:inherit;transition:transform var(--dur) var(--ease)}   /* inline-link arrow matches link text (link-blue), NOT sky */
   .pv-root .pv-step a.pv-go:hover::after{transform:translateX(3px)}
-  @media (max-width:720px){
+  @media (max-width:719.98px){
     .pv-root .pv-step{grid-column:1/-1}
     .pv-root .pv-res li{flex-direction:column;gap:0}
     .pv-root .pv-kind{width:auto;line-height:16px}
@@ -1038,7 +1038,7 @@
   @media (prefers-contrast:more){
     .snb-footer{--snb-muted:var(--snb-ink-80);--snb-hairline:var(--snb-muted)}
   }
-  @media (max-width:720px){
+  @media (max-width:719.98px){
     .snb-footer{padding:var(--sp-6,32px) 0 var(--sp-7,48px)}
     .snb-cols{gap:var(--sp-5,24px) var(--gap,clamp(20px,4vw,32px))}
     .snb-cols,.snb-crisis ul{grid-template-columns:1fr}

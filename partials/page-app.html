@@ -282,7 +282,7 @@
     gap:var(--gap); margin:var(--space-group) 0 0}
   .ap-trio.ap-x2{grid-template-columns:repeat(2,minmax(0,1fr)); max-width:560px}
   .ap-trio figure{margin:0}
-  @media (max-width:720px){
+  @media (max-width:719.98px){
     .ap-trio, .ap-trio.ap-x2{
       display:grid; grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:68%;
       max-width:none; overflow-x:auto; scroll-snap-type:x mandatory;
@@ -301,7 +301,7 @@
      split itself. Stacks on mobile. */
   .ap-split > div > p:last-child{margin-bottom:0}
   .ap-split figure{margin:var(--sp-5) 0 0}
-  @media (min-width:721px){
+  @media (min-width:720px){
     /* grid-true 8/4 split on the 12-col system (WEB-FORMAT): text c8, phone c4, TOP-aligned.
        Starts on column 1, snaps to the shared --gap tracks (2026-07-17, App 1080 retune). */
     .ap-split{display:grid; grid-template-columns:repeat(12,minmax(0,1fr));
@@ -363,7 +363,7 @@
   }
   .ap-plans > .ap-plan{grid-column:span 6
   }
-  @media (max-width:720px){ .ap-plans > .ap-plan{grid-column:1 / -1} .ap-plans{row-gap:var(--space-block)} }
+  @media (max-width:719.98px){ .ap-plans > .ap-plan{grid-column:1 / -1} .ap-plans{row-gap:var(--space-block)} }
   .ap-plan{
     position:relative; display:flex; flex-direction:column;
     background:var(--bone); border:1px solid var(--hairline); border-radius:18px;
@@ -412,7 +412,16 @@
   .ap-q h3{ font-size:18px; line-height:24px; margin:0 }
   .ap-q .ap-a{ padding:0 0 var(--sp-5); margin-left:calc(3ch + var(--sp-5)); overflow:hidden }
   .ap-q .ap-a p{ margin:0; color:var(--secondary-label); max-width:none }
-  @media (max-width:720px){ .ap-q .ap-a{ margin-left:0 } }
+  @media (max-width:719.98px){ .ap-q .ap-a{ margin-left:0 } }
+  /* Swiss grid W13 (2026-11-04): the Q&A block is 8 page columns wide (--cols8), so its rows use those 8 columns with --gap
+     from 720 up: number span 1, question and answer from column 2 (span 6), + on column 8. Every start lands on a page column line. */
+  @media (min-width:720px){
+    .ap-q summary{ grid-template-columns:repeat(8,minmax(0,1fr)); column-gap:var(--gap) }
+    .ap-q summary .ap-qn{ grid-column:1/span 1 }
+    .ap-q summary h3{ grid-column:2/span 6; min-width:0 }
+    .ap-q summary::after{ grid-column:8; justify-self:end }
+    .ap-q .ap-a{ margin-left:calc((100% - 7 * var(--gap)) / 8 + var(--gap)) }
+  }
   @media (prefers-reduced-motion:reduce){
     .ap-q .ap-a{ transition:none }
     .ap-q summary::after{ transition:none }
@@ -455,7 +464,7 @@
   /* must out-specify .ap-root a.ap-cta (0,2,1) or the sticky button inherits full size */
   .ap-root .ap-sticky a.ap-cta{min-height:48px; padding:0 var(--space-group); font-size:16px}
   .ap-sticky small{font-size:14px; line-height:20px; color:var(--tertiary-label)}
-  @media (max-width:720px){
+  @media (max-width:719.98px){
     .ap-sticky.is-on{display:flex}
     /* keep the fixed sticky CTA from covering the footer's last line. .ap-root ancestor raises
        specificity so this beats the footer's own padding shorthand regardless of source order. */
@@ -463,7 +472,7 @@
   }
 
   .ap-root section.ap-closer{background:var(--bone-deep); padding:var(--space-sub) 0; margin-top:var(--section)}
-  @media (min-width:721px){ .ap-root section.ap-closer{padding:var(--sp-8) 0} }
+  @media (min-width:720px){ .ap-root section.ap-closer{padding:var(--sp-8) 0} }
   .ap-closer p.ap-big{font-size:19px; color:var(--label); margin-top:var(--sp-6)}
   .ap-sig{margin-top:var(--sp-2)}
 
@@ -479,7 +488,7 @@
   .ap-tiers > div{display:grid; grid-template-columns:128px minmax(0,1fr); gap:var(--space-stack); align-items:baseline}
   .ap-tiers dt{font-weight:600; color:var(--label); font-size:16px; line-height:24px}
   .ap-tiers dd{margin:0; font-size:16px; line-height:24px; color:var(--secondary-label)}
-  @media (max-width:720px){ .ap-tiers > div{grid-template-columns:1fr; gap:0} }
+  @media (max-width:719.98px){ .ap-tiers > div{grid-template-columns:1fr; gap:0} }
 
   .ap-steps{list-style:none; margin:var(--space-block) 0 0; padding:0;
     display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:var(--gap)}
@@ -494,7 +503,7 @@
   .ap-tag{font-size:12px; font-weight:500; letter-spacing:.02em; color:var(--tertiary-label);
     border:1px solid var(--hairline); border-radius:999px; padding:0 var(--sp-2); line-height:20px}
   /* mobile: the three steps STACK (a side-scrolling row cut the next card's text off at the screen edge) */
-  @media (max-width:720px){
+  @media (max-width:719.98px){
     .ap-steps > li{grid-column:1 / -1} .ap-steps{row-gap:var(--space-sub)}
     .ap-root .ap-steps figure img{max-width:220px}
   }
@@ -511,7 +520,7 @@
   .ap-gallery > figure{grid-column:span 2}
   .ap-root .ap-gallery figure{margin:0}
   .ap-gallery figcaption{margin-top:var(--space-bound); font-size:14px; line-height:20px; color:var(--tertiary-label)}
-  @media (max-width:720px){ .ap-gallery > figure{grid-column:span 6} }   /* 2 across on phones, still on the tracks */
+  @media (max-width:719.98px){ .ap-gallery > figure{grid-column:span 6} }   /* 2 across on phones, still on the tracks */
 
   .ap-duo{display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:var(--gap); margin:var(--space-block) 0 0}
   .ap-duo > div{grid-column:span 4}
@@ -523,8 +532,8 @@
   .ap-ethic h3{font-size:20px; line-height:28px; margin-bottom:var(--space-snug)}
   .ap-ethic ul{list-style:none; margin:0; padding:0; border-top:1px solid var(--hairline)}
   .ap-ethic li{margin:0; padding:var(--space-snug) 0; border-bottom:1px solid var(--hairline); font-size:16px; line-height:24px; color:var(--secondary-label)}
-  @media (max-width:720px){ .ap-ethic > div{grid-column:1 / -1} .ap-ethic{row-gap:var(--space-sub)} }
-  @media (max-width:720px){ .ap-duo > div{grid-column:1 / -1} .ap-duo{row-gap:var(--space-sub)} .ap-root .ap-duo figure img{max-width:220px} }
+  @media (max-width:719.98px){ .ap-ethic > div{grid-column:1 / -1} .ap-ethic{row-gap:var(--space-sub)} }
+  @media (max-width:719.98px){ .ap-duo > div{grid-column:1 / -1} .ap-duo{row-gap:var(--space-sub)} .ap-root .ap-duo figure img{max-width:220px} }
 
 
   /* ---------- V8 (2026-10-06): the Pathway strip ----------
@@ -537,7 +546,7 @@
   .ap-root .ap-path .ap-eyebrow{margin:0 0 var(--space-bound)}
   .ap-path h3{font-size:20px; line-height:28px; margin-bottom:var(--space-bound)}
   .ap-path p{font-size:16px; line-height:24px; margin-bottom:0}
-  @media (max-width:720px){ .ap-path > li{grid-column:1 / -1} .ap-path{row-gap:var(--space-group)} }
+  @media (max-width:719.98px){ .ap-path > li{grid-column:1 / -1} .ap-path{row-gap:var(--space-group)} }
   .ap-root p.ap-path-note{margin:var(--space-group) 0 0}
   .ap-root p.ap-proof{margin:var(--space-block) 0 0}
   .ap-duo h3 .ap-tag{vertical-align:middle; margin-left:var(--space-bound)}
@@ -548,7 +557,7 @@
      step hangs on one left edge under its number. Reflections pair uses the same trick. */
   .ap-root .ap-stepn{display:flex; align-items:center; gap:var(--space-snug); min-height:28px; margin:0 0 var(--space-snug)}
   .ap-steps--4 > li{grid-column:span 3}
-  @media (min-width:721px){
+  @media (min-width:720px){
     .ap-steps--4{row-gap:0}
     .ap-steps--4 > li{display:grid; grid-row:span 4; grid-template-rows:subgrid; row-gap:0}
     .ap-root .ap-steps--4 figure{margin-top:0; align-self:start}
@@ -557,8 +566,8 @@
     .ap-root .ap-duo figure{align-self:start}
   }
   @media (max-width:1000px){ .ap-steps--4 > li{grid-column:span 6} }
-  @media (min-width:721px) and (max-width:1000px){ .ap-steps--4 > li:nth-child(n+3){margin-top:var(--space-sub)} }
-  @media (max-width:720px){ .ap-steps--4 > li{grid-column:1 / -1} }
+  @media (min-width:720px) and (max-width:1000px){ .ap-steps--4 > li:nth-child(n+3){margin-top:var(--space-sub)} }
+  @media (max-width:719.98px){ .ap-steps--4 > li{grid-column:1 / -1} }
 
 </style>
 </head>
@@ -1008,7 +1017,7 @@
   @media (prefers-contrast:more){
     .snb-footer{--snb-muted:var(--snb-ink-80);--snb-hairline:var(--snb-muted)}
   }
-  @media (max-width:720px){
+  @media (max-width:719.98px){
     .snb-footer{padding:var(--sp-6,32px) 0 var(--sp-7,48px)}
     .snb-cols{gap:var(--sp-5,24px) var(--gap,clamp(20px,4vw,32px))}
     .snb-cols,.snb-crisis ul{grid-template-columns:1fr}

@@ -32,7 +32,7 @@
      the shape of its neighbours (no more than two consecutive same-shape sections).
      Stacks below 900. */
   .sv-root .sv-split{display:grid;gap:var(--space-group) var(--gap)}
-  @media (min-width:721px){
+  @media (min-width:720px){
     .sv-root .sv-split{grid-template-columns:minmax(0,6fr) minmax(0,6fr);align-items:start}
     .sv-root .sv-split>div>:first-child{margin-top:0}
     .sv-root .sv-split ul.sv-list{max-width:none;margin-top:0}
@@ -40,7 +40,7 @@
   /* 07 Bands/composition: a labelled pair runs 2-up on the grid so the section
      does not repeat the shape of its neighbours. Stacks at 720 and below (grid W9). */
   .sv-root .sv-pair{display:grid;gap:var(--space-block) var(--gap)}
-  @media (min-width:721px){
+  @media (min-width:720px){
     .sv-root .sv-pair{grid-template-columns:1fr 1fr;align-items:start}
     .sv-root .sv-pair>div>.sv-listlabel:first-child{margin-top:0}
     .sv-root .sv-pair ul.sv-list{max-width:none}
@@ -57,7 +57,7 @@
   .sv-root .sv-hero-photo{margin:0}
   .sv-root .sv-hero-photo img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;
     border-radius:16px;border:1px solid var(--separator)}   /* flat, rounded, hairline ring (07 imagery) */
-  @media (max-width:720px){
+  @media (max-width:719.98px){
     .sv-root .sv-hero>:first-child,.sv-root .sv-hero>:last-child{grid-column:1/-1}
     .sv-root .sv-hero-photo{max-width:300px}
   }
@@ -297,7 +297,7 @@
   @media (prefers-contrast:more){
     .snb-footer{--snb-muted:var(--snb-ink-80);--snb-hairline:var(--snb-muted)}
   }
-  @media (max-width:720px){
+  @media (max-width:719.98px){
     .snb-footer{padding:var(--sp-6,32px) 0 var(--sp-7,48px)}
     .snb-cols{gap:var(--sp-5,24px) var(--gap,clamp(20px,4vw,32px))}
     .snb-cols,.snb-crisis ul{grid-template-columns:1fr}

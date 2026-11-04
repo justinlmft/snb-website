@@ -23,13 +23,13 @@
   .p3-root .p3-days ul{list-style:none}
   .p3-root .p3-days ul li{position:relative;padding-left:20px;font-size:16px;line-height:24px;color:var(--ink-80);margin-bottom:var(--space-bound)}
   .p3-root .p3-days ul li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--sky)}
-  @media (max-width:1000px) and (min-width:721px){ .p3-root .p3-days .snb-c3{grid-column:span 6} }
+  @media (max-width:1000px) and (min-width:720px){ .p3-root .p3-days .snb-c3{grid-column:span 6} }
   .p3-root .p3-guide{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-group) var(--gap);align-items:start}   /* grid W2 (2026-10-28): copy 8 + photo 4 on the 12 lines */
   .p3-root .p3-guide>:first-child{grid-column:span 8;min-width:0}
   .p3-root .p3-guide>:last-child{grid-column:span 4;min-width:0}
   .p3-root .p3-guide figure{margin:0}
   .p3-root .p3-guide img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:16px;border:1px solid var(--separator)}
-  @media (max-width:720px){ .p3-root .p3-guide>:first-child,.p3-root .p3-guide>:last-child{grid-column:1/-1} .p3-root .p3-guide figure{max-width:300px} }
+  @media (max-width:719.98px){ .p3-root .p3-guide>:first-child,.p3-root .p3-guide>:last-child{grid-column:1/-1} .p3-root .p3-guide figure{max-width:300px} }
   .p3-root ul.p3-list{list-style:none;max-width:var(--measure);margin-top:var(--space-group)}
   .p3-root ul.p3-list li{position:relative;padding-left:32px;font-size:16px;line-height:24px;color:var(--ink-80);margin-bottom:var(--space-snug)}
   .p3-root ul.p3-list li::before{content:"\2713";position:absolute;left:0;top:0;font-weight:500;color:var(--sky)}
@@ -198,7 +198,7 @@
   @media (prefers-contrast:more){
     .snb-footer{--snb-muted:var(--snb-ink-80);--snb-hairline:var(--snb-muted)}
   }
-  @media (max-width:720px){
+  @media (max-width:719.98px){
     .snb-footer{padding:var(--sp-6,32px) 0 var(--sp-7,48px)}
     .snb-cols{gap:var(--sp-5,24px) var(--gap,clamp(20px,4vw,32px))}
     .snb-cols,.snb-crisis ul{grid-template-columns:1fr}

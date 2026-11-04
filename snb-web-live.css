@@ -98,7 +98,7 @@
   --leaf:var(--leaf-deep);         /* --leaf is 4.28:1 on the band (4.5 bar) */
   --panel:var(--bone);             /* a panel tinted --bone-deep would vanish on the band */
 }
-@media (min-width:721px){
+@media (min-width:720px){
   .snb-live section.snb-band{padding:var(--sp-8) 0}   /* 64 inside < 112 outside (desktop) */
 }
 
@@ -159,7 +159,7 @@
    Arrow is SEMANTIC: default RIGHT (navigates to another page). Add .snb-door--jump
    for a same-page anchor jump: arrow points DOWN and sits at the card's right edge. */
 .snb-live .snb-doors{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--space-sub)}
-@media (max-width:720px){.snb-live .snb-doors{grid-template-columns:1fr}}
+@media (max-width:719.98px){.snb-live .snb-doors{grid-template-columns:1fr}}
 .snb-live .snb-door{display:block;border:1px solid var(--separator);border-radius:16px;
   padding:var(--space-group);color:var(--ink);text-decoration:none;
   transition:border-color var(--dur) var(--ease)}
@@ -187,7 +187,7 @@
 .snb-live .snb-c8{grid-column:span 8}
 .snb-live .snb-c9{grid-column:span 9}
 .snb-live .snb-c12{grid-column:span 12}
-@media (max-width:720px){
+@media (max-width:719.98px){
   .snb-live .snb-c3,.snb-live .snb-c4,.snb-live .snb-c6,
   .snb-live .snb-c8,.snb-live .snb-c9{grid-column:span 12}
 }
@@ -214,7 +214,7 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 .snb-live .snb-irows li{display:flex;flex-direction:column;gap:var(--space-snug);min-width:0;
   font-size:16px;line-height:24px;color:var(--ink-80)}
 .snb-live .snb-irows li b{display:block;font-weight:500;color:var(--ink)}
-@media (max-width:720px){
+@media (max-width:719.98px){
   .snb-live .snb-irows,.snb-live .snb-irows.two{grid-template-columns:1fr;gap:var(--space-group)}
   .snb-live .snb-irows li{flex-direction:row;align-items:flex-start;gap:var(--space-stack)}
 }
@@ -230,7 +230,7 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 .snb-live .snb-steps li .snb-ico-l{margin-bottom:var(--space-bound)}
 .snb-live .snb-steps.icons li::before{display:none}
 .snb-live .snb-steps li b{display:block;font-weight:500;color:var(--ink);margin-bottom:var(--sp-1)}
-@media (max-width:720px){
+@media (max-width:719.98px){
   .snb-live .snb-steps,.snb-live .snb-steps.four{grid-template-columns:1fr;gap:var(--space-stack)}
 }
 
@@ -240,7 +240,7 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 .snb-live .snb-side>.snb-side-h{grid-column:span 4}
 .snb-live .snb-side>.snb-side-b{grid-column:span 8;min-width:0}
 .snb-live .snb-side>.snb-side-b>:first-child{margin-top:0}
-@media (max-width:720px){
+@media (max-width:719.98px){
   .snb-live .snb-side>.snb-side-h,.snb-live .snb-side>.snb-side-b{grid-column:1/-1}
 }
 
@@ -251,7 +251,7 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
   max-width:none;margin:0;padding:var(--space-group) 0;border-top:1px solid var(--hairline)}
 .snb-live .snb-leads>p>b:first-child{grid-column:span 4;font-weight:500;color:var(--ink)}
 .snb-live .snb-leads>p>span{grid-column:span 8;max-width:var(--measure)}
-@media (max-width:720px){.snb-live .snb-leads>p>b:first-child,.snb-live .snb-leads>p>span{grid-column:1/-1}}
+@media (max-width:719.98px){.snb-live .snb-leads>p>b:first-child,.snb-live .snb-leads>p>span{grid-column:1/-1}}
 
 /* 5. PULL LINE -- one short sentence ALREADY in the copy, set larger in place
    (never repeated, never a claim or a number). One per section at most. */
@@ -270,14 +270,14 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 .snb-live .snb-tick path{stroke:var(--k-accent,var(--ink));stroke-width:2.2}
 .snb-live .snb-dash path{stroke:var(--muted);stroke-width:1.6}
 .snb-live .snb-fit-l{font-size:15px;font-weight:500;line-height:20px;color:var(--ink)}
-@media (max-width:720px){.snb-live .snb-fit{grid-template-columns:1fr}}
+@media (max-width:719.98px){.snb-live .snb-fit{grid-template-columns:1fr}}
 
 /* 6b. REASSURANCE ROW -- three short ticks side by side (no pressure, no card...) */
 .snb-live .snb-checks{list-style:none;padding:0;margin:var(--space-group) 0 0;
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--gap)}
 .snb-live .snb-checks li{font-weight:500;color:var(--ink)}
 .snb-live .snb-checks.quiet li{font-weight:400;color:var(--ink-80)}
-@media (max-width:720px){.snb-live .snb-checks{grid-template-columns:1fr}}
+@media (max-width:719.98px){.snb-live .snb-checks{grid-template-columns:1fr}}
 
 /* 7. TEXT + FIGURE -- prose in 7 columns, the thing it explains in 5 (a figure,
    a screenshot, a short list, a quote). Top-aligned; stacks text-first. */
@@ -285,7 +285,7 @@ Never a heart, bolt or x shape: those three are the state marks (tri-glyph).
 .snb-live .snb-split>.snb-split-t{grid-column:span 7;min-width:0}
 .snb-live .snb-split>.snb-split-f{grid-column:span 5;min-width:0}
 .snb-live .snb-split>div>:first-child{margin-top:0}
-@media (max-width:720px){.snb-live .snb-split>.snb-split-t,.snb-live .snb-split>.snb-split-f{grid-column:1/-1}}
+@media (max-width:719.98px){.snb-live .snb-split>.snb-split-t,.snb-live .snb-split>.snb-split-f{grid-column:1/-1}}
 
 /* a kit block followed by ordinary content: one block gap after it (a page rule with the same
    weight can still set its own, e.g. .sv-cta) */
