@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Unstucking Case Consult — find a time</title>
+<style>
+  :root { --ink:#19283a; --muted:#545861; --line:#d9dde3; --accent:#2B2E33; --bg:#ffffff; --soft:#f5f6f8; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width:620px; margin:0 auto; padding:40px 16px 64px; }
+  h1 { font-size:1.7rem; line-height:1.2; margin:0 0 8px; }
+  .sub { color:var(--muted); margin:0 0 28px; }
+  label, legend { font-weight:600; display:block; margin-bottom:6px; }
+  .hint { font-weight:400; color:var(--muted); font-size:.92rem; }
+  .field { margin-bottom:22px; }
+  input[type=text], input[type=email], textarea { width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; color:inherit; background:#fff; }
+  textarea { min-height:90px; resize:vertical; }
+  fieldset { border:0; padding:0; margin:0 0 22px; }
+  .opt { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; border:1px solid var(--line); border-radius:8px; margin-bottom:8px; background:#fff; cursor:pointer; }
+  .opt input { margin-top:4px; }
+  .opt small { display:block; color:var(--muted); }
+  .hp { position:absolute; left:-9999px; }
+  button { background:var(--accent); color:#fff; border:0; border-radius:8px; padding:13px 22px; font:inherit; font-weight:600; cursor:pointer; }
+  button[disabled] { opacity:.6; cursor:default; }
+  .note { background:var(--soft); border-radius:8px; padding:14px 16px; color:var(--muted); font-size:.95rem; margin-bottom:28px; }
+  .err { color:#a3261c; margin-top:12px; }
+  .done h2 { margin-top:0; }
+</style>
+</head>
+<body>
+<main>
+  <div id="formwrap">
+    <h1>Unstucking Case Consult: find a time</h1>
+    <p class="sub">Unstucking Case Consult is a small consult group for mental health therapists (pilot) who are applying Polyvagal Theory in their clinical work, want to connect with like-minded therapists, and get live guidance and consultation with Justin.</p>
+
+    <p class="sub"><strong>Cost:</strong> $600, limited to 4 clinicians, no less than 3.</p>
+
+    <p class="sub"><strong>Schedule:</strong> six 90-minute sessions, every other week, starting the week of January 11.</p>
+
+    <div class="note">I'll close the form on Friday, Dec 11. On the 12th, I will email everyone who can make the chosen time with the details and payment link.</div>
+
+    <form id="f" novalidate>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="role">Your license or clinical role <span class="hint">e.g. LMFT, LCSW, LPC, psychologist, or associate under supervision</span></label>
+        <input id="role" name="role" type="text" required>
+      </div>
+
+      <fieldset>
+        <legend>Which times work for you? <span class="hint">Tick all that apply.</span></legend>
+        <label class="opt"><input type="checkbox" name="slots" value="mon-1530"><span>Mondays, 3:30–5:00 pm Pacific<small>6:30 pm Eastern</small></span></label>
+        <label class="opt"><input type="checkbox" name="slots" value="tue-0830"><span>Tuesdays, 8:30–10:00 am Pacific<small>11:30 am Eastern · 4:30 pm UK</small></span></label>
+        <label class="opt"><input type="checkbox" name="slots" value="wed-1530"><span>Wednesdays, 3:30–5:00 pm Pacific<small>6:30 pm Eastern</small></span></label>
+        <label class="opt"><input type="checkbox" name="slots" value="wed-1830"><span>Wednesdays, 6:30–8:00 pm Pacific<small>9:30 pm Eastern</small></span></label>
+        <label class="opt"><input type="checkbox" name="slots" value="thu-0830"><span>Thursdays, 8:30–10:00 am Pacific<small>11:30 am Eastern · 4:30 pm UK</small></span></label>
+        <label class="opt"><input type="checkbox" name="slots" value="thu-1500"><span>Thursdays, 3:00–4:30 pm Pacific<small>6:00 pm Eastern</small></span></label>
+        <label class="opt"><input type="checkbox" name="slots" value="none"><span>None of these work, but keep me posted about future groups</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Can you commit to the schedule at $600?</legend>
+        <label class="opt"><input type="radio" name="intent" value="yes"><span>Yes</span></label>
+        <label class="opt"><input type="radio" name="intent" value="maybe"><span>Maybe, I have a question</span></label>
+      </fieldset>
+
+      <div class="field">
+        <label for="notes">Anything I should know? <span class="hint">Optional</span></label>
+        <textarea id="notes" name="notes"></textarea>
+      </div>
+
+      <div class="hp" aria-hidden="true"><label>Website <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+
+      <button id="go" type="submit">Send</button>
+      <div id="err" class="err" role="alert"></div>
+    </form>
+  </div>
+
+  <div id="done" class="done" hidden>
+    <h2>Thank you, I have your times.</h2>
+    <p>On December 12 I'll email everyone who can make the chosen time with the details and a payment link. Nothing is due until then.</p>
+    <p>Justin</p>
+  </div>
+</main>
+<script>
+(function () {
+  var ENDPOINT = "https://piutnzwpbrydyipwaocl.supabase.co/functions/v1/consult-interest";
+  var f = document.getElementById("f"), err = document.getElementById("err"), go = document.getElementById("go");
+  var src = "";
+  try { src = new URLSearchParams(location.search).get("src") || ""; } catch (e) {}
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    err.textContent = "";
+    var slots = Array.prototype.map.call(f.querySelectorAll('input[name=slots]:checked'), function (i) { return i.value; });
+    var intentEl = f.querySelector('input[name=intent]:checked');
+    function v(id) { return document.getElementById(id).value.trim(); }
+    var data = {
+      name: v("name"), email: v("email"), role: v("role"),
+      slots: slots, intent: intentEl ? intentEl.value : null,
+      notes: v("notes"), website: f.elements["website"].value, source: src
+    };
+    if (!data.name || !data.email || !data.role) { err.textContent = "Please fill in your name, email and license or role."; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) { err.textContent = "Please check your email address."; return; }
+    if (!slots.length) { err.textContent = "Please tick at least one option."; return; }
+    go.disabled = true; go.textContent = "Sending…";
+    fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j.ok }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error("save");
+        document.getElementById("formwrap").hidden = true;
+        document.getElementById("done").hidden = false;
+        window.scrollTo(0, 0);
+      })
+      .catch(function () {
+        go.disabled = false; go.textContent = "Send";
+        err.textContent = "Something went wrong and your answers weren't saved. Please try again, or email justin@stucknotbroken.com.";
+      });
+  });
+})();
+</script>
+</body>
+</html>
