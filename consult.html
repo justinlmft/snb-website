@@ -51,7 +51,7 @@
         <input id="email" name="email" type="email" autocomplete="email" required>
       </div>
       <div class="field">
-        <label for="role">Your license or clinical role <span class="hint">e.g. LMFT, LCSW, LPC, psychologist, or associate under supervision</span></label>
+        <label for="role">Your license <span class="hint">e.g. LMFT, LCSW, LPC, psychologist. This group is for licensed therapists only.</span></label>
         <input id="role" name="role" type="text" required>
       </div>
 
@@ -106,7 +106,7 @@
       slots: slots, intent: intentEl ? intentEl.value : null,
       notes: v("notes"), website: f.elements["website"].value, source: src
     };
-    if (!data.name || !data.email || !data.role) { err.textContent = "Please fill in your name, email and license or role."; return; }
+    if (!data.name || !data.email || !data.role) { err.textContent = "Please fill in your name, email and license."; return; }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) { err.textContent = "Please check your email address."; return; }
     if (!slots.length) { err.textContent = "Please tick at least one option."; return; }
     go.disabled = true; go.textContent = "Sending…";
